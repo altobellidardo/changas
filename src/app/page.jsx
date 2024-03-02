@@ -1,7 +1,7 @@
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import Link from 'next/link'
-import Divider from '@/ui/divider'
+import Divider from '@/app/ui/divider'
 
 function Tag ({ nombre }) {
   return (
