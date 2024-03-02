@@ -53,7 +53,7 @@ function Home () {
         <h1 className='text-5xl font-semibold mb-2'>Únete a la Plataforma</h1>
         <p className='text-2xl text-balance'>Los clientes confían en nuestra plataforma para encontrar profesionales cualificados para sus proyectos. Los profesionales confían en nosotros para conectarse con clientes potenciales y hacer crecer su negocio.</p>
 
-        <div className='flex w-3/4 mx-auto gap-4 my-5 justify-center items-center mt-12 flex-wrap'>
+        <div className='flex flex-wrap w-3/4 mx-auto gap-4 mb-5 justify-center items-center mt-12'>
           <Tag nombre='Electricista' />
           <Tag nombre='Plomero' />
           <Tag nombre='Pintor' />
