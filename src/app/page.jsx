@@ -2,14 +2,7 @@ import Header from '@/components/header'
 import Footer from '@/components/footer'
 import Link from 'next/link'
 import Divider from '@/app/ui/divider'
-
-function Tag ({ nombre }) {
-  return (
-    <span className='font-semibold px-6 py-2 border-2 border-brand6 rounded-full text-brand6 hover:text-brand8 hover:bg-brand6'>
-      {nombre}
-    </span>
-  )
-}
+import Tag from '@/app/ui/tag'
 
 function Home () {
   return (
