@@ -1,4 +1,4 @@
-'use server'
+'use client'
 
 function Divider () {
   return (
