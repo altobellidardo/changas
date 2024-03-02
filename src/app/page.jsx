@@ -1,17 +1,8 @@
 import Header from '@/components/header'
+import Footer from '@/components/footer'
 import Link from 'next/link'
-
-function Divider () {
-  return (
-    <div className='w-full max-w-[1000px] mx-auto h-[2px] bg-brand1' />
-  )
-}
-
-function Tag ({ nombre }) {
-  return (
-    <span className='font-semibold border-2 border-brand6 text-brand6 hover:bg-brand6 hover:text-brand1 px-6 py-2 rounded-full'>{nombre}</span>
-  )
-}
+import Divider from '@/ui/divider'
+import Tag from '@/ui/tag'
 
 function Home () {
   return (
@@ -23,7 +14,7 @@ function Home () {
         <p className='text-2xl'>Conectando profesionales cualificados con clientes. Encuentra a la persona adecuada para tu proyecto o sé contratado por tu experiencia.</p>
         <div className='flex gap-4 my-5 justify-center items-center mt-12'>
           <Link href='/trabajos' className='font-semibold border-2 border-brand6 text-brand6 rounded-xl px-4 py-2 hover:text-brand1 hover:bg-brand6'>Explorar Trabajos</Link>
-          <Link href='/login' className='font-semibold rounded-xl px-4 py-2 border-2 border-brand6 bg-brand6 text-brand8 hover:text-brand1'>Registrarse</Link>
+          <Link href='/login' className='font-semibold rounded-xl px-4 py-2 border-2 border-brand6 bg-brand6 text-brand8 hover:text-brand1'>Unirse ahora</Link>
         </div>
       </section>
 
@@ -73,6 +64,7 @@ function Home () {
         </div>
       </section>
 
+      <Footer />
     </main>
   )
 }
