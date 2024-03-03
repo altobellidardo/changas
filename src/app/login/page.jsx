@@ -1,23 +1,14 @@
-import Link from 'next/link'
-import Header from '@/components/header'
-import LoginForm from './loginForm'
+import { login, signup } from './actions'
 
-function LonginPage () {
+export default function LoginPage () {
   return (
-    <main className='min-h-screen bg-brand8'>
-      <Header />
-
-      <section className='w-full max-w-[1000px] mx-auto mt-10'>
-        <div className='text-center'>
-          <h1 className='text-2xl font-semibold'>Acceda a tu cuenta</h1>
-        </div>
-        <LoginForm />
-        <p className='text-center'>si no tienes una cuenta, puedes
-          <Link href='/register' className='p-1 font-semibold hover:text-brand6'>Registrarse</Link>
-        </p>
-      </section>
-    </main>
+    <form className='flex flex-col gap-4 max-w-[400px] mx-auto border-2 border-brand1 rounded-lg p-6 my-5'>
+      <label htmlFor='email' className='font-semibold'>Email:</label>
+      <input id='email' name='email' type='email' required className='outline rounded-md outline-2 p-2' />
+      <label htmlFor='password' className='font-semibold'>Password:</label>
+      <input id='password' name='password' type='password' required className='outline rounded-md outline-2 p-2' />
+      <button formAction={login} className='font-semibold border-2 border-brand6 text-brand6 rounded-xl px-4 py-2 hover:text-brand1 hover:bg-brand6'>Log in</button>
+      <button formAction={signup} className='font-semibold border-2 border-brand6 text-brand6 rounded-xl px-4 py-2 hover:text-brand1 hover:bg-brand6'>Sign up</button>
+    </form>
   )
 }
-
-export default LonginPage

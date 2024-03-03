@@ -1,4 +1,4 @@
-import { poppins } from '@/lib/font'
+import { poppins } from '@/utils/font'
 import './globals.css'
 
 export const metadata = {
