@@ -4,17 +4,20 @@ import Link from 'next/link'
 import Divider from '@/app/ui/divider'
 import Tag from '@/app/ui/tag'
 
+// import { UserButton } from '@clerk/nextjs'
+
 function Home () {
   return (
     <main className='min-h-screen bg-brand8'>
       <Header />
+      {/* <UserButton /> */}
 
       <section className='w-full max-w-[1000px] mx-auto my-32'>
         <h2 className='text-5xl font-semibold mb-2'>Contrata a los Mejores. Haz el Trabajo.</h2>
         <p className='text-2xl'>Conectando profesionales cualificados con clientes. Encuentra a la persona adecuada para tu proyecto o sé contratado por tu experiencia.</p>
         <div className='flex gap-4 my-5 justify-center items-center mt-12'>
           <Link href='/trabajos' className='font-semibold border-2 border-brand6 text-brand6 rounded-xl px-4 py-2 hover:text-brand1 hover:bg-brand6'>Explorar Trabajos</Link>
-          <Link href='/auth/register' className='font-semibold rounded-xl px-4 py-2 border-2 border-brand6 bg-brand6 text-brand8 hover:text-brand1'>Unirse ahora</Link>
+          <Link href='/dashboard' className='font-semibold rounded-xl px-4 py-2 border-2 border-brand6 bg-brand6 text-brand8 hover:text-brand1'>Unirse ahora</Link>
         </div>
       </section>
 

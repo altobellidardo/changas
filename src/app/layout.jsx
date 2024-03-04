@@ -1,3 +1,4 @@
+import { ClerkProvider } from '@clerk/nextjs'
 import { poppins } from '@/utils/font'
 import './globals.css'
 
@@ -12,10 +13,12 @@ export const metadata = {
 
 export default function RootLayout ({ children }) {
   return (
-    <html lang='es'>
-      <body className={`${poppins.className} antialiased`}>
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang='es'>
+        <body className={`${poppins.className} antialiased`}>
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   )
 }
