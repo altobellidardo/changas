@@ -1,7 +1,11 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-function Header () {
+import { currentUser, UserButton } from '@clerk/nextjs'
+
+async function Header () {
+  const user = await currentUser()
+
   return (
     <header className='w-full bg-brand5 px-10 py-3 border-b-4'>
       <nav className='flex justify-between items-center max-w-[1000px] mx-auto'>
@@ -24,6 +28,19 @@ function Header () {
             </Link>
           </li>
         </ul>
+
+        {user
+          ? <UserButton />
+          : (
+            <div className='flex gap-4'>
+              <Link href='/sign-in' className='text-brand8 font-semibold hover:underline underline-offset-4'>
+                Iniciar Sesion
+              </Link>
+              <Link href='/sign-up' className='text-brand8 font-semibold hover:underline underline-offset-4'>
+                Registrarse
+              </Link>
+            </div>
+            )}
       </nav>
     </header>
   )
