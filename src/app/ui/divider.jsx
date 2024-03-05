@@ -2,7 +2,7 @@
 
 function Divider () {
   return (
-    <div className='w-full max-w-[1000px] mx-auto h-[2px] bg-brand1' />
+    <div className='mx-auto h-[2px] w-full max-w-[1000px] bg-brand1' />
   )
 }
 
