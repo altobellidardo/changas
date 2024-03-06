@@ -8,7 +8,6 @@ async function DashboardPage () {
   const supabaseToken = await getToken('Supabase')
   console.log(supabaseToken)
 
-  // eslint-disable-next-line no-unused-vars
   const supabase = createSupabaseClient()
   const { data } = await supabase.from('Posts').select()
 
