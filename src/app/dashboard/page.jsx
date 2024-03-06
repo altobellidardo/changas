@@ -8,8 +8,9 @@ async function DashboardPage () {
   const supabaseToken = await getToken('Supabase')
   console.log(supabaseToken)
 
+  // eslint-disable-next-line no-unused-vars
   const supabase = createSupabaseClient()
-  const { data: todos } = await supabase.from('todos').select('*')
+  const { data } = await supabase.from('Posts').select()
 
   return (
     <div>
@@ -17,13 +18,7 @@ async function DashboardPage () {
       <h2>{user.firstName} {user.lastName}</h2>
       <h2>{user.emailAddresses[0].emailAddress}</h2>
       <UserButton />
-
-      {todos.map((todo) => (
-        <div key={todo.id}>
-          <h3 className='text-2xl'>{todo.title}</h3>
-          <p>{todo.content}</p>
-        </div>
-      ))}
+      <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
   )
 }
