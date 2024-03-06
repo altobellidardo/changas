@@ -1,19 +1,34 @@
-import { supabaseClient } from '@/utils/supabase/server'
-import { auth } from '@clerk/nextjs'
+import { supabaseServerClient } from '@/utils/supabase/server'
 
 async function Supabase () {
-  const { getToken } = auth()
-  const supabaseToken = await getToken({ template: 'supabase' })
-  const supabase = await supabaseClient(supabaseToken)
+  const supabase = await supabaseServerClient()
+  const { data } = await supabase.from('Posts').select()
 
-  const { data, error } = await supabase.from('Posts').select()
-  console.log('data', data)
-  console.log('error', error)
+  async function addPost (formData) {
+    'use server'
+
+    const content = formData.get('content')
+
+    const supabase = await supabaseServerClient()
+    await supabase.from('Posts').insert({
+      content
+    })
+  }
 
   return (
     <>
-      <div>Supabase</div>
-      {data.length > 0 && data.map((item) => <div key={item.id}>{item.content}</div>)}
+      <h1 className='text-3xl font-bold'>Posts</h1>
+      <form action={addPost} className='flex flex-col gap-2 w-96 p-6'>
+        <input type='text' name='content' className='border-2' />
+        <button type='submit'>Add Post</button>
+      </form>
+      {data.length > 0 && (
+        data.map((item) => (
+          <div key={item.id} className='p-4 border-2 m-2 w-96'>
+            {item.content} - Creado por el usuario {item.user_id}
+          </div>
+        ))
+      )}
     </>
   )
 }
