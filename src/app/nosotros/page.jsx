@@ -1,9 +1,9 @@
-import Link from 'next/link'
+import Header from '@/components/header2'
 
 function NosotrosPage () {
   return (
     <main className='min-h-screen bg-brand1 p-10 text-brand8'>
-      <Link href='/' className='font-semibold underline-offset-4 hover:underline'>Ir al inicio</Link>
+      <Header />
       <h1 className='mt-10 text-4xl font-semibold'>Acerca de Nosotros</h1>
 
       <section>

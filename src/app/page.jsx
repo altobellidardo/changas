@@ -1,4 +1,6 @@
-import Header from '@/components/header'
+import Header2 from '@/components/header2'
+// import Header3 from '@/components/header3'
+// import Header from '@/components/header'
 import Footer from '@/components/footer'
 import Link from 'next/link'
 import Divider from '@/app/ui/divider'
@@ -7,7 +9,9 @@ import Tag from '@/app/ui/tag'
 async function Home () {
   return (
     <main className='min-h-screen bg-brand8'>
-      <Header />
+      {/* <Header /> */}
+      <Header2 />
+      {/* <Header3 /> */}
 
       <section className='mx-auto my-32 w-full max-w-[1000px]'>
         <h2 className='mb-2 text-5xl font-semibold'>Contrata a los Mejores. Haz el Trabajo.</h2>
