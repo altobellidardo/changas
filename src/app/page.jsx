@@ -3,8 +3,8 @@ import Header2 from '@/components/header2'
 // import Header from '@/components/header'
 import Footer from '@/components/footer'
 import Link from 'next/link'
-import Divider from '@/app/ui/divider'
-import Tag from '@/app/ui/tag'
+import Divider from '@/components/ui/divider'
+import Tag from '@/components/ui/tag'
 
 async function Home () {
   return (
