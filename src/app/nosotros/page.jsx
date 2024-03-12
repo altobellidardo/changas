@@ -17,9 +17,9 @@ function NosotrosPage () {
         </section>
       </div>
 
-      <section className='bg-brand8 text-black h-[1600px] p-20'>
-        {cards.map((info, index) => (
-          <Card key={info.titulo} info={info} index={index} />
+      <section className='bg-brand8 text-black p-20 flex flex-col gap-10'>
+        {cards.map(info => (
+          <Card key={info.titulo} info={info} />
         ))}
       </section>
       <Footer />
