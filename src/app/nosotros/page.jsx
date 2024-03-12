@@ -17,7 +17,7 @@ function NosotrosPage () {
         </section>
       </div>
 
-      <section className='bg-brand8 text-black h-[1500px] p-20'>
+      <section className='bg-brand8 text-black h-[1600px] p-20'>
         {cards.map((info, index) => (
           <Card key={info.titulo} info={info} index={index} />
         ))}
