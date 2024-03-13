@@ -1,5 +1,5 @@
 import Header from '@/components/header'
-import Footer from '@/components/Footer'
+import Footer from '@/components/footer'
 import Link from 'next/link'
 import Divider from '@/components/ui/divider'
 import Tag from '@/components/ui/tag'
