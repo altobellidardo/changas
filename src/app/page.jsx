@@ -1,4 +1,4 @@
-import Header from '@/components/Header'
+import Header from '@/components/header'
 import Footer from '@/components/footer'
 import Link from 'next/link'
 import Divider from '@/components/ui/divider'
