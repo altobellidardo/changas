@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import HeaderMenu from './HeaderMenu'
 
-async function Header () {
+function Header () {
   return (
     <header>
       <nav className='bg-brand5 px-4 py-2.5 lg:px-6'>
