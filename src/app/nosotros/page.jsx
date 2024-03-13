@@ -1,8 +1,8 @@
 import Card from '@/components/Card'
 import Footer from '@/components/footer'
-import Header from '@/components/header2'
+import Header from '@/components/Header'
 import Image from 'next/image'
-import { cards } from '@/utils/cardsData'
+import { cards } from '@/app/nosotros/cardsData'
 
 function NosotrosPage () {
   return (

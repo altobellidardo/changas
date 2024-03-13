@@ -1,5 +1,5 @@
 import Footer from '@/components/footer'
-import Header from '@/components/header2'
+import Header from '@/components/Header'
 import Image from 'next/image'
 import Link from 'next/link'
 
