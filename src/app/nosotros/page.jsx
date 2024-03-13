@@ -1,5 +1,5 @@
 import Card from '@/components/Card'
-import Footer from '@/components/footer'
+import Footer from '@/components/Footer'
 import Header from '@/components/header'
 import Image from 'next/image'
 import { cards } from '@/app/nosotros/cardsData'
