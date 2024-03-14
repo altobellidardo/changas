@@ -8,7 +8,7 @@ function ContactPage () {
     <article className='min-h-screen bg-brand8'>
       <Header />
       <picture className='overflow-hidden'>
-        <Image src='/contacto.webp' alt='business photo' width='1920' height='800' className='w-full h-96 object-cover blur-[2.5px]' />
+        <Image src='/img/contacto/contacto.webp' alt='business photo' width='1920' height='800' className='w-full h-96 object-cover blur-[2.5px]' />
       </picture>
       <main className='my-20'>
         <h1 className='text-5xl font-semibold text-brand1 text-center'>¿Tenés alguna consulta?</h1>
