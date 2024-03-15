@@ -1,7 +1,7 @@
-import { supabaseServerClient } from '@/utils/supabase/server'
+// import { supabaseServerClient } from '@/utils/supabase/server'
+import supabase from '@/utils/supabase/server'
 
 async function Supabase () {
-  const supabase = await supabaseServerClient()
   const { data } = await supabase.from('Posts').select()
 
   async function addPost (formData) {
@@ -9,7 +9,6 @@ async function Supabase () {
 
     const content = formData.get('content')
 
-    const supabase = await supabaseServerClient()
     await supabase.from('Posts').insert({
       content
     })
