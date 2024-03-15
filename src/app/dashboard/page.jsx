@@ -1,10 +1,8 @@
 // import { currentUser, UserButton } from '@clerk/nextjs'
-import { supabaseServerClient } from '@/utils/supabase/server'
+import supabase from '@/utils/supabase/server'
 
 async function DashboardPage () {
   // const user = await currentUser()
-
-  const supabase = await supabaseServerClient()
 
   const { data } = await supabase.from('Posts').select()
 
