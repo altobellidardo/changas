@@ -9,14 +9,8 @@ async function Home () {
     <main className='min-h-screen bg-brand8'>
       <Header />
 
-      <section className='my-20 mx-auto text-center max-w-[800px] text-balance'>
-        <h2 className='text-5xl font-bold'>Contrata a los Mejores.</h2>
-        <h2 className='mb-4 text-5xl font-bold'>Haz el trabajo.</h2>
-        <p className='text-xl'>Conectando profesionales cualificados con clientes. Encuentra a la persona adecuada para tu proyecto o sé contratado por tu experiencia.</p>
-      </section>
-
       <div className='w-full relative'>
-        <Image src='/img/home/home.webp' alt='business photo' width='640' height='411' className='object-cover h-[600px] w-full' />
+        <Image src='/img/home/home.webp' alt='business photo' width='640' height='411' className='object-cover h-[650px] w-full' />
         <div className='absolute top-0 left-0 w-full h-full bg-black/60' />
         <section className='absolute bottom-16 left-40 text-left text-brand8'>
           <p className='max-w-[50vw] text-5xl font-bold text-balance'>
@@ -28,6 +22,12 @@ async function Home () {
           </div>
         </section>
       </div>
+
+      <section className='my-20 mx-auto text-center max-w-[800px] text-balance'>
+        <h2 className='text-5xl font-bold'>Contrata a los Mejores.</h2>
+        <h2 className='mb-4 text-5xl font-bold'>Haz el trabajo.</h2>
+        <p className='text-xl'>Conectando profesionales cualificados con clientes. Encuentra a la persona adecuada para tu proyecto o sé contratado por tu experiencia.</p>
+      </section>
 
       <section className='mx-auto mt-32 mb-40 bg-brand6 w-3/4 rounded-[40px] flex'>
         <h3 className='text-5xl font-bold text-brand8 flex w-full items-center px-20'>Descubre tu plataforma de confianza</h3>
