@@ -8,7 +8,7 @@ const disablePath = 'lg:hover:text-primary-700 block py-2 pl-3 pr-4 text-gray-30
 function HeaderPages () {
   const pathname = usePathname()
   return (
-    <ul className='mt-4 flex flex-col font-medium lg:mt-0 lg:flex-row lg:space-x-8'>
+    <ul className='mt-4 flex flex-col w-screen lg:w-fit lg:mt-0 lg:flex-row lg:space-x-8'>
       <li>
         <Link href='/' className={pathname === '/' ? enablePath : disablePath} aria-current='page'>
           Home
