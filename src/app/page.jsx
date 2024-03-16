@@ -23,18 +23,18 @@ async function Home () {
         </section>
       </div>
 
-      <section className='my-20 mx-auto text-center max-w-[800px] text-balance'>
+      <section className='my-20 mx-auto px-4 w-[80vw] max-w-[800px] text-balance'>
         <h2 className='text-5xl font-bold'>Contrata a los Mejores.</h2>
         <h2 className='mb-4 text-5xl font-bold'>Haz el trabajo.</h2>
         <p className='text-xl'>Conectando profesionales cualificados con clientes. Encuentra a la persona adecuada para tu proyecto o sé contratado por tu experiencia.</p>
       </section>
 
-      <section className='mx-auto mt-32 mb-40 bg-brand6 w-3/4 rounded-[40px] flex'>
-        <h3 className='text-5xl font-bold text-brand8 flex w-full items-center px-20'>Descubre tu plataforma de confianza</h3>
-        <Image src='/img/home/home2.webp' alt='business photo' width='1440' height='810' className='w-1/2 relative top-16 right-16 rounded-[40px] border-[6px] border-brand1' />
+      <section className='mx-auto mt-32 mb-40 bg-brand6 w-3/4 rounded-[40px] flex flex-col lg:flex-row'>
+        <h3 className='text-5xl font-bold text-brand8 flex w-full items-center px-20 pt-10 lg:py-0'>Descubre tu plataforma de confianza</h3>
+        <Image src='/img/home/home2.webp' alt='business photo' width='1440' height='810' className='w-full lg:w-1/2 relative top-16 lg:right-16 rounded-[40px] border-[6px] border-brand1' />
       </section>
 
-      <section className='flex gap-4 max-w-[80%] mx-auto font-semibold'>
+      <section className='flex flex-col lg:flex-row gap-4 max-w-[80%] mx-auto font-semibold'>
         <div className='text-brand2 p-6 w-full'>
           <h3 className='text-2xl text-pretty mb-6'>Nuestras modalidades de usuarios</h3>
           <div>
@@ -74,7 +74,7 @@ async function Home () {
         </div>
       </section>
 
-      <section className='mx-auto my-32 w-full max-w-[1000px]'>
+      <section className='mx-auto px-4 my-32 w-[80vw] max-w-[1000px]'>
         <h1 className='mb-2 text-5xl font-semibold'>Únete a la Plataforma</h1>
         <p className='text-balance text-2xl'>Los clientes confían en nuestra plataforma para encontrar profesionales cualificados para sus proyectos. Los profesionales confían en nosotros para conectarse con clientes potenciales y hacer crecer su negocio.</p>
 
