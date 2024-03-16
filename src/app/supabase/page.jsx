@@ -1,5 +1,5 @@
 // import { supabaseServerClient } from '@/utils/supabase/server'
-import supabase from '@/utils/supabase/server'
+import supabase from '@/libs/supabase/server'
 
 async function Supabase () {
   const { data } = await supabase.from('Posts').select()
