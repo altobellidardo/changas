@@ -10,7 +10,7 @@ async function Home () {
       <Header />
 
       <div className='w-full relative'>
-        <Image src='/img/home/home.webp' alt='business photo' width='640' height='411' className='object-cover h-[650px] w-full' />
+        <Image priority src='/img/home/home.webp' alt='business photo' width='640' height='411' className='object-cover h-[650px] w-full' />
         <div className='absolute top-0 left-0 w-full h-full bg-black/60' />
         <section className='absolute bottom-16 left-40 text-left text-brand8'>
           <p className='max-w-[50vw] text-5xl font-bold text-balance'>

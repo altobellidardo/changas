@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
-import { messages } from '@/utils/messages'
-import checkCredentials from '@utils/checkCredentials'
-import supabase from '@/libs/supabase'
+import messages from '@/utils/messages'
+import checkCredentials from '@/utils/checkCredentials'
+import supabase from '@/libs/supabase/server'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 

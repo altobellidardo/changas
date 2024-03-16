@@ -18,6 +18,8 @@ function checkCredentials (email, password) {
   if (!isValidEmail(email)) {
     return { error: messages.error.email_invalid, status: 400 }
   }
+
+  return { error: null }
 }
 
 export default checkCredentials

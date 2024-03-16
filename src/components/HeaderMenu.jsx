@@ -23,11 +23,15 @@ function HeaderMenu () {
     <>
       <div className='flex items-center lg:order-2'>
         <Link href='/auth/signin' className='mr-2 rounded-lg px-4 py-2 text-sm font-medium text-white hover:bg-brand1 focus:outline-none focus:ring-4 focus:ring-gray-800 lg:px-5 lg:py-2.5'>
-          Log in
+          Iniciar sesión
         </Link>
         <Link href='/auth/signup' className='mr-2 rounded-lg bg-brand3 px-4 py-2 text-sm font-medium text-white hover:bg-brand1 focus:outline-none focus:ring-4 focus:ring-brand1 lg:px-5 lg:py-2.5'>
-          Get started
+          Crear cuenta
         </Link>
+
+        <button onClick={() => fetch('/api/auth/logout', { method: 'POST' })}>
+          Cerrar sesión
+        </button>
         <button
           onClick={toggleMenu}
           type='button'
