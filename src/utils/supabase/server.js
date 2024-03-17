@@ -1,5 +1,5 @@
 import { createBrowserClient } from '@supabase/ssr'
 
-const supabase = createBrowserClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
+const supabase = createBrowserClient('https://ubvknwezkepqrsxymdsi.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVidmtud2V6a2VwcXJzeHltZHNpIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwOTM0NzgwNCwiZXhwIjoyMDI0OTIzODA0fQ.NHR1cxPWe4QpGOLnD6xwkMqWok8q-6DYwh5BzTrkwRM')
 
 export default supabase
