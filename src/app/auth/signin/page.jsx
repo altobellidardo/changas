@@ -18,7 +18,7 @@ function SignIn () {
     setLoading(true)
     setError(null)
 
-    const response = await fetch('/api/auth/register', {
+    const response = await fetch('/api/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -58,6 +58,7 @@ function SignIn () {
           <button disabled={loading} className='rounded-xl border-2 border-brand6 bg-brand6 px-4 py-2 font-semibold text-brand8 hover:text-brand1 disabled:opacity-50' type='submit'>Iniciar sesión</button>
           <span className={`${error ? 'block' : 'hidden'} text-red-600 bg-red-200 border-2 rounded-lg p-2 border-red-600`}>{error}</span>
           <Link href='/auth/signup' className='underline'>¿No tienes una cuenta?, crea una</Link>
+          <Link href='/auth/forget-password' className='underline'>¿Olvidaste tu contraseña?, recuperala</Link>
         </form>
       </section>
     </main>
