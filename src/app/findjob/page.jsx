@@ -9,8 +9,8 @@ async function FindJobPage () {
       {
         categories.map((item) => (
           <div key={item.id_category} className='p-4 border-2 m-2 w-96'>
-            <Link href={{ pathname: `/findjob/${item.id_category}`, query: { category: item.titulo } }}>Encontrar ofertas de: {item.titulo}</Link>
-            <div>Nombre del oficio: {item.titulo} Descripcion: {item.descripcion}</div>
+            <Link href={{ pathname: `/findjob/${item.id_category}` }}>Encontrar ofertas de: {item.id_category}</Link>
+            <div>Nombre del oficio: {item.id_category} Descripcion: {item.descripcion}</div>
           </div>
         ))
       }
