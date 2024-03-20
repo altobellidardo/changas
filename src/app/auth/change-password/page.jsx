@@ -4,8 +4,9 @@ import Link from 'next/link'
 import { redirect, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 
-function ForgetPassword () {
-  const token = useSearchParams().get('token')
+function ChangePassword () {
+  const searchParams = useSearchParams()
+  const token = searchParams.get('token')
   if (!token) {
     redirect('/auth/forget-password')
   }
@@ -60,4 +61,4 @@ function ForgetPassword () {
   )
 }
 
-export default ForgetPassword
+export default ChangePassword
