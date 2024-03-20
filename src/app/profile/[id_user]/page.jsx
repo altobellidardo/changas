@@ -41,7 +41,7 @@ export default async function UserPage ({ params }) {
         }
       </div>
       <div>
-        <h1>Porpuestas publicadas por el usuario</h1>
+        <h1>Propuestas publicadas por el usuario</h1>
         {
           offers.map((item) => (
             <div key={item.id_proposal} className='p-4 border-2 m-2 w-96'>
