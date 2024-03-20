@@ -15,7 +15,8 @@ const messages = {
     user_created: 'El usuario ha sido creado',
     user_logged: 'El usuario ha iniciado sesion',
     mail_sent: 'El correo fue enviado',
-    password_changed: 'La contraseña fue cambiada'
+    password_changed: 'La contraseña fue cambiada',
+    athorized: 'Autorizado'
   }
 }
 

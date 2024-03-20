@@ -15,27 +15,25 @@ export async function POST (request) {
     return NextResponse.json({ error: message }, { status })
   }
 
-  // check if user already exists
   const { data: user } = await supabase.from('users').select('*').eq('email', email).single()
 
-  if (user) {
+  if (!user) {
     return NextResponse.json(
-      { error: messages.error.user_already_exists }, { status: 400 }
+      { error: messages.error.user_not_found }, { status: 400 }
     )
   }
 
-  const hashedPassword = await bcrypt.hash(password, 10)
-  const newUser = { email, password: hashedPassword }
-
-  // create user
-  const { data: newUserCreated, error } = await supabase.from('users').insert(newUser).select().single()
-  if (error) {
-    return NextResponse.json({ error: messages.error.error })
+  const isPasswordValid = await bcrypt.compare(password, user.password)
+  if (!isPasswordValid) {
+    return NextResponse.json(
+      { error: messages.error.incorrect_password }, { status: 400 }
+    )
   }
-  newUserCreated.password = undefined
 
-  const token = jwt.sign(newUserCreated, process.env.JWT_SECRET)
-  const response = NextResponse.json({ message: messages.success.user_created }, { status: 200 })
+  user.password = undefined
+
+  const token = jwt.sign(user, process.env.JWT_SECRET)
+  const response = NextResponse.json({ message: messages.success.user_logged }, { status: 201 })
   response.cookies.set('token', token)
 
   return response

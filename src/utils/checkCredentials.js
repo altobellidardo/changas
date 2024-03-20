@@ -19,7 +19,7 @@ function checkCredentials (email, password) {
     return { error: messages.error.email_invalid, status: 400 }
   }
 
-  return { error: null }
+  return { error: undefined }
 }
 
 export default checkCredentials
