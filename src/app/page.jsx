@@ -17,7 +17,7 @@ async function Home () {
             Encuentra profesionales calificados para tus proyectos o haz crecer tu negocio.
           </p>
           <div className='mt-10 flex items-center gap-4'>
-            <Link href='/sign-up' className='rounded-xl border-2 border-brand6 bg-brand6 px-4 py-2 font-semibold text-black hover:text-brand8'>Unirse ahora</Link>
+            <Link href='/auth/sign-up' className='rounded-xl border-2 border-brand6 bg-brand6 px-4 py-2 font-semibold text-black hover:text-brand8'>Unirse ahora</Link>
             <Link href='/trabajos' className='rounded-xl border-2 border-brand6 bg-brand6/20 px-4 py-2 font-semibold text-brand8 hover:bg-brand6'>Explorar Trabajos</Link>
           </div>
         </section>
