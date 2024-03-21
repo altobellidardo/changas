@@ -7,27 +7,20 @@ export async function middleware (request) {
     return NextResponse.redirect(new URL('/auth/signin', request.url))
   }
 
-  const url = new URL(request.url)
-  const BASE_URL = url.origin
-  console.log('base', BASE_URL)
-  const response = await fetch(BASE_URL + '/api/auth/check', {
-    method: 'GET',
-    headers: {
-      cookie: `token=${token.value}`
-    }
-  })
-  const data = await response.json()
-  console.log('resp', data)
+  const BASE_URL = request.nextUrl.origin
+  const isAuthenticated = fetch(BASE_URL + '/api/auth/check', { method: 'GET' })
+    .then(res => res.json())
+    .then(data => data.isAuthenticated)
 
-  if (data.error || !data.isAuthenticated) {
+  if (!isAuthenticated) {
     return NextResponse.redirect(new URL('/auth/signin', request.url))
   }
 
-  if (data.isAuthenticated) {
+  if (isAuthenticated) {
     return NextResponse.next()
   }
 }
 
 export const config = {
-  matcher: ['/trabajos/:path*', '/private']
+  matcher: ['/private', '/profile', '/contratar/:path*', '/postularse/:path*', '/chats']
 }

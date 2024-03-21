@@ -1,7 +1,7 @@
 import supabase from '@/libs/supabase/server'
+import checkUser from '@/utils/checkUser'
 import messages from '@/utils/messages'
 import { NextResponse } from 'next/server'
-import jwt from 'jsonwebtoken'
 
 export async function GET (req) {
   const token = req.cookies.get('token')
@@ -10,7 +10,7 @@ export async function GET (req) {
     return NextResponse.json({ message: 'Not logged in' })
   }
 
-  const isValidToken = jwt.verify(token.value, process.env.JWT_SECRET)
+  const isValidToken = checkUser(token.value)
   if (!isValidToken) {
     return NextResponse.json({ message: 'Invalid token' })
   }
