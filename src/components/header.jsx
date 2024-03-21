@@ -1,8 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link'
 import HeaderMenu from './HeaderMenu'
+import { cookies } from 'next/headers'
+import checkUser from '@/utils/checkUser'
 
 function Header () {
+  const token = cookies().get('token')
+  const isAuthenticated = checkUser(token?.value)
+
   return (
     <header>
       <nav className='bg-brand5 px-4 py-2.5 lg:px-6'>
@@ -12,7 +17,7 @@ function Header () {
             <span className='hidden self-center whitespace-nowrap text-2xl font-semibold sm:block'>Changas</span>
           </Link>
 
-          <HeaderMenu />
+          <HeaderMenu auth={isAuthenticated} />
         </div>
       </nav>
     </header>

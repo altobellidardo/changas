@@ -1,5 +1,5 @@
 // import { currentUser, UserButton } from '@clerk/nextjs'
-import supabase from '@/utils/supabase/server'
+import supabase from '@/libs/supabase/server'
 
 async function DashboardPage () {
   // const user = await currentUser()
