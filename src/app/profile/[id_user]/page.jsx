@@ -18,7 +18,7 @@ export default async function UserPage ({ params }) {
       <div className='p-4 border-2 m-2 w-96'>
         <div>Nombre: {user.name}</div>
         <div>Apellido: {user.surname}</div>
-        <div>Mail: {user.email}</div>
+        <div>Mail: {user.mail}</div>
         <div>Teléfono: {user.phone}</div>
         <div>Ubicación: {user.location}</div>
         <div>DNI: {user.dni}</div>
