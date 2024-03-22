@@ -19,15 +19,7 @@ export async function POST (req) {
     )
   }
 
-  if (!token) {
-    const token = req.cookies.get('token')
-
-    if (!token || token.value === '') {
-      return NextResponse.json({ message: 'Not logged in' })
-    }
-  }
-
-  const isValidToken = jwt.verify(token.value, process.env.JWT_SECRET)
+  const isValidToken = jwt.verify(token, process.env.JWT_SECRET)
   if (!isValidToken) {
     return NextResponse.json({ message: 'Invalid token' })
   }
