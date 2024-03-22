@@ -1,6 +1,8 @@
 import { getCategories } from '@/actions/getCategories'
 import Link from 'next/link'
 
+export const fetchCache = 'force-no-store'
+
 async function FindWorkerPage () {
   const categories = await getCategories()
 
