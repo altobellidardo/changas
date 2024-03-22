@@ -13,7 +13,7 @@ function FormChangePassword ({ token }) {
 
     const password = e.target.password.value
 
-    const sendingData = token ? { token, password } : { password }
+    const sendingData = { token, password }
     const response = await fetch('/api/auth/change-password', {
       method: 'POST',
       headers: {
