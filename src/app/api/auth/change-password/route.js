@@ -6,7 +6,7 @@ import bcrypt from 'bcryptjs'
 
 export async function POST (req) {
   const body = await req.json()
-  const { password } = body
+  const { password, token } = body
 
   if (!password) {
     return NextResponse.json(
@@ -19,10 +19,12 @@ export async function POST (req) {
     )
   }
 
-  const token = req.cookies.get('token')
+  if (!token) {
+    const token = req.cookies.get('token')
 
-  if (!token || token.value === '') {
-    return NextResponse.json({ message: 'Not logged in' })
+    if (!token || token.value === '') {
+      return NextResponse.json({ message: 'Not logged in' })
+    }
   }
 
   const isValidToken = jwt.verify(token.value, process.env.JWT_SECRET)
