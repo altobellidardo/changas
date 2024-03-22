@@ -28,6 +28,7 @@ function FormChangePassword ({ token }) {
     }
     if (data.message) {
       alert(data.message)
+      window.location.href = '/auth/signin'
     }
 
     setLoading(false)
@@ -47,7 +48,7 @@ function FormChangePassword ({ token }) {
         <form onSubmit={handleSubmit} className='flex flex-col gap-2 w-96 p-6'>
           <label htmlFor='password'>Nueva contraseña</label>
           <input id='password' className='border-2 p-2 rounded' type='password' name='password' autoComplete='password' />
-          <button disabled={loading} className='rounded-xl border-2 border-brand6 bg-brand6 px-4 py-2 font-semibold text-brand8 hover:text-brand1 disabled:opacity-50' type='submit'>Registrarse</button>
+          <button disabled={loading} className='rounded-xl border-2 border-brand6 bg-brand6 px-4 py-2 font-semibold text-brand8 hover:text-brand1 disabled:opacity-50' type='submit'>Cambiar</button>
 
         </form>
       </section>
