@@ -12,7 +12,7 @@ function checkCredentials (email, password) {
   if (!password) {
     return { error: messages.error.password_required, status: 400 }
   }
-  if (password.length < 8) {
+  if (password.length < 3) {
     return { error: messages.error.password_invalid, status: 400 }
   }
   if (!isValidEmail(email)) {

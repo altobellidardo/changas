@@ -13,7 +13,7 @@ export async function POST (req) {
       { error: messages.error.password_required }, { status: 400 }
     )
   }
-  if (password.length < 8) {
+  if (password.length < 3) {
     return NextResponse.json(
       { error: messages.error.password_invalid }, { status: 400 }
     )
