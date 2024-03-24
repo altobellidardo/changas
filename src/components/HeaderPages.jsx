@@ -8,7 +8,7 @@ const disablePath = 'block py-2 pl-3 pr-4 text-gray-300 hover:text-white lg:bord
 function HeaderPages () {
   const pathname = usePathname()
   return (
-    <ul className='mt-4 flex flex-col w-[90vw] lg:w-fit lg:mt-0 lg:flex-row lg:space-x-8'>
+    <ul className='flex flex-col lg:flex-row lg:gap-8'>
       <li>
         <Link href='/' className={pathname === '/' ? enablePath : disablePath}>
           Home

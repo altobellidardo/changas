@@ -26,38 +26,50 @@ function HeaderMenu ({ auth }) {
 
   return (
     <>
-      <div className='flex items-center lg:order-2'>
+      <div className='flex items-center lg:order-2 gap-2'>
         {!auth
           ? (
             <>
-              <Link href='/auth/signin' className='mr-2 rounded-lg px-4 py-2 text-sm font-medium text-white hover:bg-brand1 focus:outline-none focus:ring-4 focus:ring-gray-800 lg:px-5 lg:py-2.5'>
+              <Link
+                href='/auth/signin'
+                className='rounded-lg px-1 py-2 text-xs sm:px-2 sm:text-sm text-white hover:bg-brand1 focus:outline-none focus:ring-4 focus:ring-gray-800 lg:px-5 lg:py-2.5'
+              >
                 Iniciar sesión
               </Link>
-              <Link href='/auth/signup' className='mr-2 rounded-lg bg-brand3 px-4 py-2 text-sm font-medium text-white hover:bg-brand1 focus:outline-none focus:ring-4 focus:ring-brand1 lg:px-5 lg:py-2.5'>
+              <Link
+                href='/auth/signup'
+                className='rounded-lg px-1 py-2 text-xs sm:px-2 sm:text-sm text-white hover:bg-brand1 focus:outline-none focus:ring-4 bg-brand3 focus:ring-brand1 lg:px-5 lg:py-2.5'
+              >
                 Crear cuenta
               </Link>
             </>
             )
           : (
-            <button onClick={logOut} className='mr-2 rounded-lg bg-brand3 px-4 py-2 text-sm font-medium text-white hover:bg-brand1 focus:outline-none focus:ring-4 focus:ring-brand1 lg:px-5 lg:py-2.5'>
-              Cerrar sesión - {auth.email}
+            <button
+              onClick={logOut}
+              className='rounded-lg bg-brand3 px-4 py-2 text-sm text-white hover:bg-brand1 focus:outline-none focus:ring-4 focus:ring-brand1 lg:px-5 lg:py-2.5'
+            >
+              Cerrar sesión
+              {/* {auth.email} -> get the user email */}
             </button>
             )}
 
         <button
           onClick={toggleMenu}
           type='button'
-          className='ml-1 inline-flex items-center rounded-lg p-2 text-sm text-gray-100 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600 lg:hidden'
+          className='inline-flex items-center rounded-lg p-2 text-sm text-gray-100 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600 lg:hidden'
         >
           <span className='sr-only'>Open main menu</span>
           {isOpen ? <OpenIcons /> : <CloseIcons />}
         </button>
       </div>
-      <div className={`${isOpen ? 'block' : 'hidden'} lg:block flex items-center justify-between`}>
+      <div className={`
+        ${isOpen ? 'translate-x-0' : '-translate-x-[200%]'} absolute top-14 left-0 right-0 bg-brand5/80 z-10
+        transition-transform duration-300 lg:static lg:translate-x-0 lg:transition-none`}
+      >
         <HeaderPages />
       </div>
     </>
   )
 }
-
 export default HeaderMenu
