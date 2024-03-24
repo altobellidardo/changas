@@ -2,8 +2,8 @@
 
 import supabase from '@/utils/supabase/server'
 
-export async function getProposals (IdCategory) {
-  const { data } = await supabase.from('proposals').select().in('id_category', [IdCategory])
+export async function getProposals (Category) {
+  const { data } = await supabase.from('proposals').select().eq('category', Category)
 
   console.log(data)
 

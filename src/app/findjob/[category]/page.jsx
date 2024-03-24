@@ -1,20 +1,20 @@
 import { getProposals } from '@/actions/getProposals'
 
 export default async function JobProposals ({ params }) {
-  const { id_category: idCategory } = params
-  const workers = await getProposals(idCategory)
+  const { category } = params
+  const proposals = await getProposals(category)
 
   return (
     <section>
-      <h1>{idCategory}</h1>
+      <h1>{category}</h1>
       <>
         {
-          workers.map((item) => (
+          proposals.map((item) => (
             <div key={item.id_proposal} className='p-4 border-2 m-2 w-96'>
               <div>Presupuesto: {item.budget}</div>
-              <div>Postularse para: {idCategory}</div>
+              <div>Postularse para: {category}</div>
               <div>Ubicación: {item.location}</div>
-              <div>Fecha de publicación: {item.open_date}</div>
+              <div>Fecha de publicación: {item.open_date.slice(0, 10)}</div>
               <div>Descripción: {item.description}</div>
             </div>
           ))
