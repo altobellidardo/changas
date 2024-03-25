@@ -11,7 +11,7 @@ async function FindWorkerPage () {
       {
         categories.map((item) => (
           <div key={item.name} className='p-4 border-2 m-2 w-96'>
-            <Link href={{ pathname: `/findworker/${item.name}` }}>Encontrar: {item.name}s</Link>
+            <Link href={{ pathname: `/contratar/${item.name}` }}>Encontrar: {item.name}s</Link>
             <div>Descripcion: {item.description}</div>
           </div>
         ))
