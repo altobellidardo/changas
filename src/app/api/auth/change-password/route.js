@@ -24,11 +24,11 @@ export async function POST (req) {
     return NextResponse.json({ message: 'Invalid token' })
   }
 
-  const { id: userId } = isValidToken
+  const { id_user: userId } = isValidToken
 
   const passwordHash = await bcrypt.hash(password, 10)
 
-  const { error } = await supabase.from('users').update({ password: passwordHash }).eq('id', userId)
+  const { error } = await supabase.from('users').update({ password: passwordHash }).eq('id_user', userId)
 
   if (error) {
     return NextResponse.json({ error: messages.error.error })
