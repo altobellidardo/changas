@@ -1,16 +1,15 @@
-'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-const enablePath = 'bg-primary-700 lg:text-primary-700 block rounded py-2 pl-3 pr-4 text-white lg:bg-transparent lg:p-0'
-const disablePath = 'lg:hover:text-primary-700 block py-2 pl-3 pr-4 text-gray-300 hover:bg-gray-700 hover:text-white lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-white'
+const enablePath = 'block rounded py-2 pl-3 pr-4 text-white lg:bg-transparent lg:p-0'
+const disablePath = 'block py-2 pl-3 pr-4 text-gray-300 hover:text-white lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-white'
 
 function HeaderPages () {
   const pathname = usePathname()
   return (
-    <ul className='mt-4 flex flex-col font-medium lg:mt-0 lg:flex-row lg:space-x-8'>
+    <ul className='flex flex-col lg:flex-row lg:gap-8'>
       <li>
-        <Link href='/' className={pathname === '/' ? enablePath : disablePath} aria-current='page'>
+        <Link href='/' className={pathname === '/' ? enablePath : disablePath}>
           Home
         </Link>
       </li>
