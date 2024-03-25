@@ -1,10 +1,19 @@
 import { getUser } from '@/actions/getUser'
 import { getJobs } from '@/actions/getJobs'
 import { getOffers } from '@/actions/getOffers'
-// import Link from 'next/link'
+import { cookies } from 'next/headers'
+import checkUser from '@/utils/checkUser'
+import { redirect } from 'next/navigation'
 
-export default async function UserPage ({ params }) {
-  const { id_user: IdUser } = params
+export default async function UserPage () {
+  const token = cookies().get('token')
+  const isAuthenticated = checkUser(token?.value)
+
+  if (!isAuthenticated) redirect('/')
+
+  // Retrieve data from JWT
+  const { id_user: IdUser } = isAuthenticated
+
   // Gets main user's data
   const user = await getUser(IdUser)
   // Gets jobs developed by the user
