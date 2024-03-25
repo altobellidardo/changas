@@ -4,7 +4,7 @@ const messages = {
     email_invalid: 'El correo no es valido',
     email_exists: 'El correo ya existe',
     password_required: 'La contraseña es requerida',
-    password_invalid: 'La contraseña debe tener al menos 8 caracteres',
+    password_invalid: 'La contraseña debe tener al menos 3 caracteres',
     user_already_exists: 'El usuario ya existe',
     error: 'Ocurrio un error',
     user_not_found: 'El usuario no existe',
