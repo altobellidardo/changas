@@ -4,6 +4,8 @@ import { getOffers } from '@/actions/getOffers'
 import { cookies } from 'next/headers'
 import checkUser from '@/utils/checkUser'
 import { redirect } from 'next/navigation'
+import Logo from '@/components/icons/logo'
+import Link from 'next/link'
 
 export default async function UserPage () {
   const token = cookies().get('token')
@@ -22,7 +24,12 @@ export default async function UserPage () {
   const offers = await getOffers(IdUser)
 
   return (
-    <>
+    <main className='flex min-h-screen flex-col bg-brand8'>
+      <div className='w-full px-6 py-2.5 bg-brand5 flex justify-between items-center'>
+        <Link href='/' className='size-9'>
+          <Logo />
+        </Link>
+      </div>
       <h1>Información del usuario</h1>
       <div className='p-4 border-2 m-2 w-96'>
         <div>Nombre: {user.name}</div>
@@ -63,6 +70,22 @@ export default async function UserPage () {
           ))
         }
       </div>
-    </>
+
+      <Link href={{ pathname: '/subiroferta', query: { user: IdUser } }}>
+        <div>
+          Subir oferta laboral
+        </div>
+      </Link>
+      <div>
+        -----------------------------------------------------------------
+        -----------------------------------------------------------------
+        -----------------------------------------------------------------
+      </div>
+      <Link href={{ pathname: '/subirtrabajo', query: { user: IdUser } }}>
+        <div>
+          Subir experiencia laboral
+        </div>
+      </Link>
+    </main>
   )
 }
