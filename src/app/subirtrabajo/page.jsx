@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import Logo from '@/components/icons/logo'
 import { useSearchParams } from 'next/navigation'
 import { getCategories } from '@/actions/getCategories'
+import { getUser } from '@/actions/getUser'
 
 function UploadJob () {
   // Retrieve user ID from the query
@@ -13,6 +14,7 @@ function UploadJob () {
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
   const [categories, setCategories] = useState([])
+  const [username, setUsername] = useState(undefined)
 
   // Get existing categories
   useEffect(() => {
@@ -24,25 +26,37 @@ function UploadJob () {
     fetchCategories()
   }, [])
 
-  console.log(categories)
+  // Get user's username
+  useEffect(() => {
+    const fetchUsername = async () => {
+      let result = await getUser(IdUser)
+      result = result.name + ' ' + result.surname
+      console.log(result)
+      setUsername(result)
+    }
+
+    fetchUsername()
+  })
+
+  console.log(username, categories)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
 
     const formData = new FormData(event.target)
-    const budget = formData.get('budget')
-    const location = formData.get('location')
+    const hourlyPrice = formData.get('hourlyPrice')
+    const employees = formData.get('employees')
     const description = formData.get('description')
 
     setLoading(true)
     setError(null)
 
-    const response = await fetch('/api/auth/upload-offer', {
+    const response = await fetch('/api/auth/upload-job', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ IdUser, budget, location, description })
+      body: JSON.stringify({ IdUser, hourlyPrice, employees, username, description })
     })
     const data = await response.json()
 
@@ -53,7 +67,7 @@ function UploadJob () {
     }
 
     if (data.message) {
-      window.location.href = '/'
+      window.location.href = '/perfil'
     }
   }
 
@@ -66,7 +80,7 @@ function UploadJob () {
       </div>
       <section className='flex flex-col mt-20 justify-center items-center'>
         <h1 className='text-3xl font-bold'>
-          Subir oferta laboral
+          Subir experiencia laboral
         </h1>
 
         <form onSubmit={handleSubmit} className='flex flex-col gap-2 w-96 p-6'>
@@ -78,10 +92,10 @@ function UploadJob () {
             ))
             }
           </select>
-          <label htmlFor='budget'>Presupuesto</label>
-          <input id='budget' className='border-2 p-2 rounded' type='budget' name='budget' autoComplete='budget' />
-          <label htmlFor='location'>Ubicación</label>
-          <input id='location' className='border-2 p-2 rounded' type='location' name='location' />
+          <label htmlFor='hourlyPrice'>Precio por hora</label>
+          <input id='hourlyPrice' className='border-2 p-2 rounded' type='budget' name='budget' autoComplete='budget' />
+          <label htmlFor='employees'>Número de empleados</label>
+          <input id='employees' className='border-2 p-2 rounded' type='location' name='location' />
           <label htmlFor='description'>Descripción del trabajo</label>
           <input id='description' className='border-2 p-2 rounded' type='description' name='description' />
           <button disabled={loading} className='rounded-xl border-2 border-brand6 bg-brand6 px-4 py-2 font-semibold text-brand8 hover:text-brand1 disabled:opacity-50' type='submit'>Registrarse</button>

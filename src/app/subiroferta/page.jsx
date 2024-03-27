@@ -24,8 +24,6 @@ function UploadProposal () {
     fetchCategories()
   }, [])
 
-  console.log(categories)
-
   const handleSubmit = async (event) => {
     event.preventDefault()
 
@@ -54,7 +52,7 @@ function UploadProposal () {
     }
 
     if (data.message) {
-      window.location.href = '/'
+      window.location.href = '/perfil'
     }
   }
 

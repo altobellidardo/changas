@@ -5,11 +5,11 @@ import supabase from '@/libs/supabase/server'
 
 export async function POST (request) {
   const body = await request.json()
-  const { category, IdUser, budget, location, description } = body
-  const newProposal = { category, id_user: IdUser, budget, location, description }
+  const { category, IdUser, hourlyPrice, employees, username, description } = body
+  const newWorker = { category, id_user: IdUser, hourly_price: hourlyPrice, employees, username, description }
 
   // Publish proposal
-  const { error } = await supabase.from('proposals').insert(newProposal).select().single()
+  const { error } = await supabase.from('proposals').insert(newWorker).select().single()
   if (error) {
     return NextResponse.json({ error: messages.error.error })
   }
