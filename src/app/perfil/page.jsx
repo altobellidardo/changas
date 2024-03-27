@@ -31,7 +31,7 @@ export default async function UserPage () {
         </Link>
       </div>
       <h1>Información del usuario</h1>
-      <div className='p-4 border-2 m-2 w-96'>
+      <div className='p-4 border-2 m-2 w-96' key={user.id_user}>
         <div>Nombre: {user.name}</div>
         <div>Apellido: {user.surname}</div>
         <div>Mail: {user.email}</div>
@@ -41,9 +41,8 @@ export default async function UserPage () {
         <div>Nacimiento: {user.birth}</div>
         <div>Foto de perfil: {user.picture}</div>
       </div>
-      <div>
-        <h1>Trabajos del usuario</h1>
-        {
+      <h1>Trabajos del usuario</h1>
+      {
           jobs.map((item) => (
             <div key={item.id_job} className='p-4 border-2 m-2 w-96'>
               <div>Nombre del oficio: {item.category}</div>
@@ -54,11 +53,9 @@ export default async function UserPage () {
               <div>Reseñas: </div>
             </div>
           ))
-        }
-      </div>
-      <div>
-        <h1>Propuestas publicadas por el usuario</h1>
-        {
+      }
+      <h1>Propuestas publicadas por el usuario</h1>
+      {
           offers.map((item) => (
             <div key={item.id_proposal} className='p-4 border-2 m-2 w-96'>
               <div>Buscando: {item.category}s</div>
@@ -68,9 +65,7 @@ export default async function UserPage () {
               <div>Descripción: {item.description}</div>
             </div>
           ))
-        }
-      </div>
-
+      }
       <Link href={{ pathname: '/subiroferta', query: { user: IdUser } }}>
         <div>
           Subir oferta laboral
