@@ -69,7 +69,7 @@ function UploadProposal () {
         </h1>
 
         <form onSubmit={handleSubmit} className='flex flex-col gap-2 w-96 p-6'>
-          <label for='category' className='border-2 p-2 rounded'>Elige un tipo de trabajo:</label>
+          <label htmlFor='category' className='border-2 p-2 rounded'>Elige un tipo de trabajo:</label>
           <select name='category' id='category'>
             {
             categories.map((item) => (
