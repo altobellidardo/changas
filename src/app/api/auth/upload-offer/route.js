@@ -14,7 +14,7 @@ export async function POST (request) {
     return NextResponse.json({ error: messages.error.error })
   }
 
-  const response = NextResponse.json({ message: messages.success.user_created }, { status: 200 })
+  const response = NextResponse.json({ message: messages.success.proposal_uploaded }, { status: 200 })
 
   return response
 }

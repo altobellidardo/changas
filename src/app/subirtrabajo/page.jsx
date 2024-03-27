@@ -31,20 +31,20 @@ function UploadJob () {
     const fetchUsername = async () => {
       let result = await getUser(IdUser)
       result = result.name + ' ' + result.surname
-      console.log(result)
       setUsername(result)
     }
 
     fetchUsername()
   })
 
-  console.log(username, categories)
-
   const handleSubmit = async (event) => {
     event.preventDefault()
 
     const formData = new FormData(event.target)
+    const category = formData.get('category')
     const hourlyPrice = formData.get('hourlyPrice')
+    const attentionHours = formData.get('attentionHours')
+    const location = formData.get('location')
     const employees = formData.get('employees')
     const description = formData.get('description')
 
@@ -56,7 +56,7 @@ function UploadJob () {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ IdUser, hourlyPrice, employees, username, description })
+      body: JSON.stringify({ IdUser, category, hourlyPrice, attentionHours, location, employees, username, description })
     })
     const data = await response.json()
 
@@ -93,12 +93,16 @@ function UploadJob () {
             }
           </select>
           <label htmlFor='hourlyPrice'>Precio por hora</label>
-          <input id='hourlyPrice' className='border-2 p-2 rounded' type='budget' name='budget' autoComplete='budget' />
+          <input id='hourlyPrice' className='border-2 p-2 rounded' type='hourlyPrice' name='hourlyPrice' />
+          <label htmlFor='attentionHours'>Horas de atención</label>
+          <input id='attentionHours' className='border-2 p-2 rounded' type='attentionHours' name='attentionHours' />
+          <label htmlFor='location'>Ubicación</label>
+          <input id='location' className='border-2 p-2 rounded' type='location' name='location' />
           <label htmlFor='employees'>Número de empleados</label>
-          <input id='employees' className='border-2 p-2 rounded' type='location' name='location' />
+          <input id='employees' className='border-2 p-2 rounded' type='employees' name='employees' />
           <label htmlFor='description'>Descripción del trabajo</label>
           <input id='description' className='border-2 p-2 rounded' type='description' name='description' />
-          <button disabled={loading} className='rounded-xl border-2 border-brand6 bg-brand6 px-4 py-2 font-semibold text-brand8 hover:text-brand1 disabled:opacity-50' type='submit'>Registrarse</button>
+          <button disabled={loading} className='rounded-xl border-2 border-brand6 bg-brand6 px-4 py-2 font-semibold text-brand8 hover:text-brand1 disabled:opacity-50' type='submit'>Subir trabajo</button>
           <span className={`${error ? 'block' : 'hidden'} text-red-600 bg-red-200 border-2 rounded-lg p-2 border-red-600`}>{error}</span>
         </form>
       </section>
