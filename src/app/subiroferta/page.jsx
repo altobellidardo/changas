@@ -1,8 +1,12 @@
 import Logo from '@/components/icons/logo'
+import { getCategories } from '@/actions/getCategories'
 import Link from 'next/link'
-import UploadUser from './form'
+import UploadOffert from './form'
 
-function SignUp () {
+async function UploadProposal ({ searchParams }) {
+  const IdUser = searchParams.user
+  const categories = await getCategories()
+
   return (
     <main className='flex min-h-screen flex-col bg-brand8'>
       <div className='w-full px-6 py-2.5 bg-brand5 flex justify-between items-center'>
@@ -10,9 +14,9 @@ function SignUp () {
           <Logo />
         </Link>
       </div>
-      <UploadUser />
+      <UploadOffert IdUser={IdUser} categories={categories} />
     </main>
   )
 }
 
-export default SignUp
+export default UploadProposal

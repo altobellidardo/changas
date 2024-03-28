@@ -6,12 +6,11 @@ import { cookies } from 'next/headers'
 function HomePage () {
   const token = cookies().get('token')
   const isAuthenticated = checkUser(token?.value)
-  console.log(isAuthenticated)
 
   if (!isAuthenticated) {
     return (<HomeGuest />)
   } else {
-    return (<HomeUser />)
+    return (<HomeUser IdUser={isAuthenticated.id_user} />)
   }
 }
 

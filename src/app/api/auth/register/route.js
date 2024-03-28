@@ -7,7 +7,7 @@ import jwt from 'jsonwebtoken'
 
 export async function POST (request) {
   const body = await request.json()
-  const { email, password } = body
+  const { email, password, name, surname, location, phone, birth, dni } = body
 
   const credentialsValidation = checkCredentials(email, password)
   if (credentialsValidation.error) {
@@ -33,6 +33,13 @@ export async function POST (request) {
     return NextResponse.json({ error: messages.error.error })
   }
   newUserCreated.password = undefined
+
+  const userData = { id_user: newUserCreated.id_user, email, name, surname, location, phone: phone.toString(), birth, dni }
+  const { error: dataFail } = await supabase.from('users_data').insert(userData)
+  console.log(dataFail, userData)
+  if (dataFail) {
+    return NextResponse.json({ error: messages.error.error })
+  }
 
   const token = jwt.sign(newUserCreated, process.env.JWT_SECRET)
   const response = NextResponse.json({ message: messages.success.user_created }, { status: 200 })
