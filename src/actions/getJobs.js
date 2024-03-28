@@ -1,5 +1,3 @@
-'use server'
-
 import supabase from '@/libs/supabase/server'
 
 export async function getJobs (IdUser) {
