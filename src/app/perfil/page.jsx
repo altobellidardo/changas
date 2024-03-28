@@ -1,11 +1,13 @@
+/* eslint-disable @next/next/no-img-element */
 import { getUser } from '@/actions/getUser'
 import { getJobs } from '@/actions/getJobs'
 import { getOffers } from '@/actions/getOffers'
 import { cookies } from 'next/headers'
 import checkUser from '@/utils/checkUser'
 import { redirect } from 'next/navigation'
-import Logo from '@/components/icons/logo'
 import Link from 'next/link'
+import formatDate from '@/utils/formateDate'
+import LocationIcon from '@/components/icons/LocationIcon'
 
 export default async function UserPage () {
   const token = cookies().get('token')
@@ -23,24 +25,24 @@ export default async function UserPage () {
   // Gets published job offers by the user
   const offers = await getOffers(IdUser)
 
+  user.picture = user.picture ? user.picture : 'https://avatar.iran.liara.run/public/boy?username=' + user.name
+
   return (
-    <main className='flex min-h-screen flex-col bg-brand8'>
-      <div className='w-full px-6 py-2.5 bg-brand5 flex justify-between items-center'>
-        <Link href='/' className='size-9'>
-          <Logo />
-        </Link>
-      </div>
-      <h1>Información del usuario</h1>
-      <div className='p-4 border-2 m-2 w-96'>
-        <div>Nombre: {user.name}</div>
-        <div>Apellido: {user.surname}</div>
-        <div>Mail: {user.email}</div>
-        <div>Teléfono: {user.phone}</div>
-        <div>Ubicación: {user.location}</div>
-        <div>DNI: {user.dni}</div>
-        <div>Nacimiento: {user.birth}</div>
-        <div>Foto de perfil: {user.picture}</div>
-      </div>
+    <main className='flex min-h-screen flex-col bg-brand8 max-w-[80vw] mx-auto gap-10'>
+      <h1>Perfil del usuario</h1>
+      <section className='flex bg-brand4 text-brand8 justify-center gap-8 py-10 w-[80vw] mx-auto rounded-md'>
+        <div>
+          <div className='font-bold text-xl'>{user.name} {user.surname}</div>
+          <div>{user.email}</div>
+          <div>Teléfono: {user.phone}</div>
+          <div className='flex'>
+            <LocationIcon /> {user.location}
+          </div>
+          <div>DNI: {user.dni}</div>
+          <div>{formatDate(user.birth)}</div>
+        </div>
+        <img className='rounded-full size-40' src={user.picture} alt={`${user.name} ${user.surname} picture`} />
+      </section>
       <h1>Trabajos del usuario</h1>
       {
         jobs.map((item) => (
