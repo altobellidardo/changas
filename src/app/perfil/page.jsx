@@ -12,7 +12,6 @@ import LocationIcon from '@/components/icons/LocationIcon'
 export default async function UserPage () {
   const token = cookies().get('token')
   const isAuthenticated = checkUser(token?.value)
-
   if (!isAuthenticated) redirect('/')
 
   // Retrieve data from JWT

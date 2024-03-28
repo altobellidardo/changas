@@ -1,75 +1,27 @@
-'use client'
-
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
 import Logo from '@/components/icons/logo'
-import { useSearchParams } from 'next/navigation'
 import { getCategories } from '@/actions/getCategories'
+import UploadWorker from './form'
+import { cookies } from 'next/headers'
+import checkUser from '@/utils/checkUser'
+import { redirect } from 'next/navigation'
 import { getUser } from '@/actions/getUser'
 
-function UploadJob () {
-  // Retrieve user ID from the query
-  const IdUser = useSearchParams().get('user')
+const getUsername = async (IdUser) => {
+  const user = await getUser(IdUser)
+  return user.name + ' ' + user.surname
+}
 
-  const [error, setError] = useState(null)
-  const [loading, setLoading] = useState(false)
-  const [categories, setCategories] = useState([])
-  const [username, setUsername] = useState(undefined)
+async function UploadJob () {
+  // Retrieve user ID from the query parameters
+  // const IdUser = searchParams.user
+  const token = cookies().get('token')
+  const isAuthenticated = checkUser(token?.value)
+  if (!isAuthenticated) redirect('/')
 
-  // Get existing categories
-  useEffect(() => {
-    const fetchCategories = async () => {
-      const result = await getCategories()
-      setCategories(result)
-    }
-
-    fetchCategories()
-  }, [])
-
-  // Get user's username
-  useEffect(() => {
-    const fetchUsername = async () => {
-      let result = await getUser(IdUser)
-      result = result.name + ' ' + result.surname
-      setUsername(result)
-    }
-
-    fetchUsername()
-  })
-
-  const handleSubmit = async (event) => {
-    event.preventDefault()
-
-    const formData = new FormData(event.target)
-    const category = formData.get('category')
-    const hourlyPrice = formData.get('hourlyPrice')
-    const attentionHours = formData.get('attentionHours')
-    const location = formData.get('location')
-    const employees = formData.get('employees')
-    const description = formData.get('description')
-
-    setLoading(true)
-    setError(null)
-
-    const response = await fetch('/api/auth/upload-job', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ IdUser, category, hourlyPrice, attentionHours, location, employees, username, description })
-    })
-    const data = await response.json()
-
-    setLoading(false)
-
-    if (data.error) {
-      setError(data.error)
-    }
-
-    if (data.message) {
-      window.location.href = '/perfil'
-    }
-  }
+  const IdUser = isAuthenticated.id_user
+  const username = await getUsername(IdUser)
+  const categories = await getCategories()
 
   return (
     <main className='flex min-h-screen flex-col bg-brand8'>
@@ -83,28 +35,7 @@ function UploadJob () {
           Subir experiencia laboral
         </h1>
 
-        <form onSubmit={handleSubmit} className='flex flex-col gap-2 w-96 p-6'>
-          <label htmlFor='category' className='border-2 p-2 rounded'>Elige un tipo de trabajo:</label>
-          <select name='category' id='category'>
-            {
-            categories.map((item) => (
-              <option value={item.name} key={item.name}>{item.name}</option>
-            ))
-            }
-          </select>
-          <label htmlFor='hourlyPrice'>Precio por hora</label>
-          <input id='hourlyPrice' className='border-2 p-2 rounded' type='hourlyPrice' name='hourlyPrice' />
-          <label htmlFor='attentionHours'>Horas de atención</label>
-          <input id='attentionHours' className='border-2 p-2 rounded' type='attentionHours' name='attentionHours' />
-          <label htmlFor='location'>Ubicación</label>
-          <input id='location' className='border-2 p-2 rounded' type='location' name='location' />
-          <label htmlFor='employees'>Número de empleados</label>
-          <input id='employees' className='border-2 p-2 rounded' type='employees' name='employees' />
-          <label htmlFor='description'>Descripción del trabajo</label>
-          <input id='description' className='border-2 p-2 rounded' type='description' name='description' />
-          <button disabled={loading} className='rounded-xl border-2 border-brand6 bg-brand6 px-4 py-2 font-semibold text-brand8 hover:text-brand1 disabled:opacity-50' type='submit'>Subir trabajo</button>
-          <span className={`${error ? 'block' : 'hidden'} text-red-600 bg-red-200 border-2 rounded-lg p-2 border-red-600`}>{error}</span>
-        </form>
+        <UploadWorker IdUser={IdUser} categories={categories} username={username} />
       </section>
     </main>
   )
