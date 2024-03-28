@@ -23,7 +23,7 @@ export default async function UserPage () {
   const jobs = await getJobs(IdUser)
   // Gets published job offers by the user
   const offers = await getOffers(IdUser)
-
+  console.log(user)
   user.picture = user.picture ? user.picture : 'https://avatar.iran.liara.run/public/boy?username=' + user.name
 
   return (
