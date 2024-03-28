@@ -25,7 +25,7 @@ export async function POST (request) {
     return NextResponse.json({ error: messages.error.existing_job })
   }
 
-  const { error } = await supabase.from('workers').insert(newWorker).select().single()
+  const { error } = await supabase.from('workers').insert(newWorker)
   if (error) {
     return NextResponse.json({ error: messages.error.error })
   }
