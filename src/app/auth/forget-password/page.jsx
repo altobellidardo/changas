@@ -43,10 +43,12 @@ function ForgetPassword () {
           Recuperar cuenta
         </h1>
 
-        <form onSubmit={handleSubmit} className='flex flex-col gap-2 w-96 p-6'>
+        <form onSubmit={handleSubmit} className='flex flex-col gap-2 w-80 p-6'>
           <label htmlFor='email'>Email</label>
           <input id='email' className='border-2 p-2 rounded' type='email' name='email' autoComplete='email' />
-          <button disabled={loading} className='rounded-xl border-2 border-brand6 bg-brand6 px-4 py-2 font-semibold text-brand8 hover:text-brand1 disabled:opacity-50' type='submit'>Registrarse</button>
+          <button disabled={loading} className='rounded-xl border-2 border-brand6 bg-brand6 px-4 py-2 font-semibold text-brand8 hover:text-brand1 disabled:opacity-50' type='submit'>
+            Enviar enlace de recuperación
+          </button>
 
         </form>
         <Link href='/auth/signup' className='underline'>¿No tienes una cuenta?, crea una</Link>

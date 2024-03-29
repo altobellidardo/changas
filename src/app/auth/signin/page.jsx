@@ -50,7 +50,7 @@ function SignIn () {
           Iniciar sesión
         </h1>
 
-        <form onSubmit={handleSubmit} className='flex flex-col gap-2 w-96 p-6'>
+        <form onSubmit={handleSubmit} className='flex flex-col gap-2 w-80 p-6'>
           <label htmlFor='email'>Email</label>
           <input id='email' className='border-2 p-2 rounded' type='email' name='email' autoComplete='email' />
           <label htmlFor='password'>Contraseña</label>
