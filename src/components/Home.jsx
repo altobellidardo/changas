@@ -4,7 +4,7 @@ import { getUser } from '@/actions/getUser'
 
 function Card ({ info }) {
   return (
-    <div className='border-2 border-brand5 bg-brand5/20 rounded-xl px-4 py-2 text-center'>
+    <div className='border-2 border-brand5 bg-brand5/20 rounded-xl px-4 py-4 text-center'>
       <Link href={info.link} className='font-semibold underline-offset-2 hover:underline'>
         {info.name}
       </Link>
@@ -27,6 +27,8 @@ async function Home ({ IdUser }) {
       <section className='grid grid-cols-1 gap-4 md:grid-cols-2 max-w-[80vw] mx-auto my-10'>
         <Card info={{ name: 'Ir a tu perfil', link: '/perfil' }} />
         <Card info={{ name: 'Contratar', link: '/contratar' }} />
+        <Card info={{ name: 'Postularse a un trabajo', link: '/postularse' }} />
+        <Card info={{ name: 'Ir a los chats', link: '/chats' }} />
       </section>
     </>
   )
