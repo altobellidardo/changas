@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-const enablePath = 'block rounded py-2 pl-3 pr-4 text-white lg:bg-transparent lg:p-0'
-const disablePath = 'block py-2 pl-3 pr-4 text-gray-300 hover:text-white lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-white'
+const enablePath = 'block rounded py-2 pl-3 pr-4 text-brand8 lg:bg-transparent lg:p-0'
+const disablePath = 'block py-2 pl-3 pr-4 text-brand1 hover:text-brand8 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-white'
 
 function HeaderPages () {
   const pathname = usePathname()

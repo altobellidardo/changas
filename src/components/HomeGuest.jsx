@@ -1,14 +1,10 @@
 import Link from 'next/link'
-import Header from './header/header'
 import Tag from './ui/tag'
-import Footer from './footer'
 import Image from 'next/image'
 
 function Home () {
   return (
-    <main className='min-h-screen bg-brand8'>
-      <Header />
-
+    <>
       <section className='w-full relative'>
         <Image
           priority
@@ -103,9 +99,7 @@ function Home () {
           <Tag nombre='Cocinero' />
         </div>
       </section>
-
-      <Footer />
-    </main>
+    </>
   )
 }
 
