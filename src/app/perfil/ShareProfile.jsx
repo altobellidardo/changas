@@ -1,13 +1,15 @@
 'use client'
 
 import ShareIcon from '@/components/icons/ShareIcon'
+import useUrl from '@/hooks/useUrl'
 import { useState } from 'react'
 
 function ShareProfile ({ IdUser }) {
   const [coping, setCoping] = useState(false)
-  const url = 'http://localhost:3000/perfil?user=' + IdUser
+  const baseUrl = useUrl()
 
   const copyToClipboard = () => {
+    const url = baseUrl + '/perfil?user=' + IdUser
     navigator.clipboard.writeText(url)
     setCoping(true)
     setTimeout(() => {
