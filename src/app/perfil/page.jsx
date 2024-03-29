@@ -11,7 +11,7 @@ import LocationIcon from '@/components/icons/LocationIcon'
 import Header from '@/components/header/header'
 import Footer from '@/components/footer'
 import PenIcon from '@/components/icons/PenIcon'
-import ShareProfile from './shareProfile'
+import ShareProfile from './ShareProfile'
 
 export default async function UserPage () {
   const token = cookies().get('token')
