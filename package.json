@@ -17,8 +17,6 @@
     "react": "^18",
     "react-dom": "^18",
     "resend": "^3.2.0",
-    "socket.io": "^4.7.5",
-    "socket.io-client": "^4.7.5",
     "ws": "^8.16.0"
   },
   "devDependencies": {
