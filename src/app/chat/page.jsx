@@ -59,3 +59,15 @@ export default function Page () {
     </div>
   )
 }
+
+// export default function Page () {
+//   const ws = useWebSocket()
+
+//   function handleClick () {
+//     ws?.send(JSON.stringify({ content: 'hola' }))
+//   }
+
+//   return (
+//     <button onClick={handleClick}>Send</button>
+//   )
+// }
