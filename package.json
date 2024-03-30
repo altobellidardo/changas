@@ -13,9 +13,13 @@
     "bcryptjs": "^2.4.3",
     "jsonwebtoken": "^9.0.2",
     "next": "14.1.1",
+    "next-ws": "^1.0.1",
     "react": "^18",
     "react-dom": "^18",
-    "resend": "^3.2.0"
+    "resend": "^3.2.0",
+    "socket.io": "^4.7.5",
+    "socket.io-client": "^4.7.5",
+    "ws": "^8.16.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
