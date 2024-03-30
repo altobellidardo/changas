@@ -21,8 +21,8 @@ function Navbar ({ auth }) {
 
   return (
     <>
-      <header className='bg-brand5 z-50 absolute w-full'>
-        <nav className='px-4 py-2.5 lg:px-6 flex justify-between items-center max-w-[1200px] mx-auto'>
+      <header className='h-[60px]'>
+        <nav className='bg-brand5 z-50 w-full absolute px-4 py-2.5 lg:px-6 flex justify-between items-center max-w-[1200px] mx-auto'>
           <Link
             href='/'
             className='flex items-center gap-3 text-brand8 hover:text-brand1'
@@ -84,7 +84,7 @@ function Navbar ({ auth }) {
 
       <div
         className={`
-        ${isOpen ? 'translate-y-0' : '-translate-y-[200%]'} absolute top-14 left-0 right-0 bg-brand5/90 z-10
+        ${isOpen ? 'translate-y-0' : '-translate-y-[200%]'} absolute top-14 left-0 right-0 bg-brand5 z-10 pl-2 pb-4
         transition-transform duration-300 lg:hidden`}
       >
         <HeaderPages />
