@@ -28,7 +28,7 @@ async function Home ({ IdUser }) {
         <Card info={{ name: 'Ir a tu perfil', link: '/perfil' }} />
         <Card info={{ name: 'Contratar', link: '/contratar' }} />
         <Card info={{ name: 'Postularse a un trabajo', link: '/postularse' }} />
-        <Card info={{ name: 'Ir a los chats', link: '/chats' }} />
+        <Card info={{ name: 'Ir a los chats', link: '/chat' }} />
       </section>
     </>
   )
