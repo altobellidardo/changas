@@ -8,7 +8,8 @@ import { getMessages } from '@/actions/getMessages'
 // Add
 export const dynamic = 'force-dynamic'
 
-export default async function Chathomepage () {
+export default async function Chathomepage ({ params }) {
+  const { id_chat: IdChat } = params
   const token = cookies().get('token')
   const isAuthenticated = checkUser(token?.value)
   if (!isAuthenticated) redirect('/')
@@ -16,8 +17,9 @@ export default async function Chathomepage () {
 
   return (
     <div className='h-screen bg-gray-200 flex flex-col'>
-      <ChatComponent data={data} />
-      <Form />
+      <h1>Este es el chat: {IdChat}</h1>
+      <ChatComponent data={data} IdChat={IdChat} />
+      <Form IdChat={IdChat} />
     </div>
   )
 }

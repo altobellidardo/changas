@@ -2,13 +2,14 @@
 
 import { postData } from '../action'
 
-export default function Form () {
+export default function Form ({ IdChat }) {
   return (
     <form
       action={postData}
       className='p-6 fixed bottom-0 left-0 w-full bg-white'
     >
       <div className='flex'>
+        <input type='number' className='hidden' name='IdChat' value={IdChat} />
         <input
           type='text'
           name='message'

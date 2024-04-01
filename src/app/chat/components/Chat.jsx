@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 
 import { useEffect, useState } from 'react'
@@ -47,7 +48,7 @@ import Pusher from 'pusher-js'
 //   )
 // }
 
-export default function ChatComponent ({ data }) {
+export default function ChatComponent ({ data, IdChat }) {
   const [totalComments, setTotalComments] = useState(data.content)
 
   useEffect(() => {
@@ -55,16 +56,16 @@ export default function ChatComponent ({ data }) {
       cluster: 'sa1'
     })
 
-    const channel = pusher.subscribe('chat')
+    const channel = pusher.subscribe(IdChat)
 
-    channel.bind('hello', (data) => {
+    channel.bind('chat', (data) => {
       setTotalComments((prev) =>
         [...prev, { id_user: data.id_user, message: data.message }]
       )
     })
 
     return () => {
-      pusher.unsubscribe('chat')
+      pusher.unsubscribe(IdChat)
     }
   }, [])
 
