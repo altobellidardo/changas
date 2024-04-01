@@ -14,7 +14,6 @@ export async function postData (formData) {
   const { id_user: IdUser } = isAuthenticated
 
   const { content: history } = await getMessages()
-  // console.log(history)
 
   const message = formData.get('message')
   const newData = [...history, { id_user: IdUser, message }]
@@ -33,6 +32,7 @@ export async function postData (formData) {
   })
 
   await pusher.trigger('chat', 'hello', {
-    message: `${JSON.stringify(message)}\n\n`
+    id_user: IdUser,
+    message
   })
 }

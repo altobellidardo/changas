@@ -69,14 +69,25 @@ export default function ChatComponent ({ data }) {
   }, [])
 
   return (
-    <div>
-      {
-        totalComments.map((item) => (
+    <div className='p-6 flex-grow max-h-screen overflow-y-auto py-32'>
+      <div className='flex flex-col gap-4'>
+        {totalComments.map((item) => (
           <div key={Math.random()}>
-            {item.message}
+
+            <div className='flex items-center'>
+              <div className='rounded-lg bg-white p-4 shadow-md self-start'>
+                {item.message}
+              </div>
+            </div>
+
+            <p className='font-light text-sm text-gray-600'>
+              {item.id_user}
+            </p>
+
           </div>
-        ))
-      }
+        ))}
+        <div />
+      </div>
     </div>
   )
 }
