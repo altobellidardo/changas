@@ -12,14 +12,12 @@ export async function postData (formData, IdChat) {
   // Retrieve data from JWT
   const { id_user: IdUser } = isAuthenticated
 
-  const { content: history } = await getMessages()
+  const { content: history } = await getMessages(IdChat)
 
   // Retrieve data from formData
   const message = formData.get('message')
-  const newData = [...history, { id_user: IdUser, message }]
 
-  // const { data: response } = await supabase.from('chats').update({ content: newData }).select().eq('id_chat', '1').single()
-  // console.log(response)
+  const newData = [...history, { id_user: IdUser, message }]
   const { error } = await supabase.from('chats').update({ content: newData }).eq('id_chat', IdChat)
   if (error) return { error: error.message }
 

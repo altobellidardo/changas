@@ -10,6 +10,7 @@ import LocationIcon from '@/components/icons/LocationIcon'
 import Header from '@/components/header/header'
 import Footer from '@/components/footer'
 import ShareProfile from './ShareProfile'
+import Link from 'next/link'
 
 export default async function UserPage ({ params }) {
   const token = cookies().get('token')
@@ -41,13 +42,13 @@ export default async function UserPage ({ params }) {
           </picture>
           <div>
             <div className='font-bold text-xl'>{user.name} {user.surname}</div>
-            <div>{user.email}</div>
-            <div>Teléfono: {user.phone}</div>
+            {/* <div>{user.email}</div>
+            <div>Teléfono: {user.phone}</div> */}
             <div className='flex'>
               <LocationIcon /> {user.location}
             </div>
-            <div>DNI: {user.dni}</div>
             <div>{formatDate(user.birth)}</div>
+            <Link href={{ pathname: '/chat/nuevochat', query: { IdUser1: isAuthenticated.id_user, IdUser2: IdUser } }}>Contactar</Link>
           </div>
         </section>
 

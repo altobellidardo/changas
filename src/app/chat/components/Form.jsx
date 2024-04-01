@@ -1,13 +1,21 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { postData } from '../action'
+import { createChat } from '@/actions/createChat'
 
-export default function Form ({ IdChat }) {
+export default function Form ({ IdChat, IdUser1, IdUser2 }) {
+  const router = useRouter()
   const handlesubmit = async (event) => {
     event.preventDefault()
 
     const formData = new FormData(event.target)
-    await postData(formData, IdChat)
+    if (IdChat === undefined) {
+      const newIdChat = await createChat(formData, IdUser1, IdUser2)
+      console.log(newIdChat)
+      router.push(`/chat/${newIdChat}`)
+    }
+    await postData(formData, IdChat, IdUser1, IdUser2)
 
     const input = event.target.elements.message
     input.value = ''

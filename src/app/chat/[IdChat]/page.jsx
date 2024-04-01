@@ -7,8 +7,7 @@ export const dynamic = 'force-dynamic'
 export default async function Chathomepage ({ params }) {
   const { IdChat } = params
 
-  const data = await getMessages()
-
+  const data = await getMessages(IdChat)
   return (
     <div className='h-screen bg-gray-200 flex flex-col'>
       <h1>Este es el chat: {IdChat}</h1>
