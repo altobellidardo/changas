@@ -5,21 +5,19 @@ import { getOffers } from '@/actions/getOffers'
 import { cookies } from 'next/headers'
 import checkUser from '@/utils/checkUser'
 import { redirect } from 'next/navigation'
-import Link from 'next/link'
 import formatDate from '@/utils/formateDate'
 import LocationIcon from '@/components/icons/LocationIcon'
 import Header from '@/components/header/header'
 import Footer from '@/components/footer'
-import PenIcon from '@/components/icons/PenIcon'
 import ShareProfile from './ShareProfile'
 
-export default async function UserPage () {
+export default async function UserPage ({ params }) {
   const token = cookies().get('token')
   const isAuthenticated = checkUser(token?.value)
   if (!isAuthenticated) redirect('/')
 
-  // Retrieve data from JWT
-  const { id_user: IdUser } = isAuthenticated
+  // Retrieve data from url
+  const { IdUser } = params
 
   // Gets main user's data
   const user = await getUser(IdUser)
@@ -34,16 +32,11 @@ export default async function UserPage () {
       <Header />
       <div className='w-[80w] mx-auto pb-10'>
         <h1 className='text-xl my-4 pt-14 flex flex-col items-center md:items-start'>
-          Tu perfil <ShareProfile IdUser={IdUser} />
+          Perfil de {user.name} {user.surname} <ShareProfile IdUser={IdUser} />
         </h1>
 
         <section className='flex flex-col md:flex-row items-center bg-brand4 text-brand8 justify-center gap-8 py-10 w-[80vw] mx-auto rounded-md'>
           <picture className='relative'>
-            <div className='absolute right-0 rounded-full bg-brand3 p-2'>
-              <Link href='/auth/change-profile'>
-                <PenIcon />
-              </Link>
-            </div>
             <img className='rounded-full size-40' src={user.picture} alt={`${user.name} ${user.surname} picture`} />
           </picture>
           <div>
@@ -59,10 +52,10 @@ export default async function UserPage () {
         </section>
 
         <section className='mt-10 flex flex-col gap-2'>
-          <h2>Tus trabajos</h2>
+          <h2>Trabajos del usuario</h2>
           {
             jobs.length === 0
-              ? <div className='text-red-600 bg-red-200 border-2 rounded-lg p-2 border-red-600 max-w-[600px]'>No has subido trabajos</div>
+              ? <div className='text-red-600 bg-red-200 border-2 rounded-lg p-2 border-red-600 max-w-[600px]'>No hay trabajo registrado</div>
               : (
                 <ul>
                   {
@@ -80,16 +73,13 @@ export default async function UserPage () {
                 </ul>
                 )
           }
-          <Link className='rounded-xl px-4 py-2 font-semibold bg-brand4 text-brand8 text-center max-w-[600px]' href={{ pathname: '/subiroferta', query: { user: IdUser } }}>
-            Subir experiencia laboral
-          </Link>
         </section>
 
         <section className='mt-10 flex flex-col gap-2'>
-          <h2>Propuestas publicadas por vos</h2>
+          <h2>Propuestas publicadas por el usuario</h2>
           {
             offers.length === 0
-              ? <div className='text-red-600 bg-red-200 border-2 rounded-lg p-2 border-red-600 max-w-[600px]'>No has publicado ofertas laborales</div>
+              ? <div className='text-red-600 bg-red-200 border-2 rounded-lg p-2 border-red-600 max-w-[600px]'>No hay ofertas laborales publicadas</div>
               : (
                 <ul>
                   {
@@ -106,9 +96,6 @@ export default async function UserPage () {
                 </ul>
                 )
           }
-          <Link className='rounded-xl px-4 py-2 font-semibold bg-brand4 text-brand8 text-center max-w-[600px]' href={{ pathname: '/subirtrabajo', query: { user: IdUser } }}>
-            Subir oferta laboral
-          </Link>
         </section>
       </div>
       <Footer />
