@@ -11,7 +11,7 @@ export default async function CreateChatPage ({ searchParams }) {
   const { IdChat, count } = await getExistingChat(IdUser1, IdUser2)
 
   if (count === 1) {
-    redirect(`/chat/${IdChat.id_chat}`)
+    redirect(`/chats/${IdChat.id_chat}`)
   }
   return (
     <div className='h-screen bg-gray-200 flex flex-col'>

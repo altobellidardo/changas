@@ -5,7 +5,7 @@ import { useEffect, useState, useRef } from 'react'
 import Pusher from 'pusher-js'
 
 export default function ChatComponent ({ data, IdChat }) {
-  const [totalComments, setTotalComments] = useState(data.content)
+  const [totalComments, setTotalComments] = useState(data)
   const bottomRef = useRef(null)
 
   useEffect(() => {

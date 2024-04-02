@@ -12,9 +12,9 @@ export default function Form ({ IdChat, IdUser1, IdUser2 }) {
     const formData = new FormData(event.target)
     if (IdChat === undefined) {
       const newIdChat = await createChat(formData, IdUser1, IdUser2)
-      return router.push(`/chat/${newIdChat}`)
+      return router.push(`/chats/${newIdChat}`)
     }
-    await postData(formData, IdChat, IdUser1, IdUser2)
+    await postData(formData, IdChat)
 
     const input = event.target.elements.message
     input.value = ''
