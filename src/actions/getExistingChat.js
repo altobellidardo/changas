@@ -1,4 +1,3 @@
-'use server'
 import supabase from '@/libs/supabase/server'
 
 export async function getExistingChat (IdUser1, IdUser2) {

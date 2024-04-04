@@ -29,7 +29,7 @@ export async function postData (formData, IdChat) {
     useTLS: true
   })
 
-  await pusher.trigger(IdChat, 'chat', {
+  await pusher.trigger(`presence-${IdChat}`, 'chat', {
     id_user: IdUser,
     message
   })
