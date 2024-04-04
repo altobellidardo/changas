@@ -1,8 +1,15 @@
 'use client'
 
+/*
+
+  Estas usando servidor en cliente en lo comentado
+  no se el router ese
+
+*/
+
 import { useRouter } from 'next/navigation'
 import { postData } from '../action'
-import { createChat } from '@/actions/createChat'
+// import { createChat } from '@/actions/createChat'
 
 export default function Form ({ IdChat, IdUser1, IdUser2 }) {
   const router = useRouter()
@@ -11,7 +18,9 @@ export default function Form ({ IdChat, IdUser1, IdUser2 }) {
 
     const formData = new FormData(event.target)
     if (IdChat === undefined) {
-      const newIdChat = await createChat(formData, IdUser1, IdUser2)
+      // const newIdChat = await createChat(formData, IdUser1, IdUser2)
+      const BASE_URL = 'localhost:3000'
+      const newIdChat = fetch(BASE_URL + '/api/chat/')
       return router.push(`/chats/${newIdChat}`)
     }
     await postData(formData, IdChat)

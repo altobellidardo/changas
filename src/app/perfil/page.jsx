@@ -2,6 +2,7 @@
 import { getUser } from '@/actions/getUser'
 import { getJobs } from '@/actions/getJobs'
 import { getOffers } from '@/actions/getOffers'
+import { getRatings } from '@/actions/getRatings'
 import { cookies } from 'next/headers'
 import checkUser from '@/utils/checkUser'
 import { redirect } from 'next/navigation'
@@ -27,6 +28,8 @@ export default async function UserPage () {
   const jobs = await getJobs(IdUser)
   // Gets published job offers by the user
   const offers = await getOffers(IdUser)
+  // Gets users'ratings
+  const ratings = await getRatings(IdUser, jobs)
   user.picture = user.picture ? user.picture : 'https://avatar.iran.liara.run/public/boy?username=' + user.name
 
   return (
