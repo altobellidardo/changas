@@ -5,8 +5,6 @@ import { NextResponse } from 'next/server'
 
 export async function POST (req) {
   const { message, IdUser, IdChat } = await req.json()
-  console.log('Esto marca un nuevo mensaje: ' + message, IdUser, IdChat)
-
   const { content: history } = await getMessages(IdChat)
 
   const newData = [...history, { id_user: IdUser, message }]
@@ -26,5 +24,5 @@ export async function POST (req) {
     message
   })
 
-  return NextResponse.json({ mes: 'mes' })
+  return NextResponse.json({ message: 'success' }, { status: 200 })
 }

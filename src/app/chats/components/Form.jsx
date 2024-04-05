@@ -25,7 +25,7 @@ export default function Form ({ IdChat, IdUser, IdUser2 }) {
       const res = await fetch('/api/chats/create-chat', {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },
-        body: JSON.stringify({ formData, IdUser, IdUser2 })
+        body: JSON.stringify({ message, IdUser, IdUser2 })
       })
       const { newIdChat } = await res.json()
 
