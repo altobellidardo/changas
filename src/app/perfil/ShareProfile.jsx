@@ -9,7 +9,7 @@ function ShareProfile ({ IdUser }) {
   const baseUrl = useUrl()
 
   const copyToClipboard = () => {
-    const url = baseUrl + '/perfil?user=' + IdUser
+    const url = baseUrl + '/perfil/ver?user=' + IdUser
     navigator.clipboard.writeText(url)
     setCoping(true)
     setTimeout(() => {

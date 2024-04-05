@@ -10,16 +10,16 @@ import formatDate from '@/utils/formateDate'
 import LocationIcon from '@/components/icons/LocationIcon'
 import Header from '@/components/header/header'
 import Footer from '@/components/footer'
-import ShareProfile from './ShareProfile'
+import ShareProfile from '../ShareProfile'
 import Link from 'next/link'
 
-export default async function UserPage ({ params }) {
+export default async function UserPage ({ searchParams }) {
   const token = cookies().get('token')
   const isAuthenticated = checkUser(token?.value)
   if (!isAuthenticated) redirect('/')
 
-  // Retrieve data from url
-  const { IdUser } = params
+  // Retrieve data from query
+  const IdUser = searchParams.user
 
   // Gets main user's data
   const user = await getUser(IdUser)

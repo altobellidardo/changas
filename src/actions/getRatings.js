@@ -1,6 +1,7 @@
 import supabase from '@/libs/supabase/server'
 
 export async function getRatings (IdUser, jobs) {
+  if (jobs === null) return null
   const jobsNames = jobs.map((item) => (
     item.category
   ))
