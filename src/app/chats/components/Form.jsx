@@ -1,14 +1,6 @@
 'use client'
 
-/*
-
-  Estas usando servidor en cliente en lo comentado
-  no se el router ese
-
-*/
-
 import { useRouter } from 'next/navigation'
-//  import { postData } from '@/actions/postData'
 
 export default function Form ({ IdChat, IdUser, IdUser2 }) {
   const router = useRouter()
