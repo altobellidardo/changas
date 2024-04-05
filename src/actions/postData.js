@@ -1,17 +1,8 @@
-'use server'
-
 import supabase from '@/libs/supabase/server'
-import { cookies } from 'next/headers'
-import checkUser from '@/utils/checkUser'
 import { getMessages } from '@/actions/getMessages'
 import Pusher from 'pusher'
 
-export async function postData (formData, IdChat) {
-  const token = cookies().get('token')
-  const isAuthenticated = checkUser(token?.value)
-  // Retrieve data from JWT
-  const { id_user: IdUser } = isAuthenticated
-
+export async function postData (formData, IdUser, IdChat) {
   const { content: history } = await getMessages(IdChat)
 
   // Retrieve data from formData

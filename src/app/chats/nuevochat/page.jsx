@@ -16,7 +16,7 @@ export default async function CreateChatPage ({ searchParams }) {
   return (
     <div className='h-screen bg-gray-200 flex flex-col'>
       <h1>Chatear con: {IdUser2}</h1>
-      <Form IdChat={undefined} IdUser1={IdUser1} IdUser2={IdUser2} />
+      <Form IdChat={undefined} IdUser={IdUser1} IdUser2={IdUser2} />
     </div>
   )
 }

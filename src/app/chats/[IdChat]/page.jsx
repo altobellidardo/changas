@@ -22,7 +22,7 @@ export default async function Chathomepage ({ params }) {
     <div className='h-screen bg-gray-200 flex flex-col'>
       <h1>Este es el chat: {IdChat}</h1>
       <ChatComponent data={data.content} IdChat={IdChat} />
-      <Form IdChat={IdChat} />
+      <Form IdChat={IdChat} IdUser={IdUser} />
     </div>
   )
 }

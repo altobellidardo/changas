@@ -2,6 +2,7 @@
 import { getUser } from '@/actions/getUser'
 import { getJobs } from '@/actions/getJobs'
 import { getOffers } from '@/actions/getOffers'
+import { getRatings } from '@/actions/getRatings'
 import { cookies } from 'next/headers'
 import checkUser from '@/utils/checkUser'
 import { redirect } from 'next/navigation'
@@ -26,6 +27,9 @@ export default async function UserPage ({ params }) {
   const jobs = await getJobs(IdUser)
   // Gets published job offers by the user
   const offers = await getOffers(IdUser)
+  // Gets users' average ratings
+  const ratings = await getRatings(IdUser, jobs)
+
   user.picture = user.picture ? user.picture : 'https://avatar.iran.liara.run/public/boy?username=' + user.name
 
   return (
@@ -67,7 +71,7 @@ export default async function UserPage ({ params }) {
                         <div>N° de empleados: {item.employees}</div>
                         <div>Horas de atención: {item.attention_hours}</div>
                         <div>Descripción: {item.description}</div>
-                        <div>Reseñas: </div>
+                        <div>Promedio de reseñas: {ratings[item.category]}</div>
                       </li>
                     ))
                     }

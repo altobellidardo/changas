@@ -28,8 +28,9 @@ export default async function UserPage () {
   const jobs = await getJobs(IdUser)
   // Gets published job offers by the user
   const offers = await getOffers(IdUser)
-  // Gets users'ratings
+  // Gets users' average ratings
   const ratings = await getRatings(IdUser, jobs)
+
   user.picture = user.picture ? user.picture : 'https://avatar.iran.liara.run/public/boy?username=' + user.name
 
   return (
@@ -76,14 +77,14 @@ export default async function UserPage () {
                         <div>N° de empleados: {item.employees}</div>
                         <div>Horas de atención: {item.attention_hours}</div>
                         <div>Descripción: {item.description}</div>
-                        <div>Reseñas: </div>
+                        <div>Promedio de reseñas: {ratings[item.category]}</div>
                       </li>
                     ))
                     }
                 </ul>
                 )
           }
-          <Link className='rounded-xl px-4 py-2 font-semibold bg-brand4 text-brand8 text-center max-w-[600px]' href={{ pathname: '/subiroferta', query: { user: IdUser } }}>
+          <Link className='rounded-xl px-4 py-2 font-semibold bg-brand4 text-brand8 text-center max-w-[600px]' href={{ pathname: '/subirtrabajo', query: { user: IdUser } }}>
             Subir experiencia laboral
           </Link>
         </section>
@@ -109,7 +110,7 @@ export default async function UserPage () {
                 </ul>
                 )
           }
-          <Link className='rounded-xl px-4 py-2 font-semibold bg-brand4 text-brand8 text-center max-w-[600px]' href={{ pathname: '/subirtrabajo', query: { user: IdUser } }}>
+          <Link className='rounded-xl px-4 py-2 font-semibold bg-brand4 text-brand8 text-center max-w-[600px]' href={{ pathname: '/subiroferta', query: { user: IdUser } }}>
             Subir oferta laboral
           </Link>
         </section>

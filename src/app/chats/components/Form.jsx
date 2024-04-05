@@ -8,10 +8,10 @@
 */
 
 import { useRouter } from 'next/navigation'
-import { postData } from '../action'
+import { postData } from '@/actions/createChat'
 // import { createChat } from '@/actions/createChat'
 
-export default function Form ({ IdChat, IdUser1, IdUser2 }) {
+export default function Form ({ IdChat, IdUser, IdUser2 }) {
   const router = useRouter()
   const handlesubmit = async (event) => {
     event.preventDefault()
