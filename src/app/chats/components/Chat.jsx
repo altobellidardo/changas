@@ -2,7 +2,7 @@
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
-import Pusher from 'pusher-js'
+import PusherClient from 'pusher-js'
 
 export default function ChatComponent ({ data, IdChat }) {
   const [totalComments, setTotalComments] = useState(data)
@@ -10,12 +10,12 @@ export default function ChatComponent ({ data, IdChat }) {
 
   useEffect(() => {
     scrollToBottom()
-    const pusher = new Pusher(process.env.NEXT_PUBLIC_PUSHER_KEY, {
+    const pusher = new PusherClient(process.env.NEXT_PUBLIC_PUSHER_KEY, {
       cluster: 'sa1',
-      channelAuthorization: { endpoint: '/api/auth/pusher-auth/channel-auth.js' }
+      channelAuthorization: { endpoint: '/api/auth/pusher' }
     })
 
-    const channel = pusher.subscribe(`public-${IdChat}`)
+    const channel = pusher.subscribe(`private-${IdChat}`)
 
     channel.bind('chat', (data) => {
       setTotalComments((prev) =>
