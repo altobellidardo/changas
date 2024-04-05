@@ -8,8 +8,7 @@
 */
 
 import { useRouter } from 'next/navigation'
-import { postData } from '@/actions/createChat'
-// import { createChat } from '@/actions/createChat'
+//  import { postData } from '@/actions/postData'
 
 export default function Form ({ IdChat, IdUser, IdUser2 }) {
   const router = useRouter()
@@ -19,11 +18,16 @@ export default function Form ({ IdChat, IdUser, IdUser2 }) {
     const formData = new FormData(event.target)
     if (IdChat === undefined) {
       // const newIdChat = await createChat(formData, IdUser1, IdUser2)
-      const BASE_URL = 'localhost:3000'
-      const newIdChat = fetch(BASE_URL + '/api/chat/')
+      const res = await fetch('/api/chats', {
+        method: 'POST',
+        headers: { 'Content-type': 'application/json' },
+        body: JSON.stringify({ formData, IdUser, IdUser2 })
+      })
+      const { newIdChat } = await res.json()
+
       return router.push(`/chats/${newIdChat}`)
     }
-    await postData(formData, IdChat)
+    // await postData(formData, IdChat)
 
     const input = event.target.elements.message
     input.value = ''

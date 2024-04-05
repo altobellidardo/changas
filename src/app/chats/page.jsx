@@ -11,20 +11,17 @@ export default async function ChatsHome () {
 
   const userChats = await getUserChats(IdUser)
   return (
-    <div>
-      <div className='max-w-xl mx-auto border rounded-lg p-10 mt-32'>
-        <h1 className='text-4xl font-semibold text-center'>Bienvenido al chat...</h1>
-      </div>
+    <div className='p-4'>
+      <h1>Bienvenido al chat...</h1>
       <div>
         {
-        userChats.map((item) => (
-          <Link href={`/chats/${item.id_chat}`} key={item.id_chat}>Continuar hablando con {
-            item.id_user1 === IdUser ? item.id_user2 : item.id_user1
-}
-          </Link>
-        ))
+          userChats.map((item) => (
+            <Link href={`/chats/${item.id_chat}`} key={item.id_chat}>Continuar hablando con {
+              item.id_user1 === IdUser ? item.id_user2 : item.id_user1
+            }
+            </Link>
+          ))
         }
-
       </div>
     </div>
   )

@@ -15,7 +15,7 @@ export default function ChatComponent ({ data, IdChat }) {
       channelAuthorization: { endpoint: '/api/auth/pusher-auth/channel-auth.js' }
     })
 
-    const channel = pusher.subscribe(`presence-${IdChat}`)
+    const channel = pusher.subscribe(`private-${IdChat}`)
 
     channel.bind('chat', (data) => {
       setTotalComments((prev) =>

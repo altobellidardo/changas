@@ -11,12 +11,13 @@ export default async function Chathomepage ({ params }) {
   const { IdChat } = params
 
   const token = cookies().get('token')
-  const isAuthenticated = checkUser(token?.value)
-  // Retrieve data from JWT
-  const { id_user: IdUser } = isAuthenticated
+  const { id_user: IdUser } = checkUser(token?.value)
 
   const data = await getFullChat(IdChat)
-  if ((data.id_user1 !== IdUser) & (data.id_user2 !== IdUser)) return redirect('/')
+
+  if ((data.id_user1 !== IdUser) & (data.id_user2 !== IdUser)) {
+    return redirect('/')
+  }
 
   return (
     <div className='h-screen bg-gray-200 flex flex-col'>

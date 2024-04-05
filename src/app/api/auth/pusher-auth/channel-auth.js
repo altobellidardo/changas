@@ -11,7 +11,7 @@ const pusher = new Pusher({
 })
 
 export default function handler (req, res) {
-  'use server'
+  // 'use server'
   if (req.method === 'POST') {
     const socketId = req.body.socket_id
     const channel = req.body.channel_name
