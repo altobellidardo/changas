@@ -16,18 +16,30 @@ export default function Form ({ IdChat, IdUser, IdUser2 }) {
     event.preventDefault()
 
     const formData = new FormData(event.target)
+
+    // Retrieve data from formData
+    const message = formData.get('message')
+
+    // Check if IdChat is not defined to create a new chat
     if (IdChat === undefined) {
-      // const newIdChat = await createChat(formData, IdUser1, IdUser2)
-      const res = await fetch('/api/chats', {
+      const res = await fetch('/api/chats/create-chat', {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify({ formData, IdUser, IdUser2 })
       })
       const { newIdChat } = await res.json()
 
+      // Redirect to the user's char channel
       return router.push(`/chats/${newIdChat}`)
     }
-    // await postData(formData, IdChat)
+
+    // Call main POST endpoint where chats are uploaded to Supabase
+    console.log(message, IdUser, IdChat)
+    await fetch('/api/chats/post-message', {
+      method: 'POST',
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify({ message, IdUser, IdChat })
+    })
 
     const input = event.target.elements.message
     input.value = ''

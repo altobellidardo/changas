@@ -1,12 +1,13 @@
 import supabase from '@/libs/supabase/server'
 import { getMessages } from '@/actions/getMessages'
 import Pusher from 'pusher'
+import { NextResponse } from 'next/server'
 
-export async function postData (formData, IdUser, IdChat) {
+export async function POST (req) {
+  const { message, IdUser, IdChat } = await req.json()
+  console.log('Esto marca un nuevo mensaje: ' + message, IdUser, IdChat)
+
   const { content: history } = await getMessages(IdChat)
-
-  // Retrieve data from formData
-  const message = formData.get('message')
 
   const newData = [...history, { id_user: IdUser, message }]
   const { error } = await supabase.from('chats').update({ content: newData }).eq('id_chat', IdChat)
@@ -24,4 +25,6 @@ export async function postData (formData, IdUser, IdChat) {
     id_user: IdUser,
     message
   })
+
+  return NextResponse.json({ mes: 'mes' })
 }
