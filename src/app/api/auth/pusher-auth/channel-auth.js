@@ -1,6 +1,6 @@
 // pages/api/pusher/auth.js
 import Pusher from 'pusher'
-// import { NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 
 const pusher = new Pusher({
   appId: process.env.PUSHER_APP_ID,
@@ -10,7 +10,8 @@ const pusher = new Pusher({
   useTLS: true
 })
 
-export default function handler (req, res) {
+export default function handler (req) {
+  const res = new NextResponse()
   // 'use server'
   if (req.method === 'POST') {
     const socketId = req.body.socket_id
