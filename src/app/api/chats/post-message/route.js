@@ -2,6 +2,7 @@ import supabase from '@/libs/supabase/server'
 import { getMessages } from '@/actions/getMessages'
 import Pusher from 'pusher'
 import { NextResponse } from 'next/server'
+import messages from '@/utils/messages'
 
 export async function POST (req) {
   const { message, IdUser, IdChat } = await req.json()
@@ -24,5 +25,5 @@ export async function POST (req) {
     message
   })
 
-  return NextResponse.json({ message: 'success' }, { status: 200 })
+  return NextResponse.json({ message: messages.success.message_sent }, { status: 200 })
 }

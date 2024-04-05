@@ -5,7 +5,6 @@ import { getOffers } from '@/actions/getOffers'
 import { getRatings } from '@/actions/getRatings'
 import { cookies } from 'next/headers'
 import checkUser from '@/utils/checkUser'
-import getLocation from '@/actions/getLocation'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import formatDate from '@/utils/formateDate'
@@ -31,7 +30,7 @@ export default async function UserPage () {
   const offers = await getOffers(IdUser)
   // Gets users' average ratings
   const ratings = await getRatings(IdUser, jobs)
-  await getLocation('Cardales, Buenos Aires')
+
   user.picture = user.picture ? user.picture : 'https://avatar.iran.liara.run/public/boy?username=' + user.name
 
   return (

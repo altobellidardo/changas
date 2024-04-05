@@ -12,12 +12,12 @@ export default async function ChatsHome () {
   const userChats = await getUserChats(IdUser)
   return (
     <div className='p-4'>
-      <h1>Bienvenido al chat...</h1>
+      <h1>Bienvenido al chat... {'\n\n\n\n\n\n\n\n\n\n\n\n'}</h1>
       <div>
         {
           userChats.map((item) => (
             <Link href={`/chats/${item.id_chat}`} key={item.id_chat}>Continuar hablando con {
-              item.id_user1 === IdUser ? item.id_user2 : item.id_user1
+              item.id_user1 === IdUser ? item.username_2 : item.username_1
             }
             </Link>
           ))

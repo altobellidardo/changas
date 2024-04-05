@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { NextResponse } from 'next/server'
+import messages from '@/utils/messages'
 
-export default async function POST (req) {
+export async function POST (req) {
   const { city, province, country } = await req.json()
   const location = city + ', ' + province + ', ' + country
   const options = {
@@ -9,7 +10,7 @@ export default async function POST (req) {
     url: 'https://trueway-geocoding.p.rapidapi.com/Geocode',
     params: {
       address: location,
-      language: 'en'
+      language: 'sp'
     },
     headers: {
       'X-RapidAPI-Key': 'fc1569936dmsh70293b045ce5a18p15778ejsnd98211715ad4',
@@ -19,12 +20,16 @@ export default async function POST (req) {
 
   try {
     const response = await axios.request(options)
-    const fetchCity = 'asd'
-    const fetchProvince = 'asd'
-    const fetchCountry = 'asd'
-    return NextResponse.json({ message: 'success' }, { status: 200 })
-    // console.log(response.data.results[0].location)
+    const fetchCity = response.data.results[0].locality
+    const fetchProvince = response.data.results[0].region
+    const fetchCountry = response.data.results[0].country
+    return NextResponse.json({
+      message: messages.success.location_found,
+      city: fetchCity,
+      province: fetchProvince,
+      country: fetchCountry
+    }, { status: 200 })
   } catch (error) {
-    console.error(error)
+    return NextResponse.json({ message: messages.error.location_not_found }, { status: 404 })
   }
 }

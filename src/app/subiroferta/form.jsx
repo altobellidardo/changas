@@ -23,8 +23,10 @@ function UploadOffert ({ IdUser, categories }) {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({city, province, country})
+      body: JSON.stringify({ city, province, country })
     })
+    const unstrucResponse = await locationResponse.json()
+    const location = unstrucResponse.city + ', ' + unstrucResponse.province + ', ' + unstrucResponse.country
 
     const sendData = { category, IdUser, budget, location, description }
 

@@ -10,7 +10,8 @@ const messages = {
     user_not_found: 'El usuario no existe',
     incorrect_password: 'La contraseña es incorrecta',
     token_required: 'El token es requerido',
-    existing_job: 'Usted ya cargo está experiencia laboral'
+    existing_job: 'Usted ya cargo está experiencia laboral',
+    location_not_found: 'Ocurrió un error al intentar encontrar la ubicación'
   },
   success: {
     user_created: 'El usuario ha sido creado',
@@ -19,7 +20,10 @@ const messages = {
     password_changed: 'La contraseña fue cambiada',
     athorized: 'Autorizado',
     proposal_uploaded: 'La propuesta de trabajo fue cargada con éxito',
-    job_uploaded: 'La experiencia laboral fue cargada con éxito'
+    job_uploaded: 'La experiencia laboral fue cargada con éxito',
+    location_found: 'La ubicación ingresada fue hallada',
+    chat_created: 'El chat fue creado con éxito',
+    message_sent: 'El mensaje fue enviado con éxito'
   }
 }
 
