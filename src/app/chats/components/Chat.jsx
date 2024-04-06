@@ -10,10 +10,8 @@ export default function ChatComponent ({ data, IdChat }) {
 
   useEffect(() => {
     scrollToBottom()
-    const pusher = new PusherClient(process.env.NEXT_PUBLIC_PUSHER_KEY, {
-      cluster: 'sa1',
-      channelAuthorization: { endpoint: '/api/auth/pusher' }
-    })
+    const pusher = new PusherClient(process.env.NEXT_PUBLIC_PUSHER_KEY,
+      { cluster: 'sa1', channelAuthorization: { endpoint: '/api/auth/pusher' } })
 
     const channel = pusher.subscribe(`private-${IdChat}`)
 
