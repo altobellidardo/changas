@@ -16,10 +16,14 @@ export default async function ChatsHome () {
       <div>
         {
           userChats.map((item) => (
-            <Link href={`/chats/${item.id_chat}`} key={item.id_chat}>Continuar hablando con {
+            <div key={item.id_chat}>
+              <Link href={`/chats/${item.id_chat}`} key={item.id_chat}>Continuar hablando con {
               item.id_user1 === IdUser ? item.username_2 : item.username_1
             }
-            </Link>
+              </Link>
+              <div>Último mensaje {item.last_message}</div>
+              <div>Visto: {item.id_user1 === IdUser ? (item.read_user_1 ? 'True' : 'False') : (item.read_user_2 ? 'True' : 'False')}</div>
+            </div>
           ))
         }
       </div>
