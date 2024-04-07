@@ -13,7 +13,7 @@ export async function POST (req) {
       language: 'sp'
     },
     headers: {
-      'X-RapidAPI-Key': 'fc1569936dmsh70293b045ce5a18p15778ejsnd98211715ad4',
+      'X-RapidAPI-Key': process.env.RAPID_API_KEY,
       'X-RapidAPI-Host': 'trueway-geocoding.p.rapidapi.com'
     }
   }
