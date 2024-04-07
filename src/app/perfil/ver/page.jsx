@@ -32,6 +32,9 @@ export default async function UserPage ({ searchParams }) {
 
   user.picture = user.picture ? user.picture : 'https://avatar.iran.liara.run/public/boy?username=' + user.name
 
+  // Create username (name + surname)
+  const username = user.name + ' ' + user.surname
+
   return (
     <main className='flex min-h-screen flex-col bg-brand8'>
       <Header />
@@ -45,14 +48,14 @@ export default async function UserPage ({ searchParams }) {
             <img className='rounded-full size-40' src={user.picture} alt={`${user.name} ${user.surname} picture`} />
           </picture>
           <div>
-            <div className='font-bold text-xl'>{user.name} {user.surname}</div>
+            <div className='font-bold text-xl'>{username}</div>
             {/* <div>{user.email}</div>
             <div>Teléfono: {user.phone}</div> */}
             <div className='flex'>
               <LocationIcon /> {user.location}
             </div>
             <div>{formatDate(user.birth)}</div>
-            <Link href={{ pathname: '/chat/nuevochat', query: { IdUser1: isAuthenticated.id_user, IdUser2: IdUser } }}>Contactar</Link>
+            <Link href={{ pathname: '/chats/nuevochat', query: { IdUser1: isAuthenticated.id_user, IdUser2: IdUser, Username2: username } }}>Contactar</Link>
           </div>
         </section>
 
