@@ -1,4 +1,3 @@
-import Form from '../components/Form'
 import ChatComponent from '../components/Chat'
 import { getFullChat } from '@/actions/getFullChat'
 import { cookies } from 'next/headers'
@@ -22,8 +21,7 @@ export default async function Chathomepage ({ params }) {
   return (
     <div className='h-screen bg-gray-200 flex flex-col'>
       <h1>Este es el chat: {IdChat}</h1>
-      <ChatComponent data={data.content} IdChat={IdChat} />
-      <Form IdChat={IdChat} IdUser={IdUser} />
+      <ChatComponent history={data.content} IdChat={IdChat} IdUser={IdUser} />
     </div>
   )
 }

@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 
-export default function Form ({ IdChat, IdUser, IdUser2, Username2 }) {
+export default function Form ({ IdChat, IdUser, IdUser2, Username2, history }) {
   const router = useRouter()
   const handlesubmit = async (event) => {
     event.preventDefault()
@@ -26,11 +26,11 @@ export default function Form ({ IdChat, IdUser, IdUser2, Username2 }) {
     }
 
     // Call main POST endpoint where chats are uploaded to Supabase
-    console.log(message, IdUser, IdChat)
+
     await fetch('/api/chats/post-message', {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
-      body: JSON.stringify({ message, IdUser, IdChat })
+      body: JSON.stringify({ message, history, IdUser, IdChat })
     })
 
     const input = event.target.elements.message
