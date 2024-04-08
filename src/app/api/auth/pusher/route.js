@@ -25,18 +25,10 @@ export async function POST (req) {
   const channel = content[1].substring(13)
 
   // Create user data to be appended to the socketId of the user
-  const presenceData = { user_id: IdUser, user_info: { name: 'Mr Channels', twitter_id: '@pusher' } }
-
-  // Create JSON for user authentication
-  const user = {
-    id: IdUser,
-    user_info: {
-      name: 'Mr Channels', twitter_id: '@pusher'
-    }
-  }
+  const presenceData = { user_id: IdUser }
 
   // Authenticate and authorize user
   const authChannelResponse = pusher.authorizeChannel(socketId, channel, presenceData)
-  const authUserResponse = pusher.authenticateUser(socketId, user)
-  return new NextResponse({ message: [authChannelResponse, authUserResponse] })
+
+  return NextResponse.json(authChannelResponse)
 }

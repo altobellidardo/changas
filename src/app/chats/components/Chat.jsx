@@ -4,6 +4,7 @@
 import { useEffect, useState, useRef } from 'react'
 import PusherClient from 'pusher-js'
 import Form from '../components/Form'
+import messages from '@/utils/messages'
 
 export default function ChatComponent ({ history, IdChat, IdUser }) {
   const [totalComments, setTotalComments] = useState(history)
@@ -14,18 +15,21 @@ export default function ChatComponent ({ history, IdChat, IdUser }) {
     const pusher = new PusherClient(process.env.NEXT_PUBLIC_PUSHER_KEY,
       {
         cluster: 'sa1',
-        channelAuthorization: { endpoint: '/api/auth/pusher' },
-        userAuthentication: { endpoint: '/api/auth/pusher' }
+        channelAuthorization: { endpoint: '/api/auth/pusher' }
       })
 
     const channel = pusher.subscribe(`presence-${IdChat}`)
 
-    channel.bind('chat', (data) => {
+    channel.bind('pusher:subscription_error', function (status) {
+      alert(messages.error.fail_subscription)
+    })
+
+    channel.bind('chat', (data, metadata) => {
+      console.log('chat component: ', data)
       setTotalComments((prev) =>
-        [...prev, { id_user: data.id_user, message: data.message }]
+        [...prev, { id_user: metadata.user_id, message: data.message }]
       )
       scrollToBottom()
-      console.log(totalComments)
     })
 
     return () => {

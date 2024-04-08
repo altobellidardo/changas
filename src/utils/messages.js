@@ -11,7 +11,8 @@ const messages = {
     incorrect_password: 'La contraseña es incorrecta',
     token_required: 'El token es requerido',
     existing_job: 'Usted ya cargo está experiencia laboral',
-    location_not_found: 'Ocurrió un error al intentar encontrar la ubicación'
+    location_not_found: 'Ocurrió un error al intentar encontrar la ubicación',
+    fail_subscription: 'La suscripción al canal fallo, los mensajes no se actualizarán'
   },
   success: {
     user_created: 'El usuario ha sido creado',
