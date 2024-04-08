@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 
-export default function Form ({ IdChat, IdUser, IdUser2, Username2, history }) {
+export default function Form ({ IdChat, IdUser, IdUser2, Username2, history, UserNumber }) {
   const router = useRouter()
   const handlesubmit = async (event) => {
     event.preventDefault()
@@ -30,7 +30,7 @@ export default function Form ({ IdChat, IdUser, IdUser2, Username2, history }) {
     await fetch('/api/chats/post-message', {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
-      body: JSON.stringify({ message, history, IdUser, IdChat })
+      body: JSON.stringify({ message, history, IdUser, IdChat, UserNumber })
     })
 
     const input = event.target.elements.message

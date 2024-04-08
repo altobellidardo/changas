@@ -6,7 +6,7 @@ import PusherClient from 'pusher-js'
 import Form from '../components/Form'
 import messages from '@/utils/messages'
 
-export default function ChatComponent ({ history, IdChat, IdUser }) {
+export default function ChatComponent ({ history, IdChat, IdUser, UserNumber }) {
   const [totalComments, setTotalComments] = useState(history)
   const bottomRef = useRef(null)
 
@@ -25,11 +25,14 @@ export default function ChatComponent ({ history, IdChat, IdUser }) {
     })
 
     channel.bind('chat', (data, metadata) => {
-      console.log('chat component: ', data)
       setTotalComments((prev) =>
         [...prev, { id_user: metadata.user_id, message: data.message }]
       )
       scrollToBottom()
+      channel.members.each(function (member) {
+        const userId = member.id
+        console.log(userId)
+      })
     })
 
     return () => {
@@ -55,7 +58,7 @@ export default function ChatComponent ({ history, IdChat, IdUser }) {
               </div>
 
               <p className='font-light text-sm text-gray-600'>
-                {item.id_user}
+                {item.id_user === IdUser ? 'Tu' : item.id_user}
               </p>
 
             </div>
@@ -63,7 +66,7 @@ export default function ChatComponent ({ history, IdChat, IdUser }) {
           <div ref={bottomRef} />
         </div>
       </div>
-      <Form IdChat={IdChat} IdUser={IdUser} history={totalComments} />
+      <Form IdChat={IdChat} IdUser={IdUser} history={totalComments} UserNumber={UserNumber} />
     </div>
 
   )

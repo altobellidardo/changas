@@ -17,11 +17,14 @@ export default async function Chathomepage ({ params }) {
   if ((data.id_user1 !== IdUser) & (data.id_user2 !== IdUser)) {
     return redirect('/')
   }
+  let UserNumber = 0
+  if (data.id_user1 === IdUser) { UserNumber = 1 }
+  if (data.id_user2 === IdUser) { UserNumber = 2 }
 
   return (
     <div className='h-screen bg-gray-200 flex flex-col'>
       <h1>Este es el chat: {IdChat}</h1>
-      <ChatComponent history={data.content} IdChat={IdChat} IdUser={IdUser} />
+      <ChatComponent history={data.content} IdChat={IdChat} IdUser={IdUser} UserNumber={UserNumber} />
     </div>
   )
 }
