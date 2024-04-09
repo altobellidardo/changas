@@ -15,6 +15,8 @@ export async function POST (req) {
   const { message, IdUser, IdChat, history, UserNumber } = await req.json()
   const newData = [...history, { id_user: IdUser, message }]
   const now = new Date().toISOString().split('.')[0]
+  const date = new Date(now)
+  console.log(date)
 
   const res = await pusher.get({ path: `/channels/presence-${IdChat}/users` })
 
