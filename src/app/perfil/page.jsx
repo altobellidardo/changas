@@ -13,6 +13,7 @@ import Header from '@/components/header/header'
 import Footer from '@/components/footer'
 import PenIcon from '@/components/icons/PenIcon'
 import ShareProfile from './ShareProfile'
+import StarIcon from '@/components/icons/Star'
 
 export default async function UserPage () {
   const token = cookies().get('token')
@@ -41,7 +42,7 @@ export default async function UserPage () {
           Tu perfil <ShareProfile IdUser={IdUser} />
         </h1>
 
-        <section className='flex flex-col md:flex-row items-center bg-brand4 text-brand8 justify-center gap-8 py-10 w-[80vw] mx-auto rounded-md'>
+        <section className='flex flex-col md:flex-row items-center bg-brand4 text-brand8 justify-center gap-8 py-10 md:w-[80vw] mx-auto rounded-md'>
           <picture className='relative'>
             <div className='absolute right-0 rounded-full bg-brand3 p-2'>
               <Link href='/auth/change-profile'>
@@ -68,16 +69,25 @@ export default async function UserPage () {
             jobs.length === 0
               ? <div className='text-red-600 bg-red-200 border-2 rounded-lg p-2 border-red-600 max-w-[600px]'>No has subido trabajos</div>
               : (
-                <ul>
+                <ul className='max-w-full md:max-w-[600px]'>
                   {
                     jobs.map((item) => (
-                      <li key={item.id_worker} className='p-4 border-2 m-2 w-96'>
-                        <div>Nombre del oficio: {item.category}</div>
-                        <div>Precio por hora: {item.hourly_price}</div>
-                        <div>N° de empleados: {item.employees}</div>
-                        <div>Horas de atención: {item.attention_hours}</div>
-                        <div>Descripción: {item.description}</div>
-                        <div>Promedio de reseñas: {ratings[item.category]}</div>
+                      <li key={item.id_worker} className='p-4 border-2 mb-2 mx-2 rounded-md border-brand4/40'>
+                        <span className='opacity-60 text-sm'>Nombre del oficio</span>
+                        <div>{item.category}</div>
+                        <span className='opacity-60 text-sm'>Precio por hora</span>
+                        <div>${item.hourly_price}</div>
+                        <span className='opacity-60 text-sm'>Cantidad de empleados</span>
+                        <div>{item.employees}</div>
+                        <span className='opacity-60 text-sm'>Horas de atención</span>
+                        <div>{item.attention_hours}</div>
+                        <span className='opacity-60 text-sm'>Descripción</span>
+                        <div>{item.description}</div>
+                        <span className='opacity-60 text-sm'>Reseñas</span>
+                        <div className='flex flex-row gap-1 content-center text-xl'>
+                          {ratings[item.category]}/5
+                          <StarIcon className='size-5 text-brand5' />
+                        </div>
                       </li>
                     ))
                     }
@@ -95,15 +105,20 @@ export default async function UserPage () {
             offers.length === 0
               ? <div className='text-red-600 bg-red-200 border-2 rounded-lg p-2 border-red-600 max-w-[600px]'>No has publicado ofertas laborales</div>
               : (
-                <ul>
+                <ul className='max-w-full md:max-w-[600px]'>
                   {
                     offers.map((item) => (
-                      <li key={item.id_proposal} className='p-4 border-2 m-2 w-96'>
-                        <div>Buscando: {item.category}s</div>
-                        <div>Presupuesto: {item.budget}</div>
-                        <div>Ubicación: {item.location}</div>
-                        <div>Fecha de publicación: {item.open_date.slice(0, 10)}</div>
-                        <div>Descripción: {item.description}</div>
+                      <li key={item.id_proposal} className='p-4 border-2 mb-2 mx-2 rounded-md border-brand4/40'>
+                        <span className='opacity-60 text-sm'>Categoría</span>
+                        <div>{item.category}s</div>
+                        <span className='opacity-60 text-sm'>Presupuesto</span>
+                        <div>{item.budget}</div>
+                        <span className='opacity-60 text-sm'>Ubicación</span>
+                        <div>{item.location}</div>
+                        <span className='opacity-60 text-sm'>Fecha de publicación</span>
+                        <div>{item.open_date.slice(0, 10)}</div>
+                        <span className='opacity-60 text-sm'>Descripción</span>
+                        <div>{item.description}</div>
                       </li>
                     ))
                   }
