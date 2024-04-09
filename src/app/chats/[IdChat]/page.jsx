@@ -1,5 +1,6 @@
 import ChatComponent from '../components/Chat'
 import { getFullChat } from '@/actions/getFullChat'
+import { seeChat } from '@/actions/seeChat'
 import { cookies } from 'next/headers'
 import checkUser from '@/utils/checkUser'
 import { redirect } from 'next/navigation'
@@ -20,6 +21,9 @@ export default async function Chathomepage ({ params }) {
   let UserNumber = 0
   if (data.id_user1 === IdUser) { UserNumber = 1 }
   if (data.id_user2 === IdUser) { UserNumber = 2 }
+
+  // Change status to read
+  await seeChat(IdChat, UserNumber)
 
   return (
     <div className='h-screen bg-gray-200 flex flex-col'>

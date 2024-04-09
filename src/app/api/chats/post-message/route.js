@@ -22,7 +22,7 @@ export async function POST (req) {
   if (res.status === 200) {
     const body = await res.json()
     const users = body.users
-    users.forEach((UserId) => { if (UserId !== IdUser) onlineUser = true })
+    users.forEach((UserId) => { if (UserId.id !== IdUser) onlineUser = true })
   }
 
   let error
