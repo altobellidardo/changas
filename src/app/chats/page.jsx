@@ -10,9 +10,7 @@ export default async function ChatsHome () {
   const { id_user: IdUser } = isAuthenticated
 
   const userChats = await getUserChats(IdUser)
-  const now = new Date('2024-01-01T00:00:00Z')
-  const date = new Date(now)
-  console.log(date)
+
   return (
     <div className='p-4'>
       <h1>Bienvenido al chat... {'\n\n\n\n\n\n\n\n\n\n\n\n'}</h1>
