@@ -11,6 +11,11 @@ export default async function ChatsHome () {
 
   const userChats = await getUserChats(IdUser)
 
+  // Get offset
+  const utc = new Date()
+  const offset = -utc.getTimezoneOffset() * 60000
+  const local = new Date(utc.getTime() + offset)
+
   return (
     <div className='p-4'>
       <h1>Bienvenido al chat... {'\n\n\n\n\n\n\n\n\n\n\n\n'}</h1>
