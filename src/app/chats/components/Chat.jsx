@@ -24,15 +24,11 @@ export default function ChatComponent ({ history, IdChat, IdUser, UserNumber }) 
       alert(messages.error.fail_subscription)
     })
 
-    channel.bind('chat', (data, metadata) => {
+    channel.bind('chat', (data) => {
       setTotalComments((prev) =>
-        [...prev, { id_user: metadata.user_id, message: data.message }]
+        [...prev, { id_user: data.id_user, message: data.message }]
       )
       scrollToBottom()
-      channel.members.each(function (member) {
-        const userId = member.id
-        console.log(userId)
-      })
     })
 
     return () => {

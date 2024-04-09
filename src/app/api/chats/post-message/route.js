@@ -14,6 +14,7 @@ export async function POST (req) {
 
   const { message, IdUser, IdChat, history, UserNumber } = await req.json()
   const newData = [...history, { id_user: IdUser, message }]
+  const now = new Date().toISOString().split('.')[0]
 
   const res = await pusher.get({ path: `/channels/presence-${IdChat}/users` })
 
@@ -28,13 +29,15 @@ export async function POST (req) {
   let error
   if (UserNumber === 1) {
     const { error: UpdateError } = await supabase.from('chats')
-      .update({ content: newData, read_user_2: onlineUser }).eq('id_chat', IdChat)
+      .update({ content: newData, read_user_2: onlineUser, last_message: now })
+      .eq('id_chat', IdChat)
     error = UpdateError
   }
 
   if (UserNumber === 2) {
     const { error: UpdateError } = await supabase.from('chats')
-      .update({ content: newData, read_user_1: onlineUser }).eq('id_chat', IdChat)
+      .update({ content: newData, read_user_1: onlineUser, last_message: now })
+      .eq('id_chat', IdChat)
     error = UpdateError
   }
 
