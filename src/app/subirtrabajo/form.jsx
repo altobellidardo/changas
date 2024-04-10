@@ -25,7 +25,7 @@ function UploadWorker ({ IdUser, categories, username }) {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ city, province, country })
+      body: JSON.stringify({ city, province, country, complete: true })
     })
     const unstrucResponse = await locationResponse.json()
     const location = unstrucResponse.city + ', ' + unstrucResponse.province + ', ' + unstrucResponse.country

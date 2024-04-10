@@ -9,7 +9,7 @@ function Category ({ category }) {
   return (
     <div className='p-4 border-2 rounded-xl border-brand6 bg-brand6/10'>
       <Link className='text-xl font-bold hover:underline' href={`/contratar/${category.name}`}>
-        {category.name}s
+        {category.name}
       </Link>
       <p>{category.description}</p>
     </div>
