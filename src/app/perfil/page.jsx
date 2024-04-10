@@ -2,7 +2,7 @@
 import { getUser } from '@/actions/getUser'
 import { getJobs } from '@/actions/getJobs'
 import { getOffers } from '@/actions/getOffers'
-import { getRatings } from '@/actions/getRatings'
+// import { getRatings } from '@/actions/getRatings'
 import { cookies } from 'next/headers'
 import checkUser from '@/utils/checkUser'
 import { redirect } from 'next/navigation'
@@ -30,7 +30,7 @@ export default async function UserPage () {
   // Gets published job offers by the user
   const offers = await getOffers(IdUser)
   // Gets users' average ratings
-  const ratings = await getRatings(IdUser, jobs)
+  // const ratings = await getRatings(IdUser, jobs)
 
   user.picture = user.picture ? user.picture : 'https://avatar.iran.liara.run/public/boy?username=' + user.name
 
@@ -83,9 +83,9 @@ export default async function UserPage () {
                         <div>{item.attention_hours}</div>
                         <span className='opacity-60 text-sm'>Descripción</span>
                         <div>{item.description}</div>
-                        <span className='opacity-60 text-sm'>Reseñas</span>
+                        <span className='opacity-60 text-sm'>Puntaje</span>
                         <div className='flex flex-row gap-1 content-center text-xl'>
-                          {ratings[item.category]}/5
+                          {item.score}/5
                           <StarIcon className='size-5 text-brand5' />
                         </div>
                       </li>

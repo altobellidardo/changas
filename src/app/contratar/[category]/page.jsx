@@ -17,6 +17,7 @@ export default async function JobWorkers ({ params }) {
               <div>N° de empleados: {item.employees}</div>
               <div>Horas de atención: {item.attention_hours}</div>
               <div>Descripción: {item.description}</div>
+              <div>Puntaje: {item.score}</div>
             </div>
           ))
         }
