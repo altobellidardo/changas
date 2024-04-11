@@ -93,7 +93,7 @@ export default async function UserPage ({ searchParams }) {
                   {
                     offers.map((item) => (
                       <li key={item.id_proposal} className='p-4 border-2 m-2 w-96'>
-                        <div>Buscando: {item.category}s</div>
+                        <div>Buscando: {item.category}</div>
                         <div>Presupuesto: {item.budget}</div>
                         <div>Ubicación: {item.location}</div>
                         <div>Fecha de publicación: {item.open_date.slice(0, 10)}</div>

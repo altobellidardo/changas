@@ -110,7 +110,7 @@ export default async function UserPage () {
                     offers.map((item) => (
                       <li key={item.id_proposal} className='p-4 border-2 mb-2 mx-2 rounded-md border-brand4/40'>
                         <span className='opacity-60 text-sm'>Categoría</span>
-                        <div>{item.category}s</div>
+                        <div>{item.category}</div>
                         <span className='opacity-60 text-sm'>Presupuesto</span>
                         <div>{item.budget}</div>
                         <span className='opacity-60 text-sm'>Ubicación</span>
