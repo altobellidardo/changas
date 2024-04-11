@@ -116,7 +116,7 @@ export default async function UserPage () {
                         <span className='opacity-60 text-sm'>Ubicación</span>
                         <div>{item.location}</div>
                         <span className='opacity-60 text-sm'>Fecha de publicación</span>
-                        <div>{item.open_date.slice(0, 10)}</div>
+                        <div>{formatDate(item.open_date.slice(0, 10))}</div>
                         <span className='opacity-60 text-sm'>Descripción</span>
                         <div>{item.description}</div>
                       </li>
