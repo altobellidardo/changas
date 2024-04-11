@@ -24,7 +24,11 @@ export async function POST (req) {
     const fetchProvince = response.data.results[0].region
     const fetchCountry = response.data.results[0].country
     // If the location was supposed to be complete and isn't an error is raised
+
+    console.log(fetchCity, fetchProvince, fetchCountry, ' api response')
+
     if (complete & (fetchCity === undefined || fetchCountry === undefined || fetchProvince === undefined)) {
+      console.log('error location not found')
       return NextResponse.json({ message: messages.error.location_not_found }, { status: 404 })
     }
     return NextResponse.json({

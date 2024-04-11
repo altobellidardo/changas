@@ -51,6 +51,11 @@ export async function POST (request) {
     },
     body: JSON.stringify({ city, province, country, complete: true })
   })
+
+  if (!locationResponse.ok) {
+    return NextResponse.json({ error: messages.error.location_not_found }, { status: 404 })
+  }
+
   const unstrucResponse = await locationResponse.json()
   const location = unstrucResponse.city + ', ' + unstrucResponse.province + ', ' + unstrucResponse.country
 
