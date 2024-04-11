@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import Link from 'next/link'
 
 export default function Form ({ IdChat, IdUser, IdUser2, Username2, history, UserNumber }) {
   const router = useRouter()
@@ -79,6 +80,7 @@ export default function Form ({ IdChat, IdUser, IdUser2, Username2, history, Use
         >
           Contrato
         </button>
+        <Link href={`/chats/${IdChat}/contratos`}>Contratos</Link>
       </div>
       {showContractForm && (
         <div style={{

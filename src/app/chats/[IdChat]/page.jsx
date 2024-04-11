@@ -18,6 +18,7 @@ export default async function Chathomepage ({ params }) {
   if ((data.id_user1 !== IdUser) & (data.id_user2 !== IdUser)) {
     return redirect('/')
   }
+
   let UserNumber = 0
   if (data.id_user1 === IdUser) { UserNumber = 1 }
   if (data.id_user2 === IdUser) { UserNumber = 2 }
