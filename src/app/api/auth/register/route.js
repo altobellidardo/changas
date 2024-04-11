@@ -7,13 +7,52 @@ import jwt from 'jsonwebtoken'
 
 export async function POST (request) {
   const body = await request.json()
-  const { email, password, name, surname, location, phone, birth, dni } = body
+  const { email, password, name, surname, city, province, country, phone, birth, dni } = body
 
   const credentialsValidation = checkCredentials(email, password)
   if (credentialsValidation.error) {
     const { error: message, status } = credentialsValidation
     return NextResponse.json({ error: message }, { status })
   }
+
+  if (!name || !surname) {
+    return NextResponse.json(
+      { error: messages.error.name_required }, { status: 400 }
+    )
+  }
+
+  if (!city || !province || !country) {
+    return NextResponse.json(
+      { error: messages.error.location_required }, { status: 400 }
+    )
+  }
+
+  if (dni.length !== 8) {
+    return NextResponse.json(
+      { error: messages.error.dni_invalid }, { status: 400 }
+    )
+  }
+
+  if (!birth) {
+    return NextResponse.json(
+      { error: messages.error.birth_required }, { status: 400 }
+    )
+  }
+
+  // get base url from request
+  const url = new URL(request.url)
+  const BASE_URL = url.origin
+
+  // Validate and return accurate location
+  const locationResponse = await fetch(BASE_URL + '/api/geo/get-location', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ city, province, country, complete: true })
+  })
+  const unstrucResponse = await locationResponse.json()
+  const location = unstrucResponse.city + ', ' + unstrucResponse.province + ', ' + unstrucResponse.country
 
   // check if user already exists
   const { data: user } = await supabase.from('users').select('*').eq('email', email).single()
@@ -36,7 +75,7 @@ export async function POST (request) {
 
   const userData = { id_user: newUserCreated.id_user, email, name, surname, location, phone: phone.toString(), birth, dni }
   const { error: dataFail } = await supabase.from('users_data').insert(userData)
-  console.log(dataFail, userData)
+
   if (dataFail) {
     return NextResponse.json({ error: messages.error.error })
   }

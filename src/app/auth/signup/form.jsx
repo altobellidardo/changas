@@ -22,18 +22,7 @@ function UploadUser () {
     const birth = formData.get('birth')
     const dni = formData.get('dni')
 
-    // Validate and return accurate location
-    const locationResponse = await fetch('/api/geo/get-location', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ city, province, country, complete: true })
-    })
-    const unstrucResponse = await locationResponse.json()
-    const location = unstrucResponse.city + ', ' + unstrucResponse.province + ', ' + unstrucResponse.country
-
-    const sendData = { email, password, name, surname, location, phone, birth, dni }
+    const sendData = { email, password, name, surname, city, province, country, phone, birth, dni }
 
     setLoading(true)
     setError(null)

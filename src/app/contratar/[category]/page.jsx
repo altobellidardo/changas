@@ -1,6 +1,7 @@
 import { getWorkers } from '@/actions/getWorkers'
 import Footer from '@/components/footer'
 import Header from '@/components/header/header'
+import Link from 'next/link'
 
 function Worker ({ worker }) {
   return (
@@ -17,20 +18,28 @@ function Worker ({ worker }) {
 }
 
 export default async function JobWorkers ({ params }) {
-  const { category } = params
+  let { category } = params
   const workers = await getWorkers(category)
+
+  // clean %20 in string
+  category = category.replace(/%20/g, ' ')
 
   return (
     <main className='min-h-screen flex flex-col justify-between'>
       <Header />
       <section className='pt-10 max-w-[80vw] mx-auto my-10'>
-        <h1 className='text-3xl font-bold'>Contratar </h1>
+        <Link href='/contratar' className='text-brand6 hover:underline'>Atrás</Link>
+        <h1 className='text-3xl font-bold'>Contratar {category}</h1>
 
         <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
           {
-            workers.map((item) => (
-              <Worker worker={item} key={item.id_worker} />
-            ))
+            workers.length === 0
+              ? (
+                <div>No hay {category} disponible</div>
+                )
+              : workers.map((item) => (
+                <Worker worker={item} key={item.id_worker} />
+              ))
           }
         </div>
       </section>

@@ -12,7 +12,11 @@ const messages = {
     token_required: 'El token es requerido',
     existing_job: 'Usted ya cargo está experiencia laboral',
     location_not_found: 'Ocurrió un error al intentar encontrar la ubicación',
-    fail_subscription: 'La suscripción al canal fallo, los mensajes no se actualizarán'
+    fail_subscription: 'La suscripción al canal fallo, los mensajes no se actualizarán',
+    name_required: 'El nombre y el apellido es requerido',
+    location_required: 'La ubicación es requerida',
+    dni_invalid: 'El dni debe tener 8 digitos',
+    birth_required: 'La fecha de nacimiento es requerida'
   },
   success: {
     user_created: 'El usuario ha sido creado',
