@@ -15,10 +15,25 @@ function UploadUser () {
     const password = formData.get('password')
     const name = formData.get('name')
     const surname = formData.get('surname')
-    const location = formData.get('location')
+    const country = formData.get('country')
+    const province = formData.get('province')
+    const city = formData.get('city')
     const phone = formData.get('phone')
     const birth = formData.get('birth')
     const dni = formData.get('dni')
+
+    // Validate and return accurate location
+    const locationResponse = await fetch('/api/geo/get-location', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ city, province, country, complete: true })
+    })
+    const unstrucResponse = await locationResponse.json()
+    const location = unstrucResponse.city + ', ' + unstrucResponse.province + ', ' + unstrucResponse.country
+
+    const sendData = { email, password, name, surname, location, phone, birth, dni }
 
     setLoading(true)
     setError(null)
@@ -28,7 +43,7 @@ function UploadUser () {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ email, password, name, surname, location, phone, birth, dni })
+      body: JSON.stringify(sendData)
     })
     const data = await response.json()
 
@@ -62,8 +77,12 @@ function UploadUser () {
         <input id='name' className='border-2 p-2 rounded' type='text' name='name' />
         <label htmlFor='surname'>Apellido</label>
         <input id='surname' className='border-2 p-2 rounded' type='text' name='surname' />
-        <label htmlFor='location'>Ubicación</label>
-        <input id='location' className='border-2 p-2 rounded' type='text' name='location' />
+        <label htmlFor='country'>País</label>
+        <input id='country' className='border-2 p-2 rounded' type='country' name='country' />
+        <label htmlFor='province'>Provincia</label>
+        <input id='province' className='border-2 p-2 rounded' type='province' name='province' />
+        <label htmlFor='city'>Ciudad</label>
+        <input id='city' className='border-2 p-2 rounded' type='city' name='city' />
         <label htmlFor='dni'>DNI (sin puntos ni comas)</label>
         <input id='dni' className='border-2 p-2 rounded' type='number' min='1' step='1' name='dni' />
         <label htmlFor='birth'>Fecha de nacimiento</label>

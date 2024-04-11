@@ -13,14 +13,27 @@ function UploadWorker ({ IdUser, categories, username }) {
     const category = formData.get('category')
     const hourlyPrice = formData.get('hourlyPrice')
     const attentionHours = formData.get('attentionHours')
-    const location = formData.get('location')
+    const country = formData.get('country')
+    const province = formData.get('province')
+    const city = formData.get('city')
     const employees = formData.get('employees')
     const description = formData.get('description')
 
-    setLoading(true)
-    setError(null)
+    // Validate and return accurate location
+    const locationResponse = await fetch('/api/geo/get-location', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ city, province, country, complete: true })
+    })
+    const unstrucResponse = await locationResponse.json()
+    const location = unstrucResponse.city + ', ' + unstrucResponse.province + ', ' + unstrucResponse.country
 
     const sendData = { category, IdUser, hourlyPrice, attentionHours, username, location, employees, description }
+
+    setLoading(true)
+    setError(null)
 
     const response = await fetch('/api/auth/upload-job', {
       method: 'POST',
@@ -56,7 +69,11 @@ function UploadWorker ({ IdUser, categories, username }) {
       <input id='hourlyPrice' className='border-2 p-2 rounded' type='hourlyPrice' name='hourlyPrice' />
       <label htmlFor='attentionHours'>Horas de atención</label>
       <input id='attentionHours' className='border-2 p-2 rounded' type='attentionHours' name='attentionHours' />
-      <label htmlFor='location'>Ubicación</label>
+      <label htmlFor='country'>País</label>
+      <input id='country' className='border-2 p-2 rounded' type='country' name='country' />
+      <label htmlFor='province'>Provincia</label>
+      <input id='province' className='border-2 p-2 rounded' type='province' name='province' />
+      <label htmlFor='city'>Ciudad</label>
       <input id='location' className='border-2 p-2 rounded' type='location' name='location' />
       <label htmlFor='employees'>Número de empleados</label>
       <input id='employees' className='border-2 p-2 rounded' type='employees' name='employees' />
