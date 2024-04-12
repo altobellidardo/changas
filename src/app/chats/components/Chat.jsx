@@ -6,7 +6,7 @@ import PusherClient from 'pusher-js'
 import Form from '../components/Form'
 import messages from '@/utils/messages'
 
-export default function ChatComponent ({ history, IdChat, IdUser, UserNumber }) {
+export default function ChatComponent ({ history, IdChat, IdUser, UserNumber, OtherUser }) {
   const [totalComments, setTotalComments] = useState(history)
   const bottomRef = useRef(null)
 
@@ -62,7 +62,7 @@ export default function ChatComponent ({ history, IdChat, IdUser, UserNumber }) 
           <div ref={bottomRef} />
         </div>
       </div>
-      <Form IdChat={IdChat} IdUser={IdUser} history={totalComments} UserNumber={UserNumber} />
+      <Form IdChat={IdChat} IdUser={IdUser} history={totalComments} UserNumber={UserNumber} OtherUser={OtherUser} />
     </div>
 
   )

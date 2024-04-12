@@ -16,7 +16,8 @@ const messages = {
     name_required: 'El nombre y el apellido es requerido',
     location_required: 'La ubicación es requerida',
     dni_invalid: 'El dni debe tener 8 digitos',
-    birth_required: 'La fecha de nacimiento es requerida'
+    birth_required: 'La fecha de nacimiento es requerida',
+    user_jobs_not_found: 'No se encontraron los trabajos del usuario solicitado'
   },
   success: {
     user_created: 'El usuario ha sido creado',
