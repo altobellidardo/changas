@@ -10,6 +10,7 @@ function Contract () {
   // Get IDs of users in the chat
   const IdUser = searchParams.get('IdUser')
   const OtherUser = searchParams.get('OtherUser')
+  const IdChat = searchParams.get('IdChat')
 
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
@@ -32,24 +33,32 @@ function Contract () {
     const description = formData.get('description')
     const payformat = formData.get('payformat')
 
-    const sendData = { userType, IdUser, OtherUser, category, jobtitle, date, budget, description, payformat }
+    const sendData = {
+      userType,
+      IdUser,
+      OtherUser,
+      category,
+      jobtitle,
+      date,
+      budget,
+      description,
+      payformat
+    }
 
     setLoading(true)
     setError(null)
 
-    const response = await fetch('/api/auth/upload-job', {
+    const response = await fetch('/api/postcontract', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(sendData)
     })
-    const data = await response.json()
-
     setLoading(false)
 
-    if (data.error) setError(data.error)
-    if (data.message) window.location.href = '/perfil'
+    if (response.error) setError(response.error)
+    if (response.status === 200) window.location.href = `/chats/${IdChat}`
   }
 
   useEffect(() => {
@@ -119,7 +128,7 @@ function Contract () {
       <label htmlFor='description'>Descripción del trabajo</label>
       <input id='description' className='border-2 p-2 rounded' type='description' name='description' />
       <label htmlFor='budget'>Presupuesto</label>
-      <input id='budget' className='border-2 p-2 rounded' type='budget' name='budget' />
+      <input id='budget' className='border-2 p-2 rounded' type='number' step='1' min='1' name='budget' />
       <label htmlFor='date'>Fecha del trabajo</label>
       <input id='date' className='border-2 p-2 rounded' type='date' name='date' min={new Date().toISOString().split('T')[0]} />
       <p>Medio de pago</p>
