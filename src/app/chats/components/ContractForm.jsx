@@ -48,7 +48,7 @@ function ContractForm () {
     setLoading(true)
     setError(null)
 
-    const response = await fetch('/api/postcontract', {
+    const response = await fetch('/api/forms/post-contract', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

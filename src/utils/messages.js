@@ -18,7 +18,8 @@ const messages = {
     dni_invalid: 'El dni debe tener 8 digitos',
     birth_required: 'La fecha de nacimiento es requerida',
     user_jobs_not_found: 'No se encontraron los trabajos del usuario solicitado',
-    pending_contract: 'Usted tiene contratos sin cerrar con el otro usuario, cierrelos antes de crear otro'
+    pending_contract: 'Usted tiene contratos sin cerrar con el otro usuario, cierrelos antes de crear otro',
+    existing_review: 'Usted ya reseñó este trabajo'
   },
   success: {
     user_created: 'El usuario ha sido creado',
@@ -30,7 +31,8 @@ const messages = {
     job_uploaded: 'La experiencia laboral fue cargada con éxito',
     location_found: 'La ubicación ingresada fue hallada',
     chat_created: 'El chat fue creado con éxito',
-    message_sent: 'El mensaje fue enviado con éxito'
+    message_sent: 'El mensaje fue enviado con éxito',
+    review_uploaded: 'La reseña fue subida satisfactoriamente'
   }
 }
 

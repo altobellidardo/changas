@@ -33,7 +33,7 @@ function UploadOffert ({ IdUser, categories }) {
     setLoading(true)
     setError(null)
 
-    const response = await fetch('/api/auth/upload-offer', {
+    const response = await fetch('/api/forms/upload-offer', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

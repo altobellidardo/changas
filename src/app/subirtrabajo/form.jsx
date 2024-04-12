@@ -35,7 +35,7 @@ function UploadWorker ({ IdUser, categories, username }) {
     setLoading(true)
     setError(null)
 
-    const response = await fetch('/api/auth/upload-job', {
+    const response = await fetch('/api/forms/upload-job', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

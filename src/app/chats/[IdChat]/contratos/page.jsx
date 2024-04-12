@@ -3,7 +3,7 @@ import Header from '@/components/header/header'
 import { getContractsUsers } from '@/actions/getContractsUsers'
 import Link from 'next/link'
 
-function Contract ({ contract }) {
+function Contract ({ contract, IdUser }) {
   return (
     <div className='p-4 border-2 border-brand5/50 rounded-md m-2 w-96'>
       <div>Título del contrato: {contract.title}</div>
@@ -13,6 +13,11 @@ function Contract ({ contract }) {
       <div>Fecha del trabajo: {new Date(contract.date).toISOString().split('T')[0]}</div>
       <div>Cerrado: {contract.closed === true ? 'True' : 'False'}</div>
       <div>Pago por changas: {contract.changas_pay === true ? 'True' : 'False'}</div>
+      {
+        IdUser === contract.id_contractor
+          ? <Link href={{ pathname: '/criticar/', query: { ReviewerId: IdUser, ReviewedId: contract.id_worker, ContractId: contract.id_contract, Category: contract.category } }} className='text-brand6 hover:underline'>Reseñar</Link>
+          : null
+      }
     </div>
   )
 }
@@ -36,7 +41,7 @@ async function ContractPage ({ searchParams }) {
                 <div>No hay contratos registrados</div>
                 )
               : contracts.map((item) => (
-                <Contract contract={item} key={item.id_contract} />
+                <Contract contract={item} IdUser={IdUser} key={item.id_contract} />
               ))
           }
         </div>
