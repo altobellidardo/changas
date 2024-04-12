@@ -58,6 +58,7 @@ export default function Form ({ IdChat, IdUser, OtherUser, Username2, history, U
           Enviar
         </button>
         <Link href={{ pathname: `/chats/${IdChat}/nuevocontrato`, query: { IdUser, OtherUser, IdChat } }} className='bg-teal-500 hover:bg-teal-600 text-white py-2 px-4 rounded-full'>Crear contrato</Link>
+        <Link href={{ pathname: `/chats/${IdChat}/contratos`, query: { IdUser, OtherUser, IdChat } }} className='bg-teal-500 hover:bg-teal-600 text-white py-2 px-4 rounded-full'>Contratos</Link>
       </div>
     </form>
   )

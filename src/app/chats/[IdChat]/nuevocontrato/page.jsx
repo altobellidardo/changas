@@ -1,9 +1,9 @@
-import Contract from '../../components/Contract'
+import ContractForm from '../../components/ContractForm'
 
-function ContractPage () {
+function ContractFormPage () {
   return (
-    <Contract />
+    <ContractForm />
   )
 }
 
-export default ContractPage
+export default ContractFormPage

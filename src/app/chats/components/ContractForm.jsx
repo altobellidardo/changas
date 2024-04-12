@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import UpIcon from '@/components/icons/UpIcon'
 
-function Contract () {
+function ContractForm () {
   const searchParams = useSearchParams()
   // Get IDs of users in the chat
   const IdUser = searchParams.get('IdUser')
@@ -147,4 +147,4 @@ function Contract () {
   )
 }
 
-export default Contract
+export default ContractForm
