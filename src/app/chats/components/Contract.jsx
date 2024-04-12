@@ -3,6 +3,7 @@
 
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
+import UpIcon from '@/components/icons/UpIcon'
 
 function Contract () {
   const searchParams = useSearchParams()
@@ -90,16 +91,29 @@ function Contract () {
         />
         <label className='ml-2' htmlFor='contractor'>Solicito</label>
       </div>
-      <label htmlFor='category' className='border-2 p-2 rounded'>Elige el tipo de trabajo:</label>
-      <select name='category' id='category'>
-        {
-          categories.map((item) => (
-            <option value={item.category} key={item.category}>
-              {item.category}
-            </option>
-          ))
-        }
-      </select>
+      {
+        categories.length === 0
+          ? (
+            <p className='flex'>
+              <UpIcon />
+              Seleccione el tipo de contrato
+            </p>
+            )
+          : (
+            <>
+              <label htmlFor='category' className='border-2 p-2 rounded'>Elige el tipo de trabajo:</label>
+              <select name='category' id='category'>
+                {
+                  categories.map((item) => (
+                    <option value={item.category} key={item.category}>
+                      {item.category}
+                    </option>
+                  ))
+                }
+              </select>
+            </>
+            )
+      }
       <label htmlFor='jobtitle'>Título del trabajo</label>
       <input id='jobtitle' className='border-2 p-2 rounded' type='jobtitle' name='jobtitle' />
       <label htmlFor='description'>Descripción del trabajo</label>
