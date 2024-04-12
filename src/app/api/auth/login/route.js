@@ -19,18 +19,23 @@ export async function POST (request) {
 
   if (!user) {
     return NextResponse.json(
-      { error: messages.error.user_not_found }, { status: 400 }
+      { error: messages.error.user_not_found },
+      { status: 400 }
     )
   }
 
   const isPasswordValid = await bcrypt.compare(password, user.password)
   if (!isPasswordValid) {
     return NextResponse.json(
-      { error: messages.error.incorrect_password }, { status: 400 }
+      { error: messages.error.incorrect_password },
+      { status: 400 }
     )
   }
 
   user.password = undefined
+
+  const { data: userData } = await supabase.from('users_data').select('name, surname').eq('id_user', user.id_user).single()
+  user.username = userData.name + ' ' + userData.surname
 
   const token = jwt.sign(user, process.env.JWT_SECRET)
   const response = NextResponse.json({ message: messages.success.user_logged }, { status: 201 })
