@@ -56,9 +56,10 @@ function Contract () {
       body: JSON.stringify(sendData)
     })
     setLoading(false)
+    const data = await response.json()
 
-    if (response.error) setError(response.error)
-    if (response.status === 200) window.location.href = `/chats/${IdChat}`
+    if (data.error) setError(data.error)
+    if (data.status === 200) window.location.href = `/chats/${IdChat}`
   }
 
   useEffect(() => {
