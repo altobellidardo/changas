@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 
 function Contract () {
@@ -15,24 +16,8 @@ function Contract () {
   const [categories, setCategories] = useState([])
 
   const handleUserTypeChange = (event) => {
-    setUserType(event.target.value)
-    // Fetch jobs based on user type
-    fetchJobs(userType)
-  }
-
-  const fetchJobs = async (userType) => {
-    let sendData
-    if (userType === 'worker') { sendData = IdUser }
-    if (userType === 'contractor') { sendData = OtherUser }
-    const response = await fetch(`/api/get-jobs?id_user=${sendData}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    console.log(response)
-    const { categories } = response.categories
-    setCategories(categories)
+    const elementId = event.target.id
+    setUserType(elementId)
   }
 
   const handleSubmit = async (event) => {
@@ -62,14 +47,31 @@ function Contract () {
 
     setLoading(false)
 
-    if (data.error) {
-      setError(data.error)
+    if (data.error) setError(data.error)
+    if (data.message) window.location.href = '/perfil'
+  }
+
+  useEffect(() => {
+    const fetchJobs = async () => {
+      if (userType === null) return { categories: [] }
+
+      let sendData = userType === 'worker' ? OtherUser : IdUser
+      if (userType === 'worker') { sendData = IdUser }
+      if (userType === 'contractor') { sendData = OtherUser }
+
+      const response = await fetch(`/api/getjobs?id_user=${sendData}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        cache: 'no-store'
+      })
+      const { categories } = await response.json()
+      setCategories(categories)
     }
 
-    if (data.message) {
-      window.location.href = '/perfil'
-    }
-  }
+    fetchJobs()
+  }, [userType])
 
   return (
     <form onSubmit={handleSubmit} className='flex flex-col gap-2 w-96 p-6'>
@@ -92,7 +94,9 @@ function Contract () {
       <select name='category' id='category'>
         {
           categories.map((item) => (
-            <option value={item.name} key={item.name}>{item.name}</option>
+            <option value={item.category} key={item.category}>
+              {item.category}
+            </option>
           ))
         }
       </select>
