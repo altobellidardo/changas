@@ -17,7 +17,8 @@ const messages = {
     location_required: 'La ubicación es requerida',
     dni_invalid: 'El dni debe tener 8 digitos',
     birth_required: 'La fecha de nacimiento es requerida',
-    user_jobs_not_found: 'No se encontraron los trabajos del usuario solicitado'
+    user_jobs_not_found: 'No se encontraron los trabajos del usuario solicitado',
+    pending_contract: 'Usted tiene contratos sin cerrar con el otro usuario, cierrelos antes de crear otro'
   },
   success: {
     user_created: 'El usuario ha sido creado',
