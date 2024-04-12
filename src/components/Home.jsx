@@ -4,11 +4,12 @@ import { getUser } from '@/actions/getUser'
 
 function Card ({ info }) {
   return (
-    <div className='border-2 border-brand5 bg-brand5/20 rounded-xl px-4 py-4 text-center'>
-      <Link href={info.link} className='font-semibold underline-offset-2 hover:underline'>
-        {info.name}
-      </Link>
-    </div>
+    <Link
+      href={info.link}
+      className='font-semibold underline-offset-2 hover:underline border-2 border-brand5 bg-brand5/20 rounded-xl px-4 py-4 text-center'
+    >
+      {info.name}
+    </Link>
   )
 }
 
