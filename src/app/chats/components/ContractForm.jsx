@@ -5,8 +5,7 @@ import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import UpIcon from '@/components/icons/UpIcon'
 
-function ContractForm (ContractId) {
-  if (ContractId) { console.log('Hicimos algo de contraoferta porque recibimos un ID') }
+function ContractForm () {
   const searchParams = useSearchParams()
   // Get IDs of users in the chat
   const IdUser = searchParams.get('IdUser')
@@ -71,7 +70,7 @@ function ContractForm (ContractId) {
       if (userType === 'worker') { sendData = IdUser }
       if (userType === 'contractor') { sendData = OtherUser }
 
-      const response = await fetch(`/api/getjobs?id_user=${sendData}`, {
+      const response = await fetch(`/api/get-jobs?id_user=${sendData}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'

@@ -12,12 +12,12 @@ function Contract ({ contract, IdUser, IdChat }) {
       if (contract.score) {
         return <div>Puntaje de reseña: {contract.score}</div>
       } else if (!isWorker) {
-        return <Link href={{ pathname: '/criticar/', query: { ReviewerId: IdUser, ReviewedId: contract.id_worker, ContractId: contract.id_contract, Category: contract.category } }} className='text-brand6 hover:underline'>Reseñar</Link>
+        return <Link href={{ pathname: '/criticar/', query: { ReviewerId: IdUser, ReviewedId: contract.id_worker, IdContract: contract.id_contract, Category: contract.category } }} className='text-brand6 hover:underline'>Reseñar</Link>
       } else {
         return null
       }
     } else if (contract.closed !== true && now < new Date(contract.date) && ((contract.worker_turn && isWorker) || (!contract.worker_turn && !isWorker))) {
-      return <Link href={{ pathname: `/chats/${IdChat}/contraofertar/`, query: { ContractId: contract.id_contract } }} className='text-brand6 hover:underline'>Contraofertar</Link>
+      return <Link href={{ pathname: `/chats/${IdChat}/contraofertar/`, query: { IdContract: contract.id_contract, IdUser } }} className='text-brand6 hover:underline'>Contraofertar</Link>
     }
   }
   return (

@@ -5,7 +5,7 @@ import UploadCritique from './form'
 async function UploadReview ({ searchParams }) {
   const ReviewerId = searchParams.ReviewerId
   const ReviewedId = searchParams.ReviewedId
-  const ContractId = searchParams.ContractId
+  const IdContract = searchParams.IdContract
   const Category = searchParams.Category
 
   return (
@@ -15,7 +15,7 @@ async function UploadReview ({ searchParams }) {
           <Logo />
         </Link>
       </div>
-      <UploadCritique ReviewerId={ReviewerId} ReviewedId={ReviewedId} ContractId={ContractId} Category={Category} />
+      <UploadCritique ReviewerId={ReviewerId} ReviewedId={ReviewedId} IdContract={IdContract} Category={Category} />
     </main>
   )
 }

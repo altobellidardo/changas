@@ -1,9 +1,8 @@
-import ContractForm from '../../components/ContractForm'
+import CounterDealForm from '../../components/CounterDealForm'
 
-function CounterOfferPage ({ searchParams }) {
-  const ContractId = searchParams.ContractId
+function CounterOfferPage () {
   return (
-    <ContractForm ContractId={ContractId} />
+    <CounterDealForm />
   )
 }
 

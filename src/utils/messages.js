@@ -19,7 +19,10 @@ const messages = {
     birth_required: 'La fecha de nacimiento es requerida',
     user_jobs_not_found: 'No se encontraron los trabajos del usuario solicitado',
     pending_contract: 'Usted tiene contratos sin cerrar con el otro usuario, cierrelos antes de crear otro',
-    existing_review: 'Usted ya reseñó este trabajo'
+    existing_review: 'Usted ya reseñó este trabajo',
+    contract_not_found: 'El contrato que intentó buscar no fue hallado',
+    counterdeal_error: 'Ocurrió un error al intentar hacer la contraoferta',
+    not_user_turn: 'No es tu turno de contraofertar'
   },
   success: {
     user_created: 'El usuario ha sido creado',

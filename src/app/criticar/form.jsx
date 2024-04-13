@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-function UploadCritique ({ ReviewerId, ReviewedId, ContractId, Category }) {
+function UploadCritique ({ ReviewerId, ReviewedId, IdContract, Category }) {
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
 
@@ -13,7 +13,7 @@ function UploadCritique ({ ReviewerId, ReviewedId, ContractId, Category }) {
     const description = formData.get('reviewdesc')
     const score = formData.get('score')
 
-    const sendData = { id_contract: ContractId, id_reviewer_user: ReviewerId, id_reviewed_user: ReviewedId, category: Category, description, score }
+    const sendData = { id_contract: IdContract, id_reviewer_user: ReviewerId, id_reviewed_user: ReviewedId, category: Category, description, score }
 
     setLoading(true)
     setError(null)
