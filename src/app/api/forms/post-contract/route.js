@@ -25,7 +25,8 @@ export async function POST (req) {
     description,
     category,
     changas_pay: payformat === 'changas',
-    closed: false
+    closed: false,
+    worker_turn: userType !== 'worker'
   }
   const { count } = await supabase.from('contracts').select('*', { count: 'exact', head: true })
     .or(`and(id_worker.eq.${IdUser}, id_contractor.eq.${OtherUser}), and(id_worker.eq.${OtherUser}, id_contractor.eq.${IdUser})`)
