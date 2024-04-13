@@ -1,25 +1,22 @@
 'use client'
 
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+
+// Function to close the contract (accept it)
+const closeContract = async (IdContract, IdUser, IdWorker, IdContractor, workerTurn) => {
+  const sendData = { IdContract, IdUser, IdWorker, IdContractor, workerTurn }
+  await fetch('/api/contract-handlers/close-contract', {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(sendData)
+  })
+  // Once the contract is accepted the page is reloaded
+  window.location.reload()
+}
 
 function Contract ({ contract, IdUser, IdChat }) {
-  const router = useRouter()
-
-  // Function to close the contract (accept it)
-  const closeContract = async (IdContract, IdUser, IdWorker, IdContractor, workerTurn) => {
-    const sendData = { IdContract, IdUser, IdWorker, IdContractor, workerTurn }
-    await fetch('/api/contract-handlers/close-contract', {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(sendData)
-    })
-    // Once the contract is accepted the page is reloaded
-    router.reload()
-  }
-
   // Function to reject the contract (delete it)
   const rejectContract = async () => {
     // Implement your logic to reject the contract here

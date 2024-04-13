@@ -1,10 +1,8 @@
-import dynamic from 'next/dynamic'
 import Footer from '@/components/footer'
 import Header from '@/components/header/header'
 import { getContractsUsers } from '@/actions/getContractsUsers'
 import Link from 'next/link'
-
-const Contract = dynamic(() => import('../../components/Contract'))
+import Contract from '../../components/Contract'
 
 async function ContractPage ({ searchParams }) {
   const IdUser = searchParams.IdUser
