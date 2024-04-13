@@ -4,6 +4,21 @@ import { getContractsUsers } from '@/actions/getContractsUsers'
 import Link from 'next/link'
 
 function Contract ({ contract, IdUser }) {
+  // Define whether to show or not the Review link to the user
+  const ReviewOrLink = ({ contract, IdUser }) => {
+    const now = new Date().setHours(0, 0, 0, 0)
+    if (contract.closed === true && now >= new Date(contract.date)) {
+      if (contract.score) {
+        return <div>Puntaje de reseña: {contract.score}</div>
+      } else if (IdUser === contract.id_contractor) {
+        return <Link href={{ pathname: '/criticar/', query: { ReviewerId: IdUser, ReviewedId: contract.id_worker, ContractId: contract.id_contract, Category: contract.category } }} className='text-brand6 hover:underline'>Reseñar</Link>
+      } else {
+        return null
+      }
+    } else {
+      return null
+    }
+  }
   return (
     <div className='p-4 border-2 border-brand5/50 rounded-md m-2 w-96'>
       <div>Título del contrato: {contract.title}</div>
@@ -13,11 +28,7 @@ function Contract ({ contract, IdUser }) {
       <div>Fecha del trabajo: {new Date(contract.date).toISOString().split('T')[0]}</div>
       <div>Cerrado: {contract.closed === true ? 'True' : 'False'}</div>
       <div>Pago por changas: {contract.changas_pay === true ? 'True' : 'False'}</div>
-      {
-        IdUser === contract.id_contractor
-          ? <Link href={{ pathname: '/criticar/', query: { ReviewerId: IdUser, ReviewedId: contract.id_worker, ContractId: contract.id_contract, Category: contract.category } }} className='text-brand6 hover:underline'>Reseñar</Link>
-          : null
-      }
+      <ReviewOrLink contract={contract} IdUser={IdUser} />
     </div>
   )
 }

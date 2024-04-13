@@ -13,6 +13,7 @@ export async function POST (request) {
   // Publish review
   const { error } = await supabase.from('reviews').insert(newReview)
   if (error) {
+    console.log(error)
     return NextResponse.json({ error: messages.error.error })
   }
 
