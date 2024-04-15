@@ -17,6 +17,13 @@ function ContractForm () {
   const [userType, setUserType] = useState(null)
   const [categories, setCategories] = useState([])
 
+  // Get today's date in correct format
+  let today = new Date()
+  const dd = String(today.getDate()).padStart(2, '0')
+  const mm = String(today.getMonth() + 1).padStart(2, '0')
+  const yyyy = today.getFullYear()
+  today = yyyy + '-' + mm + '-' + dd
+
   const handleUserTypeChange = (event) => {
     const elementId = event.target.id
     setUserType(elementId)
@@ -131,7 +138,7 @@ function ContractForm () {
       <label htmlFor='budget'>Presupuesto</label>
       <input id='budget' className='border-2 p-2 rounded' type='number' step='1' min='1' name='budget' />
       <label htmlFor='date'>Fecha del trabajo</label>
-      <input id='date' className='border-2 p-2 rounded' type='date' name='date' min={new Date().toISOString().split('T')[0]} />
+      <input id='date' className='border-2 p-2 rounded' type='date' name='date' min={today} />
       <p>Medio de pago</p>
       <div className='flex items-center'>
         <input type='radio' id='changas' name='payformat' value='changas' className='form-radio h-5 w-5 text-blue-600' />

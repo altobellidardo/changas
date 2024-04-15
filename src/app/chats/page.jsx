@@ -4,17 +4,11 @@ import { cookies } from 'next/headers'
 import checkUser from '@/utils/checkUser'
 import Header from '@/components/header/header'
 import Footer from '@/components/footer'
-
-const convertDate = (date) => {
-  const utc = new Date(date)
-  const offset = -utc.getTimezoneOffset() * 60000
-  const local = new Date(utc.getTime() + offset)
-  return local
-}
+import convertToLocal from '@/utils/convertToLocal'
 
 function ChatBox ({ info, IdUser }) {
   let lastMessageDate = new Date(info.last_message)
-  lastMessageDate = convertDate(lastMessageDate)
+  lastMessageDate = convertToLocal(lastMessageDate)
   const day = lastMessageDate.getDate()
   const month = lastMessageDate.getMonth() + 1
   const year = lastMessageDate.getFullYear()

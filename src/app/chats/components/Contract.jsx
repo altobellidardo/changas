@@ -39,7 +39,7 @@ function Contract ({ contract, IdUser, IdChat }) {
       return (
         <div>
           <Link href={{ pathname: `/chats/${IdChat}/contraofertar/`, query: { IdContract: contract.id_contract, IdUser } }} className='text-brand6 hover:underline'>Contraofertar</Link>|
-          <button onClick={closeContract(contract.id_contract, IdUser, contract.id_worker, contract.id_contractor, contract.worker_turn)} className='text-brand6 hover:underline'>Aceptar</button>|
+          <button onClick={() => closeContract(contract.id_contract, IdUser, contract.id_worker, contract.id_contractor, contract.worker_turn)} className='text-brand6 hover:underline'>Aceptar</button>|
           <button onClick={rejectContract} className='text-brand6 hover:underline'>Rechazar</button>
         </div>
       )
