@@ -19,25 +19,23 @@ function ChatBox ({ info, IdUser }) {
   return (
     <Link
       key={info.id_chat}
-      className='flex gap-2 font-semibold px-4 py-4 border-b-2 border-brand5'
+      className='block w-full px-2 py-4 font-semibold border-b-2 last:border-0 border-brand5 hover:bg-brand2/20'
       href={`/chats/${info.id_chat}`}
     >
-      <div className='size-16 rounded-full bg-brand5'>Image</div>
-      <div className='flex flex-col'>
-        <span>
-          {info.id_user1 === IdUser ? info.username_2 : info.username_1}
-        </span>
-        <span>
-          Último mensaje {lastMessageStr}
-        </span>
-      </div>
+      <div className='flex justify-between items-center max-w-[80%] mx-auto'>
+        <div className='size-16 rounded-full bg-brand5'>Image</div>
+        <div className='flex flex-col'>
+          <span>
+            {info.id_user1 === IdUser ? info.username_2 : info.username_1}
+          </span>
+          <span>
+            Último mensaje {lastMessageStr}
+          </span>
+        </div>
 
-      <div>
-        {
-          visto
-            ? 'Visto'
-            : 'No visto'
-        }
+        <div>
+          {visto ? 'Visto' : 'No visto'}
+        </div>
       </div>
     </Link>
   )
@@ -55,13 +53,16 @@ export default async function ChatsHome () {
     <main className='min-h-screen'>
       <Header />
       <section className=''>
-        <div className='bg-gray-500 px-2 py-4'>
-          <h1 className='text-3xl font-bold'>Chats</h1>
-          <div>
-            <input type='text' className='rounded-md' />
+        <div className='bg-brand5 px-20 pt-4 pb-8'>
+          <h1 className='text-5xl text-white'>Chats</h1>
+          <div className='flex justify-between gap-4'>
+            <input type='text' className='bg-brand3 text-brand8 my-2 rounded-md px-2 py-1 text-sm w-full opacity-50 focus:opacity-100 focus:outline-none' placeholder='Buscar' />
+            <button className='rounded-md px-2 py-1 text-sm hover:bg-brand3'>
+              Filtros
+            </button>
           </div>
         </div>
-        <div>
+        <div className='my-10'>
           {
             userChats.map((item) => (
               <ChatBox key={item.id_chat} info={item} IdUser={IdUser} />

@@ -17,7 +17,6 @@ export default function ChatComponent ({ history, IdChat, IdUser, UserNumber, Ot
         cluster: 'sa1',
         channelAuthorization: { endpoint: '/api/auth/pusher' }
       })
-
     const channel = pusher.subscribe(`presence-${IdChat}`)
 
     channel.bind('pusher:subscription_error', function (status) {
@@ -42,28 +41,19 @@ export default function ChatComponent ({ history, IdChat, IdUser, UserNumber, Ot
 
   return (
     <div>
-      <div className='p-6 flex-grow max-h-screen overflow-y-auto py-32'>
-        <div className='flex flex-col gap-4'>
-          {totalComments.map((item) => (
-            <div key={Math.random()}>
-
-              <div className='flex items-center'>
-                <div className='rounded-lg bg-white p-4 shadow-md self-start'>
-                  {item.message}
-                </div>
+      <div className='my-32'>
+        {totalComments.map((item) => (
+          <div key={Math.random()}>
+            <div className='flex flex-col items-center w-full'>
+              <div className={`rounded-lg p-4 mx-2 my-1 ${item.id_user === IdUser ? 'self-end border ' : 'self-start bg-brand7 text-brand8'}`}>
+                {item.message}
               </div>
-
-              <p className='font-light text-sm text-gray-600'>
-                {item.id_user === IdUser ? 'Tu' : item.id_user}
-              </p>
-
             </div>
-          ))}
-          <div ref={bottomRef} />
-        </div>
+          </div>
+        ))}
+        <div ref={bottomRef} />
       </div>
       <Form IdChat={IdChat} IdUser={IdUser} history={totalComments} UserNumber={UserNumber} OtherUser={OtherUser} />
     </div>
-
   )
 }

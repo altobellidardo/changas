@@ -28,8 +28,10 @@ export default async function Chathomepage ({ params }) {
   await seeChat(IdChat, UserNumber)
 
   return (
-    <div className='h-screen bg-gray-200 flex flex-col'>
-      <h1>Este es el chat: {IdChat}</h1>
+    <div className='flex flex-col'>
+      <div className='bg-brand5 text-brand8 px-20 py-4 fixed w-full'>
+        Chateando con {OtherUser}
+      </div>
       <ChatComponent history={data.content} IdChat={IdChat} IdUser={IdUser} UserNumber={UserNumber} OtherUser={OtherUser} />
     </div>
   )
