@@ -21,7 +21,7 @@ export default async function UserPage () {
   if (!isAuthenticated) redirect('/')
 
   // Retrieve data from JWT
-  const { id_user: IdUser } = isAuthenticated
+  const { id_user: IdUser, username } = isAuthenticated
 
   // Gets main user's data
   const user = await getUser(IdUser)
@@ -29,8 +29,6 @@ export default async function UserPage () {
   const jobs = await getJobs(IdUser)
   // Gets published job offers by the user
   const offers = await getOffers(IdUser)
-  // Gets users' average ratings
-  // const ratings = await getRatings(IdUser, jobs)
 
   user.picture = user.picture ? user.picture : 'https://avatar.iran.liara.run/public/boy?username=' + user.name
 
@@ -49,10 +47,10 @@ export default async function UserPage () {
                 <PenIcon />
               </Link>
             </div>
-            <img className='rounded-full size-40' src={user.picture} alt={`${user.name} ${user.surname} picture`} />
+            <img className='rounded-full size-40' src={user.picture} alt={`${username} picture`} />
           </picture>
           <div>
-            <div className='font-bold text-xl'>{user.name} {user.surname}</div>
+            <div className='font-bold text-xl'>{username}</div>
             <div>{user.email}</div>
             <div>Teléfono: {user.phone}</div>
             <div className='flex'>

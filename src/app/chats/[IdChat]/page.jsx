@@ -21,8 +21,9 @@ export default async function Chathomepage ({ params }) {
 
   let UserNumber = 0
   let OtherUser
-  if (data.id_user1 === IdUser) { UserNumber = 1; OtherUser = data.id_user2 }
-  if (data.id_user2 === IdUser) { UserNumber = 2; OtherUser = data.id_user1 }
+  let OtherUsername
+  if (data.id_user1 === IdUser) { UserNumber = 1; OtherUser = data.id_user2; OtherUsername = data.username_2 }
+  if (data.id_user2 === IdUser) { UserNumber = 2; OtherUser = data.id_user1; OtherUsername = data.username_1 }
 
   // Change status to read
   await seeChat(IdChat, UserNumber)
@@ -30,7 +31,7 @@ export default async function Chathomepage ({ params }) {
   return (
     <div className='flex flex-col'>
       <div className='bg-brand5 text-brand8 px-20 py-4 fixed w-full'>
-        Chateando con {OtherUser}
+        Chateando con {OtherUsername}
       </div>
       <ChatComponent history={data.content} IdChat={IdChat} IdUser={IdUser} UserNumber={UserNumber} OtherUser={OtherUser} />
     </div>

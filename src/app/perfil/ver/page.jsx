@@ -55,7 +55,7 @@ export default async function UserPage ({ searchParams }) {
               <LocationIcon /> {user.location}
             </div>
             <div>{formatDate(user.birth)}</div>
-            <Link href={{ pathname: '/chats/nuevochat', query: { IdUser1: isAuthenticated.id_user, IdUser2: IdUser, Username2: username } }}>Contactar</Link>
+            <Link href={{ pathname: '/chats/nuevochat', query: { IdUser2: IdUser, Username2: username } }}>Contactar</Link>
           </div>
         </section>
 

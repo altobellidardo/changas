@@ -19,7 +19,7 @@ export default function ChatComponent ({ history, IdChat, IdUser, UserNumber, Ot
       })
     const channel = pusher.subscribe(`presence-${IdChat}`)
 
-    channel.bind('pusher:subscription_error', function (status) {
+    channel.bind('pusher:subscription_error', function () {
       alert(messages.error.fail_subscription)
     })
 

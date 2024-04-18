@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useState } from 'react'
 
-export default function Form ({ IdChat, IdUser, OtherUser, Username2, history, UserNumber }) {
+export default function Form ({ IdChat, IdUser, OtherUser, Username, Username2, history, UserNumber }) {
   const router = useRouter()
   const [enviando, setEnviando] = useState(false)
 
@@ -25,7 +25,7 @@ export default function Form ({ IdChat, IdUser, OtherUser, Username2, history, U
       const res = await fetch('/api/chats/create-chat', {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },
-        body: JSON.stringify({ message, IdUser, IdUser2: OtherUser, Username2 })
+        body: JSON.stringify({ message, IdUser, IdUser2: OtherUser, Username, Username2 })
       })
       const { newIdChat } = await res.json()
 

@@ -5,12 +5,6 @@ import UploadWorker from './form'
 import { cookies } from 'next/headers'
 import checkUser from '@/utils/checkUser'
 import { redirect } from 'next/navigation'
-import { getUser } from '@/actions/getUser'
-
-const getUsername = async (IdUser) => {
-  const user = await getUser(IdUser)
-  return user.name + ' ' + user.surname
-}
 
 async function UploadJob () {
   // Retrieve user ID from the query parameters
@@ -20,7 +14,7 @@ async function UploadJob () {
   if (!isAuthenticated) redirect('/')
 
   const IdUser = isAuthenticated.id_user
-  const username = await getUsername(IdUser)
+  const username = isAuthenticated.username
   const categories = await getCategories()
 
   return (
