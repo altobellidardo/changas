@@ -3,6 +3,8 @@ import Footer from '@/components/footer'
 import Header from '@/components/header/header'
 import Link from 'next/link'
 
+export const dynamic = 'force-dynamic'
+
 function Category ({ category }) {
   return (
     <div className='p-4 border-2 rounded-xl border-brand6 bg-brand6/10'>

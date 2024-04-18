@@ -4,6 +4,7 @@ import Header from '@/components/header/header'
 import FiltersContratar from './filters'
 
 export const fetchCache = 'force-no-store'
+export const dynamic = 'force-dynamic'
 
 async function FindWorkerPage () {
   const categories = await getCategories()

@@ -2,7 +2,6 @@
 import { getUser } from '@/actions/getUser'
 import { getJobs } from '@/actions/getJobs'
 import { getOffers } from '@/actions/getOffers'
-// import { getRatings } from '@/actions/getRatings'
 import { cookies } from 'next/headers'
 import checkUser from '@/utils/checkUser'
 import { redirect } from 'next/navigation'
@@ -14,6 +13,8 @@ import Footer from '@/components/footer'
 import PenIcon from '@/components/icons/PenIcon'
 import ShareProfile from './ShareProfile'
 import StarIcon from '@/components/icons/Star'
+
+export const dynamic = 'force-dynamic'
 
 export default async function UserPage () {
   const token = cookies().get('token')

@@ -6,6 +6,8 @@ import Header from '@/components/header/header'
 import Footer from '@/components/footer'
 import convertToLocal from '@/utils/convertToLocal'
 
+export const dynamic = 'force-dynamic'
+
 function ChatBox ({ info, IdUser }) {
   let lastMessageDate = new Date(info.last_message)
   lastMessageDate = convertToLocal(lastMessageDate)

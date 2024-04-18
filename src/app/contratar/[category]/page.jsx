@@ -3,6 +3,8 @@ import Footer from '@/components/footer'
 import Header from '@/components/header/header'
 import Link from 'next/link'
 
+export const dynamic = 'force-dynamic'
+
 function Worker ({ worker }) {
   return (
     <div className='p-4 border-2 border-brand5/50 rounded-md m-2 w-96'>

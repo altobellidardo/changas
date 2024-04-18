@@ -13,6 +13,8 @@ import Footer from '@/components/footer'
 import ShareProfile from '../ShareProfile'
 import Link from 'next/link'
 
+export const dynamic = 'force-dynamic'
+
 export default async function UserPage ({ searchParams }) {
   const token = cookies().get('token')
   const isAuthenticated = checkUser(token?.value)

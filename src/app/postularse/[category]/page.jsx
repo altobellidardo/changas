@@ -1,5 +1,7 @@
 import { getProposals } from '@/actions/getProposals'
 
+export const dynamic = 'force-dynamic'
+
 export default async function JobProposals ({ params }) {
   const { category } = params
   const proposals = await getProposals(category)

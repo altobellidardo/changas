@@ -4,6 +4,8 @@ import { getContractsUsers } from '@/actions/getContractsUsers'
 import Link from 'next/link'
 import Contract from '../../components/Contract'
 
+export const dynamic = 'force-dynamic'
+
 async function ContractPage ({ searchParams }) {
   const IdUser = searchParams.IdUser
   const OtherUser = searchParams.OtherUser
