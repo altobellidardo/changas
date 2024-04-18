@@ -23,7 +23,8 @@ const messages = {
     contract_not_found: 'El contrato que intentó buscar no fue hallado',
     counterdeal_error: 'Ocurrió un error al intentar hacer la contraoferta',
     not_user_turn: 'No es tu turno de contraofertar',
-    failed_close_contract: 'Ocurrió un error al cerrar el contrato'
+    failed_close_contract: 'Ocurrió un error al cerrar el contrato',
+    failed_reject_contract: 'Ocurrió un error al rechazar el contrato'
   },
   success: {
     user_created: 'El usuario ha sido creado',

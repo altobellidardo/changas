@@ -16,18 +16,25 @@ const closeContract = async (IdContract, IdUser, IdWorker, IdContractor, workerT
   window.location.reload()
 }
 
-function Contract ({ contract, IdUser, IdChat }) {
-  // Function to reject the contract (delete it)
-  const rejectContract = async () => {
-    // Implement your logic to reject the contract here
-    console.log('Rejecting contract...')
-  }
+// Function to reject the contract (delete it)
+const rejectContract = async (IdContract, IdUser, IdWorker, IdContractor, workerTurn) => {
+  await fetch(`/api/contract-handlers/reject-contract?workerTurn=${workerTurn}&IdUser=${IdUser}&IdWorker=${IdWorker}&IdContractor=${IdContractor}&IdContract=${IdContract}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  // Once the contract is accepted the page is reloaded
+  window.location.reload()
+}
 
+function Contract ({ contract, IdUser, IdChat }) {
   // Define whether to show or not the Review link to the user
   const DealOrLink = () => {
     const isWorker = IdUser === contract.id_worker
-    const now = new Date().setHours(0, 0, 0, 0)
-    if (contract.closed === true && now >= new Date(contract.date)) {
+    const now = (new Date()).getTime()
+    const date = (new Date(contract.date)).getTime()
+    if (contract.closed === true && now >= date) {
       if (contract.score) {
         return <div>Puntaje de reseña: {contract.score}</div>
       } else if (!isWorker) {
@@ -35,14 +42,22 @@ function Contract ({ contract, IdUser, IdChat }) {
       } else {
         return null
       }
-    } else if (contract.closed !== true && now < new Date(contract.date) && ((contract.worker_turn && isWorker) || (!contract.worker_turn && !isWorker))) {
+    } else if (contract.closed !== true && now < date && ((contract.worker_turn && isWorker) || (!contract.worker_turn && !isWorker))) {
       return (
         <div>
           <Link href={{ pathname: `/chats/${IdChat}/contraofertar/`, query: { IdContract: contract.id_contract, IdUser } }} className='text-brand6 hover:underline'>Contraofertar</Link>|
           <button onClick={() => closeContract(contract.id_contract, IdUser, contract.id_worker, contract.id_contractor, contract.worker_turn)} className='text-brand6 hover:underline'>Aceptar</button>|
-          <button onClick={rejectContract} className='text-brand6 hover:underline'>Rechazar</button>
+          <button onClick={() => rejectContract(contract.id_contract, IdUser, contract.id_worker, contract.id_contractor, contract.worker_turn)} className='text-brand6 hover:underline'>Rechazar</button>
         </div>
       )
+    } else if (contract.closed !== true && now > date && ((contract.worker_turn && isWorker) || (!contract.worker_turn && !isWorker))) {
+      return (
+        <div>
+          <button onClick={() => rejectContract(contract.id_contract, IdUser, contract.id_worker, contract.id_contractor, contract.worker_turn)} className='text-brand6 hover:underline'>Rechazar</button>
+        </div>
+      )
+    } else {
+      console.log(contract.budget)
     }
   }
   return (
