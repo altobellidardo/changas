@@ -14,9 +14,10 @@ export default async function ReviewsPage ({ searchParams }) {
   const isAuthenticated = checkUser(token?.value)
   if (!isAuthenticated) redirect('/')
   const { id_user: IdUser } = isAuthenticated
-  // Get users ratings
-  const reviews = getWorkerRatings(IdUser, category)
 
+  // Get users ratings
+  const reviews = await getWorkerRatings(IdUser, category)
+  console.log(reviews)
   return (
     <main className='flex min-h-screen flex-col bg-brand8'>
       <Header />
@@ -39,7 +40,7 @@ export default async function ReviewsPage ({ searchParams }) {
                             <StarIcon className='size-5 text-brand5' />
                           </div>
                           <span className='opacity-60 text-sm'>Fecha</span>
-                          <div>{item.date}</div>
+                          <div>{item.date.split('T')[0]}</div>
                         </li>
                       ))
                       }
