@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { LADO } from '@/app/nosotros/cardsData'
 
 function Card ({ info }) {
-  let imageStyles = 'absolute top-[30px] w-[560px]'
+  let imageStyles = 'absolute top-[30px] w-[560px] rounded-[45px]'
   let infoStyles = 'absolute bg-brand5 w-[400px] h-[370px] rounded-[45px] p-10 text-brand8'
 
   if (info.lado === LADO.DER) {

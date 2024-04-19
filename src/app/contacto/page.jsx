@@ -7,12 +7,16 @@ function ContactPage () {
   return (
     <article className='min-h-screen bg-brand8'>
       <Header />
-      <picture className='overflow-hidden'>
-        <Image src='/img/contacto/contacto.webp' alt='business photo' width='1920' height='800' className='w-full h-96 object-cover blur-[2.5px]' />
-      </picture>
+      <div className='w-full relative text-brand8'>
+        <Image src='/img/contacto/contacto.webp' alt='business photo' width='1920' height='1280' className='object-cover h-96' />
+        <div className='absolute top-0 left-0 w-full h-full bg-black/60' />
+        <section className='absolute bottom-16 left-10 text-left'>
+          <h1 className='text-5xl font-semibold mb-2'>¿Tenés alguna consulta?</h1>
+          <p className='text-xl max-w-[50vw]'>Nuestro equipo está aqui para ayudarte</p>
+        </section>
+      </div>
+
       <main className='my-20'>
-        <h1 className='text-5xl font-semibold text-brand1 text-center'>¿Tenés alguna consulta?</h1>
-        <h2 className='text-xl text-center font-semibold text-brand5'>Nuestro equipo está aqui para ayudarte</h2>
         <div className='flex gap-4 justify-center mt-20 flex-col md:flex-row w-fit mx-auto'>
           <Link className='bg-brand6 p-4 rounded-xl text-brand8 flex items-center gap-5 font-semibold text-2xl' href='mailto:mrulli@etrr.edu.ar'>
             <svg xmlns='http://www.w3.org/2000/svg' className='size-16' width='24' height='24' viewBox='0 0 24 24' fill='currentColor'><path stroke='none' d='M0 0h24v24H0z' fill='none' /><path d='M22 7.535v9.465a3 3 0 0 1 -2.824 2.995l-.176 .005h-14a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-9.465l9.445 6.297l.116 .066a1 1 0 0 0 .878 0l.116 -.066l9.445 -6.297z' /><path d='M19 4c1.08 0 2.027 .57 2.555 1.427l-9.555 6.37l-9.555 -6.37a2.999 2.999 0 0 1 2.354 -1.42l.201 -.007h14z' /></svg>
