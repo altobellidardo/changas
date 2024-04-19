@@ -24,7 +24,7 @@ function ChatBox ({ info, IdUser }) {
       className='block w-full px-2 py-8 border-b-2 last:border-0 border-brand5 hover:bg-brand2/20 group'
       href={`/chats/${info.id_chat}`}
     >
-      <div className='flex justify-between col- items-center max-w-[600px] mx-auto'>
+      <div className='flex justify-between items-center gap-2 max-w-[600px] mx-auto'>
         <div className='size-16 rounded-full bg-brand5' />
         <div className='flex flex-col'>
           <span className='font-semibold group-hover:underline'>
@@ -55,7 +55,7 @@ export default async function ChatsHome () {
     <main className='min-h-screen'>
       <Header />
       <section className=''>
-        <div className='bg-brand5 px-20 pt-4 pb-8'>
+        <div className='bg-brand5 px-4 md:px-20 pt-4 pb-8'>
           <h1 className='text-3xl text-white'>Chats</h1>
           <input
             type='text'
@@ -63,7 +63,7 @@ export default async function ChatsHome () {
             placeholder='Buscar'
           />
         </div>
-        <div className='my-10'>
+        <div className='my-4 md:my-10'>
           {
             userChats.length === 0
               ? (

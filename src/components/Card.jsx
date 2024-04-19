@@ -14,7 +14,7 @@ function Card ({ info }) {
   }
 
   return (
-    <section className='h-[450px] w-[900px] mx-auto'>
+    <section className='h-[450px] w-[900px] mx-auto my-4'>
       <article key={info.titulo} className='relative'>
         <Image className={imageStyles} src={info.imagen} alt={info.titulo} width={info.width} height={info.height} />
         <header className={infoStyles}>

@@ -47,9 +47,9 @@ export default function Form ({ IdChat, IdUser, OtherUser, Username, Username2, 
   return (
     <form
       onSubmit={handlemessage}
-      className='p-6 fixed bottom-0 left-0 w-full bg-brand5'
+      className='p-2 md:p-6 fixed bottom-0 left-0 w-full bg-brand5'
     >
-      <div className='flex gap-4'>
+      <div className='flex flex-col md:flex-row gap-2 md:gap-4'>
         <input
           type='text'
           name='message'
@@ -59,22 +59,25 @@ export default function Form ({ IdChat, IdUser, OtherUser, Username, Username2, 
         <button
           type='submit'
           disabled={enviando}
-          className='bg-brand3 hover:outline text-brand8 py-2 px-4 rounded-full disabled:opacity-50'
+          className='bg-brand3 hover:outline text-brand8 py-1 px-2 md:py-2 md:px-4 rounded-full disabled:opacity-50'
         >
           Enviar
         </button>
-        <Link
-          href={{ pathname: `/chats/${IdChat}/nuevocontrato`, query: { IdUser, OtherUser, IdChat } }}
-          className='bg-brand3 hover:outline text-white py-2 px-4 rounded-full'
-        >
-          Crear contrato
-        </Link>
-        <Link
-          href={{ pathname: `/chats/${IdChat}/contratos`, query: { IdUser, OtherUser, IdChat } }}
-          className='bg-brand3 hover:outline text-white py-2 px-4 rounded-full'
-        >
-          Contratos
-        </Link>
+
+        <div className='flex gap-2 md:block'>
+          <Link
+            href={{ pathname: `/chats/${IdChat}/nuevocontrato`, query: { IdUser, OtherUser, IdChat } }}
+            className='bg-brand3 hover:outline text-white py-2 px-4 rounded-full'
+          >
+            Crear contrato
+          </Link>
+          <Link
+            href={{ pathname: `/chats/${IdChat}/contratos`, query: { IdUser, OtherUser, IdChat } }}
+            className='bg-brand3 hover:outline text-white py-2 px-4 rounded-full'
+          >
+            Contratos
+          </Link>
+        </div>
       </div>
     </form>
   )

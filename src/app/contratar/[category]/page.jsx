@@ -7,14 +7,19 @@ export const dynamic = 'force-dynamic'
 
 function Worker ({ worker }) {
   return (
-    <div className='p-4 border-2 border-brand5/50 rounded-md m-2 w-96'>
-      <div>Nombre del trabajador: {worker.username}</div>
-      <div>Nombre del oficio: {worker.category}</div>
-      <div>Precio por hora: {worker.hourly_price}</div>
-      <div>N° de empleados: {worker.employees}</div>
-      <div>Horas de búsqueda: {worker.attention_hours}</div>
-      <div>Descripción: {worker.description}</div>
-      <div>Puntaje: {worker.score}</div>
+    <div className='p-4 border-2 rounded-xl border-brand6 bg-brand6/10 w-96'>
+      <span className='opacity-60 text-sm'>Nombre y apellido</span>
+      <div>{worker.username}</div>
+      <span className='opacity-60 text-sm'>Precio por hora</span>
+      <div>${worker.hourly_price}/h</div>
+      <span className='opacity-60 text-sm'>N° de empleados</span>
+      <div>{worker.employees}</div>
+      <span className='opacity-60 text-sm'>Horas de búsqueda</span>
+      <div>{worker.attention_hours}</div>
+      <span className='opacity-60 text-sm'>Descripción</span>
+      <div>{worker.description}</div>
+      <span className='opacity-60 text-sm'>Puntaje</span>
+      <div>{worker.score}/5</div>
     </div>
   )
 }
@@ -30,8 +35,8 @@ export default async function JobWorkers ({ params }) {
     <main className='min-h-screen flex flex-col justify-between'>
       <Header />
       <section className='pt-10 max-w-[80vw] mx-auto my-10'>
-        <Link href='/contratar' className='text-brand6 hover:underline'>Atrás</Link>
-        <h1 className='text-3xl font-bold'>Contratar {category}</h1>
+        <Link href='/contratar' className='text-brand6 hover:underline mb-2'>Atrás</Link>
+        <h1 className='text-3xl font-bold mb-4'>Contratar {category}</h1>
 
         <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
           {

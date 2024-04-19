@@ -31,12 +31,12 @@ export default async function Chathomepage ({ params }) {
 
   return (
     <div className='flex flex-col'>
-      <div className='bg-brand5 text-brand8 px-20 py-4 fixed w-full flex gap-4'>
+      <div className='bg-brand5 text-brand8 px-4 md:px-20 py-4 fixed w-full flex gap-4'>
         <Link href='/chats' className='hover:underline underline-offset-2 font-semibold'>
           Ir a chats
         </Link>
         <span>-</span>
-        <span>
+        <span className='text-sm md:text-base'>
           Chateando con {OtherUsername}
         </span>
       </div>
