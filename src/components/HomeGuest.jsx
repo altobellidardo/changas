@@ -17,7 +17,7 @@ function Home () {
         <div className='absolute top-0 left-0 w-full h-full bg-black/50' />
 
         <div className='absolute top-0 w-full max-w-[900px] h-full left-[50%] translate-x-[-50%] p-4 text-brand8 text-balance flex flex-col justify-end gap-4'>
-          <p className='text-xl md:text-3xl md:w-[80vw] font-bold text-balance'>
+          <p className='text-xl md:text-3xl md:w-[80vw] font-bold text-balance max-w-[900px]'>
             Encuentra profesionales calificados para tus proyectos o haz crecer tu negocio.
           </p>
           <div className='flex flex-col text-center gap-4 md:flex-row'>
