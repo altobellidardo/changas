@@ -4,13 +4,14 @@ import supabase from '@/libs/supabase/server'
 
 export async function POST (request) {
   const body = await request.json()
-  const { category, IdUser, hourlyPrice, attentionHours, location, employees, username, description } = body
+  const { category, IdUser, hourlyPrice, attentionHours, location, lat, lng, employees, username, description } = body
   const newWorker = {
     category,
     id_user: IdUser,
     hourly_price: hourlyPrice,
     attention_hours: attentionHours,
     location,
+    coordinates: `POINT(${lat} ${lng})`,
     employees,
     username,
     description

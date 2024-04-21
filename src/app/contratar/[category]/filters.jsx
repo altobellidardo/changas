@@ -14,14 +14,18 @@ function Filters ({ category }) {
     event.preventDefault()
     const formData = new FormData(event.target)
 
+    // The filter cannot have blank spaces due to the query requirements
     const newFilter = {
-      name: formData.get('name'),
-      hourly_price: formData.get('hourly_price'),
-      employees: formData.get('employees'),
-      score: formData.get('score')
+      name: formData.get('name') !== '' ? formData.get('name') : undefined,
+      country: formData.get('country') !== '' ? formData.get('country') : undefined,
+      province: formData.get('province') !== '' ? formData.get('province') : undefined,
+      city: formData.get('city') !== '' ? formData.get('city') : undefined,
+      hourly_price: formData.get('hourly_price') !== '' ? formData.get('hourly_price') : undefined,
+      employees: formData.get('employees') !== '' ? formData.get('employees') : undefined,
+      score: formData.get('score') !== '' ? formData.get('score') : undefined
     }
 
-    // if the filters dont change
+    // if the filters don't change
     if (Object.values(newFilter).every((value) => value === filter[name])) {
       return
     }
@@ -35,18 +39,21 @@ function Filters ({ category }) {
 
   useEffect(() => {
     setLoading(true)
-    fetch('/api/workers', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ category, filter })
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setWorkers(data.workers)
+
+    const query = `category=${category}&name=${filter.name}&country=${filter.country}&province=${filter.province}&city=${filter.city}&hourly_price=${filter.hourly_price}&score=${filter.score}&employees=${filter.employees}`
+
+    const fetchData = async () => {
+      const response = await fetch(`/api/filters/get-workers?${query}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        cache: 'no-store'
       })
-      .finally(() => setLoading(false))
+      const { workers } = await response.json() // call .json() on the response
+      setWorkers(workers)
+    }
+    fetchData().finally(() => setLoading(false))
   }, [filter])
 
   return (
@@ -99,7 +106,7 @@ function Filters ({ category }) {
       {open && (
         <form onSubmit={changeFilter} className='flex max-w-3xl flex-col gap-4 mb-4'>
           <div>
-            <span>Nombre y apellido</span>
+            <span>Nombre y apellido </span>
             <input
               type='text'
               name='name'
@@ -107,7 +114,7 @@ function Filters ({ category }) {
             />
           </div>
           <div>
-            <span>precio por hora</span>
+            <span>Precio por hora menor a </span>
             <input
               type='number'
               min='0'
@@ -116,7 +123,31 @@ function Filters ({ category }) {
             />
           </div>
           <div>
-            <span>N° de empleados</span>
+            <span>País </span>
+            <input
+              type='text'
+              name='country'
+              placeholder='Argentina'
+            />
+          </div>
+          <div>
+            <span>Provincia </span>
+            <input
+              type='text'
+              name='province'
+              placeholder='Buenos Aires'
+            />
+          </div>
+          <div>
+            <span>Ciudad </span>
+            <input
+              type='text'
+              name='city'
+              placeholder='La Plata'
+            />
+          </div>
+          <div>
+            <span>N° de empleados </span>
             <input
               type='number'
               min='0'
@@ -125,7 +156,7 @@ function Filters ({ category }) {
             />
           </div>
           <div>
-            <span>Puntaje</span>
+            <span>Puntaje </span>
             <input
               type='number'
               min='0'
