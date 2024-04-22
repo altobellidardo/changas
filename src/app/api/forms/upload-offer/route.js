@@ -4,8 +4,15 @@ import supabase from '@/libs/supabase/server'
 
 export async function POST (request) {
   const body = await request.json()
-  const { category, IdUser, budget, location, description } = body
-  const newProposal = { category, id_user: IdUser, budget, location, description }
+  const { category, IdUser, budget, location, lat, lng, description } = body
+  const newProposal = {
+    category,
+    id_user: IdUser,
+    budget,
+    location,
+    coordinates: `POINT(${lat} ${lng})`,
+    description
+  }
 
   // Publish proposal
   const { error } = await supabase.from('proposals').insert(newProposal)

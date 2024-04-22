@@ -27,8 +27,9 @@ function UploadOffert ({ IdUser, categories }) {
     })
     const unstrucResponse = await locationResponse.json()
     const location = unstrucResponse.city + ', ' + unstrucResponse.province + ', ' + unstrucResponse.country
-
-    const sendData = { category, IdUser, budget, location, description }
+    const lat = unstrucResponse.lat
+    const lng = unstrucResponse.lng
+    const sendData = { category, IdUser, budget, location, lat, lng, description }
 
     setLoading(true)
     setError(null)
