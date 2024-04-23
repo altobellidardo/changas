@@ -82,7 +82,7 @@ function Filters ({ category }) {
           : (
             <button
               onClick={() => setOpen(true)}
-              className='flex items-center gap-2'
+              className='flex items-center gap-2 mb-6'
             >
               <p>Filtrar</p>
               <svg

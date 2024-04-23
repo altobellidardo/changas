@@ -2,24 +2,9 @@
 import Footer from '@/components/footer'
 import Header from '@/components/header/header'
 import supabase from '@/libs/supabase/server'
+import JobBanner from '@/components/JobBanner'
 
 const { data: categories } = await supabase.from('categories').select('*')
-
-function JobBanner ({ info }) {
-  const { id, name, description } = info
-
-  return (
-    <div className='p-4 border-2 rounded-xl border-brand6 bg-brand6/10 flex flex-col md:flex-row'>
-      <div>
-        <h2 className='text-xl font-bold'>
-          {name}
-        </h2>
-        <p>{description}</p>
-      </div>
-      <img src={`/IconCategories/${id}.svg`} alt={name} className='size-28 mx-auto' />
-    </div>
-  )
-}
 
 function TrabajosPage () {
   return (

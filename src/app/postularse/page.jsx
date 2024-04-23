@@ -1,20 +1,9 @@
 import { getCategories } from '@/actions/getCategories'
+import JobBanner from '@/components/JobBanner'
 import Footer from '@/components/footer'
 import Header from '@/components/header/header'
-import Link from 'next/link'
 
 export const dynamic = 'force-dynamic'
-
-function Category ({ category }) {
-  return (
-    <div className='p-4 border-2 rounded-xl border-brand6 bg-brand6/10'>
-      <Link className='text-xl font-bold hover:underline' href={`/postularse/${category.name}`}>
-        {category.name}
-      </Link>
-      <p>{category.description}</p>
-    </div>
-  )
-}
 
 async function FindJobPage () {
   const categories = await getCategories()
@@ -31,7 +20,7 @@ async function FindJobPage () {
         <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
           {
             categories.map((item) => (
-              <Category key={item.name} category={item} />
+              <JobBanner key={item.name} info={item} link={`/postularse/${item.name}`} />
             ))
           }
         </div>
