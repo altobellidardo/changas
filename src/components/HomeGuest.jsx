@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import Tag from './ui/tag'
 import Image from 'next/image'
+import supabase from '@/libs/supabase/server'
+
+const { data: categories } = await supabase.from('categories').select()
 
 function Home () {
   return (
@@ -89,14 +92,10 @@ function Home () {
         <h1 className='mb-2 text-3xl lg:text-5xl font-semibold'>Únete a la Plataforma</h1>
         <p className='text-balance text-md lg:text-2xl'>Los clientes confían en nuestra plataforma para encontrar profesionales cualificados para sus proyectos. Los profesionales confían en nosotros para conectarse con clientes potenciales y hacer crecer su negocio.</p>
 
-        <div className='mx-auto mb-5 mt-12 flex w-3/4 flex-wrap items-center justify-center gap-4'>
-          <Tag nombre='Electricista' />
-          <Tag nombre='Plomero' />
-          <Tag nombre='Pintor' />
-          <Tag nombre='Servicio doméstico' />
-          <Tag nombre='Carpintero' />
-          <Tag nombre='Cerrajero' />
-          <Tag nombre='Cocinero' />
+        <div className='mx-auto mb-5 mt-12 flex flex-wrap items-center justify-center gap-4'>
+          {categories.map((item) => (
+            <Tag key={item.id} nombre={item.name} />
+          ))}
         </div>
       </section>
     </>
