@@ -33,7 +33,7 @@ function Home () {
       <section className='my-20 lg:mt-32 mx-auto w-[90vw] max-w-[900px] text-balance'>
         <h2 className='text-2xl md:text-3xl lg:text-5xl font-bold'>Contrata a los Mejores.</h2>
         <h2 className='mb-4 text-2xl md:text-3xl lg:text-5xl font-bold'>Haz el trabajo.</h2>
-        <p className='text-md lg:text-xl'>Conectando profesionales cualificados con clientes. Encuentra a la persona adecuada para tu proyecto o sé contratado por tu experiencia.</p>
+        <p className='text-md lg:text-xl'>Conectando profesionales calificados con clientes. Encuentra a la persona adecuada para tu proyecto o sé contratado por tu experiencia.</p>
       </section>
 
       <section className='bg-brand6 w-[90vw] max-w-[900px] mt-24 lg:mt-32 mx-auto rounded-[20px] relative md:flex flex-row'>
