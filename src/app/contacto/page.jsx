@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Footer from '@/components/footer'
 import Header from '@/components/header/header'
 import Image from 'next/image'
@@ -17,13 +18,13 @@ function ContactPage () {
       </div>
 
       <main className='my-20'>
-        <div className='flex gap-4 justify-center mt-20 flex-col md:flex-row w-fit mx-auto'>
+        <div className='flex gap-10 justify-center mt-20 flex-col md:flex-row w-fit mx-auto'>
           <Link className='bg-brand6 p-4 rounded-xl text-brand8 flex items-center gap-5 font-semibold text-2xl' href='mailto:team@changas.site'>
-            <svg xmlns='http://www.w3.org/2000/svg' className='size-16' width='24' height='24' viewBox='0 0 24 24' fill='currentColor'><path stroke='none' d='M0 0h24v24H0z' fill='none' /><path d='M22 7.535v9.465a3 3 0 0 1 -2.824 2.995l-.176 .005h-14a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-9.465l9.445 6.297l.116 .066a1 1 0 0 0 .878 0l.116 -.066l9.445 -6.297z' /><path d='M19 4c1.08 0 2.027 .57 2.555 1.427l-9.555 6.37l-9.555 -6.37a2.999 2.999 0 0 1 2.354 -1.42l.201 -.007h14z' /></svg>
+            <svg xmlns='http://www.w3.org/2000/svg' className='size-16' width='128' height='128' viewBox='0 0 24 24'><path fill='currentColor' d='M4 20q-.825 0-1.412-.587T2 18V6q0-.825.588-1.412T4 4h16q.825 0 1.413.588T22 6v12q0 .825-.587 1.413T20 20zm8-7l8-5V6l-8 5l-8-5v2z' /></svg>
             Enviar mail
           </Link>
           <Link className='bg-brand6 p-4 rounded-xl text-brand8 flex items-center gap-5 font-semibold text-2xl' href='/'>
-            <svg xmlns='http://www.w3.org/2000/svg' className='size-16' width='24' height='24' viewBox='0 0 24 24' fill='currentColor'><path stroke='none' d='M0 0h24v24H0z' fill='none' /><path d='M10.425 1.414a3.33 3.33 0 0 1 3.026 -.097l.19 .097l6.775 3.995l.096 .063l.092 .077l.107 .075a3.224 3.224 0 0 1 1.266 2.188l.018 .202l.005 .204v7.284c0 1.106 -.57 2.129 -1.454 2.693l-.17 .1l-6.803 4.302c-.918 .504 -2.019 .535 -3.004 .068l-.196 -.1l-6.695 -4.237a3.225 3.225 0 0 1 -1.671 -2.619l-.007 -.207v-7.285c0 -1.106 .57 -2.128 1.476 -2.705l6.95 -4.098zm1.575 13.586a1 1 0 0 0 -.993 .883l-.007 .117l.007 .127a1 1 0 0 0 1.986 0l.007 -.117l-.007 -.127a1 1 0 0 0 -.993 -.883zm1.368 -6.673a2.98 2.98 0 0 0 -3.631 .728a1 1 0 0 0 1.44 1.383l.171 -.18a.98 .98 0 0 1 1.11 -.15a1 1 0 0 1 -.34 1.886l-.232 .012a1 1 0 0 0 .111 1.994a3 3 0 0 0 1.371 -5.673z' /></svg>
+            <svg xmlns='http://www.w3.org/2000/svg' className='size-16' width='512' height='512' viewBox='0 0 512 512'><path fill='currentColor' d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z' /></svg>
             Buscar info
           </Link>
         </div>

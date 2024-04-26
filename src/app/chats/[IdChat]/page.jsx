@@ -30,14 +30,13 @@ export default async function Chathomepage ({ params }) {
   await seeChat(IdChat, UserNumber)
 
   return (
-    <div className='flex flex-col'>
-      <div className='bg-brand5 text-brand8 px-4 md:px-20 py-4 fixed w-full flex gap-4'>
+    <div className=''>
+      <div className='bg-brand5 text-brand8 px-4 md:px-20 py-4 fixed top-0 w-full flex justify-between gap-4 text-sm'>
         <Link href='/chats' className='hover:underline underline-offset-2 font-semibold'>
           Ir a chats
         </Link>
-        <span>-</span>
-        <span className='text-sm md:text-base'>
-          Chateando con {OtherUsername}
+        <span>
+          {OtherUsername}
         </span>
       </div>
       <ChatComponent history={data.content} IdChat={IdChat} IdUser={IdUser} UserNumber={UserNumber} OtherUser={OtherUser} />

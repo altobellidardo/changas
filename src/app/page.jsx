@@ -10,7 +10,7 @@ function HomePage () {
   const isAuthenticated = checkUser(token?.value)
 
   return (
-    <main className='min-h-screen bg-brand8'>
+    <main className='min-h-screen bg-brand8 flex flex-col justify-between'>
       <Header />
       {
         isAuthenticated

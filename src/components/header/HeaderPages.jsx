@@ -10,7 +10,7 @@ function HeaderPages () {
     <ul className='flex flex-col lg:flex-row lg:gap-8'>
       <li>
         <Link href='/' className={pathname === '/' ? enablePath : disablePath}>
-          Home
+          Inicio
         </Link>
       </li>
       <li>
