@@ -4,6 +4,9 @@ import Header from '@/components/header/header'
 import supabase from '@/libs/supabase/server'
 import JobBanner from '@/components/JobBanner'
 
+// update fetch to 60 minutes
+export const revalidate = 3600
+
 const { data: categories } = await supabase.from('categories').select('*')
 
 function TrabajosPage () {

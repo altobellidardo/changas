@@ -13,7 +13,7 @@ export default async function JobWorkers ({ params }) {
   return (
     <main className='min-h-screen flex flex-col justify-between'>
       <Header />
-      <section className='pt-10 max-w-[80vw] mx-auto my-10'>
+      <section className='pt-10 w-[80vw] max-w-[1200px] mx-auto my-10'>
         <Link href='/contratar' className='text-brand6 hover:underline mb-2'>Atrás</Link>
         <h1 className='text-3xl font-bold mb-4'>
           Contratar {category}
