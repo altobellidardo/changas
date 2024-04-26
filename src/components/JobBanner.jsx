@@ -12,7 +12,7 @@ function JobBanner ({ info, link }) {
           : <h2 className='text-xl font-semibold'>{name}</h2>}
         <p>{description}</p>
       </div>
-      <img src={`/IconCategories/${id}.svg`} alt={name} className='size-36' />
+      <img src={`/IconCategories/${id}.svg`} alt={name} className='size-36 md:mx-auto' />
     </div>
   )
 }
