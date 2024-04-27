@@ -2,9 +2,18 @@ import Logo from '@/components/icons/logo'
 import { getCategories } from '@/actions/getCategories'
 import Link from 'next/link'
 import UploadOffert from './form'
+import { cookies } from 'next/headers'
+import checkUser from '@/utils/checkUser'
+import { redirect } from 'next/navigation'
 
-async function UploadProposal ({ searchParams }) {
-  const IdUser = searchParams.user
+async function UploadProposal () {
+  const token = cookies().get('token')
+  const isAuthenticated = checkUser(token?.value)
+  if (!isAuthenticated) redirect('/')
+
+  // Retrieve data from JWT
+  const { id_user: IdUser, username: Username } = isAuthenticated
+
   const categories = await getCategories()
 
   return (
@@ -14,7 +23,7 @@ async function UploadProposal ({ searchParams }) {
           <Logo />
         </Link>
       </div>
-      <UploadOffert IdUser={IdUser} categories={categories} />
+      <UploadOffert IdUser={IdUser} Username={Username} categories={categories} />
     </main>
   )
 }

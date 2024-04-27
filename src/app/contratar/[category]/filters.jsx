@@ -3,8 +3,18 @@
 
 import { useEffect, useState } from 'react'
 import Worker from './Worker'
+import { cookies } from 'next/headers'
+import checkUser from '@/utils/checkUser'
+import { redirect } from 'next/navigation'
 
 function Filters ({ category }) {
+  const token = cookies().get('token')
+  const isAuthenticated = checkUser(token?.value)
+  if (!isAuthenticated) redirect('/')
+
+  // Retrieve data from JWT
+  const { id_user: IdUser } = isAuthenticated
+
   const [workers, setWorkers] = useState([])
   const [filter, setFilter] = useState({})
   const [loading, setLoading] = useState(true)
@@ -183,7 +193,7 @@ function Filters ({ category }) {
             : workers.length === 0
               ? <div>No hay {category} disponible</div>
               : workers.map((item) => (
-                <Worker worker={item} key={item.id_worker} />
+                <Worker worker={item} IdUser={IdUser} key={item.id_worker} />
               ))
         }
       </div>
