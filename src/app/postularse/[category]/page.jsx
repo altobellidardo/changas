@@ -5,6 +5,7 @@ import checkUser from '@/utils/checkUser'
 import { cookies } from 'next/headers'
 import Link from 'next/link'
 import Proposal from './Proposal'
+import { redirect } from 'next/navigation'
 
 export const dynamic = 'force-dynamic'
 
