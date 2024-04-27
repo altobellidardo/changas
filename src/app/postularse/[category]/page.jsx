@@ -22,7 +22,7 @@ function Proposal ({ info, IdUser }) {
       <div>{formatDate(info.open_date.slice(0, 10))}</div>
       <span className='opacity-60 text-sm'>Descripcion</span>
       <div>{info.description}</div>
-      {info.id_user === IdUser
+      {info.id_user !== IdUser
         ? <Link href={`/chats/nuevochat?IdUser2=${info.id_user}&Username2=${info.username}&`} className='hover:underline'>Contactar</Link>
         : undefined}
     </div>
