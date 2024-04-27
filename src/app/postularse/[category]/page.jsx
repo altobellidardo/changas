@@ -1,26 +1,10 @@
 import { getProposals } from '@/actions/getProposals'
 import Footer from '@/components/footer'
 import Header from '@/components/header/header'
-import formatDate from '@/utils/formateDate'
 import Link from 'next/link'
+import Proposal from './Proposal'
 
 export const dynamic = 'force-dynamic'
-
-function Proposal ({ info }) {
-  return (
-    <div className='p-4 border-2 rounded-xl border-brand6 bg-brand6/10 w-96'>
-      <span className='opacity-60 text-sm'>Presupuesto</span>
-      <div>{info.budget}</div>
-      <span className='opacity-60 text-sm'>Ubicacion</span>
-      <div>{info.location}</div>
-      <span className='opacity-60 text-sm'>Fecha de publicación</span>
-      <div>{formatDate(info.open_date.slice(0, 10))}</div>
-      <span className='opacity-60 text-sm'>Descripcion</span>
-      <div>{info.description}</div>
-      <Link href={`/contratar/${info.id_proposal}`} className='hover:underline'>Contratar</Link>
-    </div>
-  )
-}
 
 export default async function JobProposals ({ params }) {
   const { category } = params
@@ -34,13 +18,13 @@ export default async function JobProposals ({ params }) {
         <h1 className='text-3xl font-bold mb-4'>
           Ofertas para {category}
         </h1>
-        <>
+        <div className='grid grid-cols-1 gap-4 md:grid-cols-2 max-w-[1200px]'>
           {proposals.length === 0
             ? <div>No hay ofertas de {category} disponibles</div>
             : proposals.map((item) => (
               <Proposal key={item.id_proposal} info={item} />
             ))}
-        </>
+        </div>
       </section>
       <Footer />
     </main>

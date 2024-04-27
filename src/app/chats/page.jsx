@@ -81,7 +81,7 @@ export default async function ChatsHome () {
           }
         </div>
       </section>
-      <Footer fixed />
+      <Footer />
     </main>
   )
 }

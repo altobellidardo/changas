@@ -176,7 +176,7 @@ function Filters ({ category }) {
         </form>
       )}
 
-      <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
+      <div className='grid grid-cols-1 gap-4 md:grid-cols-2 max-w-[1200px]'>
         {
           loading
             ? <div>Cargando...</div>

@@ -1,6 +1,6 @@
 function Worker ({ worker }) {
   return (
-    <div className='p-4 border-2 rounded-xl border-brand6 bg-brand6/10 w-96'>
+    <div className='p-4 border-2 rounded-xl border-brand6 bg-brand6/10'>
       <span className='opacity-60 text-sm'>Nombre y apellido</span>
       <div>{worker.username}</div>
       <span className='opacity-60 text-sm'>Precio por hora</span>

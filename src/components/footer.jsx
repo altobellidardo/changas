@@ -1,8 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-function Footer ({ fixed }) {
+function Footer () {
   return (
-    <footer className={`bg-brand1 p-10 text-brand8 h-32 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6 ${fixed ? 'fixed bottom-0 w-screen' : ''}`}>
-      {/* <footer className='bg-brand1 p-10 text-brand8 h-32 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6 fixed bottom-0 w-screen'> */}
+    <footer className='bg-brand1 p-10 text-brand8 h-32 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6'>
       <div className='flex items-center justify-center gap-3'>
         <img src='/logo.svg' alt='logo' className='size-9' />
         <span className='font-semibold text-2xl'>Changas</span>
