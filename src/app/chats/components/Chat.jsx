@@ -4,7 +4,7 @@ import useChat from '@/hooks/useChat'
 import Form from '../components/Form'
 
 export default function ChatComponent ({ history, IdChat, IdUser, UserNumber, OtherUser }) {
-  const [totalComments, bottomRef] = useChat(history, IdChat, IdUser, UserNumber, OtherUser)
+  const [totalComments, bottomRef] = useChat(history, IdChat)
 
   return (
     <div>
