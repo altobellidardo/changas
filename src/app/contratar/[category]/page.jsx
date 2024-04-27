@@ -2,11 +2,21 @@ import Footer from '@/components/footer'
 import Header from '@/components/header/header'
 import Link from 'next/link'
 import Filters from './filters'
+import { cookies } from 'next/headers'
+import checkUser from '@/utils/checkUser'
+import { redirect } from 'next/navigation'
 
 export const dynamic = 'force-dynamic'
 
 export default async function JobWorkers ({ params }) {
   let { category } = params
+
+  const token = cookies().get('token')
+  const isAuthenticated = checkUser(token?.value)
+  if (!isAuthenticated) redirect('/')
+
+  // Retrieve data from JWT
+  const { id_user: IdUser } = isAuthenticated
 
   category = decodeURIComponent(category).replace(/%20/g, ' ')
 
@@ -19,7 +29,7 @@ export default async function JobWorkers ({ params }) {
           Contratar {category}
         </h1>
 
-        <Filters category={category} />
+        <Filters category={category} IdUser={IdUser} />
       </section>
       <Footer />
     </main>

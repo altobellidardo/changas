@@ -96,7 +96,7 @@ export default async function UserPage () {
                 </ul>
                 )
           }
-          <Link className='rounded-xl px-4 py-2 font-semibold bg-brand4 text-brand8 text-center max-w-[600px]' href={{ pathname: '/subirtrabajo', query: { user: IdUser } }}>
+          <Link className='rounded-xl px-4 py-2 font-semibold bg-brand4 text-brand8 text-center max-w-[600px]' href='/subirtrabajo'>
             Subir experiencia laboral
           </Link>
         </section>
@@ -127,7 +127,7 @@ export default async function UserPage () {
                 </ul>
                 )
           }
-          <Link className='rounded-xl px-4 py-2 font-semibold bg-brand4 text-brand8 text-center max-w-[600px]' href={{ pathname: '/subiroferta', query: { user: IdUser } }}>
+          <Link className='rounded-xl px-4 py-2 font-semibold bg-brand4 text-brand8 text-center max-w-[600px]' href='/subiroferta'>
             Subir oferta laboral
           </Link>
         </section>

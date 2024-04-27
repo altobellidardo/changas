@@ -7,8 +7,6 @@ import checkUser from '@/utils/checkUser'
 import { redirect } from 'next/navigation'
 
 async function UploadJob () {
-  // Retrieve user ID from the query parameters
-  // const IdUser = searchParams.user
   const token = cookies().get('token')
   const isAuthenticated = checkUser(token?.value)
   if (!isAuthenticated) redirect('/')

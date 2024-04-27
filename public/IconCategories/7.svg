@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1080" height="1080" viewBox="0 0 1080 1080" xml:space="preserve">
+<desc>Created with Fabric.js 5.2.4</desc>
+<defs>
+</defs>
+<g transform="matrix(1 0 0 1 540 540)" id="776726f2-fd3b-426a-b702-e54ccf3f5472"  >
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1; visibility: hidden;" vector-effect="non-scaling-stroke"  x="-540" y="-540" rx="0" ry="0" width="1080" height="1080" />
+</g>
+<g transform="matrix(1 0 0 1 540 540)" id="3ef35243-4613-4c61-8b3c-507a85e2b542"  >
+</g>
+<g transform="matrix(2.16 0 0 2.16 540 540)" id="304d9b27-a7a5-4239-9aef-07f9240cac6f"  >
+<path style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-256.22, -279.69)" d="M 128.688 115.594 L 128.688 263.344 L 413.688 263.344 L 413.688 115.594 L 128.688 115.594 z M 16.843999999999994 136.064 C 34.21799999999999 183.204 71.216 216.47699999999998 111.75 229.874 L 111.75 136.064 L 16.844 136.064 z M 431.219 148.374 L 431.219 237.031 C 452.676 227.948 474.139 211.774 495.59299999999996 189.657 C 474.073 167.095 452.96 154.484 431.21799999999996 148.377 z M 204.969 280.844 C 192.819 319.38 171.072 352.344 144.374 381.31399999999996 L 402.21799999999996 381.31199999999995 C 373.513 352.29599999999994 352.26599999999996 319.2579999999999 340.71799999999996 280.84399999999994 L 204.97 280.84399999999994 z M 101.843 400 L 101.843 443.78 L 439.40500000000003 443.78 L 439.40500000000003 400 L 101.844 400 z" stroke-linecap="round" />
+</g>
+</svg>

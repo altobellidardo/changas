@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-function UploadOffert ({ IdUser, categories }) {
+function UploadOffert ({ IdUser, Username, categories }) {
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
 
@@ -29,7 +29,7 @@ function UploadOffert ({ IdUser, categories }) {
     const location = unstrucResponse.city + ', ' + unstrucResponse.province + ', ' + unstrucResponse.country
     const lat = unstrucResponse.lat
     const lng = unstrucResponse.lng
-    const sendData = { category, IdUser, budget, location, lat, lng, description }
+    const sendData = { category, IdUser, Username, budget, location, lat, lng, description }
 
     setLoading(true)
     setError(null)

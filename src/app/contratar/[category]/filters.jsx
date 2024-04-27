@@ -4,7 +4,7 @@
 import { useEffect, useState } from 'react'
 import Worker from './Worker'
 
-function Filters ({ category }) {
+function Filters ({ category, IdUser }) {
   const [workers, setWorkers] = useState([])
   const [filter, setFilter] = useState({})
   const [loading, setLoading] = useState(true)
@@ -183,7 +183,7 @@ function Filters ({ category }) {
             : workers.length === 0
               ? <div>No hay {category} disponible</div>
               : workers.map((item) => (
-                <Worker worker={item} key={item.id_worker} />
+                <Worker worker={item} IdUser={IdUser} key={item.id_worker} />
               ))
         }
       </div>
