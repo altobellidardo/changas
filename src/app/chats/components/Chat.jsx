@@ -1,43 +1,10 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 
-import { useEffect, useState, useRef } from 'react'
-import PusherClient from 'pusher-js'
+import useChat from '@/hooks/useChat'
 import Form from '../components/Form'
-import messages from '@/utils/messages'
 
 export default function ChatComponent ({ history, IdChat, IdUser, UserNumber, OtherUser }) {
-  const [totalComments, setTotalComments] = useState(history)
-  const bottomRef = useRef(null)
-
-  useEffect(() => {
-    scrollToBottom()
-    const pusher = new PusherClient(process.env.NEXT_PUBLIC_PUSHER_KEY,
-      {
-        cluster: 'sa1',
-        channelAuthorization: { endpoint: '/api/auth/pusher' }
-      })
-    const channel = pusher.subscribe(`presence-${IdChat}`)
-
-    channel.bind('pusher:subscription_error', function () {
-      alert(messages.error.fail_subscription)
-    })
-
-    channel.bind('chat', (data) => {
-      setTotalComments((prev) =>
-        [...prev, { id_user: data.id_user, message: data.message }]
-      )
-      scrollToBottom()
-    })
-
-    return () => {
-      pusher.unsubscribe(`presence-${IdChat}`)
-    }
-  }, [])
-
-  function scrollToBottom () {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }
+  const [totalComments, bottomRef] = useChat(history, IdChat, IdUser, UserNumber, OtherUser)
 
   return (
     <div>

@@ -29,7 +29,7 @@ export default async function Chathomepage ({ params }) {
 
   return (
     <main>
-      <div className='bg-brand5 text-brand8 px-4 md:px-20 py-4 fixed top-0 w-full flex justify-between gap-4 text-sm'>
+      <div className='bg-brand5 text-brand8 px-4 md:px-20 py-4 fixed top-0 w-full flex justify-between gap-2 text-sm'>
         <Link href='/chats' className='hover:underline underline-offset-2 font-semibold'>Ir a chats</Link>
         <span>{OtherUsername}</span>
       </div>
