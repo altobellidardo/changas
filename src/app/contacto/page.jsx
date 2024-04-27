@@ -9,7 +9,7 @@ function ContactPage () {
     <article className='min-h-screen bg-brand8'>
       <Header />
       <div className='w-full relative text-brand8'>
-        <Image src='/img/contacto/contacto.webp' alt='business photo' width='1920' height='1280' className='object-cover h-96' />
+        <Image src='/img/contacto/contacto.webp' alt='business photo' width='1920' height='1280' className='object-cover h-96 w-full' priority />
         <div className='absolute top-0 left-0 w-full h-full bg-black/60' />
         <section className='absolute bottom-16 left-10 text-left'>
           <h1 className='text-5xl font-semibold mb-2'>¿Tenés alguna consulta?</h1>
