@@ -54,7 +54,7 @@ export default async function ChatsHome () {
   return (
     <main className='min-h-screen'>
       <Header />
-      <section className=''>
+      <section>
         <div className='bg-brand5 px-4 md:px-20 pt-4 pb-8'>
           <h1 className='text-3xl text-white'>Chats</h1>
           <input
@@ -81,7 +81,7 @@ export default async function ChatsHome () {
           }
         </div>
       </section>
-      <Footer />
+      <Footer fixed />
     </main>
   )
 }

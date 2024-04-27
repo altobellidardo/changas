@@ -18,16 +18,20 @@ async function Home ({ IdUser }) {
   user.picture = user.picture != null ? user.picture : 'https://avatar.iran.liara.run/public/boy?username=' + user.name
   return (
     <>
+      {/* <section className='w-[80vw] max-w-[1200px] flex flex-row mx-auto h-fit md:justify-between'>
+        <h1 className='text-3xl'>Bienvenido <br />{user.name} {user.surname}</h1>
+        <img src={user.picture} alt={user.name} className='size-36 rounded-full object-cover mt-10 border-2 border-brand1 mx-auto md:mx-0' />
+      </section> */}
       <section className='pt-20 md:pt-32 px-4'>
-        <div className='md:flex md:max-w-[50vw] md:mx-auto'>
+        <div className='md:flex md:w-[80vw] max-w-[1200px] mx-auto'>
           <h1 className='text-3xl'>Bienvenido <br />{user.name} {user.surname}</h1>
           <img src={user.picture} alt={user.name} className='size-36 rounded-full object-cover my-4 border-2 border-brand1 mx-auto' />
         </div>
       </section>
 
-      <section className='grid grid-cols-1 gap-4 md:grid-cols-2 max-w-[80vw] mx-auto my-10'>
+      <section className='grid grid-cols-1 gap-4 md:grid-cols-2 w-[80vw] max-w-[1200px] mx-auto my-10'>
         <Card info={{ name: 'Contratar', link: '/contratar' }} />
-        <Card info={{ name: 'Postularse a un trabajo', link: '/postularse' }} />
+        <Card info={{ name: 'Ofertas laborales', link: '/postularse' }} />
         <Card info={{ name: 'Ir a tu perfil', link: '/perfil' }} />
         <Card info={{ name: 'Ir a los chats', link: '/chats' }} />
       </section>

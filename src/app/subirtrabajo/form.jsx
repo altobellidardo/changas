@@ -29,8 +29,10 @@ function UploadWorker ({ IdUser, categories, username }) {
     })
     const unstrucResponse = await locationResponse.json()
     const location = unstrucResponse.city + ', ' + unstrucResponse.province + ', ' + unstrucResponse.country
+    const lat = unstrucResponse.lat
+    const lng = unstrucResponse.lng
 
-    const sendData = { category, IdUser, hourlyPrice, attentionHours, username, location, employees, description }
+    const sendData = { category, IdUser, hourlyPrice, attentionHours, username, location, lat, lng, employees, description }
 
     setLoading(true)
     setError(null)
@@ -74,7 +76,7 @@ function UploadWorker ({ IdUser, categories, username }) {
       <label htmlFor='province'>Provincia</label>
       <input id='province' className='border-2 p-2 rounded' type='province' name='province' />
       <label htmlFor='city'>Ciudad</label>
-      <input id='location' className='border-2 p-2 rounded' type='location' name='location' />
+      <input id='location' className='border-2 p-2 rounded' type='location' name='city' />
       <label htmlFor='employees'>Número de empleados</label>
       <input id='employees' className='border-2 p-2 rounded' type='employees' name='employees' />
       <label htmlFor='description'>Descripción del trabajo</label>
