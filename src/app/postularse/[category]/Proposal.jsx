@@ -5,7 +5,7 @@ function Proposal ({ info }) {
   return (
     <div className='p-4 border-2 rounded-xl border-brand6 bg-brand6/10'>
       <span className='opacity-60 text-sm'>Presupuesto</span>
-      <div>${info.budget}/h</div>
+      <div>${info.budget}</div>
       <span className='opacity-60 text-sm'>Ubicacion</span>
       <div>{info.location}</div>
       <span className='opacity-60 text-sm'>Fecha de publicación</span>
