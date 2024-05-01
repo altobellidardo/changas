@@ -8,6 +8,7 @@ export async function GET (req) {
   const query = request.nextUrl.searchParams
 
   const category = query.get('category')
+  const page = query.get('page')
   let name = query.get('name')
   const country = query.get('country')
   const province = query.get('province')
@@ -15,6 +16,13 @@ export async function GET (req) {
   let hourlyPrice = query.get('hourly_price')
   let employees = query.get('employees')
   let score = query.get('score')
+
+  // This constant limits the number of results per page
+  const RESULTS_PER_PAGE = 24
+
+  // We set an upper and lower bound of the results to be shown
+  const lowerBound = RESULTS_PER_PAGE * page
+  const upperBound = lowerBound + RESULTS_PER_PAGE - 1
 
   // If a var is undefined we just assign an acceptable value
   if (score === 'undefined') {
@@ -44,7 +52,9 @@ export async function GET (req) {
       })
       .lt('hourly_price', hourlyPrice)
       .gt('score', score)
+      .gt('employees', employees)
       .order('score', { ascending: false })
+      .range(lowerBound, upperBound)
     workers = fetch.data
     error = fetch.error
   } else {
@@ -52,7 +62,9 @@ export async function GET (req) {
       .eq('category', category)
       .lt('hourly_price', hourlyPrice)
       .gt('score', score)
+      .gt('employees', employees)
       .order('score', { ascending: false })
+      .range(lowerBound, upperBound)
     workers = fetch.data
     error = fetch.error
   }

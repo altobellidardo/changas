@@ -9,9 +9,10 @@ import { redirect } from 'next/navigation'
 
 export const dynamic = 'force-dynamic'
 
-export default async function JobProposals ({ params }) {
+export default async function JobProposals ({ params, searchParams }) {
   const { category } = params
-  const proposals = await getProposals(category)
+  const page = searchParams.page
+  const proposals = await getProposals(category, page)
 
   const token = cookies().get('token')
   const isAuthenticated = checkUser(token?.value)
@@ -35,6 +36,10 @@ export default async function JobProposals ({ params }) {
               <Proposal key={item.id_proposal} info={item} IdUser={IdUser} />
             ))}
         </div>
+      </section>
+      <section className='flex justify-center pb-4'>
+        {Number(page) > 0 ? <Link href={`/postularse/${category}?page=${Number(page) - 1}`} className='mx-2 text-4xl'>&lt;</Link> : undefined}
+        <Link href={`/postularse/${category}?page=${Number(page) + 1}`} className='mx-2 text-4xl'>&gt;</Link>
       </section>
       <Footer />
     </main>

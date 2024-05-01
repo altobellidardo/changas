@@ -9,6 +9,7 @@ function Filters ({ category, IdUser }) {
   const [filter, setFilter] = useState({})
   const [loading, setLoading] = useState(true)
   const [open, setOpen] = useState(false)
+  const [page, setPage] = useState(0)
 
   const changeFilter = (event) => {
     event.preventDefault()
@@ -40,7 +41,7 @@ function Filters ({ category, IdUser }) {
   useEffect(() => {
     setLoading(true)
 
-    const query = `category=${category}&name=${filter.name}&country=${filter.country}&province=${filter.province}&city=${filter.city}&hourly_price=${filter.hourly_price}&score=${filter.score}&employees=${filter.employees}`
+    const query = `category=${category}&name=${filter.name}&country=${filter.country}&province=${filter.province}&city=${filter.city}&hourly_price=${filter.hourly_price}&score=${filter.score}&employees=${filter.employees}&page=${page}`
 
     const fetchData = async () => {
       const response = await fetch(`/api/filters/get-workers?${query}`, {
@@ -54,7 +55,7 @@ function Filters ({ category, IdUser }) {
       setWorkers(workers)
     }
     fetchData().finally(() => setLoading(false))
-  }, [filter])
+  }, [filter, page])
 
   return (
     <>
@@ -147,7 +148,7 @@ function Filters ({ category, IdUser }) {
             />
           </div>
           <div>
-            <span>N° de empleados </span>
+            <span>N° de empleados mayor a </span>
             <input
               type='number'
               min='0'
@@ -187,6 +188,10 @@ function Filters ({ category, IdUser }) {
               ))
         }
       </div>
+      <section className='flex justify-center pb-4'>
+        {Number(page) > 0 ? <button onClick={() => setPage(Number(page) - 1)} className='mx-2 text-4xl'>&lt;</button> : undefined}
+        {workers.length === 24 ? <button onClick={() => setPage(Number(page) + 1)} className='mx-2 text-4xl'>&gt;</button> : undefined}
+      </section>
     </>
   )
 }
