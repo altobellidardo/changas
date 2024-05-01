@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import supabase from '@/libs/supabase/server'
 import messages from '@/utils/messages'
 import { getLocation } from '@/actions/getLocation'
+import { RESULTS_PER_PAGE } from '@/constants'
 
 export async function GET (req) {
   const request = new NextRequest(req)
@@ -16,9 +17,6 @@ export async function GET (req) {
   let hourlyPrice = query.get('hourly_price')
   let employees = query.get('employees')
   let score = query.get('score')
-
-  // This constant limits the number of results per page
-  const RESULTS_PER_PAGE = 24
 
   // We set an upper and lower bound of the results to be shown
   const lowerBound = RESULTS_PER_PAGE * page

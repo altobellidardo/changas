@@ -3,6 +3,7 @@
 
 import { useEffect, useState } from 'react'
 import Worker from './Worker'
+import { RESULTS_PER_PAGE } from '@/constants'
 
 function Filters ({ category, IdUser }) {
   const [workers, setWorkers] = useState([])
@@ -190,7 +191,7 @@ function Filters ({ category, IdUser }) {
       </div>
       <section className='flex justify-center pb-4'>
         {Number(page) > 0 ? <button onClick={() => setPage(Number(page) - 1)} className='mx-2 text-4xl'>&lt;</button> : undefined}
-        {workers.length === 24 ? <button onClick={() => setPage(Number(page) + 1)} className='mx-2 text-4xl'>&gt;</button> : undefined}
+        {workers.length === RESULTS_PER_PAGE ? <button onClick={() => setPage(Number(page) + 1)} className='mx-2 text-4xl'>&gt;</button> : undefined}
       </section>
     </>
   )
