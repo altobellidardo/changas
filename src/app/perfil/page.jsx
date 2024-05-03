@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { getUser } from '@/actions/getUser'
 import { getJobs } from '@/actions/getJobs'
 import { getOffers } from '@/actions/getOffers'
@@ -7,12 +6,11 @@ import checkUser from '@/utils/checkUser'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import formatDate from '@/utils/formateDate'
-import LocationIcon from '@/components/icons/LocationIcon'
 import Header from '@/components/header/header'
 import Footer from '@/components/footer'
-import PenIcon from '@/components/icons/PenIcon'
 import ShareProfile from './ShareProfile'
 import StarIcon from '@/components/icons/Star'
+import ProfileCard from '@/components/ProfileCard'
 
 export const dynamic = 'force-dynamic'
 
@@ -41,26 +39,7 @@ export default async function UserPage () {
           Tu perfil <ShareProfile IdUser={IdUser} />
         </h1>
 
-        <section className='flex flex-col md:flex-row items-center bg-brand4 text-brand8 justify-center gap-8 py-10 md:w-[80vw] mx-auto rounded-md'>
-          <picture className='relative'>
-            <div className='absolute right-0 rounded-full bg-brand3 p-2'>
-              <Link href='/auth/change-profile'>
-                <PenIcon />
-              </Link>
-            </div>
-            <img className='rounded-full size-40' src={user.picture} alt={`${username} picture`} />
-          </picture>
-          <div>
-            <div className='font-bold text-xl'>{username}</div>
-            <div>{user.email}</div>
-            <div>Teléfono: {user.phone}</div>
-            <div className='flex'>
-              <LocationIcon /> {user.location}
-            </div>
-            <div>DNI: {user.dni}</div>
-            <div>{formatDate(user.birth)}</div>
-          </div>
-        </section>
+        <ProfileCard user={user} username={username} />
 
         <section className='mt-10 flex flex-col gap-2'>
           <h2>Tus trabajos</h2>
