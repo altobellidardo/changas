@@ -18,10 +18,6 @@ async function Home ({ IdUser }) {
   user.picture = user.picture != null ? user.picture : 'https://avatar.iran.liara.run/public/boy?username=' + user.name
   return (
     <>
-      {/* <section className='w-[80vw] max-w-[1200px] flex flex-row mx-auto h-fit md:justify-between'>
-        <h1 className='text-3xl'>Bienvenido <br />{user.name} {user.surname}</h1>
-        <img src={user.picture} alt={user.name} className='size-36 rounded-full object-cover mt-10 border-2 border-brand1 mx-auto md:mx-0' />
-      </section> */}
       <section className='pt-20 md:pt-32 px-4'>
         <div className='md:flex md:w-[80vw] max-w-[1200px] mx-auto'>
           <h1 className='text-3xl'>Bienvenido <br />{user.name} {user.surname}</h1>

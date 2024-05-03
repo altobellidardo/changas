@@ -1,5 +1,4 @@
 import Image from 'next/image'
-// import { LADO } from '@/app/nosotros/cardsData'
 
 function Card ({ info }) {
   return (
