@@ -66,9 +66,11 @@ export default async function UserPage () {
                           {item.score}/5
                           <StarIcon className='size-5 text-brand5' />
                         </div>
-                        <Link className='rounded-xl px-4 py-2 font-semibold bg-brand4 text-brand8 text-center max-w-[600px]' href={{ pathname: '/perfil/vercriticas', query: { category: item.category } }}>
-                          Reseñas
-                        </Link>
+                        <div className='flex justify-start items-center'>
+                          <Link className='rounded-xl bg-brand4 text-brand8 px-4 py-2 mt-2' href={{ pathname: '/perfil/vercriticas', query: { category: item.category } }}>
+                            Reseñas
+                          </Link>
+                        </div>
                       </li>
                     ))
                     }
