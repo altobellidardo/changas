@@ -7,7 +7,11 @@ export const metadata = {
   icons: {
     icon: '/logo.svg'
   },
-  keywords: ['changas', 'contratar', 'servicio', 'proyectos', 'electricistas']
+  keywords: ['changas', 'contratar', 'servicio', 'proyectos', 'electricistas'],
+  metadataBase: new URL('https://changas.site'),
+  openGraph: {
+    images: 'opengraph-image.png'
+  }
 }
 
 export default function RootLayout ({ children }) {
