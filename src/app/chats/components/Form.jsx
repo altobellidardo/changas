@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useState } from 'react'
+import UpArrowIcon from '@/components/icons/UpArrow'
 
 export default function Form ({ IdChat, IdUser, OtherUser, Username, Username2, history, UserNumber }) {
   const router = useRouter()
@@ -65,16 +66,16 @@ export default function Form ({ IdChat, IdUser, OtherUser, Username, Username2, 
       </section>
       <form
         onSubmit={handlemessage}
-        className='p-2 md:p-6 bg-brand5 flex gap-1 fixed bottom-0 left-0 w-screen justify-center'
+        className='p-2 md:p-6 bg-brand5 flex gap-1 md:gap-4 fixed bottom-0 left-0 w-screen justify-center'
       >
         <button type='button' className='bg-brand3 hover:outline text-brand8 py-1 px-2 md:py-2 md:px-4 rounded-xl' onClick={() => setOpen(!open)}>
-          <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='icon icon-tabler icons-tabler-outline icon-tabler-arrow-up'><path stroke='none' d='M0 0h24v24H0z' fill='none' /><path d='M12 5l0 14' /><path d='M18 11l-6 -6' /><path d='M6 11l6 -6' /></svg>
+          <UpArrowIcon />
         </button>
         <input
           type='text'
           name='message'
           placeholder='escribe aquí...'
-          className='p-2 outline-brand8 rounded-xl bg-brand3 hover:outline focus:outline-2 text-brand8 w-[90%] max-w-[1200px]'
+          className='p-2 md:p-4 outline-brand8 rounded-xl bg-brand3 hover:outline focus:outline-2 text-brand8 w-[90%] max-w-[1200px]'
         />
         <button
           type='submit'

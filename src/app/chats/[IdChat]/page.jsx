@@ -5,6 +5,7 @@ import { cookies } from 'next/headers'
 import checkUser from '@/utils/checkUser'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
+import BackArrowIcon from '@/components/icons/BackArrow'
 
 export const dynamic = 'force-dynamic'
 
@@ -29,10 +30,14 @@ export default async function Chathomepage ({ params }) {
 
   return (
     <main>
-      <div className='bg-brand5 text-brand8 px-4 md:px-20 py-4 fixed top-0 w-full flex justify-between gap-2 text-sm'>
-        <Link href='/chats' className='hover:underline underline-offset-2 font-semibold'>Ir a chats</Link>
-        <span>{OtherUsername}</span>
-      </div>
+      <section className='bg-brand5 text-brand8 px-4 md:px-20 py-4 fixed top-0 w-full text-sm'>
+        <div className='max-w-[1200px] mx-auto flex justify-between items-center'>
+          <Link href='/chats' className='hover:outline p-1 rounded'>
+            <BackArrowIcon className='inline-block mr-2' />
+          </Link>
+          <span>{OtherUsername}</span>
+        </div>
+      </section>
 
       <ChatComponent history={data.content} IdChat={IdChat} IdUser={IdUser} UserNumber={UserNumber} OtherUser={OtherUser} />
     </main>
