@@ -51,6 +51,7 @@ export async function GET (req) {
       .lt('hourly_price', hourlyPrice)
       .gt('score', score)
       .gt('employees', employees)
+      .ilike('username', `%${name}%`)
       .order('score', { ascending: false })
       .range(lowerBound, upperBound)
     workers = fetch.data
@@ -61,6 +62,7 @@ export async function GET (req) {
       .lt('hourly_price', hourlyPrice)
       .gt('score', score)
       .gt('employees', employees)
+      .ilike('username', `%${name}%`)
       .order('score', { ascending: false })
       .range(lowerBound, upperBound)
     workers = fetch.data
