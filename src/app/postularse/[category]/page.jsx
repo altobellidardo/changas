@@ -1,18 +1,15 @@
-import { getProposals } from '@/actions/getProposals'
 import Footer from '@/components/footer'
 import Header from '@/components/header/header'
-import checkUser from '@/utils/checkUser'
-import { cookies } from 'next/headers'
 import Link from 'next/link'
-import Proposal from './Proposal'
+import Filters from './filters'
+import { cookies } from 'next/headers'
+import checkUser from '@/utils/checkUser'
 import { redirect } from 'next/navigation'
 
 export const dynamic = 'force-dynamic'
 
-export default async function JobProposals ({ params, searchParams }) {
-  const { category } = params
-  const page = searchParams.page
-  const proposals = await getProposals(category, page)
+export default async function JobProposals ({ params }) {
+  let { category } = params
 
   const token = cookies().get('token')
   const isAuthenticated = checkUser(token?.value)
@@ -21,25 +18,18 @@ export default async function JobProposals ({ params, searchParams }) {
   // Retrieve data from JWT
   const { id_user: IdUser } = isAuthenticated
 
+  category = decodeURIComponent(category).replace(/%20/g, ' ')
+
   return (
     <main className='min-h-screen flex flex-col justify-between'>
       <Header />
       <section className='pt-10 w-[80vw] max-w-[1200px] mx-auto my-10'>
-        <Link href='/postularse' className='text-brand6 hover:underline mb-2'>Atrás</Link>
+        <Link href='/contratar' className='text-brand6 hover:underline mb-2'>Atrás</Link>
         <h1 className='text-3xl font-bold mb-4'>
-          Ofertas para {category}
+          Encontrar trabajo de {category}
         </h1>
-        <div className='grid grid-cols-1 gap-4 md:grid-cols-2 max-w-[1200px]'>
-          {proposals.length === 0
-            ? <div>No hay ofertas de {category} disponibles</div>
-            : proposals.map((item) => (
-              <Proposal key={item.id_proposal} info={item} IdUser={IdUser} />
-            ))}
-        </div>
-      </section>
-      <section className='flex justify-center pb-4'>
-        {Number(page) > 0 ? <Link href={`/postularse/${category}?page=${Number(page) - 1}`} className='mx-2 text-4xl'>&lt;</Link> : undefined}
-        <Link href={`/postularse/${category}?page=${Number(page) + 1}`} className='mx-2 text-4xl'>&gt;</Link>
+
+        <Filters category={category} IdUser={IdUser} />
       </section>
       <Footer />
     </main>
