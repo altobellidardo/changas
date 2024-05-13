@@ -26,8 +26,8 @@ async function Home ({ IdUser }) {
       </section>
 
       <section className='grid grid-cols-1 gap-4 md:grid-cols-2 w-[80vw] max-w-[1200px] mx-auto my-10'>
-        <Card info={{ name: 'Contratar', link: '/contratar' }} />
-        <Card info={{ name: 'Ofertas laborales', link: '/postularse' }} />
+        <Card info={{ name: 'Encontrar proveedores', link: '/contratar' }} />
+        <Card info={{ name: 'Encontrar trabajo', link: '/postularse' }} />
         <Card info={{ name: 'Ir a tu perfil', link: '/perfil' }} />
         <Card info={{ name: 'Ir a los chats', link: '/chats' }} />
       </section>
