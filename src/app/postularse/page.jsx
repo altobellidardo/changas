@@ -13,7 +13,7 @@ async function FindJobPage () {
     <main className='min-h-screen flex flex-col justify-between'>
       <Header />
       <section className='pt-10 max-w-[80vw] mx-auto my-10'>
-        <h1 className='text-3xl font-bold'>Contratar </h1>
+        <h1 className='text-3xl font-bold'>Buscar trabajo </h1>
         <p className='mb-4'>
           Hay {categories.length} {categories.length === 1 ? 'oficio' : 'oficios'} disponibles
         </p>
