@@ -15,6 +15,7 @@ export async function GET (req) {
   const province = query.get('province')
   const city = query.get('city')
   let hourlyPrice = query.get('hourly_price')
+  let distance = query.get('distance') * 1000
   let employees = query.get('employees')
   let score = query.get('score')
 
@@ -35,6 +36,9 @@ export async function GET (req) {
   if (employees === 'undefined') {
     employees = 0
   }
+  if (distance === 'undefined') {
+    distance = 40000
+  }
 
   // Get the location with the corresponding server function
   const data = (await (await getLocation(city, province, country, false)).json())
@@ -45,7 +49,7 @@ export async function GET (req) {
       .rpc('get_workers_in_radius', {
         lat: data.lat,
         lng: data.lng,
-        radius: 40000.0, // This will change
+        radius: distance,
         cat: category
       })
       .lt('hourly_price', hourlyPrice)

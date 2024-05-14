@@ -24,7 +24,8 @@ function Filters ({ category, IdUser }) {
       city: formData.get('city') !== '' ? formData.get('city') : undefined,
       hourly_price: formData.get('hourly_price') !== '' ? formData.get('hourly_price') : undefined,
       employees: formData.get('employees') !== '' ? formData.get('employees') : undefined,
-      score: formData.get('score') !== '' ? formData.get('score') : undefined
+      score: formData.get('score') !== '' ? formData.get('score') : undefined,
+      distance: formData.get('distance') !== '' ? formData.get('distance') : undefined
     }
 
     // if the filters don't change
@@ -42,7 +43,7 @@ function Filters ({ category, IdUser }) {
   useEffect(() => {
     setLoading(true)
 
-    const query = `category=${category}&name=${filter.name}&country=${filter.country}&province=${filter.province}&city=${filter.city}&hourly_price=${filter.hourly_price}&score=${filter.score}&employees=${filter.employees}&page=${page}`
+    const query = `category=${category}&name=${filter.name}&country=${filter.country}&province=${filter.province}&city=${filter.city}&hourly_price=${filter.hourly_price}&score=${filter.score}&employees=${filter.employees}&distance=${filter.distance}&page=${page}`
 
     const fetchData = async () => {
       const response = await fetch(`/api/filters/get-workers?${query}`, {
@@ -146,6 +147,15 @@ function Filters ({ category, IdUser }) {
               type='text'
               name='city'
               placeholder='La Plata'
+            />
+          </div>
+          <div>
+            <span>Distancia menor a (km) </span>
+            <input
+              type='number'
+              min='0'
+              name='distance'
+              placeholder='40'
             />
           </div>
           <div>

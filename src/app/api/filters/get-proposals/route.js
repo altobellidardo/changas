@@ -13,6 +13,7 @@ export async function GET (req) {
   const country = query.get('country')
   const province = query.get('province')
   const city = query.get('city')
+  let distance = query.get('distance') * 1000
   let budget = query.get('budget')
   let openDate = query.get('openDate')
 
@@ -27,6 +28,9 @@ export async function GET (req) {
   if (openDate === 'undefined') {
     openDate = '01-01-2000'
   }
+  if (distance === 'undefined') {
+    distance = 40000
+  }
 
   // Get the location with the corresponding server function
   const data = (await (await getLocation(city, province, country, false)).json())
@@ -37,7 +41,7 @@ export async function GET (req) {
       .rpc('get_proposals_in_radius', {
         lat: data.lat,
         lng: data.lng,
-        radius: 40000.0, // This will change
+        radius: distance,
         cat: category
       })
       .gt('budget', budget)
@@ -56,7 +60,6 @@ export async function GET (req) {
     proposals = fetch.data
     error = fetch.error
   }
-  console.log(openDate)
   if (error) {
     return NextResponse.json(
       { error: messages.error.failed_worker_fetch },

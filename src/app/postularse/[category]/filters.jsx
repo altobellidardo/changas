@@ -22,7 +22,8 @@ function Filters ({ category, IdUser }) {
       province: formData.get('province') !== '' ? formData.get('province') : undefined,
       city: formData.get('city') !== '' ? formData.get('city') : undefined,
       budget: formData.get('budget') !== '' ? formData.get('budget') : undefined,
-      openDate: formData.get('openDate') !== '' ? formData.get('openDate') : undefined
+      openDate: formData.get('openDate') !== '' ? formData.get('openDate') : undefined,
+      distance: formData.get('distance') !== '' ? formData.get('distance') : undefined
     }
 
     // if the filters don't change
@@ -40,7 +41,7 @@ function Filters ({ category, IdUser }) {
   useEffect(() => {
     setLoading(true)
 
-    const query = `category=${category}&country=${filter.country}&province=${filter.province}&city=${filter.city}&budget=${filter.budget}&openDate=${filter.openDate}&page=${page}`
+    const query = `category=${category}&country=${filter.country}&province=${filter.province}&city=${filter.city}&budget=${filter.budget}&openDate=${filter.openDate}&distance=${filter.distance}&page=${page}`
 
     const fetchData = async () => {
       const response = await fetch(`/api/filters/get-proposals?${query}`, {
@@ -136,6 +137,15 @@ function Filters ({ category, IdUser }) {
               type='text'
               name='city'
               placeholder='La Plata'
+            />
+          </div>
+          <div>
+            <span>Distancia menor a (km) </span>
+            <input
+              type='number'
+              min='0'
+              name='distance'
+              placeholder='40'
             />
           </div>
           <div>
