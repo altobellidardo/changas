@@ -15,18 +15,18 @@ function ProposalCard ({ proposal }) {
     setEditMode(!editMode)
   }
 
-  const handleSubmit = async (userdata) => {
-    userdata.preventDefault()
+  const handleSubmit = async (proposaldata) => {
+    proposaldata.preventDefault()
 
     setLoading(true)
 
     const sendData = {
       IdProposal,
-      budget: userdata.target.budget.value,
-      country: userdata.target.country.value,
-      province: userdata.target.province.value,
-      city: userdata.target.city.value,
-      description: userdata.target.description.value
+      budget: proposaldata.target.budget.value,
+      country: proposaldata.target.country.value,
+      province: proposaldata.target.province.value,
+      city: proposaldata.target.city.value,
+      description: proposaldata.target.description.value
     }
     const response = await fetch('/api/update/proposal', {
       method: 'PATCH',
@@ -78,7 +78,7 @@ function ProposalCard ({ proposal }) {
               <span className='opacity-60 text-sm'>Categoría</span>
               <div>{proposal.category}</div>
               <span className='opacity-60 text-sm'>Presupuesto</span>
-              <div>{proposal.budget}</div>
+              <div>${proposal.budget}</div>
               <span className='opacity-60 text-sm'>Ubicación</span>
               <div>{proposal.location}</div>
               <span className='opacity-60 text-sm'>Fecha de publicación</span>

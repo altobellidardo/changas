@@ -16,17 +16,20 @@ function JobCard ({ job }) {
     setEditMode(!editMode)
   }
 
-  const handleSubmit = async (userdata) => {
-    userdata.preventDefault()
+  const handleSubmit = async (jobdata) => {
+    jobdata.preventDefault()
 
     setLoading(true)
 
     const sendData = {
       IdWorker,
-      hourly_price: userdata.target.hourlyPrice.value,
-      employees: userdata.target.employees.value,
-      attention_hours: userdata.target.attentionHours.value,
-      description: userdata.target.description.value
+      hourly_price: jobdata.target.hourlyPrice.value,
+      country: jobdata.target.country.value,
+      province: jobdata.target.province.value,
+      city: jobdata.target.city.value,
+      employees: jobdata.target.employees.value,
+      attention_hours: jobdata.target.attentionHours.value,
+      description: jobdata.target.description.value
     }
     const response = await fetch('/api/update/worker', {
       method: 'PATCH',
@@ -60,6 +63,12 @@ function JobCard ({ job }) {
             <form onSubmit={handleSubmit} className='grid grid-cols-2 gap-x-4 gap-y-2'>
               <label htmlFor='hourlyPrice'>Precio por hora</label>
               <input type='number' min='0' max='200000000' step='1' name='hourlyPrice' id='hourlyPrice' defaultValue={job.hourly_price} className='text-black p-1 rounded-md' />
+              <label htmlFor='country'>País</label>
+              <input type='text' name='country' id='country' defaultValue={job.location.split(',')[2]} className='text-black p-1 rounded-md' />
+              <label htmlFor='province'>Provincia</label>
+              <input type='text' name='province' id='province' defaultValue={job.location.split(',')[1]} className='text-black p-1 rounded-md' />
+              <label htmlFor='city'>Ciudad</label>
+              <input type='text' name='city' id='city' defaultValue={job.location.split(',')[0]} className='text-black p-1 rounded-md' />
               <label htmlFor='employees'>Cantidad de empleados</label>
               <input type='number' min='1' max='1000' step='1' name='employees' id='employees' defaultValue={job.employees} className='text-black p-1 rounded-md' />
               <label htmlFor='attentionHours'>Horas de atención</label>
@@ -77,6 +86,8 @@ function JobCard ({ job }) {
               <div>{job.category}</div>
               <span className='opacity-60 text-sm'>Precio por hora</span>
               <div>${job.hourly_price}</div>
+              <span className='opacity-60 text-sm'>Ubicación</span>
+              <div>{job.location}</div>
               <span className='opacity-60 text-sm'>Cantidad de empleados</span>
               <div>{job.employees}</div>
               <span className='opacity-60 text-sm'>Horas de atención</span>
