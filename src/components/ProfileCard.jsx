@@ -6,12 +6,39 @@ import formatDate from '@/utils/formateDate'
 import LocationIcon from './icons/LocationIcon'
 
 function ProfileCard ({ user }) {
+  // Get useful variables
   const username = user.name + ' ' + user.surname
+  const IdUser = user.id_user
 
   const [editMode, setEditMode] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const toggleEditMode = () => {
     setEditMode(!editMode)
+  }
+
+  const handleSubmit = async (userdata) => {
+    userdata.preventDefault()
+
+    setLoading(true)
+
+    const sendData = { IdUser, phone: userdata.target.phone.value }
+    const response = await fetch('/api/update/user-data', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(sendData)
+    })
+    const data = await response.json()
+
+    if (data.error) {
+      alert(data.error)
+    } else {
+      // If there is not any problem the page is refreshed
+      window.location.reload()
+    }
+    setLoading(false)
   }
 
   return (
@@ -25,9 +52,12 @@ function ProfileCard ({ user }) {
 
       {editMode
         ? (
-          <form className='grid grid-cols-2 gap-x-4 gap-y-2'>
+          <form onSubmit={handleSubmit} className='grid grid-cols-2 gap-x-4 gap-y-2'>
             <label htmlFor='phone'>Teléfono</label>
-            <input type='text' name='phone' id='phone' defaultValue={user.phone} className='text-black p-1 rounded-md' />
+            <input type='number' name='phone' id='phone' defaultValue={user.phone} className='text-black p-1 rounded-md' />
+            <button disabled={loading} className='rounded-xl border-2 border-brand6 bg-brand6 px-4 py-2 font-semibold text-brand8 hover:text-brand1 disabled:opacity-50' type='submit'>
+              Actualizar
+            </button>
           </form>
           )
         : (

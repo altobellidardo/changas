@@ -20,7 +20,7 @@ export default async function UserPage () {
   if (!isAuthenticated) redirect('/')
 
   // Retrieve data from JWT
-  const { id_user: IdUser, username } = isAuthenticated
+  const { id_user: IdUser } = isAuthenticated
 
   // Gets main user's data
   const user = await getUser(IdUser)
@@ -39,7 +39,7 @@ export default async function UserPage () {
           Tu perfil <ShareProfile IdUser={IdUser} />
         </h1>
 
-        <ProfileCard user={user} username={username} />
+        <ProfileCard user={user} />
 
         <section className='mt-10 flex flex-col gap-2'>
           <h2>Tus trabajos</h2>
