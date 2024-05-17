@@ -5,12 +5,12 @@ import { cookies } from 'next/headers'
 import checkUser from '@/utils/checkUser'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
-import formatDate from '@/utils/formateDate'
 import Header from '@/components/header/header'
 import Footer from '@/components/footer'
 import ShareProfile from './ShareProfile'
-import StarIcon from '@/components/icons/Star'
 import ProfileCard from '@/components/ProfileCard'
+import JobCard from '@/components/JobCard'
+import ProposalCard from '@/components/ProposalCard'
 
 export const dynamic = 'force-dynamic'
 
@@ -50,28 +50,7 @@ export default async function UserPage () {
                 <ul className='max-w-full md:max-w-[600px]'>
                   {
                     jobs.map((item) => (
-                      <li key={item.id_worker} className='p-4 border-2 mb-2 mx-2 rounded-md border-brand4/40'>
-                        <span className='opacity-60 text-sm'>Nombre del oficio</span>
-                        <div>{item.category}</div>
-                        <span className='opacity-60 text-sm'>Precio por hora</span>
-                        <div>${item.hourly_price}</div>
-                        <span className='opacity-60 text-sm'>Cantidad de empleados</span>
-                        <div>{item.employees}</div>
-                        <span className='opacity-60 text-sm'>Horas de atención</span>
-                        <div>{item.attention_hours}</div>
-                        <span className='opacity-60 text-sm'>Descripción</span>
-                        <div>{item.description}</div>
-                        <span className='opacity-60 text-sm'>Puntaje</span>
-                        <div className='flex flex-row gap-1 content-center text-xl'>
-                          {item.score}/5
-                          <StarIcon className='size-5 text-brand5' />
-                        </div>
-                        <div className='flex justify-start items-center'>
-                          <Link className='rounded-xl bg-brand4 text-brand8 px-4 py-2 mt-2' href={{ pathname: '/perfil/vercriticas', query: { category: item.category } }}>
-                            Reseñas
-                          </Link>
-                        </div>
-                      </li>
+                      <JobCard job={item} key={item.id_worker} />
                     ))
                     }
                 </ul>
@@ -91,18 +70,7 @@ export default async function UserPage () {
                 <ul className='max-w-full md:max-w-[600px]'>
                   {
                     offers.map((item) => (
-                      <li key={item.id_proposal} className='p-4 border-2 mb-2 mx-2 rounded-md border-brand4/40'>
-                        <span className='opacity-60 text-sm'>Categoría</span>
-                        <div>{item.category}</div>
-                        <span className='opacity-60 text-sm'>Presupuesto</span>
-                        <div>{item.budget}</div>
-                        <span className='opacity-60 text-sm'>Ubicación</span>
-                        <div>{item.location}</div>
-                        <span className='opacity-60 text-sm'>Fecha de publicación</span>
-                        <div>{formatDate(item.open_date.slice(0, 10))}</div>
-                        <span className='opacity-60 text-sm'>Descripción</span>
-                        <div>{item.description}</div>
-                      </li>
+                      <ProposalCard proposal={item} key={item.id_proposal} />
                     ))
                   }
                 </ul>
