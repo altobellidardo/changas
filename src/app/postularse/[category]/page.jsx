@@ -1,5 +1,5 @@
 import Footer from '@/components/footer'
-import Header from '@/components/header/header'
+import Header from '@/components/header'
 import Link from 'next/link'
 import Filters from './filters'
 import { cookies } from 'next/headers'

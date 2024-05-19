@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Footer from '@/components/footer'
-import Header from '@/components/header/header'
+import Header from '@/components/header'
 import supabase from '@/libs/supabase/server'
 import JobBanner from '@/components/JobBanner'
 

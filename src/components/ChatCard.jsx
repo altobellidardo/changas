@@ -1,7 +1,7 @@
 import convertToLocal from '@/utils/convertToLocal'
 import Link from 'next/link'
 
-function ChatBox ({ info, IdUser }) {
+function ChatCard ({ info, IdUser }) {
   let lastMessageDate = new Date(info.last_message)
   lastMessageDate = convertToLocal(lastMessageDate)
   const day = lastMessageDate.getDate()
@@ -28,12 +28,10 @@ function ChatBox ({ info, IdUser }) {
           </span>
         </div>
 
-        <div>
-          {visto ? 'Visto' : 'No visto'}
-        </div>
+        <div>{visto ? 'Visto' : 'No visto'}</div>
       </div>
     </Link>
   )
 }
 
-export default ChatBox
+export default ChatCard

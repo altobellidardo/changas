@@ -1,6 +1,6 @@
 import { getCategories } from '@/actions/getCategories'
 import Footer from '@/components/footer'
-import Header from '@/components/header/header'
+import Header from '@/components/header'
 import FiltersPostularse from './filters'
 
 export const fetchCache = 'force-no-store'

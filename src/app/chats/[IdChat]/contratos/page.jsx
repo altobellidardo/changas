@@ -1,5 +1,5 @@
 import Footer from '@/components/footer'
-import Header from '@/components/header/header'
+import Header from '@/components/header'
 import { getContractsUsers } from '@/actions/getContractsUsers'
 import Link from 'next/link'
 import Contract from '../../components/Contract'

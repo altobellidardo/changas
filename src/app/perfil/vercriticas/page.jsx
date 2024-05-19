@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers'
 import checkUser from '@/utils/checkUser'
 import { redirect } from 'next/navigation'
-import Header from '@/components/header/header'
+import Header from '@/components/header'
 import { getWorkerRatings } from '@/actions/getWorkerRatings'
 import Footer from '@/components/footer'
 import StarIcon from '@/components/icons/Star'

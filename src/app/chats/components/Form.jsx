@@ -12,15 +12,11 @@ export default function Form ({ IdChat, IdUser, OtherUser, Username, Username2, 
 
   const handlemessage = async (event) => {
     event.preventDefault()
-
     const formData = new FormData(event.target)
-
     // Retrieve data from formData
     const message = formData.get('message')
-
     // disable send button
     setEnviando(true)
-
     if (message === '') return
     // Check if IdChat is not defined to create a new chat
     if (IdChat === undefined) {
@@ -30,11 +26,9 @@ export default function Form ({ IdChat, IdUser, OtherUser, Username, Username2, 
         body: JSON.stringify({ message, IdUser, IdUser2: OtherUser, Username, Username2 })
       })
       const { newIdChat } = await res.json()
-
       // Redirect to the user's channel
       return router.push(`/chats/${newIdChat}`)
     }
-
     // Call main POST endpoint where chats are uploaded to Supabase
     await fetch('/api/chats/post-message', {
       method: 'POST',
@@ -66,21 +60,21 @@ export default function Form ({ IdChat, IdUser, OtherUser, Username, Username2, 
       </section>
       <form
         onSubmit={handlemessage}
-        className='p-2 md:p-6 bg-brand5 flex gap-1 md:gap-4 fixed bottom-0 left-0 w-screen justify-center'
+        className='p-2 bg-brand5 flex gap-1 fixed bottom-0 left-0 w-screen justify-center'
       >
-        <button type='button' className='bg-brand3 hover:outline text-brand8 py-1 px-2 md:py-2 md:px-4 rounded-xl' onClick={() => setOpen(!open)}>
+        <button type='button' className='bg-brand3 hover:outline text-brand8 py-1 px-2 rounded-xl' onClick={() => setOpen(!open)}>
           <UpArrowIcon />
         </button>
         <input
           type='text'
           name='message'
           placeholder='escribe aquí...'
-          className='p-2 md:p-4 outline-brand8 rounded-xl bg-brand3 hover:outline focus:outline-2 text-brand8 w-[90%] max-w-[1200px]'
+          className='p-2 outline-brand8 rounded-xl bg-brand3 hover:outline focus:outline-2 text-brand8 w-[90%] max-w-[1200px]'
         />
         <button
           type='submit'
           disabled={enviando}
-          className='bg-brand3 hover:outline text-brand8 py-1 px-2 md:py-2 md:px-4 rounded-xl disabled:opacity-50'
+          className='bg-brand3 hover:outline text-brand8 text-sm py-1 px-2 rounded-xl disabled:opacity-50'
         >
           Enviar
         </button>

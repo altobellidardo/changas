@@ -1,9 +1,8 @@
-import { getUserChats } from '@/actions/getUserChats'
 import { cookies } from 'next/headers'
 import checkUser from '@/utils/checkUser'
-import Header from '@/components/header/header'
+import Header from '@/components/header'
 import Footer from '@/components/footer'
-import ChatBox from './components/ChatBox'
+import ChatsList from '@/components/ChatsList'
 
 export const dynamic = 'force-dynamic'
 
@@ -11,9 +10,7 @@ export default async function ChatsHome () {
   const token = cookies().get('token')
   const isAuthenticated = checkUser(token?.value)
   // Retrieve data from JWT
-  const { id_user: IdUser } = isAuthenticated
-
-  const userChats = await getUserChats(IdUser)
+  const { id_user: idUser } = isAuthenticated
 
   return (
     <div className='flex flex-col min-h-screen'>
@@ -30,17 +27,7 @@ export default async function ChatsHome () {
         </div>
       </section>
 
-      <section className='my-4 md:my-10 flex-grow'>
-        {userChats.length === 0
-          ? (
-            <div className='flex flex-col items-center'>
-              <span className='text-black font-bold text-xl py-10'>
-                No has iniciado ninguna conversación
-              </span>
-            </div>
-            )
-          : userChats.map(item => <ChatBox key={item.id_chat} info={item} IdUser={IdUser} />)}
-      </section>
+      <ChatsList idUser={idUser} />
 
       <Footer />
     </div>
