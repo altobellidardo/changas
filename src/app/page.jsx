@@ -2,7 +2,7 @@ import HomeGuest from '@/components/HomeGuest'
 import HomeUser from '@/components/Home'
 import checkUser from '@/utils/checkUser'
 import { cookies } from 'next/headers'
-import Header from '@/components/header'
+import Header from '@/components/header/header'
 import Footer from '@/components/footer'
 
 function HomePage () {

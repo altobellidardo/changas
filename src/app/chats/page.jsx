@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers'
 import checkUser from '@/utils/checkUser'
-import Header from '@/components/header'
+import Header from '@/components/header/header'
 import Footer from '@/components/footer'
 import ChatsList from '@/components/ChatsList'
 
