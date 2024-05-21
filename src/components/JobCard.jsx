@@ -1,14 +1,78 @@
 'use client'
 
 import { useState } from 'react'
-import PenIcon from './icons/PenIcon'
 import Link from 'next/link'
 import StarIcon from '@/components/icons/Star'
+import SwitchMode from './SwitchMode'
+
+function JobInfo ({ job }) {
+  return (
+    <>
+      <div>
+        <span className='opacity-60 text-sm'>Nombre del oficio</span>
+        <p>{job.category}</p>
+      </div>
+      <div>
+        <span className='opacity-60 text-sm'>Precio por hora</span>
+        <p>${job.hourly_price}</p>
+      </div>
+      <div>
+        <span className='opacity-60 text-sm'>Ubicación</span>
+        <p>{job.location}</p>
+      </div>
+      <div>
+        <span className='opacity-60 text-sm'>Cantidad de empleados</span>
+        <p>{job.employees}</p>
+      </div>
+      <div>
+        <span className='opacity-60 text-sm'>Horas de atención</span>
+        <p>{job.attention_hours}</p>
+      </div>
+      <div>
+        <span className='opacity-60 text-sm'>Descripción</span>
+        <p>{job.description}</p>
+      </div>
+      <div>
+        <span className='opacity-60 text-sm'>Puntaje</span>
+        <div className='flex gap-1 text-xl items-center'>
+          {job.score}/5
+          <StarIcon className='size-5 text-brand5' />
+          <Link className='ml-2 rounded-xl bg-brand4 text-brand8 px-4 py-2 text-sm align-middle' href={{ pathname: '/perfil/vercriticas', query: { category: job.category } }}>
+            Ver las reseñas
+          </Link>
+        </div>
+      </div>
+    </>
+  )
+}
+
+function JobEdit ({ job, handleSubmit, loading }) {
+  return (
+    <form onSubmit={handleSubmit} className='grid grid-cols-2 gap-x-4 gap-y-2'>
+      <p>Categoria</p>
+      <p>{job.category}</p>
+      <label htmlFor='hourlyPrice'>Precio por hora</label>
+      <input type='number' min='0' max='200000000' step='1' name='hourlyPrice' id='hourlyPrice' defaultValue={job.hourly_price} className='text-black p-1 rounded-md' />
+      <label htmlFor='country'>País</label>
+      <input type='text' name='country' id='country' defaultValue={job.location.split(',')[2]} className='text-black p-1 rounded-md' />
+      <label htmlFor='province'>Provincia</label>
+      <input type='text' name='province' id='province' defaultValue={job.location.split(',')[1]} className='text-black p-1 rounded-md' />
+      <label htmlFor='city'>Ciudad</label>
+      <input type='text' name='city' id='city' defaultValue={job.location.split(',')[0]} className='text-black p-1 rounded-md' />
+      <label htmlFor='employees'>Cantidad de empleados</label>
+      <input type='number' min='1' max='1000' step='1' name='employees' id='employees' defaultValue={job.employees} className='text-black p-1 rounded-md' />
+      <label htmlFor='attentionHours'>Horas de atención</label>
+      <input type='text' name='attentionHours' id='attentionHours' defaultValue={job.attention_hours} className='text-black p-1 rounded-md' />
+      <label htmlFor='description'>Descripción</label>
+      <input type='text' name='description' id='description' defaultValue={job.description} className='text-black p-1 rounded-md' />
+      <button disabled={loading} className='rounded-xl bg-brand6 px-4 py-2 font-semibold text-brand8 hover:bg-brand2 disabled:opacity-50' type='submit'>
+        {loading ? 'Cargando...' : 'Guardar'}
+      </button>
+    </form>
+  )
+}
 
 function JobCard ({ job }) {
-  // Get useful variables
-  const IdWorker = job.id_worker
-
   const [editMode, setEditMode] = useState(false)
   const [loading, setLoading] = useState(false)
 
@@ -18,11 +82,10 @@ function JobCard ({ job }) {
 
   const handleSubmit = async (jobdata) => {
     jobdata.preventDefault()
-
     setLoading(true)
 
     const sendData = {
-      IdWorker,
+      IdWorker: job.id_worker,
       hourly_price: jobdata.target.hourlyPrice.value,
       country: jobdata.target.country.value,
       province: jobdata.target.province.value,
@@ -31,6 +94,7 @@ function JobCard ({ job }) {
       attention_hours: jobdata.target.attentionHours.value,
       description: jobdata.target.description.value
     }
+
     const response = await fetch('/api/update/worker', {
       method: 'PATCH',
       headers: {
@@ -40,74 +104,19 @@ function JobCard ({ job }) {
     })
     const data = await response.json()
 
-    if (data.error) {
-      alert(data.error)
-    } else {
-      // If there is not any problem the page is refreshed
-      window.location.reload()
-    }
+    if (data.error) alert(data.error)
+    else window.location.reload()
+
     setLoading(false)
   }
 
   return (
-    <div>
-      <picture className='relative'>
-        <button onClick={toggleEditMode} className='text-brand8 absolute right-0 bg-brand3 p-2 rounded-full hover:bg-brand5'>
-          <PenIcon />
-        </button>
-      </picture>
-
-      <div>
-        {editMode
-          ? (
-            <form onSubmit={handleSubmit} className='grid grid-cols-2 gap-x-4 gap-y-2'>
-              <label htmlFor='hourlyPrice'>Precio por hora</label>
-              <input type='number' min='0' max='200000000' step='1' name='hourlyPrice' id='hourlyPrice' defaultValue={job.hourly_price} className='text-black p-1 rounded-md' />
-              <label htmlFor='country'>País</label>
-              <input type='text' name='country' id='country' defaultValue={job.location.split(',')[2]} className='text-black p-1 rounded-md' />
-              <label htmlFor='province'>Provincia</label>
-              <input type='text' name='province' id='province' defaultValue={job.location.split(',')[1]} className='text-black p-1 rounded-md' />
-              <label htmlFor='city'>Ciudad</label>
-              <input type='text' name='city' id='city' defaultValue={job.location.split(',')[0]} className='text-black p-1 rounded-md' />
-              <label htmlFor='employees'>Cantidad de empleados</label>
-              <input type='number' min='1' max='1000' step='1' name='employees' id='employees' defaultValue={job.employees} className='text-black p-1 rounded-md' />
-              <label htmlFor='attentionHours'>Horas de atención</label>
-              <input type='text' name='attentionHours' id='attentionHours' defaultValue={job.attention_hours} className='text-black p-1 rounded-md' />
-              <label htmlFor='description'>Descripción</label>
-              <input type='text' name='description' id='description' defaultValue={job.description} className='text-black p-1 rounded-md' />
-              <button disabled={loading} className='rounded-xl border-2 border-brand6 bg-brand6 px-4 py-2 font-semibold text-brand8 hover:text-brand1 disabled:opacity-50' type='submit'>
-                Actualizar
-              </button>
-            </form>
-            )
-          : (
-            <li key={job.id_worker} className='p-4 border-2 mb-2 mx-2 rounded-md border-brand4/40'>
-              <span className='opacity-60 text-sm'>Nombre del oficio</span>
-              <div>{job.category}</div>
-              <span className='opacity-60 text-sm'>Precio por hora</span>
-              <div>${job.hourly_price}</div>
-              <span className='opacity-60 text-sm'>Ubicación</span>
-              <div>{job.location}</div>
-              <span className='opacity-60 text-sm'>Cantidad de empleados</span>
-              <div>{job.employees}</div>
-              <span className='opacity-60 text-sm'>Horas de atención</span>
-              <div>{job.attention_hours}</div>
-              <span className='opacity-60 text-sm'>Descripción</span>
-              <div>{job.description}</div>
-              <span className='opacity-60 text-sm'>Puntaje</span>
-              <div className='flex flex-row gap-1 content-center text-xl'>
-                {job.score}/5
-                <StarIcon className='size-5 text-brand5' />
-              </div>
-              <div className='flex justify-start jobs-center'>
-                <Link className='rounded-xl bg-brand4 text-brand8 px-4 py-2 mt-2' href={{ pathname: '/perfil/vercriticas', query: { category: job.category } }}>
-                  Reseñas
-                </Link>
-              </div>
-            </li>
-            )}
-      </div>
-    </div>
+    <li className='p-4 border-2 mb-2 mx-2 rounded-xl border-brand4/40 flex flex-col gap-1'>
+      <SwitchMode toggleEditMode={toggleEditMode} editMode={editMode} />
+      {editMode
+        ? <JobEdit job={job} handleSubmit={handleSubmit} loading={loading} />
+        : <JobInfo job={job} />}
+    </li>
   )
 }
 

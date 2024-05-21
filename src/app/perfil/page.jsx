@@ -1,18 +1,38 @@
 import { getUser } from '@/actions/getUser'
 import { getJobs } from '@/actions/getJobs'
 import { getOffers } from '@/actions/getOffers'
+
 import { cookies } from 'next/headers'
 import checkUser from '@/utils/checkUser'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
+
 import Header from '@/components/header/header'
 import Footer from '@/components/footer'
 import ShareProfile from './ShareProfile'
 import ProfileCard from '@/components/ProfileCard'
 import JobCard from '@/components/JobCard'
 import ProposalCard from '@/components/ProposalCard'
+import PlusIcon from '@/components/icons/PlusIcon'
 
 export const dynamic = 'force-dynamic'
+
+function NoData ({ children }) {
+  return (
+    <div className='text-red-600 bg-red-200 border-2 rounded-lg p-2 border-red-600 max-w-[600px] text-center'>
+      {children}
+    </div>
+  )
+}
+
+function UploadNew ({ children, href }) {
+  return (
+    <Link className='rounded-xl px-4 py-2 font-semibold bg-brand4 text-brand8 text-center max-w-[600px] flex gap-2 items-center justify-center' href={href}>
+      <PlusIcon className='inline size-10' />
+      {children}
+    </Link>
+  )
+}
 
 export default async function UserPage () {
   const token = cookies().get('token')
@@ -43,42 +63,33 @@ export default async function UserPage () {
 
         <section className='mt-10 flex flex-col gap-2'>
           <h2>Tus trabajos</h2>
-          {
-            jobs.length === 0
-              ? <div className='text-red-600 bg-red-200 border-2 rounded-lg p-2 border-red-600 max-w-[600px]'>No has subido trabajos</div>
-              : (
-                <ul className='max-w-full md:max-w-[600px]'>
-                  {
-                    jobs.map((item) => (
-                      <JobCard job={item} key={item.id_worker} />
-                    ))
-                    }
-                </ul>
-                )
-          }
-          <Link className='rounded-xl px-4 py-2 font-semibold bg-brand4 text-brand8 text-center max-w-[600px]' href='/subirtrabajo'>
-            Subir experiencia laboral
-          </Link>
+
+          {jobs.length === 0
+            ? <NoData>No has subido trabajos</NoData>
+            : (
+              <ul className='max-w-full md:max-w-[600px]'>
+                {jobs.map((item) => (
+                  <JobCard job={item} key={item.id_worker} />
+                ))}
+              </ul>
+              )}
+
+          <UploadNew href='/subirtrabajo'>Subir nuevo trabajo</UploadNew>
         </section>
 
         <section className='mt-10 flex flex-col gap-2'>
           <h2>Propuestas publicadas por vos</h2>
-          {
-            offers.length === 0
-              ? <div className='text-red-600 bg-red-200 border-2 rounded-lg p-2 border-red-600 max-w-[600px]'>No has publicado ofertas laborales</div>
-              : (
-                <ul className='max-w-full md:max-w-[600px]'>
-                  {
-                    offers.map((item) => (
-                      <ProposalCard proposal={item} key={item.id_proposal} />
-                    ))
-                  }
-                </ul>
-                )
-          }
-          <Link className='rounded-xl px-4 py-2 font-semibold bg-brand4 text-brand8 text-center max-w-[600px]' href='/subiroferta'>
-            Subir oferta laboral
-          </Link>
+          {offers.length === 0
+            ? <NoData>No has publicado ofertas laborales</NoData>
+            : (
+              <ul className='max-w-full md:max-w-[600px]'>
+                {offers.map((item) => (
+                  <ProposalCard proposal={item} key={item.id_proposal} />
+                ))}
+              </ul>
+              )}
+
+          <UploadNew href='/subiroferta'>Subir nueva oferta laboral</UploadNew>
         </section>
       </div>
       <Footer />

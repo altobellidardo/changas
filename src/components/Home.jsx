@@ -2,13 +2,13 @@
 import Link from 'next/link'
 import { getUser } from '@/actions/getUser'
 
-function Card ({ info }) {
+function Card ({ name, link }) {
   return (
     <Link
-      href={info.link}
+      href={link}
       className='font-semibold underline-offset-2 hover:underline hover:bg-brand5/40 border-2 border-brand5 bg-brand5/20 rounded-xl px-4 py-8 text-center'
     >
-      {info.name}
+      {name}
     </Link>
   )
 }
@@ -26,10 +26,10 @@ async function Home ({ IdUser }) {
       </section>
 
       <section className='grid grid-cols-1 gap-4 md:grid-cols-2 w-[80vw] max-w-[1200px] mx-auto my-10'>
-        <Card info={{ name: 'Encontrar proveedores', link: '/contratar' }} />
-        <Card info={{ name: 'Encontrar trabajo', link: '/postularse' }} />
-        <Card info={{ name: 'Ir a tu perfil', link: '/perfil' }} />
-        <Card info={{ name: 'Ir a los chats', link: '/chats' }} />
+        <Card name='Encontrar servicios' link='/contratar' />
+        <Card name='Encontrar trabajo' link='/postularse' />
+        <Card name='Ir a tu perfil' link='/perfil' />
+        <Card name='Ir a los chats' link='/chats' />
       </section>
     </>
   )
