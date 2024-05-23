@@ -35,7 +35,10 @@ export default async function Chathomepage ({ params }) {
           <Link href='/chats' className='hover:outline p-1 rounded'>
             <BackArrowIcon className='inline-block mr-2' />
           </Link>
-          <span>{OtherUsername}</span>
+
+          <Link href={`/perfil/${OtherUser}`} className='hover:underline'>
+            {OtherUsername}
+          </Link>
         </div>
       </section>
 
