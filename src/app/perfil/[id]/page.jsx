@@ -5,12 +5,16 @@ import Link from 'next/link'
 import { getUser } from '@/actions/getUser'
 import { getJobs } from '@/actions/getJobs'
 import { getOffers } from '@/actions/getOffers'
-import { getRatings } from '@/actions/getRatings'
+// import { getRatings } from '@/actions/getRatings'
 import Header from '@/components/header/header'
 import Footer from '@/components/footer'
 import LocationIcon from '@/components/icons/LocationIcon'
 import formatDate from '@/utils/formateDate'
 import ShareProfile from '../ShareProfile'
+
+import ProposalInfo from '@/components/ProposalInfo'
+import JobInfo from '@/components/JobInfo'
+import NoData from '@/components/ui/NoData'
 
 async function OtherProfilePage ({ params }) {
   const { id: IdUser } = params
@@ -29,7 +33,7 @@ async function OtherProfilePage ({ params }) {
   // Gets published job offers by the user
   const offers = await getOffers(IdUser)
   // Gets users' average ratings
-  const ratings = await getRatings(IdUser, jobs)
+  // const ratings = await getRatings(IdUser, jobs)
 
   user.picture = user.picture ? user.picture : 'https://avatar.iran.liara.run/public/boy?username=' + user.name
 
@@ -64,18 +68,13 @@ async function OtherProfilePage ({ params }) {
           <h2>Trabajos del usuario</h2>
           {
             jobs.length === 0
-              ? <div className='text-red-600 bg-red-200 border-2 rounded-lg p-2 border-red-600 max-w-[600px]'>No hay trabajo registrado</div>
+              ? <NoData>No hay trabajo registrado</NoData>
               : (
                 <ul>
                   {
                     jobs.map((item) => (
                       <li key={item.id_worker} className='p-4 border-2 m-2 w-96'>
-                        <div>Nombre del oficio: {item.category}</div>
-                        <div>Precio por hora: {item.hourly_price}</div>
-                        <div>N° de empleados: {item.employees}</div>
-                        <div>Horas de atención: {item.attention_hours}</div>
-                        <div>Descripción: {item.description}</div>
-                        <div>Promedio de reseñas: {ratings[item.category]}</div>
+                        <JobInfo job={item} />
                       </li>
                     ))
                     }
@@ -88,17 +87,13 @@ async function OtherProfilePage ({ params }) {
           <h2>Propuestas publicadas por el usuario</h2>
           {
             offers.length === 0
-              ? <div className='text-red-600 bg-red-200 border-2 rounded-lg p-2 border-red-600 max-w-[600px]'>No hay ofertas laborales publicadas</div>
+              ? <NoData>No hay ofertas laborales publicadas</NoData>
               : (
                 <ul>
                   {
                     offers.map((item) => (
                       <li key={item.id_proposal} className='p-4 border-2 m-2 w-96'>
-                        <div>Buscando: {item.category}</div>
-                        <div>Presupuesto: {item.budget}</div>
-                        <div>Ubicación: {item.location}</div>
-                        <div>Fecha de publicación: {item.open_date.slice(0, 10)}</div>
-                        <div>Descripción: {item.description}</div>
+                        <ProposalInfo proposal={item} />
                       </li>
                     ))
                   }
