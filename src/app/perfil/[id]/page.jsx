@@ -1,27 +1,26 @@
-/* eslint-disable @next/next/no-img-element */
+import { cookies } from 'next/headers'
+import checkUser from '@/utils/checkUser'
+import { redirect } from 'next/navigation'
+import Link from 'next/link'
 import { getUser } from '@/actions/getUser'
 import { getJobs } from '@/actions/getJobs'
 import { getOffers } from '@/actions/getOffers'
 import { getRatings } from '@/actions/getRatings'
-import { cookies } from 'next/headers'
-import checkUser from '@/utils/checkUser'
-import { redirect } from 'next/navigation'
-import formatDate from '@/utils/formateDate'
-import LocationIcon from '@/components/icons/LocationIcon'
 import Header from '@/components/header/header'
 import Footer from '@/components/footer'
+import LocationIcon from '@/components/icons/LocationIcon'
+import formatDate from '@/utils/formateDate'
 import ShareProfile from '../ShareProfile'
-import Link from 'next/link'
 
-export const dynamic = 'force-dynamic'
+async function OtherProfilePage ({ params }) {
+  const { id: IdUser } = params
 
-export default async function UserPage ({ searchParams }) {
   const token = cookies().get('token')
   const isAuthenticated = checkUser(token?.value)
-  if (!isAuthenticated) redirect('/')
 
-  // Retrieve data from query
-  const IdUser = searchParams.user
+  if (isAuthenticated && isAuthenticated.id_user === IdUser) {
+    redirect('/perfil')
+  }
 
   // Gets main user's data
   const user = await getUser(IdUser)
@@ -112,3 +111,5 @@ export default async function UserPage ({ searchParams }) {
     </main>
   )
 }
+
+export default OtherProfilePage
