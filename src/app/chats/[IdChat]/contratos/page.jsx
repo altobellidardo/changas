@@ -10,6 +10,7 @@ async function ContractPage ({ searchParams }) {
   const IdUser = searchParams.IdUser
   const OtherUser = searchParams.OtherUser
   const IdChat = searchParams.IdChat
+  console.log(IdChat)
   const contracts = await getContractsUsers(IdUser, OtherUser)
   return (
     <main className='min-h-screen flex flex-col justify-between'>
