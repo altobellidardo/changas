@@ -11,12 +11,14 @@ async function ContractPage ({ searchParams }) {
   const OtherUser = searchParams.OtherUser
   const IdChat = searchParams.IdChat
   const contracts = await getContractsUsers(IdUser, OtherUser)
+
   return (
     <main className='min-h-screen flex flex-col justify-between'>
       <Header />
       <section className='pt-10 max-w-[80vw] mx-auto my-10'>
         <Link href={`/chats/${IdChat}`} className='text-brand6 hover:underline'>Atrás</Link>
         <h1 className='text-3xl font-bold'>Tus contratos</h1>
+        <p>{JSON.stringify(searchParams)}</p>
 
         <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
           {
