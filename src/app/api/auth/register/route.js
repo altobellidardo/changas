@@ -87,7 +87,9 @@ export async function POST (request) {
 
   newUserCreated.username = name + ' ' + surname
 
-  const token = jwt.sign(newUserCreated, process.env.JWT_SECRET)
+  const token = jwt.sign(user, process.env.JWT_SECRET, 'Stack', {
+    expiresIn: '4320h' // expires in 6 months
+  })
   const response = NextResponse.json({ message: messages.success.user_created }, { status: 200 })
   response.cookies.set('token', token)
 

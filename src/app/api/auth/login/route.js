@@ -37,7 +37,9 @@ export async function POST (request) {
   const { data: userData } = await supabase.from('users_data').select('name, surname').eq('id_user', user.id_user).single()
   user.username = userData.name + ' ' + userData.surname
 
-  const token = jwt.sign(user, process.env.JWT_SECRET)
+  const token = jwt.sign(user, process.env.JWT_SECRET, 'Stack', {
+    expiresIn: '4320h' // expires in 6 months
+  })
   const response = NextResponse.json({ message: messages.success.user_logged }, { status: 201 })
   response.cookies.set('token', token)
 
