@@ -7,18 +7,16 @@ import Contract from '../../components/Contract'
 export const dynamic = 'force-dynamic'
 
 async function ContractPage ({ searchParams }) {
-  const IdUser = searchParams.IdUser
-  const OtherUser = searchParams.OtherUser
-  const IdChat = searchParams.IdChat
+  const { IdUser, OtherUser, idChat } = searchParams
+
   const contracts = await getContractsUsers(IdUser, OtherUser)
 
   return (
     <main className='min-h-screen flex flex-col justify-between'>
       <Header />
       <section className='pt-10 max-w-[80vw] mx-auto my-10'>
-        <Link href={`/chats/${IdChat}`} className='text-brand6 hover:underline'>Atrás</Link>
+        <Link href={`/chats/${idChat}`} className='text-brand6 hover:underline'>Atrás</Link>
         <h1 className='text-3xl font-bold'>Tus contratos</h1>
-        <p>{JSON.stringify(searchParams)}</p>
 
         <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
           {
@@ -27,7 +25,7 @@ async function ContractPage ({ searchParams }) {
                 <div>No hay contratos registrados</div>
                 )
               : contracts.map((item) => (
-                <Contract contract={item} IdUser={IdUser} IdChat={IdChat} key={item.id_contract} />
+                <Contract contract={item} IdUser={IdUser} IdChat={idChat} key={item.id_contract} />
               ))
           }
         </div>
