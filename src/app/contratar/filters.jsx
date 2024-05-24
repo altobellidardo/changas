@@ -19,7 +19,7 @@ function FiltersContratar ({ categories }) {
         <input type='text' onChange={filter} placeholder='Jardinero' className='rounded-xl bg-brand6/10 p-2 mb-4' />
       </div>
 
-      <div className='grid grid-cols-1 gap-4 md:grid-cols-2 max-w-[1200px]'>
+      <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 max-w-[1200px]'>
         {filteredCategories.map((item) => (
           <JobBanner key={item.name} info={item} link={`/contratar/${item.name}`} />
         ))}
