@@ -17,7 +17,6 @@ async function ContractPage ({ searchParams }) {
       <section className='pt-10 max-w-[80vw] mx-auto my-10'>
         <Link href={`/chats/${idChat}`} className='text-brand6 hover:underline'>Atrás</Link>
         <h1 className='text-3xl font-bold'>Tus contratos</h1>
-        <p>{JSON.stringify(searchParams)}</p>
 
         <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
           {
