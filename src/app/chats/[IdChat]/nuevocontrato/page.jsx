@@ -1,8 +1,12 @@
+import Header from '@/components/header/header'
 import ContractForm from '../../components/ContractForm'
 
 function ContractFormPage () {
   return (
-    <ContractForm />
+    <>
+      <Header />
+      <ContractForm />
+    </>
   )
 }
 

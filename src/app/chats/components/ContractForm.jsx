@@ -4,6 +4,7 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import UpIcon from '@/components/icons/UpIcon'
+import Link from 'next/link'
 
 function ContractForm () {
   const searchParams = useSearchParams()
@@ -92,62 +93,77 @@ function ContractForm () {
   }, [userType])
 
   return (
-    <form onSubmit={handleSubmit} className='flex flex-col gap-2 w-96 p-6'>
-      <p>¿Vas a ofrecer un servicio o solicitarlo?</p>
-      <div className='flex items-center'>
-        <input
-          type='radio' id='worker' name='usertype' value='worker'
-          className='form-radio h-5 w-5 text-blue-600' onChange={handleUserTypeChange}
-        />
-        <label className='ml-2' htmlFor='worker'>Ofrezco</label>
+    <form onSubmit={handleSubmit} className='flex flex-col gap-10 w-[90vw] max-w-[500px] p-6 mx-auto my-10'>
+      <Link href={`/chats/${IdChat}`} className='text-brand1 hover:underline w-fit'>Volver</Link>
+      <div className='flex flex-col gap-2'>
+        <p>¿Vas a ofrecer un servicio o solicitarlo?</p>
+        <div className='flex items-center'>
+          <input
+            type='radio' id='worker' name='usertype' value='worker'
+            className='form-radio size-6 text-blue-600' onChange={handleUserTypeChange}
+          />
+          <label className='ml-2' htmlFor='worker'>Ofrezco</label>
+        </div>
+        <div className='flex items-center'>
+          <input
+            type='radio' id='contractor' name='usertype' value='contractor'
+            className='form-radio size-6 text-blue-600' onChange={handleUserTypeChange}
+          />
+          <label className='ml-2' htmlFor='contractor'>Solicito</label>
+        </div>
+        {categories.length === 0 &&
+          <p className='flex mt-2'>
+            <UpIcon />
+            Seleccione el tipo de contrato
+          </p>}
       </div>
-      <div className='flex items-center'>
-        <input
-          type='radio' id='contractor' name='usertype' value='contractor'
-          className='form-radio h-5 w-5 text-blue-600' onChange={handleUserTypeChange}
-        />
-        <label className='ml-2' htmlFor='contractor'>Solicito</label>
+
+      {categories.length > 0 &&
+        <div>
+          <label htmlFor='category' className='block'>Elige el tipo de trabajo:</label>
+          <select name='category' id='category' className='border-2 p-2 rounded w-full'>
+            {
+              categories.map((item) => (
+                <option value={item.category} key={item.category}>
+                  {item.category}
+                </option>
+              ))
+            }
+          </select>
+        </div>}
+
+      <div>
+        <label htmlFor='jobtitle' className='block'>Título del trabajo</label>
+        <input id='jobtitle' className='border-2 p-2 rounded w-full' type='jobtitle' name='jobtitle' />
       </div>
-      {
-        categories.length === 0
-          ? (
-            <p className='flex'>
-              <UpIcon />
-              Seleccione el tipo de contrato
-            </p>
-            )
-          : (
-            <>
-              <label htmlFor='category' className='border-2 p-2 rounded'>Elige el tipo de trabajo:</label>
-              <select name='category' id='category'>
-                {
-                  categories.map((item) => (
-                    <option value={item.category} key={item.category}>
-                      {item.category}
-                    </option>
-                  ))
-                }
-              </select>
-            </>
-            )
-      }
-      <label htmlFor='jobtitle'>Título del trabajo</label>
-      <input id='jobtitle' className='border-2 p-2 rounded' type='jobtitle' name='jobtitle' />
-      <label htmlFor='description'>Descripción del trabajo</label>
-      <input id='description' className='border-2 p-2 rounded' type='description' name='description' />
-      <label htmlFor='budget'>Presupuesto</label>
-      <input id='budget' className='border-2 p-2 rounded' type='number' step='1' min='1' name='budget' />
-      <label htmlFor='date'>Fecha del trabajo</label>
-      <input id='date' className='border-2 p-2 rounded' type='date' name='date' min={today} />
-      <p>Medio de pago</p>
-      <div className='flex items-center'>
-        <input type='radio' id='changas' name='payformat' value='changas' className='form-radio h-5 w-5 text-blue-600' />
-        <label className='ml-2' htmlFor='changas'>Changas</label>
+
+      <div>
+        <label htmlFor='description' className='block'>Descripción del trabajo</label>
+        <input id='description' className='border-2 p-2 rounded w-full' type='description' name='description' />
       </div>
-      <div className='flex items-center'>
-        <input type='radio' id='other' name='payformat' value='other' className='form-radio h-5 w-5 text-blue-600' />
-        <label className='ml-2' htmlFor='other'>Otros medios</label>
+
+      <div>
+        <label htmlFor='budget' className='block'>Presupuesto</label>
+        <input id='budget' className='border-2 p-2 rounded w-full' type='number' step='1' min='1' name='budget' />
       </div>
+
+      <div>
+        <label htmlFor='date' className='block'>Fecha del trabajo</label>
+        <input id='date' className='border-2 p-2 rounded w-full' type='date' name='date' min={today} />
+      </div>
+
+      <div>
+        <p>Medio de pago</p>
+        <div className='flex items-center'>
+          <input type='radio' id='changas' name='payformat' value='changas' className='form-radio h-5 w-5 text-blue-600' />
+          <label className='ml-2' htmlFor='changas'>Changas</label>
+        </div>
+        <div className='flex items-center'>
+          <input type='radio' id='other' name='payformat' value='other' className='form-radio h-5 w-5 text-blue-600' />
+          <label className='ml-2' htmlFor='other'>Otros medios</label>
+        </div>
+      </div>
+
       <button disabled={loading} className='rounded-xl border-2 border-brand6 bg-brand6 px-4 py-2 font-semibold text-brand8 hover:text-brand1 disabled:opacity-50' type='submit'>Subir contrato</button>
       <span className={`${error ? 'block' : 'hidden'} text-red-600 bg-red-200 border-2 rounded-lg p-2 border-red-600`}>{error}</span>
     </form>
