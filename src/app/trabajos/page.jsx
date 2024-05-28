@@ -11,13 +11,15 @@ const { data: categories } = await supabase.from('categories').select('*')
 
 function TrabajosPage () {
   return (
-    <main className='min-h-screen text-brand1'>
+    <main className='min-h-screen text-brand1 bg-brand8'>
       <Header />
-      <section className='grid grid-cols-1 md:grid-cols-2 p-10 gap-10 bg-brand8'>
-        {categories.map((info) => (
-          <JobBanner key={info.id} info={info} />
+
+      <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 max-w-[1200px] mx-auto my-10'>
+        {categories.map((item) => (
+          <JobBanner key={item.name} info={item} />
         ))}
-      </section>
+      </div>
+
       <section className='bg-brand8 text-brand1 pt-5 pb-20 font-bold text-center text-xl'>
         <p>Próximamente más trabajos</p>
       </section>
