@@ -28,7 +28,7 @@ export async function GET (req) {
   if (openDate === 'undefined') {
     openDate = '01-01-2000'
   }
-  if (distance === 'undefined') {
+  if (isNaN(distance)) {
     distance = 40000
   }
 

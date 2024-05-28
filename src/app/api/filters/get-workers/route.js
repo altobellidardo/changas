@@ -36,7 +36,7 @@ export async function GET (req) {
   if (employees === 'undefined') {
     employees = 0
   }
-  if (distance === 'undefined') {
+  if (isNaN(distance)) {
     distance = 40000
   }
 
