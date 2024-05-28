@@ -25,7 +25,7 @@ export async function POST (req) {
     )
   }
   user.password = undefined
-  const token = jwt.sign(user, process.env.JWT_SECRET)
+  const token = jwt.sign(user, process.env.JWT_SECRET, { expiresIn: '180d' })
 
   const forgetUrl = `${BASE_URL}/auth/change-password?token=${token}`
   const resend = new Resend(process.env.RESEND_KEY)
