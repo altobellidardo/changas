@@ -62,7 +62,7 @@ export async function GET (req) {
   }
   if (error) {
     return NextResponse.json(
-      { error: messages.error.failed_worker_fetch },
+      { error: messages.error.failed_proposal_fetch },
       { status: 400 }
     )
   }
