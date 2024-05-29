@@ -61,7 +61,8 @@ export async function GET (req) {
     workers = fetch.data
     error = fetch.error
   } else {
-    const fetch = await supabase.from('workers').select()
+    const columns = 'username, hourly_price, location, score, employees, description'
+    const fetch = await supabase.from('workers').select(columns)
       .eq('category', category)
       .lt('hourly_price', hourlyPrice)
       .gt('score', score)

@@ -51,7 +51,8 @@ export async function GET (req) {
     proposals = fetch.data
     error = fetch.error
   } else {
-    const fetch = await supabase.from('proposals').select()
+    const columns = 'budget, location, open_date, description'
+    const fetch = await supabase.from('proposals').select(columns)
       .eq('category', category)
       .gt('budget', budget)
       .gt('open_date', openDate)
