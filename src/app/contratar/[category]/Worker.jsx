@@ -15,8 +15,9 @@ function Worker ({ worker, IdUser }) {
       <div>{worker.description}</div>
       <span className='opacity-60 text-sm'>Puntaje</span>
       <div>{worker.score}/5</div>
+      <div>{worker.id_user}</div>
       {worker.id_user !== IdUser
-        ? <Link href={`/chats/nuevochat?idUser2=${worker.id_user}&Username2=${worker.username}&`} className='hover:underline'>Contactar</Link>
+        ? <Link href={`/chats/nuevochat?idUser2=${worker.id_user}&Username2=${worker.username}`} className='hover:underline'>Contactar</Link>
         : undefined}
     </div>
   )
