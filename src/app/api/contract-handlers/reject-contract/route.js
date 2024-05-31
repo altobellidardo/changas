@@ -4,7 +4,7 @@ import messages from '@/utils/messages'
 
 export async function DELETE (req) {
   const searchParams = req.nextUrl.searchParams
-  const workerTurn = searchParams.get('workerTurn')
+  const workerTurn = searchParams.get('workerTurn') === 'true'
   const IdUser = searchParams.get('IdUser')
   const IdWorker = searchParams.get('IdWorker')
   const IdContractor = searchParams.get('IdContractor')

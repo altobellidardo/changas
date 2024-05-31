@@ -31,10 +31,8 @@ function UploadCritique ({ ReviewerId, ReviewedId, IdContract, Category }) {
 
     if (data.error) {
       setError(data.error)
-    }
-
-    if (data.message) {
-      window.location.href = '/perfil'
+    } else {
+      window.location.href = '/'
     }
   }
 

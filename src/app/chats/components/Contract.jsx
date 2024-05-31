@@ -24,7 +24,7 @@ const rejectContract = async (IdContract, IdUser, IdWorker, IdContractor, worker
       'Content-Type': 'application/json'
     }
   })
-  // Once the contract is accepted the page is reloaded
+  // Once the contract is deleted the page is reloaded
   window.location.reload()
 }
 
@@ -42,7 +42,7 @@ function Contract ({ contract, IdUser, IdChat }) {
       } else {
         return null
       }
-    } else if (contract.closed !== true && now < date && ((contract.worker_turn && isWorker) || (!contract.worker_turn && !isWorker))) {
+    } else if (contract.closed !== true && now <= date && ((contract.worker_turn && isWorker) || (!contract.worker_turn && !isWorker))) {
       return (
         <div>
           <Link href={{ pathname: `/chats/${IdChat}/contraofertar/`, query: { IdContract: contract.id_contract, IdUser } }} className='text-brand6 hover:underline'>Contraofertar</Link>|
@@ -56,8 +56,6 @@ function Contract ({ contract, IdUser, IdChat }) {
           <button onClick={() => rejectContract(contract.id_contract, IdUser, contract.id_worker, contract.id_contractor, contract.worker_turn)} className='text-brand6 hover:underline'>Rechazar</button>
         </div>
       )
-    } else {
-      console.log(contract.budget)
     }
   }
   return (
