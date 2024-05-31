@@ -5,7 +5,7 @@ export async function createChat (message, IdUser1, idUser2, Username1, Username
   const newChat = {
     id_user1: IdUser1,
     id_user2: idUser2,
-    content: [{ id_user: IdUser1, message }],
+    content: [{ user_num: 1, message }],
     username_1: Username1,
     username_2: Username2,
     read_user_1: true,
