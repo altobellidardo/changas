@@ -1,10 +1,10 @@
 import supabase from '@/libs/supabase/server'
 
-export async function createChat (message, IdUser1, IdUser2, Username1, Username2) {
+export async function createChat (message, IdUser1, idUser2, Username1, Username2) {
   // Create JSON to upload
   const newChat = {
     id_user1: IdUser1,
-    id_user2: IdUser2,
+    id_user2: idUser2,
     content: [{ id_user: IdUser1, message }],
     username_1: Username1,
     username_2: Username2,
