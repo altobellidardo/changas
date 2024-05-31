@@ -13,7 +13,7 @@ export default async function Chathomepage ({ params }) {
   const { IdChat } = params
 
   const token = cookies().get('token')
-  const { id_user: IdUser } = checkUser(token?.value)
+  const { id_user: IdUser, username } = checkUser(token?.value)
 
   const data = await getFullChat(IdChat)
 
@@ -23,7 +23,7 @@ export default async function Chathomepage ({ params }) {
 
   const UserNumber = data.id_user1 === IdUser ? 1 : 2
   const OtherUser = data.id_user1 === IdUser ? data.id_user2 : data.id_user1
-  const OtherUsername = data.username_1 === IdUser ? data.username_2 : data.username_1
+  const OtherUsername = data.username_1 === username ? data.username_2 : data.username_1
 
   // Change status to read
   await seeChat(IdChat, UserNumber)
@@ -42,7 +42,7 @@ export default async function Chathomepage ({ params }) {
         </div>
       </section>
 
-      <ChatComponent history={data.content} IdChat={IdChat} IdUser={IdUser} UserNumber={UserNumber} OtherUser={OtherUser} />
+      <ChatComponent history={data.content} IdChat={IdChat} IdUser={IdUser} UserNumber={UserNumber} OtherUser={OtherUser} OtherUsername={OtherUsername} />
     </main>
   )
 }

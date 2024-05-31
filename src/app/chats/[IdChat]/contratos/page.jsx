@@ -7,7 +7,7 @@ import Contract from '../../components/Contract'
 export const dynamic = 'force-dynamic'
 
 async function ContractPage ({ searchParams }) {
-  const { IdUser, OtherUser, idChat } = searchParams
+  const { IdUser, OtherUser, OtherUsername, idChat } = searchParams
 
   const contracts = await getContractsUsers(IdUser, OtherUser)
 
@@ -25,7 +25,7 @@ async function ContractPage ({ searchParams }) {
                 <div>No hay contratos registrados</div>
                 )
               : contracts.map((item) => (
-                <Contract contract={item} IdUser={IdUser} IdChat={idChat} key={item.id_contract} />
+                <Contract contract={item} IdUser={IdUser} IdChat={idChat} OtherUsername={OtherUsername} key={item.id_contract} />
               ))
           }
         </div>

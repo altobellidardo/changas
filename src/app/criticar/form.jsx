@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-function UploadCritique ({ ReviewerId, ReviewedId, IdContract, Category }) {
+function UploadCritique ({ ReviewerId, ReviewedId, ReviewedUsername, IdContract, Category }) {
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
 
@@ -39,7 +39,7 @@ function UploadCritique ({ ReviewerId, ReviewedId, IdContract, Category }) {
   return (
     <section className='flex flex-col mt-20 justify-center items-center'>
       <h1 className='text-3xl font-bold'>
-        Reseñar a
+        Reseñar a {ReviewedUsername}
       </h1>
       <div> Categoría del trabajo: {Category} </div>
       <form onSubmit={handleSubmit} className='flex flex-col gap-2 w-96 p-6'>

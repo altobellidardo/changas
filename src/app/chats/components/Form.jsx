@@ -51,7 +51,7 @@ function ChatForm ({ IdChat, IdUser, OtherUser, Username, Username2, history, Us
             Crear contrato
           </Link>
           <Link
-            href={{ pathname: `/chats/${IdChat}/contratos`, query: { IdUser, OtherUser, idChat: IdChat } }}
+            href={{ pathname: `/chats/${IdChat}/contratos`, query: { IdUser, OtherUser, OtherUsername: Username2, idChat: IdChat } }}
             className='bg-brand3 hover:outline text-white py-2 px-4 rounded-full'
           >
             Contratos

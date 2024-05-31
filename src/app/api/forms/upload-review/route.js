@@ -18,7 +18,7 @@ export async function POST (request) {
 
   // Update worker reviews
   const { data: userRating } = await supabase.from('workers').select('n_reviews, score').eq('id_user', ReviewedId).single()
-  console.log(userRating)
+
   // Define variables that will update the workers table
   let { n_reviews: nReviews, score: userScore } = userRating
   nReviews += 1
@@ -27,7 +27,6 @@ export async function POST (request) {
   const { error: ratingError } = await supabase.from('workers').update({ n_reviews: nReviews, score: userScore }).eq('id_user', ReviewedId)
 
   if (ratingError) {
-    console.log(ratingError)
     return NextResponse.json({ error: messages.error.error })
   }
 

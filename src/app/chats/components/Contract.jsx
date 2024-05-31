@@ -28,7 +28,7 @@ const rejectContract = async (IdContract, IdUser, IdWorker, IdContractor, worker
   window.location.reload()
 }
 
-function Contract ({ contract, IdUser, IdChat }) {
+function Contract ({ contract, IdUser, IdChat, OtherUsername }) {
   // Define whether to show or not the Review link to the user
   const DealOrLink = () => {
     const isWorker = IdUser === contract.id_worker
@@ -38,7 +38,7 @@ function Contract ({ contract, IdUser, IdChat }) {
       if (contract.score) {
         return <div>Puntaje de reseña: {contract.score}</div>
       } else if (!isWorker) {
-        return <Link href={{ pathname: '/criticar/', query: { ReviewerId: IdUser, ReviewedId: contract.id_worker, IdContract: contract.id_contract, Category: contract.category } }} className='text-brand6 hover:underline'>Reseñar</Link>
+        return <Link href={{ pathname: '/criticar/', query: { ReviewerId: IdUser, ReviewedId: contract.id_worker, ReviewedUsername: OtherUsername, IdContract: contract.id_contract, Category: contract.category } }} className='text-brand6 hover:underline'>Reseñar</Link>
       } else {
         return null
       }
