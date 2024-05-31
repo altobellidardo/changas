@@ -15,7 +15,6 @@ export default function ChatComponent ({ history, IdChat, IdUser, UserNumber, Ot
         ))}
         <div ref={bottomRef} />
       </div>
-      <div>{UserNumber}</div>
       <Form IdChat={IdChat} IdUser={IdUser} history={totalComments} UserNumber={UserNumber} OtherUser={OtherUser} Username2={OtherUsername} />
     </section>
   )
