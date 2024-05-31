@@ -13,7 +13,7 @@ function Proposal ({ info, IdUser }) {
       <span className='opacity-60 text-sm'>Descripcion</span>
       <div>{info.description}</div>
       {info.id_user !== IdUser
-        ? <Link href={`/chats/nuevochat?idUser2=${info.id_user}&Username2=${info.username}&`} className='hover:underline'>Contactar</Link>
+        ? <Link href={`/chats/nuevochat?idUser2=${info.id_user}&Username2=${info.username}`} className='hover:underline'>Contactar</Link>
         : undefined}
     </div>
   )
