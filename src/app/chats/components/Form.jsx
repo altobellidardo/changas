@@ -72,6 +72,7 @@ function ChatForm ({ IdChat, IdUser, OtherUser, Username, Username2, history, Us
             <UpArrowIcon />
           </button>
           <input
+            id='message'
             type='text'
             name='message'
             placeholder='escribe aquí...'

@@ -25,7 +25,7 @@ function useChat (history, IdChat) {
 
     channel.bind('chat', (data) => {
       setTotalComments((prev) =>
-        [...prev, { id_user: data.id_user, message: data.message }]
+        [...prev, { user_num: data.user_num, message: data.message }]
       )
       scrollToBottom()
     })

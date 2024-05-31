@@ -13,7 +13,7 @@ export async function POST (req) {
   })
 
   const { message, IdUser, IdChat, history, UserNumber } = await req.json()
-  const newData = [...history, { id_user: IdUser, message }]
+  const newData = [...history, { user_num: UserNumber, message }]
   const now = new Date().toISOString().split('.')[0]
 
   const res = await pusher.get({ path: `/channels/presence-${IdChat}/users` })
@@ -44,7 +44,7 @@ export async function POST (req) {
   if (error) return { error: error.message }
 
   await pusher.trigger(`presence-${IdChat}`, 'chat', {
-    id_user: IdUser,
+    user_num: UserNumber,
     message
   })
 
