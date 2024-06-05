@@ -97,95 +97,114 @@ function Filters ({ category, IdUser }) {
     fetchData().finally(() => setLoading(false))
   }, [filter, page])
 
+  const inputStyle = 'px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500'
+
   return (
     <>
       <button
         onClick={() => setOpen(!open)}
-        className='flex items-center gap-2 mb-6 bg-brand6/10 hover:bg-brand6/20 p-1 rounded-md'
+        className='flex items-center gap-2 mb-6 bg-brand6/10 hover:bg-brand6/40 p-2 rounded-md'
       >
         <p>Filtrar</p>
         {open ? <CloseIcon /> : <MenuIcon />}
       </button>
 
       {open && (
-        <form onSubmit={changeFilter} className='flex max-w-3xl flex-col gap-4 mb-4'>
-          <div>
-            <span>Nombre y apellido </span>
-            <input
-              type='text'
-              name='name'
-              placeholder='Juan Perez'
-            />
+        <form onSubmit={changeFilter} className='flex flex-col gap-4 mb-4'>
+          <div className='flex gap-2'>
+            <div className='flex flex-col'>
+              <span>Nombre y apellido </span>
+              <input
+                className={inputStyle}
+                type='text'
+                name='name'
+                placeholder='Juan Perez'
+              />
+            </div>
+            <div className='flex flex-col'>
+              <span>Precio por hora menor a </span>
+              <input
+                className={inputStyle}
+                type='number'
+                min='0'
+                name='hourly_price'
+                placeholder='500'
+              />
+            </div>
           </div>
-          <div>
-            <span>Precio por hora menor a </span>
-            <input
-              type='number'
-              min='0'
-              name='hourly_price'
-              placeholder='500'
-            />
+
+          <div className='flex gap-2'>
+            <div className='flex flex-col'>
+              <span>País </span>
+              <input
+                className={inputStyle}
+                type='text'
+                name='country'
+                placeholder='Argentina'
+              />
+            </div>
+            <div className='flex flex-col'>
+              <span>Provincia </span>
+              <input
+                className={inputStyle}
+                type='text'
+                name='province'
+                placeholder='Buenos Aires'
+              />
+            </div>
+            <div className='flex flex-col'>
+              <span>Ciudad </span>
+              <input
+                className={inputStyle}
+                type='text'
+                name='city'
+                placeholder='La Plata'
+              />
+            </div>
           </div>
-          <div>
-            <span>País </span>
-            <input
-              type='text'
-              name='country'
-              placeholder='Argentina'
-            />
+
+          <div className='flex gap-2'>
+            <div className='flex flex-col'>
+              <span>Distancia menor a (km) </span>
+              <input
+                className={inputStyle}
+                type='number'
+                min='0'
+                name='distance'
+                placeholder='40'
+              />
+            </div>
+            <div className='flex flex-col'>
+              <span>N° de empleados mayor a </span>
+              <input
+                className={inputStyle}
+                type='number'
+                min='0'
+                name='employees'
+                placeholder='5'
+              />
+            </div>
+            <div className='flex flex-col'>
+              <span>Puntaje </span>
+              <input
+                className={inputStyle}
+                type='number'
+                min='0'
+                max='5'
+                name='score'
+                placeholder='5'
+              />
+            </div>
           </div>
-          <div>
-            <span>Provincia </span>
-            <input
-              type='text'
-              name='province'
-              placeholder='Buenos Aires'
-            />
-          </div>
-          <div>
-            <span>Ciudad </span>
-            <input
-              type='text'
-              name='city'
-              placeholder='La Plata'
-            />
-          </div>
-          <div>
-            <span>Distancia menor a (km) </span>
-            <input
-              type='number'
-              min='0'
-              name='distance'
-              placeholder='40'
-            />
-          </div>
-          <div>
-            <span>N° de empleados mayor a </span>
-            <input
-              type='number'
-              min='0'
-              name='employees'
-              placeholder='5'
-            />
-          </div>
-          <div>
-            <span>Puntaje </span>
-            <input
-              type='number'
-              min='0'
-              max='5'
-              name='score'
-              placeholder='5'
-            />
-          </div>
-          <div>
-            <button type='reset' className='bg-brand6/10 p-2 hover:bg-brand6/40 rounded-md'>
+
+          <div className='flex gap-1 max-w-[700px]'>
+            <button type='reset' className='bg-brand6/20 p-2 hover:bg-brand6/40 rounded-md w-full'>
               Limpiar filtros
             </button>
+            <button type='submit' className='bg-brand6/20 p-2 hover:bg-brand6/40 rounded-md w-full'>
+              Filtrar
+            </button>
           </div>
-          <button type='submit' className='bg-brand6/10 p-2 hover:bg-brand6/20 rounded-md'>
-            Filtrar
-          </button>
         </form>
       )}
 
