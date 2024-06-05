@@ -5,6 +5,44 @@ import { useEffect, useState } from 'react'
 import Worker from './Worker'
 import { RESULTS_PER_PAGE } from '@/constants'
 
+function MenuIcon () {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      fill='none'
+      viewBox='0 0 24 24'
+      strokeWidth={1.5}
+      stroke='currentColor'
+      className='w-6 h-6'
+    >
+      <path
+        strokeLinecap='round'
+        strokeLinejoin='round'
+        d='M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5'
+      />
+    </svg>
+  )
+}
+
+function CloseIcon () {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      fill='none'
+      viewBox='0 0 24 24'
+      strokeWidth={1.5}
+      stroke='currentColor'
+      className='w-6 h-6'
+    >
+      <path
+        strokeLinecap='round'
+        strokeLinejoin='round'
+        d='M6 18L18 6M6 6l12 12'
+      />
+    </svg>
+  )
+}
+
 function Filters ({ category, IdUser }) {
   const [workers, setWorkers] = useState([])
   const [filter, setFilter] = useState({})
@@ -61,50 +99,13 @@ function Filters ({ category, IdUser }) {
 
   return (
     <>
-      {
-        open
-          ? (
-            <button>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                fill='none'
-                viewBox='0 0 24 24'
-                strokeWidth={1.5}
-                stroke='currentColor'
-                className='w-6 h-6'
-                onClick={() => setOpen(false)}
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  d='M6 18L18 6M6 6l12 12'
-                />
-              </svg>
-            </button>
-            )
-          : (
-            <button
-              onClick={() => setOpen(true)}
-              className='flex items-center gap-2 mb-6'
-            >
-              <p>Filtrar</p>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                fill='none'
-                viewBox='0 0 24 24'
-                strokeWidth={1.5}
-                stroke='currentColor'
-                className='w-6 h-6'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  d='M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5'
-                />
-              </svg>
-            </button>
-            )
-        }
+      <button
+        onClick={() => setOpen(!open)}
+        className='flex items-center gap-2 mb-6 bg-brand6/10 hover:bg-brand6/20 p-1 rounded-md'
+      >
+        <p>Filtrar</p>
+        {open ? <CloseIcon /> : <MenuIcon />}
+      </button>
 
       {open && (
         <form onSubmit={changeFilter} className='flex max-w-3xl flex-col gap-4 mb-4'>
@@ -182,7 +183,7 @@ function Filters ({ category, IdUser }) {
               Limpiar filtros
             </button>
           </div>
-          <button type='submit' className='bg-brand6/10 p-2 hover:bg-brand6/40 rounded-md'>
+          <button type='submit' className='bg-brand6/10 p-2 hover:bg-brand6/20 rounded-md'>
             Filtrar
           </button>
         </form>
