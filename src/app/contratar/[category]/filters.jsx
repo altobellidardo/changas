@@ -98,6 +98,7 @@ function Filters ({ category, IdUser }) {
   }, [filter, page])
 
   const inputStyle = 'px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500'
+  const miniInputStyle = 'px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-20 text-center'
 
   return (
     <>
@@ -111,7 +112,7 @@ function Filters ({ category, IdUser }) {
 
       {open && (
         <form onSubmit={changeFilter} className='flex flex-col gap-4 mb-4'>
-          <div className='flex gap-2'>
+          <div className='flex gap-2 flex-col md:flex-row'>
             <div className='flex flex-col'>
               <span>Nombre y apellido </span>
               <input
@@ -122,18 +123,28 @@ function Filters ({ category, IdUser }) {
               />
             </div>
             <div className='flex flex-col'>
-              <span>Precio por hora menor a </span>
-              <input
-                className={inputStyle}
-                type='number'
-                min='0'
-                name='hourly_price'
-                placeholder='500'
-              />
+              <span>Precio por hora</span>
+              <div className='flex gap-1 items-center'>
+                <input
+                  className={miniInputStyle}
+                  type='number'
+                  min='0'
+                  name='hourly_price_min'
+                  placeholder='500'
+                />
+                <span>-</span>
+                <input
+                  className={miniInputStyle}
+                  type='number'
+                  min='0'
+                  name='hourly_price_max'
+                  placeholder='1000'
+                />
+              </div>
             </div>
           </div>
 
-          <div className='flex gap-2'>
+          <div className='flex gap-2 flex-col md:flex-row'>
             <div className='flex flex-col'>
               <span>País </span>
               <input
@@ -163,7 +174,7 @@ function Filters ({ category, IdUser }) {
             </div>
           </div>
 
-          <div className='flex gap-2'>
+          <div className='flex gap-2 flex-col md:flex-row'>
             <div className='flex flex-col'>
               <span>Distancia menor a (km) </span>
               <input
@@ -185,15 +196,26 @@ function Filters ({ category, IdUser }) {
               />
             </div>
             <div className='flex flex-col'>
-              <span>Puntaje </span>
-              <input
-                className={inputStyle}
-                type='number'
-                min='0'
-                max='5'
-                name='score'
-                placeholder='5'
-              />
+              <span>Puntaje</span>
+              <div className='flex gap-1 items-center'>
+                <input
+                  className={miniInputStyle}
+                  type='number'
+                  min='0'
+                  max='5'
+                  name='score'
+                  placeholder='0'
+                />
+                <span>-</span>
+                <input
+                  className={miniInputStyle}
+                  type='number'
+                  min='0'
+                  max='5'
+                  name='score'
+                  placeholder='5'
+                />
+              </div>
             </div>
           </div>
 
@@ -208,7 +230,8 @@ function Filters ({ category, IdUser }) {
         </form>
       )}
 
-      <div className='grid grid-cols-1 gap-4 md:grid-cols-2 max-w-[1200px]'>
+      {/* <div className='grid grid-cols-1 gap-4 md:grid-cols-2 max-w-[1200px]'> */}
+      <div className='max-w-[1200px]'>
         {
           loading
             ? <div>Cargando...</div>
