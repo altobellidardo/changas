@@ -12,26 +12,22 @@ const pusher = new PusherServer({
 })
 
 export async function POST (req) {
+  // Get user ID
   const token = cookies().get('token')
-  const { id_user: IdUserFromToken } = checkUser(token?.value)
+  const { id_user: IdUser } = checkUser(token?.value)
 
-  // Parse the request body to get socketId and channel
+  // This turns the request into a readable string and to be parsed
   const passedValue = await new Response(req.body).text()
+  // The string is splitted when & is found
   const content = passedValue.split('&')
+  // We get the socketId and channel by slicing the returned arrays
   const socketId = content[0].substring(10)
   const channel = content[1].substring(13)
 
-  // Parse query parameters to get user_id
-  const url = new URL(req.url)
-  const userIdFromQuery = url.searchParams.get('user_id')
+  // Create user data to be appended to the socketId of the user
+  const presenceData = { user_id: IdUser }
 
-  // Use user_id from query params if present, otherwise fallback to token
-  const userId = userIdFromQuery || IdUserFromToken
-  if (!userId) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-  }
-
-  const presenceData = { user_id: userId }
+  // Authenticate and authorize user
   const authChannelResponse = pusher.authorizeChannel(socketId, channel, presenceData)
 
   return NextResponse.json(authChannelResponse)
