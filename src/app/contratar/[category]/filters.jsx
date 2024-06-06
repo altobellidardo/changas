@@ -98,6 +98,7 @@ function Filters ({ category, IdUser }) {
   }, [filter, page])
 
   const inputStyle = 'px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500'
+  const miniInputStyle = 'px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-20 text-center'
 
   return (
     <>
@@ -122,14 +123,24 @@ function Filters ({ category, IdUser }) {
               />
             </div>
             <div className='flex flex-col'>
-              <span>Precio por hora menor a </span>
-              <input
-                className={inputStyle}
-                type='number'
-                min='0'
-                name='hourly_price'
-                placeholder='500'
-              />
+              <span>Precio por hora</span>
+              <div>
+                <input
+                  className={miniInputStyle}
+                  type='number'
+                  min='0'
+                  name='hourly_price_min'
+                  placeholder='500'
+                />
+                <span>-</span>
+                <input
+                  className={miniInputStyle}
+                  type='number'
+                  min='0'
+                  name='hourly_price_max'
+                  placeholder='1000'
+                />
+              </div>
             </div>
           </div>
 
@@ -185,15 +196,26 @@ function Filters ({ category, IdUser }) {
               />
             </div>
             <div className='flex flex-col'>
-              <span>Puntaje </span>
-              <input
-                className={inputStyle}
-                type='number'
-                min='0'
-                max='5'
-                name='score'
-                placeholder='5'
-              />
+              <span>Puntaje</span>
+              <div>
+                <input
+                  className={miniInputStyle}
+                  type='number'
+                  min='0'
+                  max='5'
+                  name='score'
+                  placeholder='0'
+                />
+                <span>-</span>
+                <input
+                  className={miniInputStyle}
+                  type='number'
+                  min='0'
+                  max='5'
+                  name='score'
+                  placeholder='5'
+                />
+              </div>
             </div>
           </div>
 
