@@ -112,7 +112,7 @@ function Filters ({ category, IdUser }) {
 
       {open && (
         <form onSubmit={changeFilter} className='flex flex-col gap-4 mb-4'>
-          <div className='flex gap-2'>
+          <div className='flex gap-2 flex-col md:flex-row'>
             <div className='flex flex-col'>
               <span>Nombre y apellido </span>
               <input
@@ -124,7 +124,7 @@ function Filters ({ category, IdUser }) {
             </div>
             <div className='flex flex-col'>
               <span>Precio por hora</span>
-              <div>
+              <div className='flex gap-1 items-center'>
                 <input
                   className={miniInputStyle}
                   type='number'
@@ -144,7 +144,7 @@ function Filters ({ category, IdUser }) {
             </div>
           </div>
 
-          <div className='flex gap-2'>
+          <div className='flex gap-2 flex-col md:flex-row'>
             <div className='flex flex-col'>
               <span>País </span>
               <input
@@ -174,7 +174,7 @@ function Filters ({ category, IdUser }) {
             </div>
           </div>
 
-          <div className='flex gap-2'>
+          <div className='flex gap-2 flex-col md:flex-row'>
             <div className='flex flex-col'>
               <span>Distancia menor a (km) </span>
               <input
@@ -197,7 +197,7 @@ function Filters ({ category, IdUser }) {
             </div>
             <div className='flex flex-col'>
               <span>Puntaje</span>
-              <div>
+              <div className='flex gap-1 items-center'>
                 <input
                   className={miniInputStyle}
                   type='number'
