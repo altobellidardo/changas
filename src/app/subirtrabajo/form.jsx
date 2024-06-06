@@ -76,7 +76,7 @@ function UploadWorker ({ IdUser, categories, username }) {
       <label htmlFor='province'>Provincia</label>
       <input id='province' className='border-2 p-2 rounded' type='province' name='province' />
       <label htmlFor='city'>Ciudad</label>
-      <input id='location' className='border-2 p-2 rounded' type='location' name='city' />
+      <input id='city' className='border-2 p-2 rounded' type='city' name='city' />
       <label htmlFor='employees'>Número de empleados</label>
       <input id='employees' className='border-2 p-2 rounded' type='employees' name='employees' />
       <label htmlFor='description'>Descripción del trabajo</label>
