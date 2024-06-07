@@ -55,10 +55,10 @@ export default async function UserPage () {
         <ProfileCard user={user} />
 
         <section className='mt-10 flex flex-col gap-2'>
-          <h2>Tus trabajos</h2>
+          <h2>Tus oficios registrados</h2>
 
           {jobs.length === 0
-            ? <NoData>No has subido trabajos</NoData>
+            ? <NoData>No has registrado ningún oficio</NoData>
             : (
               <ul className='max-w-full md:max-w-[600px]'>
                 {jobs.map((item) => (
@@ -67,11 +67,11 @@ export default async function UserPage () {
               </ul>
               )}
 
-          <UploadNew href='/subirtrabajo'>Subir nuevo trabajo</UploadNew>
+          <UploadNew href='/subirtrabajo'>Subir nuevo oficio</UploadNew>
         </section>
 
         <section className='mt-10 flex flex-col gap-2'>
-          <h2>Propuestas publicadas por vos</h2>
+          <h2>Propuestas laborales publicadas por vos</h2>
           {offers.length === 0
             ? <NoData>No has publicado ofertas laborales</NoData>
             : (

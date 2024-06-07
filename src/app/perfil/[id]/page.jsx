@@ -65,10 +65,10 @@ async function OtherProfilePage ({ params }) {
         </section>
 
         <section className='mt-10 flex flex-col gap-2'>
-          <h2>Trabajos del usuario</h2>
+          <h2>Oficios de {username}</h2>
           {
             jobs.length === 0
-              ? <NoData>No hay trabajo registrado</NoData>
+              ? <NoData>{username} no ha registrado ningún oficio</NoData>
               : (
                 <ul>
                   {
@@ -84,10 +84,10 @@ async function OtherProfilePage ({ params }) {
         </section>
 
         <section className='mt-10 flex flex-col gap-2'>
-          <h2>Propuestas publicadas por el usuario</h2>
+          <h2>Propuestas laborales publicadas por {username}</h2>
           {
             offers.length === 0
-              ? <NoData>No hay ofertas laborales publicadas</NoData>
+              ? <NoData>{username} no ha publicado ninguna oferta laboral</NoData>
               : (
                 <ul>
                   {
