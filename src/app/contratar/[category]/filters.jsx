@@ -237,8 +237,8 @@ function Filters ({ category, IdUser }) {
             ? <div>Cargando...</div>
             : workers.length === 0
               ? <div>No hay {category} disponible</div>
-              : workers.map((item) => (
-                <Worker worker={item} IdUser={IdUser} key={item.id_worker} />
+              : workers.map((item, index) => (
+                <Worker worker={item} IdUser={IdUser} key={index} />
               ))
         }
       </div>

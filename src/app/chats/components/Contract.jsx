@@ -62,7 +62,7 @@ function Contract ({ contract, IdUser, IdChat, OtherUsername }) {
         return (
           <div className='flex gap-1 items-center'>
             {contract.score}/5
-            <StarIcon className={`${contract.closed ? 'text-red-500' : 'text-brand6'} size-5`} />
+            <StarIcon className={`${contract.closed ? 'text-brand6' : 'text-brand6'} size-5`} />
           </div>
         )
       } else if (!isWorker) {
@@ -98,12 +98,12 @@ function Contract ({ contract, IdUser, IdChat, OtherUsername }) {
   }
 
   return (
-    <div className={`p-4 border-2 ${contract.closed ? 'border-red-500/80 bg-red-500/5' : 'border-brand6/80 bg-brand6/5'} rounded-md m-2 w-96 flex flex-col gap-2`}>
+    <div className={`p-4 border-2 ${contract.closed ? 'border-brand6/80 bg-brand6/35' : 'border-brand7/80 bg-brand7/5'} rounded-md m-2 w-96 flex flex-col gap-2`}>
       <div>
         {
           contract.closed
-            ? <p className='font-bold text-red-500'>Contrato cerrado</p>
-            : <p className='font-bold text-brand6'>Contrato abierto</p>
+            ? <p className='font-bold text-brand6'>Contrato confirmado</p>
+            : <p className='font-bold text-brand7'>Contrato pendiente</p>
         }
       </div>
       <div>
