@@ -139,7 +139,6 @@ function ContractForm () {
 
       <div>
         <label htmlFor='description' className='block'>Descripción del trabajo</label>
-        {/* <input id='description' className='border-2 p-2 rounded w-full' type='description' name='description' /> */}
         <textarea name='description' id='description' className='border-2 p-2 rounded w-full' />
       </div>
 

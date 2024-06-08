@@ -1,14 +1,15 @@
 'use client'
 
 import { useState } from 'react'
+import messages from '@/utils/messages'
 
-function UploadOffert ({ IdUser, Username, categories }) {
+function UploadOffert ({ IdUser, username, categories }) {
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-
+    setLoading(true)
     const formData = new FormData(event.target)
     const category = formData.get('category')
     const budget = formData.get('budget')
@@ -17,40 +18,53 @@ function UploadOffert ({ IdUser, Username, categories }) {
     const city = formData.get('city')
     const description = formData.get('description')
 
-    // Validate and return accurate location
-    const locationResponse = await fetch('/api/geo/get-location', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ city, province, country, complete: true })
-    })
-    const unstrucResponse = await locationResponse.json()
-    const location = unstrucResponse.city + ', ' + unstrucResponse.province + ', ' + unstrucResponse.country
-    const lat = unstrucResponse.lat
-    const lng = unstrucResponse.lng
-    const sendData = { category, IdUser, Username, budget, location, lat, lng, description }
+    if (budget === '' || category === '' || city === '' || province === '' || country === '' || description === '') {
+      setError(messages.error.form_field_required)
+      setLoading(false)
+    } else {
+      // Validate and return accurate location
+      const locationResponse = await fetch('/api/geo/get-location', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ city, province, country, complete: true })
+      })
 
-    setLoading(true)
-    setError(null)
+      const unstrucResponse = await locationResponse.json()
 
-    const response = await fetch('/api/forms/upload-offer', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(sendData)
-    })
-    const data = await response.json()
+      // We assume that a successful response will return 200
+      if (locationResponse.status !== 200) {
+        setError(unstrucResponse.message)
+        setLoading(false)
+      } else {
+        const location = unstrucResponse.city + ', ' + unstrucResponse.province + ', ' + unstrucResponse.country
+        const lat = unstrucResponse.lat
+        const lng = unstrucResponse.lng
+        const sendData = { category, IdUser, username, budget, location, lat, lng, description }
 
-    setLoading(false)
+        setLoading(true)
+        setError(null)
 
-    if (data.error) {
-      setError(data.error)
-    }
+        const response = await fetch('/api/forms/upload-offer', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(sendData)
+        })
+        const data = await response.json()
 
-    if (data.message) {
-      window.location.href = '/perfil'
+        setLoading(false)
+
+        if (data.error) {
+          setError(data.error)
+        }
+
+        if (data.message) {
+          window.location.href = '/perfil'
+        }
+      }
     }
   }
 
@@ -77,8 +91,10 @@ function UploadOffert ({ IdUser, Username, categories }) {
         <input id='province' className='border-2 p-2 rounded' type='province' name='province' />
         <label htmlFor='city'>Ciudad</label>
         <input id='city' className='border-2 p-2 rounded' type='city' name='city' />
-        <label htmlFor='description'>Descripción del trabajo</label>
-        <input id='description' className='border-2 p-2 rounded' type='description' name='description' />
+        <div>
+          <label htmlFor='description' className='block'>Descripción del trabajo</label>
+          <textarea name='description' id='description' className='border-2 p-2 rounded w-full' />
+        </div>
         <button disabled={loading} className='rounded-xl border-2 border-brand6 bg-brand6 px-4 py-2 font-semibold text-brand8 hover:text-brand1 disabled:opacity-50' type='submit'>Subir oferta</button>
         <span className={`${error ? 'block' : 'hidden'} text-red-600 bg-red-200 border-2 rounded-lg p-2 border-red-600`}>{error}</span>
       </form>

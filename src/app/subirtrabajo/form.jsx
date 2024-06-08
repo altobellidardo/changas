@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import messages from '@/utils/messages'
 
 function UploadWorker ({ IdUser, categories, username }) {
   const [error, setError] = useState(null)
@@ -8,6 +9,7 @@ function UploadWorker ({ IdUser, categories, username }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+    setLoading(true)
 
     const formData = new FormData(event.target)
     const category = formData.get('category')
@@ -19,41 +21,54 @@ function UploadWorker ({ IdUser, categories, username }) {
     const employees = formData.get('employees')
     const description = formData.get('description')
 
-    // Validate and return accurate location
-    const locationResponse = await fetch('/api/geo/get-location', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ city, province, country, complete: true })
-    })
-    const unstrucResponse = await locationResponse.json()
-    const location = unstrucResponse.city + ', ' + unstrucResponse.province + ', ' + unstrucResponse.country
-    const lat = unstrucResponse.lat
-    const lng = unstrucResponse.lng
+    if (hourlyPrice === '' || category === '' || attentionHours === '' || employees === '' || city === '' || province === '' || country === '' || description === '') {
+      setError(messages.error.form_field_required)
+      setLoading(false)
+    } else {
+      // Validate and return accurate location
+      const locationResponse = await fetch('/api/geo/get-location', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ city, province, country, complete: true })
+      })
 
-    const sendData = { category, IdUser, hourlyPrice, attentionHours, username, location, lat, lng, employees, description }
+      const unstrucResponse = await locationResponse.json()
 
-    setLoading(true)
-    setError(null)
+      // We assume that a successful response will return 200
+      if (locationResponse.status !== 200) {
+        setError(unstrucResponse.message)
+        setLoading(false)
+      } else {
+        const location = unstrucResponse.city + ', ' + unstrucResponse.province + ', ' + unstrucResponse.country
+        const lat = unstrucResponse.lat
+        const lng = unstrucResponse.lng
 
-    const response = await fetch('/api/forms/upload-job', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(sendData)
-    })
-    const data = await response.json()
+        const sendData = { category, IdUser, hourlyPrice, attentionHours, username, location, lat, lng, employees, description }
 
-    setLoading(false)
+        setLoading(true)
+        setError(null)
 
-    if (data.error) {
-      setError(data.error)
-    }
+        const response = await fetch('/api/forms/upload-job', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(sendData)
+        })
+        const data = await response.json()
 
-    if (data.message) {
-      window.location.href = '/perfil'
+        setLoading(false)
+
+        if (data.error) {
+          setError(data.error)
+        }
+
+        if (data.message) {
+          window.location.href = '/perfil'
+        }
+      }
     }
   }
 
@@ -79,8 +94,10 @@ function UploadWorker ({ IdUser, categories, username }) {
       <input id='city' className='border-2 p-2 rounded' type='city' name='city' />
       <label htmlFor='employees'>Número de empleados</label>
       <input id='employees' className='border-2 p-2 rounded' type='employees' name='employees' />
-      <label htmlFor='description'>Descripción del trabajo</label>
-      <input id='description' className='border-2 p-2 rounded' type='description' name='description' />
+      <div>
+        <label htmlFor='description' className='block'>Descripción del trabajo</label>
+        <textarea name='description' id='description' className='border-2 p-2 rounded w-full' />
+      </div>
       <button disabled={loading} className='rounded-xl border-2 border-brand6 bg-brand6 px-4 py-2 font-semibold text-brand8 hover:text-brand1 disabled:opacity-50' type='submit'>Subir trabajo</button>
       <span className={`${error ? 'block' : 'hidden'} text-red-600 bg-red-200 border-2 rounded-lg p-2 border-red-600`}>{error}</span>
     </form>

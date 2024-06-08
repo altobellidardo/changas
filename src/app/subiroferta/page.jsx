@@ -12,7 +12,7 @@ async function UploadProposal () {
   if (!isAuthenticated) redirect('/')
 
   // Retrieve data from JWT
-  const { id_user: IdUser, username: Username } = isAuthenticated
+  const { id_user: IdUser, username } = isAuthenticated
 
   const categories = await getCategories()
 
@@ -23,7 +23,7 @@ async function UploadProposal () {
           <Logo />
         </Link>
       </div>
-      <UploadOffert IdUser={IdUser} Username={Username} categories={categories} />
+      <UploadOffert IdUser={IdUser} username={username} categories={categories} />
     </main>
   )
 }
