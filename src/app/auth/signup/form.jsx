@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import messages from '@/utils/messages'
+import checkCredentials from '@/utils/checkCredentials'
 
 function UploadUser () {
   const [error, setError] = useState(null)
@@ -22,28 +24,49 @@ function UploadUser () {
     const birth = formData.get('birth')
     const dni = formData.get('dni')
 
-    const sendData = { email, password, name, surname, city, province, country, phone, birth, dni }
-
     setLoading(true)
     setError(null)
 
-    const response = await fetch('/api/auth/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(sendData)
-    })
-    const data = await response.json()
+    const credentialsValidation = checkCredentials(email, password)
+    if (credentialsValidation.error) {
+      setError(credentialsValidation.error)
+      setLoading(false)
+    } else if (!name || !surname) {
+      setError(messages.error.name_required)
+      setLoading(false)
+    } else if (!city || !province || !country) {
+      setError(messages.error.location_required)
+      setLoading(false)
+    } else if (dni.length !== 8 || !dni) {
+      setError(messages.error.dni_invalid)
+      setLoading(false)
+    } else if (!birth) {
+      setError(messages.error.birth_required)
+      setLoading(false)
+    } else if (email === '' || password === '' || name === '' || surname === '' || country === '' || province === '' || city === '' || birth === '' || dni === '') {
+      setError(messages.error.form_field_required)
+      setLoading(false)
+    } else {
+      const sendData = { email, password, name, surname, city, province, country, phone, birth, dni }
 
-    setLoading(false)
+      const response = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(sendData)
+      })
+      const data = await response.json()
 
-    if (data.error) {
-      setError(data.error)
-    }
+      setLoading(false)
 
-    if (data.message) {
-      window.location.href = '/'
+      if (data.error) {
+        setError(data.error)
+      }
+
+      if (data.message) {
+        window.location.href = '/'
+      }
     }
   }
 

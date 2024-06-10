@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import messages from '@/utils/messages'
 
 function SignIn () {
   const [error, setError] = useState(null)
@@ -17,23 +18,28 @@ function SignIn () {
     setLoading(true)
     setError(null)
 
-    const response = await fetch('/api/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ email, password })
-    })
-    const data = await response.json()
+    if (email === '' || password === '') {
+      setError(messages.error.form_field_required)
+      setLoading(false)
+    } else {
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      })
+      const data = await response.json()
 
-    setLoading(false)
+      setLoading(false)
 
-    if (data.error) {
-      setError(data.error)
-    }
+      if (data.error) {
+        setError(data.error)
+      }
 
-    if (data.message) {
-      window.location.href = '/'
+      if (data.message) {
+        window.location.href = '/'
+      }
     }
   }
 
