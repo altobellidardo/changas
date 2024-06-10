@@ -17,7 +17,7 @@ export default async function ReviewsPage ({ searchParams }) {
 
   // Get users ratings
   const reviews = await getWorkerRatings(IdUser, category)
-  console.log(reviews)
+  // console.log(reviews)
   return (
     <main className='flex min-h-screen flex-col bg-brand8'>
       <Header />
