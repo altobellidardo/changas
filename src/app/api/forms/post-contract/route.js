@@ -31,7 +31,7 @@ export async function POST (req) {
   const { count } = await supabase.from('contracts').select('*', { count: 'exact', head: true })
     .or(`and(id_worker.eq.${IdUser}, id_contractor.eq.${OtherUser}), and(id_worker.eq.${OtherUser}, id_contractor.eq.${IdUser})`)
     .eq('closed', false)
-  console.log(count)
+  // console.log(count)
   if (count) { return NextResponse.json({ error: messages.error.pending_contract }, { status: 401 }) }
   const { error } = await supabase.from('contracts').insert(newContract).select().single()
   if (error) {

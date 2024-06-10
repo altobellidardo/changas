@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import UpIcon from '@/components/icons/UpIcon'
 import Link from 'next/link'
+import messages from '@/utils/messages'
 
 function ContractForm () {
   const searchParams = useSearchParams()
@@ -41,33 +42,38 @@ function ContractForm () {
     const description = formData.get('description')
     const payformat = formData.get('payformat')
 
-    const sendData = {
-      userType,
-      IdUser,
-      OtherUser,
-      category,
-      jobtitle,
-      date,
-      budget,
-      description,
-      payformat
-    }
-
     setLoading(true)
     setError(null)
 
-    const response = await fetch('/api/forms/post-contract', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(sendData)
-    })
-    setLoading(false)
-    const data = await response.json()
+    if (category === null || jobtitle === '' || date === '' || budget === '' || description === '' || payformat === null) {
+      setError(messages.error.form_field_required)
+      setLoading(false)
+    } else {
+      const sendData = {
+        userType,
+        IdUser,
+        OtherUser,
+        category,
+        jobtitle,
+        date,
+        budget,
+        description,
+        payformat
+      }
 
-    if (data.error) setError(data.error)
-    if (data.status === 200) window.location.href = `/chats/${IdChat}`
+      const response = await fetch('/api/forms/post-contract', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(sendData)
+      })
+      setLoading(false)
+      const data = await response.json()
+
+      if (data.error) setError(data.error)
+      if (data.status === 200) window.location.href = `/chats/${IdChat}`
+    }
   }
 
   useEffect(() => {

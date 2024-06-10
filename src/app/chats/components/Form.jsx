@@ -17,9 +17,10 @@ function ChatForm ({ IdChat, IdUser, OtherUser, Username, Username2, history, Us
     const message = formData.get('message')
     // disable send button
     setEnviando(true)
-    if (message === '') return
-    // Check if IdChat is not defined to create a new chat
-    if (IdChat === undefined) {
+    if (message === '') {
+      setEnviando(false)
+      return
+    } else if (IdChat === undefined) { // Check if IdChat is not defined to create a new chat
       const res = await fetch('/api/chats/create-chat', {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },

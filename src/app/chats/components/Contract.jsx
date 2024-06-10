@@ -39,7 +39,7 @@ function Contract ({ contract, IdUser, IdChat, OtherUsername }) {
     const contractDate = (new Date(contract.date)).getTime()
 
     const enableReview = now >= contractDate && contract.closed
-    const isReviewed = contract.score !== null
+    const isReviewed = contract.score !== undefined
 
     const isUserTurn = (contract.worker_turn && isWorker) || (!contract.worker_turn && !isWorker)
 
@@ -59,6 +59,7 @@ function Contract ({ contract, IdUser, IdChat, OtherUsername }) {
 
     if (enableReview) {
       if (isReviewed) {
+        console.log(contract.score)
         return (
           <div className='flex gap-1 items-center'>
             {contract.score}/5

@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
-// import UpIcon from '@/components/icons/UpIcon'
+import messages from '@/utils/messages'
 
 function CounterDealForm () {
   const searchParams = useSearchParams()
@@ -54,6 +54,9 @@ function CounterDealForm () {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
+    setLoading(true)
+    setError(null)
+
     const formData = new FormData(event.target)
     const jobtitle = formData.get('jobtitle')
     const date = formData.get('date')
@@ -61,34 +64,36 @@ function CounterDealForm () {
     const description = formData.get('description')
     const payformat = formData.get('payformat')
 
-    const sendData = {
-      IdContract,
-      IdUser,
-      IdWorker,
-      IdContractor,
-      jobtitle,
-      date,
-      budget,
-      description,
-      payformat,
-      workerTurn
+    if (jobtitle === '' || date === '' || budget === '' || description === '' || payformat === null) {
+      setError(messages.error.form_field_required)
+      setLoading(false)
+    } else {
+      const sendData = {
+        IdContract,
+        IdUser,
+        IdWorker,
+        IdContractor,
+        jobtitle,
+        date,
+        budget,
+        description,
+        payformat,
+        workerTurn
+      }
+
+      const response = await fetch('/api/forms/update-contract', {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(sendData)
+      })
+      setLoading(false)
+      const data = await response.json()
+
+      if (data.error) setError(data.error)
+      if (data.status === 200) window.location.href = '/'
     }
-    console.log(sendData)
-    setLoading(true)
-    setError(null)
-
-    const response = await fetch('/api/forms/update-contract', {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(sendData)
-    })
-    setLoading(false)
-    const data = await response.json()
-
-    if (data.error) setError(data.error)
-    if (data.status === 200) window.location.href = '/'
   }
 
   return (
@@ -96,8 +101,10 @@ function CounterDealForm () {
       <label htmlFor='jobtitle'>Título del trabajo</label>
       <input id='jobtitle' className='border-2 p-2 rounded' type='jobtitle' name='jobtitle' defaultValue={jobtitle} />
       <p>Tipo de trabajo {category}</p>
-      <label htmlFor='description'>Descripción del trabajo</label>
-      <input id='description' className='border-2 p-2 rounded' type='description' name='description' defaultValue={description} />
+      <div>
+        <label htmlFor='description' className='block'>Descripción del trabajo</label>
+        <textarea name='description' id='description' className='border-2 p-2 rounded w-full' defaultValue={description} />
+      </div>
       <label htmlFor='budget'>Presupuesto</label>
       <input id='budget' className='border-2 p-2 rounded' type='number' step='1' min='1' name='budget' defaultValue={budget} />
       <label htmlFor='date'>Fecha del trabajo</label>
