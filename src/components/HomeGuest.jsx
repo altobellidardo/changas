@@ -31,7 +31,7 @@ function Home () {
       </section>
 
       <section className='my-20 lg:mt-32 mx-auto w-[90vw] max-w-[900px] text-balance'>
-        <h2 className='text-2xl md:text-3xl lg:text-5xl font-bold'>Contrata a los Mejores.</h2>
+        <h2 className='text-2xl md:text-3xl lg:text-5xl font-bold'>Contrata a los mejores.</h2>
         <h2 className='mb-4 text-2xl md:text-3xl lg:text-5xl font-bold'>Haz el trabajo</h2>
         <p className='text-md lg:text-xl'>Conectamos profesionales calificados con clientes. Encuentra a la persona adecuada para tu proyecto o sé contratado por tu experiencia.</p>
       </section>
@@ -53,7 +53,7 @@ function Home () {
           <h3 className='text-2xl text-pretty mb-6'>Nuestros usuarios</h3>
           <div>
             <p>Aprovecha los beneficios de la plataforma según tus necesidades.</p>
-            <p>En nuestra plataforma no distinguimos entre quien busca servicios o los ofrece, por lo que hay una cuenta única para cada persona.</p>
+            <p>Aquí no distinguimos entre quien busca servicios o los ofrece, por lo que hay una cuenta única para cada persona.</p>
           </div>
         </div>
 
@@ -61,7 +61,7 @@ function Home () {
           <h3 className='text-2xl text-pretty mb-6'>Si buscas...</h3>
           <ul className='list-disc ml-6'>
             <li>
-              Encuentra una amplia variedad de profesionales cualificados para tus proyectos de mejora del hogar, desde electricistas, plomeros, pintores y más
+              Encuentra una amplia variedad de profesionales cualificados para tus proyectos de mejora del hogar, como electricistas, plomeros, pintores y más
             </li>
             <li>
               Conecta fácilmente con expertos en el área que necesitas y revisa reseñas auténticas para contratar con total confianza
@@ -76,7 +76,7 @@ function Home () {
           <h3 className='text-2xl text-pretty mb-6'>Si ofreces...</h3>
           <ul className='list-disc ml-6'>
             <li>
-              Destaca tu experiencia y habilidades para ser contratado por clientes potenciales que buscan tus servicios
+              Destaca tu experiencia y habilidades para ser contratado por clientes que buscan tus servicios
             </li>
             <li>
               Mejora tu reputación generada por tus trabajos realizados y aumenta el alcance de tu público al ser recomendado por la plataforma
@@ -90,7 +90,7 @@ function Home () {
 
       <section className='mx-auto my-32 w-[90vw] max-w-[900px]'>
         <h1 className='mb-2 text-3xl lg:text-5xl font-semibold'>Únete a la Plataforma</h1>
-        <p className='text-balance text-md lg:text-2xl'>Quienes buscan sevicios confían en nuestra plataforma para encontrar profesionales cualificados para sus proyectos. Quienes ofrecen servicios apuestan en nosotros para conectarse con clientes potenciales y hacer crecer su negocio.</p>
+        <p className='text-balance text-md lg:text-2xl'>Quienes buscan servicios confían en nuestra plataforma para encontrar profesionales cualificados para sus proyectos. Quienes ofrecen servicios apuestan por nosotros para conectarse con clientes potenciales y hacer crecer su negocio.</p>
 
         <div className='mx-auto mb-5 mt-12 flex flex-wrap items-center justify-center gap-4'>
           {categories.map((item) => (
