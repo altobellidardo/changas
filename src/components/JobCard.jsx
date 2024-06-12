@@ -10,7 +10,7 @@ function JobInfo ({ job }) {
   return (
     <>
       <div>
-        <span className='opacity-60 text-sm'>Nombre del oficio</span>
+        <span className='opacity-60 text-sm'>Oficio</span>
         <p>{job.category}</p>
       </div>
       <div>

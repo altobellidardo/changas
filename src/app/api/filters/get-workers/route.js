@@ -14,26 +14,34 @@ export async function GET (req) {
   const country = query.get('country')
   const province = query.get('province')
   const city = query.get('city')
-  let hourlyPrice = query.get('hourly_price')
+  let minhourlyPrice = query.get('min_hourly_price')
+  let maxhourlyPrice = query.get('max_hourly_price')
   let distance = query.get('distance') * 1000
   let employees = query.get('employees')
-  let score = query.get('score')
+  let maxScore = query.get('max_score')
+  let minScore = query.get('min_score')
 
   // We set an upper and lower bound of the results to be shown
   const lowerBound = RESULTS_PER_PAGE * page
   const upperBound = lowerBound + RESULTS_PER_PAGE - 1
-
+  console.log(minhourlyPrice)
   // If a var is undefined we just assign an acceptable value
-  if (score === 'undefined') {
-    score = 0
+  if (minScore === 'undefined' || minScore === '') {
+    minScore = 0
+  }
+  if (maxScore === 'undefined' || maxScore === '') {
+    maxScore = 5
   }
   if (name === 'undefined') {
     name = ''
   }
-  if (hourlyPrice === 'undefined') {
-    hourlyPrice = 200000000
+  if (minhourlyPrice === 'undefined' || minhourlyPrice === '') {
+    minhourlyPrice = 0
   }
-  if (employees === 'undefined') {
+  if (maxhourlyPrice === 'undefined' || maxhourlyPrice === '') {
+    maxhourlyPrice = 200000000
+  }
+  if (employees === 'undefined' || employees === '') {
     employees = 0
   }
   if (isNaN(distance)) {
@@ -52,8 +60,10 @@ export async function GET (req) {
         radius: distance,
         cat: category
       })
-      .lt('hourly_price', hourlyPrice)
-      .gt('score', score)
+      .gte('hourly_price', minhourlyPrice)
+      .lte('hourly_price', maxhourlyPrice)
+      .gte('score', minScore)
+      .lte('score', maxScore)
       .gt('employees', employees)
       .ilike('username', `%${name}%`)
       .order('score', { ascending: false })
@@ -64,8 +74,10 @@ export async function GET (req) {
     const columns = 'id_user, username, hourly_price, location, score, employees, description, attention_hours'
     const fetch = await supabase.from('workers').select(columns)
       .eq('category', category)
-      .lt('hourly_price', hourlyPrice)
-      .gt('score', score)
+      .gte('hourly_price', minhourlyPrice)
+      .lte('hourly_price', maxhourlyPrice)
+      .gte('score', minScore)
+      .lte('score', maxScore)
       .gt('employees', employees)
       .ilike('username', `%${name}%`)
       .order('score', { ascending: false })

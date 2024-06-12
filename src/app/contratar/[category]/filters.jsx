@@ -54,16 +54,24 @@ function Filters ({ category, IdUser }) {
     event.preventDefault()
     const formData = new FormData(event.target)
 
+    // Helper function to check if a value is empty
+    const getValue = (key, defaultValue) => {
+      const value = formData.get(key)
+      return value !== '' ? value : defaultValue
+    }
+
     // The filter cannot have blank spaces due to the query requirements
     const newFilter = {
-      name: formData.get('name') !== '' ? formData.get('name') : undefined,
-      country: formData.get('country') !== '' ? formData.get('country') : undefined,
-      province: formData.get('province') !== '' ? formData.get('province') : undefined,
-      city: formData.get('city') !== '' ? formData.get('city') : undefined,
-      hourly_price: formData.get('hourly_price') !== '' ? formData.get('hourly_price') : undefined,
-      employees: formData.get('employees') !== '' ? formData.get('employees') : undefined,
-      score: formData.get('score') !== '' ? formData.get('score') : undefined,
-      distance: formData.get('distance') !== '' ? formData.get('distance') : undefined
+      name: getValue('name', undefined),
+      country: getValue('country', undefined),
+      province: getValue('province', undefined),
+      city: getValue('city', undefined),
+      min_hourly_price: getValue('min_hourly_price', '0'),
+      max_hourly_price: getValue('max_hourly_price', undefined),
+      employees: getValue('employees', '0'),
+      min_score: getValue('min_score', '0'),
+      max_score: getValue('max_score', '5'),
+      distance: getValue('distance', '40000')
     }
 
     // if the filters don't change
@@ -81,7 +89,7 @@ function Filters ({ category, IdUser }) {
   useEffect(() => {
     setLoading(true)
 
-    const query = `category=${category}&name=${filter.name}&country=${filter.country}&province=${filter.province}&city=${filter.city}&hourly_price=${filter.hourly_price}&score=${filter.score}&employees=${filter.employees}&distance=${filter.distance}&page=${page}`
+    const query = `category=${category}&name=${filter.name}&country=${filter.country}&province=${filter.province}&city=${filter.city}&min_hourly_price=${filter.min_hourly_price}&max_hourly_price=${filter.max_hourly_price}&min_score=${filter.min_score}&max_score=${filter.max_score}&employees=${filter.employees}&distance=${filter.distance}&page=${page}`
 
     const fetchData = async () => {
       const response = await fetch(`/api/filters/get-workers?${query}`, {
@@ -129,7 +137,7 @@ function Filters ({ category, IdUser }) {
                   className={miniInputStyle}
                   type='number'
                   min='0'
-                  name='hourly_price_min'
+                  name='min_hourly_price'
                   placeholder='500'
                 />
                 <span>-</span>
@@ -137,7 +145,7 @@ function Filters ({ category, IdUser }) {
                   className={miniInputStyle}
                   type='number'
                   min='0'
-                  name='hourly_price_max'
+                  name='max_hourly_price'
                   placeholder='1000'
                 />
               </div>
@@ -203,7 +211,7 @@ function Filters ({ category, IdUser }) {
                   type='number'
                   min='0'
                   max='5'
-                  name='score'
+                  name='min_score'
                   placeholder='0'
                 />
                 <span>-</span>
@@ -212,7 +220,7 @@ function Filters ({ category, IdUser }) {
                   type='number'
                   min='0'
                   max='5'
-                  name='score'
+                  name='max_score'
                   placeholder='5'
                 />
               </div>

@@ -4,7 +4,7 @@ function ProposalInfo ({ proposal }) {
   return (
     <>
       <div>
-        <span className='opacity-60 text-sm'>Categoría</span>
+        <span className='opacity-60 text-sm'>Servicio buscado</span>
         <p>{proposal.category}</p>
       </div>
       <div>
