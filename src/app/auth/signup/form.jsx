@@ -2,12 +2,14 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import messages from '@/utils/messages'
 import checkCredentials from '@/utils/checkCredentials'
 
 function UploadUser () {
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [profilePicture, setProfilePicture] = useState(null)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -47,7 +49,7 @@ function UploadUser () {
       setError(messages.error.form_field_required)
       setLoading(false)
     } else {
-      const sendData = { email, password, name, surname, city, province, country, phone, birth, dni }
+      const sendData = { email, password, name, surname, city, province, country, phone, birth, dni, profilePicture }
 
       const response = await fetch('/api/auth/register', {
         method: 'POST',
@@ -64,8 +66,51 @@ function UploadUser () {
         setError(data.error)
       }
 
-      if (data.message) {
+      /* if (data.message) {
         window.location.href = '/'
+      } */
+    }
+  }
+
+  const handlePictureChange = (event) => {
+    const file = event.target.files[0]
+    if (file) {
+      const reader = new FileReader()
+
+      reader.readAsDataURL(file)
+
+      reader.onload = (e) => {
+        /* const img = document.createElement('img')
+        img.src = e.target.result */
+        setProfilePicture(e.target.result)
+        /*
+        img.onload = (event) => {
+          const canvas = document.createElement('canvas')
+          const ctx = canvas.getContext('2d')
+          const maxWidth = 144
+          const maxHeight = 144
+
+          let width = event.target.width
+          let height = event.target.height
+
+          if (width > height) {
+            if (width > maxWidth) {
+              height = Math.round((height *= maxWidth / width))
+              width = maxWidth
+            }
+          } else {
+            if (height > maxHeight) {
+              width = Math.round((width *= maxHeight / height))
+              height = maxHeight
+            }
+          }
+
+          canvas.width = width
+          canvas.height = height
+          ctx.drawImage(img, 0, 0, width, height)
+
+          setProfilePicture(canvas.toDataURL('image/jpeg', 0.9))
+        } */
       }
     }
   }
@@ -102,7 +147,10 @@ function UploadUser () {
         <label htmlFor='phone'>Telefóno celular (opcional)</label>
         <input id='phone' className='border-2 p-2 rounded' type='number' min='1' step='1' name='phone' />
         <label htmlFor='picture'>Foto de perfil</label>
-        <input id='picture' className='border-2 p-2 rounded' type='file' name='picture' />
+        <input id='picture' className='border-2 p-2 rounded' type='file' name='picture' accept='image/*' onChange={handlePictureChange} />
+        {profilePicture && (
+          <Image src={profilePicture} alt='Profile Preview' className='mt-2 rounded-md border-2 border-gray-200' width={144} height={144} />
+        )}
         <button disabled={loading} className='rounded-xl border-2 border-brand6 bg-brand6 px-4 py-2 font-semibold text-brand8 hover:text-brand1 disabled:opacity-50' type='submit'>Registrarse</button>
         <span className={`${error ? 'block' : 'hidden'} text-red-600 bg-red-200 border-2 rounded-lg p-2 border-red-600`}>{error}</span>
         <Link href='/auth/signin' className='underline'>¿Ya tienes una cuenta? Inicia sesión</Link>
