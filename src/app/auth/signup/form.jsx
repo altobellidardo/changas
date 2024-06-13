@@ -58,7 +58,7 @@ function UploadUser () {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: sendData
+        body: JSON.stringify(sendData)
       })
       const data = await response.json()
 
