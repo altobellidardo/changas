@@ -7,7 +7,7 @@ import jwt from 'jsonwebtoken'
 
 export async function POST (request) {
   const body = await request.json()
-  const { email, password, name, surname, city, province, country, phone, birth, dni } = body
+  const { email, password, name, surname, city, province, country, phone, birth, dni, profilePicture } = body
 
   const credentialsValidation = checkCredentials(email, password)
   if (credentialsValidation.error) {
@@ -81,7 +81,19 @@ export async function POST (request) {
   const userData = { id_user: newUserCreated.id_user, email, name, surname, location, phone: phone.toString(), birth, dni }
   const { error: dataFail } = await supabase.from('users_data').insert(userData)
 
+  console.log(profilePicture)
+  /*
+  // Upload profile picture to Supabase bucket named profiles
+  const { error: profileFail } = await supabase.storage.from('profiles')
+    .upload(`${userData.id_user}.png`, profilePicture)
+
+  if (profileFail) {
+    console.log(profileFail)
+    return NextResponse.json({ error: messages.error.error })
+  }
+  */
   if (dataFail) {
+    console.log(dataFail)
     return NextResponse.json({ error: messages.error.error })
   }
 
