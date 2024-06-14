@@ -27,7 +27,7 @@ function ShareProfile ({ IdUser }) {
       onClick={handleClick}
     >
       <ShareIcon />
-      {coping ? 'Enlace copiado' : 'Comparte tu perfil'}
+      {coping ? 'Enlace copiado' : 'Compartir perfil'}
     </button>
   )
 }

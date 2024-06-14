@@ -10,7 +10,7 @@ function UploadUser () {
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
   const [profilePicture, setProfilePicture] = useState(null)
-  // const [pictureFile, setPictureFile] = useState(null)
+  const [pictureFile, setPictureFile] = useState(null)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -62,6 +62,17 @@ function UploadUser () {
       })
       const data = await response.json()
 
+      const imgData = new FormData()
+      imgData.append('picture', pictureFile)
+      const imgResponse = await fetch('/api/upload-profile', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: imgData
+      })
+      console.log(imgResponse)
+
       setLoading(false)
 
       if (data.error) {
@@ -85,7 +96,7 @@ function UploadUser () {
         setProfilePicture(e.target.result)
       }
 
-      // setPictureFile(file)
+      setPictureFile(file)
     }
   }
 
