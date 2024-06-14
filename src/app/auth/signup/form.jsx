@@ -1,147 +1,139 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 
-import { useState } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import messages from '@/utils/messages'
 import checkCredentials from '@/utils/checkCredentials'
+import { get18YearsAgo } from '@/utils/getDate'
+import messages from '@/utils/messages'
+import Link from 'next/link'
+import { useState } from 'react'
 
-function UploadUser () {
+function Input ({ type, name, label, noRequired, ...rest }) {
+  return (
+    <label className='flex flex-col'>
+      {label}
+      <input type={type} name={name} className='border-2 p-2 rounded' {...rest} required={!noRequired} />
+    </label>
+  )
+}
+
+const errorMatch = [
+  [['name', 'surname'], messages.error.name_required],
+  [['city', 'province', 'country'], messages.error.location_required],
+  [['email'], messages.error.email_required],
+  [['password'], messages.error.password_required],
+  [['birthdate'], messages.error.birth_required],
+  [['dni'], messages.error.dni_invalid]
+]
+
+function RegisterForm () {
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
-  const [profilePicture, setProfilePicture] = useState(null)
-  const [pictureFile, setPictureFile] = useState(null)
+
+  const [imageFile, setImageFile] = useState(null)
+
+  const minBirthdate = get18YearsAgo()
 
   const handleSubmit = async (event) => {
     event.preventDefault()
 
     const formData = new FormData(event.target)
-    const email = formData.get('email')
-    const password = formData.get('password')
-    const name = formData.get('name')
-    const surname = formData.get('surname')
-    const country = formData.get('country')
-    const province = formData.get('province')
-    const city = formData.get('city')
-    const phone = formData.get('phone')
-    const birth = formData.get('birth')
-    const dni = formData.get('dni')
+    const data = {
+      name: formData.get('name'),
+      surname: formData.get('surname'),
+      email: formData.get('email'),
+      password: formData.get('password'),
+      country: formData.get('country'),
+      province: formData.get('province'),
+      city: formData.get('city'),
+      dni: formData.get('dni'),
+      birthdate: formData.get('birthdate'),
+      image: formData.get('image')
+    }
 
     setLoading(true)
     setError(null)
 
-    const credentialsValidation = checkCredentials(email, password)
+    for (const [key, value] of Object.entries(data)) {
+      if (value === '' || (key === 'dni' && value?.length !== 8)) {
+        setError(errorMatch.find((error) => error[0].includes(key))[1])
+        setLoading(false)
+      }
+    }
+
+    const credentialsValidation = checkCredentials(data.email, data.password)
     if (credentialsValidation.error) {
       setError(credentialsValidation.error)
       setLoading(false)
-    } else if (!name || !surname) {
-      setError(messages.error.name_required)
-      setLoading(false)
-    } else if (!city || !province || !country) {
-      setError(messages.error.location_required)
-      setLoading(false)
-    } else if (dni.length !== 8 || !dni) {
-      setError(messages.error.dni_invalid)
-      setLoading(false)
-    } else if (!birth) {
-      setError(messages.error.birth_required)
-      setLoading(false)
-    } else if (email === '' || password === '' || name === '' || surname === '' || country === '' || province === '' || city === '' || birth === '' || dni === '') {
-      setError(messages.error.form_field_required)
-      setLoading(false)
-    } else {
-      const sendData = { email, password, name, surname, city, province, country, phone, birth, dni, profilePicture }
-      // console.log(pictureFile)
+    }
 
-      const response = await fetch('/api/auth/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(sendData)
-      })
-      const data = await response.json()
+    const response = await fetch('/api/auth/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: data
+    })
+    const dataResponse = await response.json()
 
-      const imgData = new FormData()
-      imgData.append('picture', pictureFile)
-      const imgResponse = await fetch('/api/upload-profile', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: imgData
-      })
-      console.log(imgResponse)
+    setLoading(false)
 
-      setLoading(false)
-
-      if (data.error) {
-        setError(data.error)
-      }
-
-      if (data.message) {
-        window.location.href = '/'
-      }
+    if (dataResponse.error) {
+      setError(dataResponse.error)
+    }
+    if (dataResponse.message) {
+      window.location.href = '/'
     }
   }
 
-  const handlePictureChange = (event) => {
+  const handleImageChange = (event) => {
     const file = event.target.files[0]
-
-    if (file) {
-      const reader = new FileReader()
-      reader.readAsDataURL(file)
-
-      reader.onload = (e) => {
-        setProfilePicture(e.target.result)
-      }
-
-      setPictureFile(file)
-    }
+    setImageFile(file)
   }
 
-  // Get the 18 year old date
-  const today = new Date()
-  const minBirth = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate())
-  const minBirthdate = minBirth.toISOString().split('T')[0]
+  const deleteImage = () => {
+    setImageFile(null)
+    // delete file from form
+    document.getElementById('image').value = ''
+  }
 
   return (
     <section className='flex flex-col mt-20 justify-center items-center'>
-      <h1 className='text-3xl font-bold'>
-        Registrarse
-      </h1>
-      <form onSubmit={handleSubmit} className='flex flex-col gap-2 w-80 md:w-96 p-6'>
-        <label htmlFor='email'>Email</label>
-        <input id='email' className='border-2 p-2 rounded' type='email' name='email' autoComplete='email' />
-        <label htmlFor='password'>Contraseña</label>
-        <input id='password' className='border-2 p-2 rounded' type='password' name='password' />
-        <label htmlFor='name'>Nombre</label>
-        <input id='name' className='border-2 p-2 rounded' type='text' name='name' />
-        <label htmlFor='surname'>Apellido</label>
-        <input id='surname' className='border-2 p-2 rounded' type='text' name='surname' />
-        <label htmlFor='country'>País</label>
-        <input id='country' className='border-2 p-2 rounded' type='country' name='country' />
-        <label htmlFor='province'>Provincia</label>
-        <input id='province' className='border-2 p-2 rounded' type='province' name='province' />
-        <label htmlFor='city'>Ciudad</label>
-        <input id='city' className='border-2 p-2 rounded' type='city' name='city' />
-        <label htmlFor='dni'>DNI (sin puntos ni comas)</label>
-        <input id='dni' className='border-2 p-2 rounded' type='number' min='1' step='1' name='dni' />
-        <label htmlFor='birth'>Fecha de nacimiento</label>
-        <input id='birth' className='border-2 p-2 rounded' type='date' name='birth' max={minBirthdate} />
-        <label htmlFor='phone'>Telefóno celular (opcional)</label>
-        <input id='phone' className='border-2 p-2 rounded' type='number' min='1' step='1' name='phone' />
-        <label htmlFor='picture'>Foto de perfil</label>
-        <input id='picture' className='border-2 p-2 rounded' type='file' name='picture' accept='image/*' onChange={handlePictureChange} />
-        {profilePicture && (
-          <Image src={profilePicture} alt='Profile Preview' className='mt-2 rounded-md border-2 border-gray-200' width={144} height={144} />
-        )}
-        <button disabled={loading} className='rounded-xl border-2 border-brand6 bg-brand6 px-4 py-2 font-semibold text-brand8 hover:text-brand1 disabled:opacity-50' type='submit'>Registrarse</button>
-        <span className={`${error ? 'block' : 'hidden'} text-red-600 bg-red-200 border-2 rounded-lg p-2 border-red-600`}>{error}</span>
+      <h1 className='text-3xl font-bold'>Registrarse</h1>
+      <form className='flex flex-col gap-4 w-80 md:w-96 p-6' onSubmit={handleSubmit}>
+        <Input type='text' name='name' label='Nombre' />
+        <Input type='text' name='surname' label='Apellido' />
+        <Input type='email' name='email' label='Email' />
+        <Input type='password' name='password' label='Contraseña' />
+
+        <Input type='text' name='country' label='País' />
+        <Input type='text' name='province' label='Provincia' />
+        <Input type='text' name='city' label='Ciudad' />
+
+        <Input type='number' name='dni' label='DNI (sin puntos ni comas)' min='1' step='1' />
+        <Input type='date' name='birth' label='Fecha de nacimiento' max={minBirthdate} />
+        <Input type='number' name='phone' label='Telefóno celular (opcional)' min='1' step='1' noRequired />
+
+        <Input type='file' name='image' label='Imagen de perfil (opcional)' accept='image/*' onChange={handleImageChange} id='image' />
+        {imageFile &&
+          <div>
+            <img src={URL.createObjectURL(imageFile)} alt='Imagen de perfil' className='w-40 h-40 object-cover' />
+            <button className='rounded px-2 py-1 text-black bg-red-500/40' type='button' onClick={deleteImage}>
+              Descartar imagen
+            </button>
+          </div>}
+
+        <button
+          disabled={loading}
+          className='rounded-xl border-2 border-brand6 bg-brand6 px-4 py-2 font-semibold text-brand8 hover:text-brand1 disabled:opacity-50'
+          type='submit'
+        > Registrarse
+        </button>
+        {error &&
+          <span className='text-red-600 bg-red-200 border-2 rounded-lg p-2 border-red-600'>{error}</span>}
         <Link href='/auth/signin' className='underline'>¿Ya tienes una cuenta? Inicia sesión</Link>
       </form>
     </section>
   )
 }
 
-export default UploadUser
+export default RegisterForm
