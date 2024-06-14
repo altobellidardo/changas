@@ -3,9 +3,9 @@
 
 import checkCredentials from '@/utils/checkCredentials'
 import { get18YearsAgo } from '@/utils/getDate'
-import messages from '@/utils/messages'
 import Link from 'next/link'
 import { useState } from 'react'
+import errorMatch from './errorMatch'
 
 function Input ({ type, name, label, noRequired, ...rest }) {
   return (
@@ -15,15 +15,6 @@ function Input ({ type, name, label, noRequired, ...rest }) {
     </label>
   )
 }
-
-const errorMatch = [
-  [['name', 'surname'], messages.error.name_required],
-  [['city', 'province', 'country'], messages.error.location_required],
-  [['email'], messages.error.email_required],
-  [['password'], messages.error.password_required],
-  [['birthdate'], messages.error.birth_required],
-  [['dni'], messages.error.dni_invalid]
-]
 
 function RegisterForm () {
   const [error, setError] = useState(null)
@@ -58,10 +49,7 @@ function RegisterForm () {
 
     const response = await fetch('/api/auth/register', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: data
+      body: formData
     })
     const dataResponse = await response.json()
 
