@@ -103,11 +103,11 @@ function RegisterForm () {
         <Input type='date' name='birth' label='Fecha de nacimiento' max={minBirthdate} />
         <Input type='number' name='phone' label='Telefóno celular (opcional)' min='1' step='1' noRequired />
 
-        <Input type='file' name='image' label='Imagen de perfil (opcional)' accept='image/*' onChange={handleImageChange} id='image' />
+        <Input type='file' name='image' label='Imagen de perfil (opcional)' accept='image/*' onChange={handleImageChange} id='image' noRequired />
         {imageFile &&
           <div>
             <img src={URL.createObjectURL(imageFile)} alt='Imagen de perfil' className='w-40 h-40 object-cover' />
-            <button className='rounded px-2 py-1 text-black bg-red-500/40' type='button' onClick={deleteImage} noRequired>
+            <button className='rounded px-2 py-1 text-black bg-red-500/40' type='button' onClick={deleteImage}>
               Descartar imagen
             </button>
           </div>}
