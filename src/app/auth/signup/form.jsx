@@ -106,8 +106,8 @@ function RegisterForm () {
         <Input type='file' name='image' label='Imagen de perfil (opcional)' accept='image/*' onChange={handleImageChange} id='image' />
         {imageFile &&
           <div>
-            <img src={URL.createObjectURL(imageFile)} alt='Imagen de perfil' className='w-40 h-40 object-cover' noRequired />
-            <button className='rounded px-2 py-1 text-black bg-red-500/40' type='button' onClick={deleteImage}>
+            <img src={URL.createObjectURL(imageFile)} alt='Imagen de perfil' className='w-40 h-40 object-cover' />
+            <button className='rounded px-2 py-1 text-black bg-red-500/40' type='button' onClick={deleteImage} noRequired>
               Descartar imagen
             </button>
           </div>}
