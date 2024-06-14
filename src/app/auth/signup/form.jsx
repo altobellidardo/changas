@@ -37,18 +37,8 @@ function RegisterForm () {
     event.preventDefault()
 
     const formData = new FormData(event.target)
-    const data = {
-      name: formData.get('name'),
-      surname: formData.get('surname'),
-      email: formData.get('email'),
-      password: formData.get('password'),
-      country: formData.get('country'),
-      province: formData.get('province'),
-      city: formData.get('city'),
-      dni: formData.get('dni'),
-      birthdate: formData.get('birthdate'),
-      image: formData.get('image')
-    }
+    const fields = ['name', 'surname', 'email', 'password', 'country', 'province', 'city', 'dni', 'birthdate', 'image']
+    const data = Object.fromEntries(fields.map(field => [field, formData.get(field)]))
 
     setLoading(true)
     setError(null)
@@ -116,7 +106,7 @@ function RegisterForm () {
         <Input type='file' name='image' label='Imagen de perfil (opcional)' accept='image/*' onChange={handleImageChange} id='image' />
         {imageFile &&
           <div>
-            <img src={URL.createObjectURL(imageFile)} alt='Imagen de perfil' className='w-40 h-40 object-cover' />
+            <img src={URL.createObjectURL(imageFile)} alt='Imagen de perfil' className='w-40 h-40 object-cover' noRequired />
             <button className='rounded px-2 py-1 text-black bg-red-500/40' type='button' onClick={deleteImage}>
               Descartar imagen
             </button>
