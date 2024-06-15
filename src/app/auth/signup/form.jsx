@@ -5,7 +5,7 @@ import checkCredentials from '@/utils/checkCredentials'
 import { get18YearsAgo } from '@/utils/getDate'
 import Link from 'next/link'
 import { useState } from 'react'
-import errorMatch from './errorMatch'
+import { errorMatch, getFields } from './dataHelp'
 
 function Input ({ type, name, label, noRequired, ...rest }) {
   return (
@@ -28,16 +28,17 @@ function RegisterForm () {
     event.preventDefault()
 
     const formData = new FormData(event.target)
-    const fields = ['name', 'surname', 'email', 'password', 'country', 'province', 'city', 'dni', 'birthdate', 'image']
-    const data = Object.fromEntries(fields.map(field => [field, formData.get(field)]))
+    const data = getFields(formData)
 
     setLoading(true)
     setError(null)
 
     for (const [key, value] of Object.entries(data)) {
       if (value === '' || (key === 'dni' && value?.length !== 8)) {
-        setError(errorMatch.find((error) => error[0].includes(key))[1])
-        setLoading(false)
+        if (key !== 'phone') {
+          setError(errorMatch.find((error) => error[0].includes(key))[1])
+          setLoading(false)
+        }
       }
     }
 
