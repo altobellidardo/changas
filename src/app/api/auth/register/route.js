@@ -83,7 +83,7 @@ export async function POST (request) {
   }
 
   // upload profile picture
-  const { error: profileFail } = await supabase.storage.from('profiles').upload(userData.id_user, data.picture)
+  const { error: profileFail } = await supabase.storage.from('profiles').upload(userData.id_user, data.image)
   if (profileFail) {
     console.log('error 6')
     return NextResponse.json({ error: messages.error.error })
