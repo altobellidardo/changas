@@ -41,13 +41,21 @@ function ProfileCard ({ user }) {
     setLoading(false)
   }
 
+  let picURL
+  if (user.picture) {
+    const supURL = process.env.NEXT_PUBLIC_SUPABASE_URL
+    picURL = supURL + '/storage/v1/object/public/profiles/' + IdUser
+  } else {
+    picURL = 'https://avatar.iran.liara.run/public/boy?username=' + user.name
+  }
+
   return (
     <section className='flex flex-col md:flex-row items-center bg-brand4 text-brand8 justify-center gap-8 py-10 md:w-[80vw] mx-auto rounded-md'>
       <picture className='relative'>
         <button onClick={toggleEditMode} className='text-brand8 absolute right-0 bg-brand3 p-2 rounded-full hover:bg-brand5'>
           <PenIcon />
         </button>
-        <img className='rounded-full size-40' src={user.picture} alt={`${username} picture`} />
+        <img className='rounded-full size-40' src={picURL} alt={`${username} picture`} />
       </picture>
 
       {editMode

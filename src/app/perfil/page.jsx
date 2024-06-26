@@ -42,8 +42,6 @@ export default async function UserPage () {
   // Gets published job offers by the user
   const offers = await getOffers(IdUser)
 
-  user.picture = user.picture ? user.picture : 'https://avatar.iran.liara.run/public/boy?username=' + user.name
-
   return (
     <main className='flex min-h-screen flex-col bg-brand8'>
       <Header />

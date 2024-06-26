@@ -73,7 +73,8 @@ export async function POST (request) {
     location,
     phone: data.phone.toString(),
     birth: data.birth,
-    dni: data.dni
+    dni: data.dni,
+    picture: !!data.image
   }
   const { error: dataFail } = await supabase.from('users_data').insert(userData)
 
@@ -83,10 +84,12 @@ export async function POST (request) {
   }
 
   // upload profile picture
-  const { error: profileFail } = await supabase.storage.from('profiles').upload(userData.id_user, data.image)
-  if (profileFail) {
-    console.log('error 6')
-    return NextResponse.json({ error: messages.error.error })
+  if (data.image) {
+    const { error: profileFail } = await supabase.storage.from('profiles').upload(userData.id_user, data.image)
+    if (profileFail) {
+      console.log('error 6')
+      return NextResponse.json({ error: messages.error.error })
+    }
   }
 
   newUserCreated.username = data.name + ' ' + data.surname
