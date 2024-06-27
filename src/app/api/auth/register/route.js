@@ -1,103 +1,98 @@
-import { NextResponse } from 'next/server'
-import messages from '@/utils/messages'
-import checkCredentials from '@/utils/checkCredentials'
+// register route
+
+// TODO: add DNI validation
+
+import { getLocation } from '@/actions/getLocation'
+import { getFields, errorMatch } from '@/app/auth/signup/dataHelp'
 import supabase from '@/libs/supabase/server'
+import checkCredentials from '@/utils/checkCredentials'
+import { NextRequest, NextResponse } from 'next/server'
 import bcrypt from 'bcryptjs'
+import messages from '@/utils/messages'
 import jwt from 'jsonwebtoken'
 
 export async function POST (request) {
-  const body = await request.json()
-  const { email, password, name, surname, city, province, country, phone, birth, dni, profilePicture } = body
+  const req = new NextRequest(request)
+  const formData = await req.formData()
+  const data = getFields(formData)
 
-  const credentialsValidation = checkCredentials(email, password)
+  for (const [key, value] of Object.entries(data)) {
+    if (value === '' || (key === 'dni' && value?.length !== 8)) {
+      if (key !== 'phone') {
+        const error = errorMatch.find((error) => error[0].includes(key))[1]
+
+        return NextResponse.json({ error }, { status: 400 })
+      }
+    }
+  }
+
+  const credentialsValidation = checkCredentials(data.email, data.password)
   if (credentialsValidation.error) {
     const { error: message, status } = credentialsValidation
+    console.log('error 1')
+
     return NextResponse.json({ error: message }, { status })
   }
 
-  if (!name || !surname) {
-    return NextResponse.json(
-      { error: messages.error.name_required }, { status: 400 }
-    )
+  const locationResponse = await getLocation(data.city, data.province, data.country, true)
+
+  if (locationResponse.status !== 200) {
+    console.log('error 2')
+    return NextResponse.json({ error: locationResponse.message }, { status: locationResponse.status })
   }
 
-  if (!city || !province || !country) {
-    return NextResponse.json(
-      { error: messages.error.location_required }, { status: 400 }
-    )
-  }
-
-  if (dni.length !== 8) {
-    return NextResponse.json(
-      { error: messages.error.dni_invalid }, { status: 400 }
-    )
-  }
-
-  if (!birth) {
-    return NextResponse.json(
-      { error: messages.error.birth_required }, { status: 400 }
-    )
-  }
-
-  // get base url from request
-  const url = new URL(request.url)
-  const BASE_URL = url.origin
-
-  // Validate and return accurate location
-  const locationResponse = await fetch(BASE_URL + '/api/geo/get-location', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ city, province, country, complete: true })
-  })
-
-  if (!locationResponse.ok) {
-    return NextResponse.json({ error: messages.error.location_not_found }, { status: 404 })
-  }
-
-  const unstrucResponse = await locationResponse.json()
-  const location = unstrucResponse.city + ', ' + unstrucResponse.province + ', ' + unstrucResponse.country
+  const locStruct = await locationResponse.json()
+  const location = locStruct.city + ', ' + locStruct.province + ', ' + locStruct.country
 
   // check if user already exists
-  const { data: user } = await supabase.from('users').select('*').eq('email', email).single()
+  const { data: user } = await supabase.from('users').select('*').eq('email', data.email).single()
 
   if (user) {
+    console.log('error 3')
     return NextResponse.json(
       { error: messages.error.user_already_exists }, { status: 400 }
     )
   }
 
-  const hashedPassword = await bcrypt.hash(password, 10)
-  const newUser = { email, password: hashedPassword }
+  const hashedPassword = await bcrypt.hash(data.password, 10)
+  const newUser = { email: data.email, password: hashedPassword }
 
   // create user
   const { data: newUserCreated, error } = await supabase.from('users').insert(newUser).select().single()
   if (error) {
+    console.log('error 4')
     return NextResponse.json({ error: messages.error.error })
   }
   newUserCreated.password = undefined
 
-  const userData = { id_user: newUserCreated.id_user, email, name, surname, location, phone: phone.toString(), birth, dni }
+  const userData = {
+    id_user: newUserCreated.id_user,
+    email: data.email,
+    name: data.name,
+    surname: data.surname,
+    location,
+    phone: data.phone.toString(),
+    birth: data.birth,
+    dni: data.dni,
+    picture: !!data.image
+  }
   const { error: dataFail } = await supabase.from('users_data').insert(userData)
 
-  console.log(profilePicture)
-  /*
-  // Upload profile picture to Supabase bucket named profiles
-  const { error: profileFail } = await supabase.storage.from('profiles')
-    .upload(`${userData.id_user}.png`, profilePicture)
-
-  if (profileFail) {
-    console.log(profileFail)
-    return NextResponse.json({ error: messages.error.error })
-  }
-  */
   if (dataFail) {
-    console.log(dataFail)
+    console.log('error 5', dataFail)
     return NextResponse.json({ error: messages.error.error })
   }
 
-  newUserCreated.username = name + ' ' + surname
+  // upload profile picture
+  if (data.image) {
+    const { error: profileFail } = await supabase.storage.from('profiles').upload(userData.id_user, data.image)
+    if (profileFail) {
+      console.log('error 6')
+      return NextResponse.json({ error: messages.error.error })
+    }
+  }
+
+  newUserCreated.username = data.name + ' ' + data.surname
 
   const token = jwt.sign(newUserCreated, process.env.JWT_SECRET, { expiresIn: '180d' })
   const response = NextResponse.json({ message: messages.success.user_created }, { status: 200 })

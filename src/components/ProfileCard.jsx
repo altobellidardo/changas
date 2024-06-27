@@ -4,6 +4,7 @@ import { useState } from 'react'
 import PenIcon from './icons/PenIcon'
 import formatDate from '@/utils/formateDate'
 import LocationIcon from './icons/LocationIcon'
+import { getPicURL } from '@/utils/picture'
 
 function ProfileCard ({ user }) {
   // Get useful variables
@@ -41,13 +42,15 @@ function ProfileCard ({ user }) {
     setLoading(false)
   }
 
+  const picURL = getPicURL(user)
+
   return (
     <section className='flex flex-col md:flex-row items-center bg-brand4 text-brand8 justify-center gap-8 py-10 md:w-[80vw] mx-auto rounded-md'>
       <picture className='relative'>
         <button onClick={toggleEditMode} className='text-brand8 absolute right-0 bg-brand3 p-2 rounded-full hover:bg-brand5'>
           <PenIcon />
         </button>
-        <img className='rounded-full size-40' src={user.picture} alt={`${username} picture`} />
+        <img className='rounded-full size-40' src={picURL} alt={`${username} picture`} />
       </picture>
 
       {editMode

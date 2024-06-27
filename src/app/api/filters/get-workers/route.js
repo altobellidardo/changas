@@ -24,7 +24,7 @@ export async function GET (req) {
   // We set an upper and lower bound of the results to be shown
   const lowerBound = RESULTS_PER_PAGE * page
   const upperBound = lowerBound + RESULTS_PER_PAGE - 1
-  console.log(minhourlyPrice)
+  // -> console.log(minhourlyPrice)
   // If a var is undefined we just assign an acceptable value
   if (minScore === 'undefined' || minScore === '') {
     minScore = 0
