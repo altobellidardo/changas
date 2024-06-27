@@ -4,6 +4,7 @@ import { useState } from 'react'
 import PenIcon from './icons/PenIcon'
 import formatDate from '@/utils/formateDate'
 import LocationIcon from './icons/LocationIcon'
+import { getPicURL } from '@/utils/picture'
 
 function ProfileCard ({ user }) {
   // Get useful variables
@@ -41,13 +42,7 @@ function ProfileCard ({ user }) {
     setLoading(false)
   }
 
-  let picURL
-  if (user.picture) {
-    const supURL = process.env.NEXT_PUBLIC_SUPABASE_URL
-    picURL = supURL + '/storage/v1/object/public/profiles/' + IdUser
-  } else {
-    picURL = 'https://avatar.iran.liara.run/public/boy?username=' + user.name
-  }
+  const picURL = getPicURL(user)
 
   return (
     <section className='flex flex-col md:flex-row items-center bg-brand4 text-brand8 justify-center gap-8 py-10 md:w-[80vw] mx-auto rounded-md'>

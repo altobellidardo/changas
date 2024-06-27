@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link'
 import { getUser } from '@/actions/getUser'
+import { getPicURL } from '@/utils/picture'
 
 function Card ({ name, link }) {
   return (
@@ -15,13 +16,14 @@ function Card ({ name, link }) {
 
 async function Home ({ IdUser }) {
   const user = await getUser(IdUser)
-  user.picture = user.picture != null ? user.picture : 'https://avatar.iran.liara.run/public/boy?username=' + user.name
+  const picURL = getPicURL(user)
+
   return (
     <>
       <section className='pt-20 md:pt-32 px-4'>
         <div className='md:flex md:w-[80vw] max-w-[1200px] mx-auto'>
           <h1 className='text-3xl'>Bienvenido <br />{user.name} {user.surname}</h1>
-          <img src={user.picture} alt={user.name} className='size-36 rounded-full object-cover my-4 border-2 border-brand1 mx-auto' />
+          <img src={picURL} alt={user.name} className='size-36 rounded-full object-cover my-4 border-2 border-brand1 mx-auto' />
         </div>
       </section>
 
