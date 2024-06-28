@@ -62,7 +62,7 @@ export default async function UserPage () {
             : (
               <ul className='max-w-full md:max-w-[600px]'>
                 {jobs.map((item) => (
-                  <JobCard job={item} key={item.id_worker} />
+                  <JobCard job={item} key={item.id_worker} IdUser={IdUser} />
                 ))}
               </ul>
               )}
@@ -77,7 +77,7 @@ export default async function UserPage () {
             : (
               <ul className='max-w-full md:max-w-[600px]'>
                 {offers.map((item) => (
-                  <ProposalCard proposal={item} key={item.id_proposal} />
+                  <ProposalCard proposal={item} key={item.id_proposal} IdUser={IdUser} />
                 ))}
               </ul>
               )}
