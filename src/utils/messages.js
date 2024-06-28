@@ -30,6 +30,8 @@ const messages = {
     failed_proposal_fetch: 'Ocurrió un error al buscar las ofertas laborales',
     failed_user_update: 'Ocurrió un error al actualizar la información del usuario',
     failed_worker_update: 'Ocurrió un error al actualizar la información del trabajo',
+    failed_worker_delete: 'Ocurrió un error al eliminar el trabajo',
+    failed_proposal_delete: 'Ocurrió un error al eliminar el trabajo',
     failed_proposal_update: 'Ocurrió un error al actualizar la información de la oferta',
     form_field_required: 'Hay campos sin rellenar, por favor complete la información faltante'
   },

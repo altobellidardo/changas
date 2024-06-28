@@ -28,7 +28,7 @@ function ProposalEdit ({ proposal, handleSubmit, loading, error }) {
   )
 }
 
-function ProposalCard ({ proposal }) {
+function ProposalCard ({ proposal, IdUser }) {
   const [editMode, setEditMode] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
@@ -36,6 +36,23 @@ function ProposalCard ({ proposal }) {
   const toggleEditMode = () => {
     setEditMode(!editMode)
     setError(false)
+  }
+
+  const handleDelete = async () => {
+    if (window.confirm('¿Está seguro?')) {
+      const sendData = { IdUser, IdProposal: proposal.id_proposal }
+      const response = await fetch('api/delete/proposal', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(sendData)
+      })
+      const data = await response.json()
+
+      if (data.error) setError(data.error)
+      else window.location.reload()
+    }
   }
 
   const handleSubmit = async (proposaldata) => {
@@ -77,7 +94,7 @@ function ProposalCard ({ proposal }) {
 
   return (
     <li className='p-4 border-2 mb-2 mx-2 rounded-xl border-brand4/40 flex flex-col gap-1'>
-      <SwitchMode toggleEditMode={toggleEditMode} editMode={editMode} />
+      <SwitchMode toggleEditMode={toggleEditMode} editMode={editMode} handleDelete={handleDelete} />
       {editMode
         ? <ProposalEdit proposal={proposal} handleSubmit={handleSubmit} loading={loading} error={error} />
         : <ProposalInfo proposal={proposal} />}
