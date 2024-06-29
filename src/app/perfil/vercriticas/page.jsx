@@ -9,11 +9,17 @@ import StarIcon from '@/components/icons/Star'
 export const dynamic = 'force-dynamic'
 
 export default async function ReviewsPage ({ searchParams }) {
+  let IdUser
   const category = searchParams.category
+  IdUser = searchParams.idUser
+
   const token = cookies().get('token')
   const isAuthenticated = checkUser(token?.value)
   if (!isAuthenticated) redirect('/')
-  const { id_user: IdUser } = isAuthenticated
+
+  if (!IdUser) {
+    IdUser = isAuthenticated.id_user
+  }
 
   // Get users ratings
   const reviews = await getWorkerRatings(IdUser, category)

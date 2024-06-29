@@ -69,7 +69,7 @@ async function OtherProfilePage ({ params }) {
                   {
                     jobs.map((item) => (
                       <li key={item.id_worker} className='p-4 border-2 m-2 w-96'>
-                        <JobInfo job={item} />
+                        <JobInfo job={item} IdUser={IdUser} />
                       </li>
                     ))
                     }
