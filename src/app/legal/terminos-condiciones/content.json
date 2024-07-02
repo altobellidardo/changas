@@ -39,7 +39,32 @@
       "title": "4. REGISTRO DE USUARIOS",
       "content": [
         {"tag": "p", "text": "Changas condiciona la utilización de algunos de los servicios definidos en el apartado 2 “Descripción del Servicio” de estos Términos de Uso a la previa cumplimentación del correspondiente registro de Usuario, bien como Profesional, bien como Cliente, debiendo indicar como mínimo la información que no se indica como opcional y elegir una contraseña identificativa."},
-        {"tag": "p", "text": "Changas condiciona la utilización de algunos de los servicios definidos en el apartado 2 “Descripción del Servicio” de estos Términos de Uso a la previa cumplimentación del correspondiente registro de Usuario, bien como Profesional, bien como Cliente, debiendo indicar como mínimo la información que no se indica como opcional y elegir una contraseña identificativa."}
+        {"tag": "p", "text": "El registro en la Plataforma conlleva la creación de un perfil donde el Usuario podrá gestionar y actualizar sus datos de ubicación y contacto."},
+        {"tag": "p", "text": "Asimismo, el Usuario podrá llevar a cabo otras funciones vinculadas a los servicios definidos siendo, a título enunciativo no limitativo, las siguientes para:"},
+        {"tag": "ul", "content": [
+          {"tag": "li", "text": "Profesionales: gestionar y actualizar su perfil a través desde el cual anuncia sus servicios e interactuar con otros usuarios registrados en la Plataforma (tanto particulares como profesionales), publicar material o contenido sobre sus trabajos y proyectos, etc."},
+          {"tag": "li", "text": "Clientes: gestionar y actualizar su perfil, contactar a los Profesionales registrados en la Plataforma, interactuar con otros Usuarios de la plataforma (tanto particulares como profesionales)."}
+        ]},
+        {"tag": "p", "text": "Asimismo, registrarse o darse de alta en la Plataforma significará que el Usuario, formará parte de la comunidad a la que Changas dirige comunicaciones comerciales, incluida por la vía electrónica, por ser dichas comunicaciones comerciales el objeto mismo de la prestación de servicios que se lleva a cabo en la Plataforma."},
+        {"tag":"p", "text": "Por su parte, el Usuario se compromete a conservar su nombre de usuario y contraseña y a mantenerlos confidenciales, así como a usarlos con la diligencia debida."},
+        {"tag":"p", "text": "El Usuario se compromete a notificar a Changas a la mayor brevedad el uso no autorizado de su nombre de usuario y contraseña o cualquier otro fallo en la seguridad. Changas no será responsable por los daños o pérdidas que se pudieran originar debido al incumplimiento o a la falta de diligencia en el cumplimiento de esta obligación por su parte."},
+        {"tag":"p", "text": "El Usuario es el único responsable de la información suministrada en su registro, garantiza que los datos facilitados a Changas son veraces y están actualizados y se hace responsable de comunicar a Changas cualquier modificación de los mismos y de mantener toda la información que haya facilitado actualizada de forma que responda en cada momento a su situación real."},
+        {"tag":"p", "text": "El Usuario puede pedir información sobre su registro en Changas y darse de baja del registro en cualquier momento escribiendo a team@changas.site."},
+        {"tag":"p", "text": "El Usuario, para más información sobre el uso de sus datos personales puede consultar nuestra Política de Privacidad."}
+      ]
+    },
+    {
+      "title": "5. USO DE LOS SERVICIOS Y DE LA PLATAFORMA",
+      "content": [
+        {"tag": "p", "text": "Los Usuarios se comprometen a utilizar los servicios ofrecidos a través de la Plataforma de conformidad con la legislación vigente, los presentes Términos de Uso, las condiciones particulares que se concreten para ciertos servicios y demás avisos e instrucciones puestos en su conocimiento, así como con la moral y las buenas costumbres generalmente aceptadas y el orden público."},
+        {"tag": "p", "text": "Asimismo, los Usuarios se comprometen a no publicar en la Plataforma, contenidos, mensajes, dibujos, imágenes, fotografías, videos, trabajos, que:"},
+        {"tag": "ul", "content": [
+          {"tag": "li", "text": "De cualquier forma, sean contrarios, menosprecien o atenten contra los derechos fundamentales y las libertades públicas reconocidas constitucionalmente, en los tratados internacionales y en el resto de la legislación vigente."},
+          {"tag": "li", "text": "Induzcan, inciten o promuevan actuaciones delictivas, denigratorias, difamatorias, infamantes, violentas o, en general, contrarias a la ley, a la moral y las buenas costumbres generalmente aceptadas o al orden público."},
+          {"tag": "li", "text": "Implican una violación del orden o de la seguridad de la Plataforma. "}
+        ]}
+        {"tag": "p", "text": ""},
+        {"tag": "p", "text": ""},
       ]
     }
   ]
