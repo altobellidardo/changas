@@ -19,7 +19,8 @@ export async function getLocation (city, province, country, complete) {
 
   try {
     const response = await axios.request(options)
-    const fetchCity = response.data.results[0].locality
+    const fetchSublocality = response.data.results[0].sublocality
+    const fetchCity = (fetchSublocality !== undefined) ? fetchSublocality : response.data.results[0].locality
     const fetchProvince = response.data.results[0].region
     const fetchCountry = response.data.results[0].country
     const lat = response.data.results[0].location.lat

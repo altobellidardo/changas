@@ -74,7 +74,7 @@ function JobEdit ({ job, handleSubmit, loading, error }) {
   )
 }
 
-function JobCard ({ job }) {
+function JobCard ({ job, IdUser }) {
   const [editMode, setEditMode] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
@@ -82,6 +82,23 @@ function JobCard ({ job }) {
   const toggleEditMode = () => {
     setEditMode(!editMode)
     setError(false)
+  }
+
+  const handleDelete = async () => {
+    if (window.confirm('¿Está seguro?')) {
+      const sendData = { IdUser, IdWorker: job.id_worker }
+      const response = await fetch('api/delete/job', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(sendData)
+      })
+      const data = await response.json()
+
+      if (data.error) setError(data.error)
+      else window.location.reload()
+    }
   }
 
   const handleSubmit = async (jobdata) => {
@@ -122,7 +139,7 @@ function JobCard ({ job }) {
 
   return (
     <li className='p-4 border-2 mb-2 mx-2 rounded-xl border-brand4/40 flex flex-col gap-1'>
-      <SwitchMode toggleEditMode={toggleEditMode} editMode={editMode} />
+      <SwitchMode toggleEditMode={toggleEditMode} editMode={editMode} handleDelete={handleDelete} />
       {editMode
         ? <JobEdit job={job} handleSubmit={handleSubmit} loading={loading} error={error} />
         : <JobInfo job={job} />}

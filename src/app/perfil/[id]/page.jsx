@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { getUser } from '@/actions/getUser'
 import { getJobs } from '@/actions/getJobs'
 import { getOffers } from '@/actions/getOffers'
-// import { getRatings } from '@/actions/getRatings'
 import Header from '@/components/header/header'
 import Footer from '@/components/footer'
 import LocationIcon from '@/components/icons/LocationIcon'
@@ -32,8 +31,6 @@ async function OtherProfilePage ({ params }) {
   const jobs = await getJobs(IdUser)
   // Gets published job offers by the user
   const offers = await getOffers(IdUser)
-  // Gets users' average ratings
-  // const ratings = await getRatings(IdUser, jobs)
 
   user.picture = user.picture ? user.picture : 'https://avatar.iran.liara.run/public/boy?username=' + user.name
 
@@ -54,8 +51,6 @@ async function OtherProfilePage ({ params }) {
           </picture>
           <div>
             <div className='font-bold text-xl'>{username}</div>
-            {/* <div>{user.email}</div>
-            <div>Teléfono: {user.phone}</div> */}
             <div className='flex'>
               <LocationIcon /> {user.location}
             </div>
@@ -74,7 +69,7 @@ async function OtherProfilePage ({ params }) {
                   {
                     jobs.map((item) => (
                       <li key={item.id_worker} className='p-4 border-2 m-2 w-96'>
-                        <JobInfo job={item} />
+                        <JobInfo job={item} IdUser={IdUser} />
                       </li>
                     ))
                     }
