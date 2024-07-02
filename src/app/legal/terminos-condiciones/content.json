@@ -1,0 +1,46 @@
+{
+  "data": [
+    {
+      "title": "1. TITULARIDAD DEL SITIO WEB Y ACEPTACIÓN DE LOS TÉRMINOS DE USO",
+      "content": [
+        {"tag": "p", "text": "La lectura y aceptación de los presentes Términos y Condiciones de Uso (en adelante, los “Términos de Uso”) es condición necesaria para:"},
+        {"tag": "ul", "content": [
+          {"tag": "li", "text": "la utilización de los servicios del sitio web (en lo sucesivo, el “Sitio Web”) www.changas.site"},
+          {"tag": "li", "text": "Y, de la aplicación móvil “Changas” (en lo sucesivo, “la App”)"}
+        ]},
+        {"tag": "p", "text": "Los Términos de Uso constituyen Condiciones Generales de Contratación, tienen naturaleza contractual y obligacional y rigen la relación entre todo usuario de la Plataforma (en lo sucesivo, el “Usuario”)."},
+        {"tag": "p", "text": "La utilización de esta Plataforma y sus servicios implica la plena aceptación de las disposiciones incluidas en estos Términos de Uso conforme a la versión publicada en el momento en que el Usuario acceda a la Plataforma. Para la utilización de alguno de los servicios descritos se requiere registrarse en la Plataforma."},
+        {"tag": "p", "text": "La utilización de los servicios ofrecidos a los Profesionales (tal y como se definen en el apartado 2 “Descripción del Servicio”) a través de la Plataforma se encuentra sometida a Condiciones Generales de Contratación de Changas para Profesionales que, según los casos, sustituyen, completan y/o modifican los presentes Términos de Uso."},
+        {"tag": "p", "text": "Por lo tanto, con anterioridad a la utilización de dichos servicios, el Profesional también ha de leer atentamente y aceptar asimismo las correspondientes Condiciones Generales de Contratación de Changas para Profesionales."}
+      ]
+    },
+    {
+      "title": "2. DESCRIPCIÓN DEL SERVICIO",
+      "content": [
+        {"tag": "p", "text": "Changas presta en la Plataforma los siguientes servicios y beneficios:"},
+        {"tag": "ul", "content": [
+          {"tag": "li", "text": "Exposición para Profesionales: Changas ofrece un servicio de publicidad que permite a profesionales y empresas, del sector de las obras y reformas en general y servicios para el hogar (en adelante, “los Profesionales” o individualmente considerados, “el Profesional”) exponer sus servicios con personas interesadas en esos concretos servicios (en adelante, “los Clientes”, o individualmente considerados, “el Cliente”).Changas no interviene en ningún caso en las negociaciones llevadas a cabo entre Cliente y Profesional, permaneciendo al margen de las mismas en todo momento, así como tampoco en la ejecución de los trabajos acordados entre Cliente y Profesional, por lo que no es responsable, en ningún caso, del trabajo realizado por el Profesional al Cliente, ni del cumplimiento de las obligaciones del Cliente con el Profesional, eximiendo expresamente el Cliente y el Profesional a Changas de cualquier desavenencia que pudiera surgir entre ambos."},
+          {"tag": "li", "text": "Gestión de acuerdos de trabajo: Changas permite que los Clientes y los Profesionales generen acuerdos de trabajo. Estos acuerdos entre Profesionales y Clientes serán completamente privados a todos los Usuarios dentro de la plataforma a excepción de los incluidos en dicho acuerdo. Los acuerdos habilitarán al Cliente a realizar reseñas una vez que la fecha del trabajo haya pasado"},
+          {"tag": "li", "text": "Mensajería privada: Changas pone a disposición de los Usuarios un servicio de mensajería privada interno de la Plataforma, en el que Changas podrá intervenir con la finalidad principal de asegurarse el cumplimiento de los Términos de Uso. "},
+          {"tag": "li", "text": "Reseñas anónimas: Changas pone a disposición de los Clientes un servicio para que puedan apuntar sus comentarios y valoraciones de aquellos acuerdos de trabajoscon los Profesionales dentro de la Plataforma. Changas podrá intervenir en las reseñas generadas para asegurarse el cumplimiento de los Términos de Uso. Aunque las reseñas sean anónimas, apenas sean subidas a la plataforma se adjuntaran dentro del apartado de “Reseñas” en el oficio del Profesional reseñado."},
+          {"tag": "li", "text": "Soporte al Usuario: Changas ofrece servicios de soporte y apoyo a los Usuarios en relación con su registro y otras acciones relacionadas con los servicios prestados en la Plataforma."},
+          {"tag": "li", "text": "Comunicaciones Comerciales: Changas puede ofertar ventajas y oportunidades conjuntas con sus socios colaboradores o Partners (“Partners”), así como, ofertas exclusivas de dichos Partners terceros, gracias a los acuerdos de Changas con éstos, de sectores tales como, los sectores de servicios de asistencia y mantenimiento del hogar, y otros como, por ejemplo, gran consumo, financiación, seguros, energía o telecomunicaciones. Dichas ofertas se mostrarán en la plataforma a los Usuarios que se den de alta o se registren en la Plataforma."}
+        ]},
+        {"tag": "p", "text": "Los terceros Partners de Changas realizan su actividad en el marco de sectores relacionados o complementarios con la actividad principal de Changas, tal como los sectores de servicios de asistencia y mantenimiento del hogar, y otros como, por ejemplo, construcción, gran consumo, financiación, seguros, energía o telecomunicaciones."}
+      ]
+    },
+    {
+      "title": "3. EDAD Y CAPACIDAD LEGAL",
+      "content": [
+        {"tag": "p", "text": "La Plataforma se dirige a personas mayores de edad que cuenten con plena capacidad jurídica y de obrar necesaria para su utilización. Los menores de esta edad no están autorizados a utilizar la Plataforma y no deberán, por tanto, utilizar los servicios del mismo, por lo que Changas se reserva el derecho a dar de baja y cancelar los datos de aquellos Usuarios que, habiendo sido requeridos para ello, no acrediten a satisfacción de Changas ser mayores de edad."}
+      ]
+    },
+    {
+      "title": "4. REGISTRO DE USUARIOS",
+      "content": [
+        {"tag": "p", "text": "Changas condiciona la utilización de algunos de los servicios definidos en el apartado 2 “Descripción del Servicio” de estos Términos de Uso a la previa cumplimentación del correspondiente registro de Usuario, bien como Profesional, bien como Cliente, debiendo indicar como mínimo la información que no se indica como opcional y elegir una contraseña identificativa."},
+        {"tag": "p", "text": "Changas condiciona la utilización de algunos de los servicios definidos en el apartado 2 “Descripción del Servicio” de estos Términos de Uso a la previa cumplimentación del correspondiente registro de Usuario, bien como Profesional, bien como Cliente, debiendo indicar como mínimo la información que no se indica como opcional y elegir una contraseña identificativa."}
+      ]
+    }
+  ]
+}
