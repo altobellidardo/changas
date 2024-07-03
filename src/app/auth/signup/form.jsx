@@ -101,6 +101,16 @@ function RegisterForm () {
             </button>
           </div>}
 
+        <div>
+          <input type='checkbox' name='terms' id='terms' required />
+          <label className='inline pl-2' htmlFor='terms'>
+            Acepto los
+            <Link href='/legal/terminos-condiciones' className='underline pl-2'>términos y condiciones</Link>
+            , y el
+            <Link href='/legal/privacidad' className='underline pl-2'>aviso de privacidad</Link>
+          </label>
+        </div>
+
         <button
           disabled={loading}
           className='rounded-xl border-2 border-brand6 bg-brand6 px-4 py-2 font-semibold text-brand8 hover:text-brand1 disabled:opacity-50'
