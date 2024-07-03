@@ -1,23 +1,104 @@
 {
   "data": [
     {
-      "title": "1. TITULARIDAD DEL SITIO WEB Y ACEPTACIÓN DE LOS TÉRMINOS DE USO",
+      "title": "",
       "content": [
-        {"tag": "p", "text": "La lectura y aceptación de los presentes Términos y Condiciones de Uso (en adelante, los “Términos de Uso”) es condición necesaria para:"},
-        {"tag": "ul", "content": [
-          {"tag": "li", "text": "la utilización de los servicios del sitio web (en lo sucesivo, el “Sitio Web”) www.changas.site"},
-          {"tag": "li", "text": "Y, de la aplicación móvil “Changas” (en lo sucesivo, “la App”)"}
-        ]},
-        {"tag": "p", "text": "Los Términos de Uso constituyen Condiciones Generales de Contratación, tienen naturaleza contractual y obligacional y rigen la relación entre todo usuario de la Plataforma (en lo sucesivo, el “Usuario”)."},
-        {"tag": "p", "text": "La utilización de esta Plataforma y sus servicios implica la plena aceptación de las disposiciones incluidas en estos Términos de Uso conforme a la versión publicada en el momento en que el Usuario acceda a la Plataforma. Para la utilización de alguno de los servicios descritos se requiere registrarse en la Plataforma."},
-        {"tag": "p", "text": "La utilización de los servicios ofrecidos a los Profesionales (tal y como se definen en el apartado 2 “Descripción del Servicio”) a través de la Plataforma se encuentra sometida a Condiciones Generales de Contratación de Changas para Profesionales que, según los casos, sustituyen, completan y/o modifican los presentes Términos de Uso."},
-        {"tag": "p", "text": "Por lo tanto, con anterioridad a la utilización de dichos servicios, el Profesional también ha de leer atentamente y aceptar asimismo las correspondientes Condiciones Generales de Contratación de Changas para Profesionales."}
+        {"tag": "p", "text": "Changas (“Changas”), pone a su disposición la presente Política de Privacidad, con el fin de informarle acerca del tratamiento de datos personales que lleva a cabo."},
+        {"tag": "p", "text": "Con carácter complementario a los Términos y condiciones de uso la presente Política de Privacidad aplica a partir de la fecha de entrada en vigor que aparece al final del presente documento al sitio www.changas.site (“el Sitio Web”), y de la aplicación “Changas” (“la App”), ambos conjuntamente denominados como “la Plataforma” y rige el tratamiento de datos personales entre los Responsables que se explican más adelante y toda persona que haga uso de la Plataforma (“Usuario”)."}
       ]
     },
     {
-      "title": "2. DESCRIPCIÓN DEL SERVICIO",
+      "title": "1. IDENTIDAD Y DATOS DE CONTACTO DE LOS RESPONSABLES",
       "content": [
-        {"tag": "p", "text": "Changas presta en la Plataforma los siguientes servicios y beneficios:"}
+        {"tag": "p", "text": "Changas ostenta la condición de responsables independientes en el tratamiento de los datos personales del Usuario para las finalidades que se establecen en sus respectivas políticas de privacidad. En adelante, Changas podrá ser denominado individualmente, y cuando proceda, como “el Responsable”."}
+      ]
+    },
+    {
+      "title": "2. DATOS PERSONALES DEL USUARIO OBJETO DE TRATAMIENTO",
+      "content": [
+        {"tag": "p", "text": "Changas trata los Datos Personales del Usuario recabados en los formularios y vías de contacto habilitadas u obtenidos del Usuario durante el transcurso de su navegación por la Plataforma o a través de las comunicaciones telefónicas con Changas o en las que Changas interviene como prestador del servicio de comunicación entre los Usuarios."},
+        {"tag": "p", "text": "Algunos de estos datos son necesarios para poder prestar los servicios solicitados por el Usuario, por lo que, en caso de no facilitarnos dicha información, es posible que Changas no pueda ofrecerle el servicio solicitado."},
+        {"tag": "p", "text": "Los Datos Personales, facilitados por el Usuario, se considerarán correctos y veraces, por lo que Changas se reserva el derecho de excluir a aquellas personas que hayan facilitado datos falsos o inexactos."},
+        {"tag": "p", "text": "En el caso de que el Usuario incluya datos personales de terceras personas, éste será responsable de haberle informado previamente de los extremos de la presente Política de Privacidad y haber obtenido su consentimiento cuando sea necesario."},
+        {"tag": "p", "text": "Las categorías de datos que Changas puede recabar de los Usuarios son las siguientes:"},
+        {"tag": "ul", "content": [
+          {"tag": "li", "text": "Datos identificativos: nombre, apellidos, ubicación, dirección de correo electrónico, número de DNI, teléfono y, en su caso, una foto temporal del rostro del usuario y su DNI."},
+          {"tag": "li", "text": "Otra información: Changas puede enviar al Usuario encuestas o formularios que permitan conocer el grado de satisfacción de este último con la Plataforma."}
+        ]}
+      ]
+    },
+    {
+      "title": "3. FINALIDAD DEL TRATAMIENTO Y BASE JURÍDICA",
+      "content": [
+        {"tag": "p", "text": "Changas trata los Datos Personales del Usuario en relación con los Servicios descritos en los Términos y condiciones de Uso, para las finalidades y con la base jurídica siguiente:"},
+        {"tag": "ol", "content": [
+          {"tag": "li", "text": "1. Registro de Usuarios: Changas, en base al consentimiento del Usuario, tratará sus datos personales tras la cumplimentación del correspondiente formulario de registro de Usuario (tanto Profesionales como Clientes) con el fin de darle de alta como Usuario registrado en la Plataforma."},
+          {"tag": "li", "text": "   El registro en la Plataforma conlleva la creación de un perfil donde el Usuario podrá gestionar y actualizar sus datos de contacto, así como llevar a cabo otras funciones vinculadas a los servicios definidos en los Términos y condiciones de Uso de acuerdo con lo establecido en su apartado 4."},
+          {"tag": "li", "text": "   Asimismo, registrarse o darse de alta en la Plataforma significará que el Usuario, formará parte de la comunidad a la que Changas dirige comunicaciones comerciales, incluida por la vía electrónica, por ser dichas comunicaciones comerciales el objeto mismo de la prestación de servicios que se lleva a cabo en la Plataforma (ver apartado 9)."},
+          {"tag": "li", "text": "2. Gestión de Opiniones: Changas, con el fin de cumplir los Términos y condiciones de Uso de la Plataforma, llevará a cabo la supervisión, edición y moderación de las opiniones, comentarios, imágenes y cualquier otro contenido publicado por los Usuarios (sean o no profesionales) bajo su interés legítimo."},
+          {"tag": "li", "text": "3. Mensajería Privada: En especial, Changas, con el fin de cumplir los Términos y condiciones de Uso de la Plataforma, llevará a cabo la supervisión, monitoreo, y conservación de las comunicaciones entre Usuarios, y cualquier otro contenido publicado por los Usuarios (sean o no profesionales), a efectos de control de calidad, probatorios, contractuales y de prevención del fraude, bajo la relación contractual que mantiene con sus usuarios y su interés legítimo."},
+          {"tag": "li", "text": "4. Notas Privadas: Changas, con el fin de cumplir los Términos y condiciones de Uso de la Plataforma, llevará a cabo la lectura, control y registro de la actividad del Profesional, así como, el monitoreo de las comunicaciones y de cualquier otro contenido publicado por los Usuarios (sean o no profesionales) bajo su interés legítimo."},
+          {"tag": "li", "text": "5. Soporte al Usuario: Este tratamiento se basa en la correcta ejecución y gestión de la relación contractual entre el Usuario y Changas y tiene como fin llevar a cabo notificaciones acerca de cuestiones relacionadas con la Plataforma o sobre su registro."},
+          {"tag": "li", "text": "   En el caso de que el Usuario se ponga en contacto telefónicamente con Changas, este podrá grabar y conservar las conversaciones telefónicas mantenidas con los Usuarios, en base al interés legítimo o contractual, a efectos de control de calidad, probatorios, contractuales y de prevención del fraude."},
+          {"tag": "li", "text": "   Asimismo, Changas puede, bajo el interés legítimo enviarle encuestas o formularios que permitan conocer el grado de satisfacción de este último con la Plataforma, los hábitos y preferencias del Usuario para la mejora de los servicios que Changas presta, así como, la participación en eventos y promociones organizados por Changas."},
+          {"tag": "li", "text": "6. Comunicaciones Comerciales:"},
+          {"tag": "li", "text": "   a.  Envío de comunicaciones comerciales propias de Changas con sus socios colaboradores o Partners: Changas, sobre la base de su interés legítimo, remitirá al Usuario comunicaciones comerciales por la Plataforma relativos a los servicios que presta y a las ofertas conjuntas con sus Partners."},
+          {"tag": "li", "text": "   b.  Envío de comunicaciones comerciales sobre sus Partners: Changas, bajo la autorización expresa del Usuario, remitirá comunicaciones comerciales por la Plataforma sobre productos o servicios de Partners con el fin de ofrecerle promociones, descuentos y ofertas exclusivas relativas a los sectores de construcción, reformas, reparaciones, gran consumo, financiación, seguros, energía, o telecomunicaciones, entre otros."},
+          {"tag": "li", "text": "7. Encuestas de Satisfacción: Changas puede realizar encuestas y enviarlas via mail a los Usuarios con el fin de valorar la satisfacción de estos respecto de los productos y servicios ofrecidos. La base de legitimación para el envío de estas encuestas reside en el interés legítimo de Changas con el objetivo de mejorar la calidad de los productos y servicios que ofrece."}
+        ]}
+      ]
+    },
+    {
+      "title": "4. DESTINATARIOS DE LOS DATOS PERSONALES DEL USUARIO",
+      "content": [
+        {"tag": "p", "text": "Changas hará públicos a todos los Usuarios registrados en la plataforma la siguiente información sobre el usuario:"},
+        {"tag": "ul", "content": [
+          {"tag": "li", "text": "Nombre y apellido"},
+          {"tag": "li", "text": "Fecha de nacimiento"},
+          {"tag": "li", "text": "Ubicación"}
+        ]},
+        {"tag": "p", "text": "Los datos que Changas considere como privados no podrán ser vistos por ningún Usuario que no sea el Usuario al que correspondan esos datos. De manera que:"},
+        {"tag": "ul", "content": [
+          {"tag": "li", "text": "El número de teléfono"},
+          {"tag": "li", "text": "Número de DNI"},
+          {"tag": "li", "text": "Dirección de correo electrónico"}
+        ]},
+        {"tag": "p", "text": "Serán datos que se mantendrán solo accesibles para el Usuario desde su perfil."}
+      ]
+    },
+    {
+      "title": "5. PLAZO DE CONSERVACIÓN DE LOS DATOS",
+      "content": [
+        {"tag": "p", "text": "Los Datos Personales del Usuario serán conservados durante el tiempo necesario para cumplir con los fines del tratamiento. Finalizado el mismo, se conservarán durante el tiempo necesario para cumplir con las obligaciones legales y con los plazos de prescripción aplicables a cada caso."}
+      ]
+    },
+    {
+      "title": "6. DERECHOS DEL USUARIO",
+      "content": [
+        {"tag": "p", "text": "El Usuario puede obtener confirmación sobre si Changas está tratando sus Datos Personales y acceder a los mismos."},
+        {"tag": "p", "text": "El Usuario podrá solicitar de Changas el ejercicio de los derechos de acceso a los datos personales, su rectificación, supresión, la limitación de su tratamiento, oposición y portabilidad, mediante la remisión de un correo electrónico a la dirección team@changas.site, expresando claramente el derecho que desea ejercitar. En caso de ser necesario, se le podrá solicitar que adjunte copia del documento oficial identificativo u otra información adicional con el fin de confirmar la identidad del Usuario y/o atender la solicitud."},
+        {"tag": "p", "text": "En el caso de que el Usuario lo desee, puede solicitar los formularios para el ejercicio de los referidos derechos a dicha dirección de correo."},
+        {"tag": "p", "text": "Asimismo, el Usuario debe saber que tiene derecho a presentar una reclamación ante la Autoridad competente."}
+      ]
+    },
+    {
+      "title": "7. MENORES DE EDAD",
+      "content": [
+        {"tag": "p", "text": "El acceso a la Plataforma de Changas está prohibida a menores de edad, esta se dirige a Usuarios mayores de edad."}
+      ]
+    },
+    {
+      "title": "8. MEDIDAS DE SEGURIDAD QUE ADOPTA CHANGAS PARA GARANTIZAR LA CONFIDENCIALIDAD DE LOS DATOS",
+      "content": [
+        {"tag": "p", "text": "Changas adopta las medidas técnicas y organizativas necesarias para evitar la pérdida, mal uso, alteración, acceso no autorizado, robo de los datos personales facilitados, así como para garantizar un nivel de seguridad adecuado al riesgo, habida cuenta del estado de la tecnología, los costes de aplicación, la naturaleza, el alcance, el contexto y los fines del tratamiento, así como los riesgos de probabilidad y gravedad variables para los derechos y libertades de las personas físicas."},
+        {"tag": "p", "text": "En la utilización de los datos personales de los Usuarios, Changas se compromete a respetar la confidencialidad y a utilizarlos de acuerdo con la finalidad de su tratamiento, así como a dar cumplimiento a su obligación de guardarlos y adaptar todas las medidas técnicas y organizativas de seguridad para garantizar un nivel de seguridad adecuado al riesgo."}
+      ]
+    },
+    {
+      "title": "9. FECHA EFECTIVA Y MODIFICACIONES DE LA POLÍTICA DE PRIVACIDAD",
+      "content": [
+        {"tag": "p", "text": "Esta Política de Privacidad fue actualizada por última vez el 27 de junio de 2024."},
+        {"tag": "p", "text": "Changas se reserva el derecho a modificar, corregir o cambiar de forma unilateral esta Política de Privacidad en cualquier momento por motivos internos o relacionados con actualizaciones legislativas o jurisprudenciales. Por ello, recomendamos que visite regularmente este Sitio Web para conocer las modificaciones que se puedan producir."}
       ]
     }
   ]

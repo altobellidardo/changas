@@ -16,6 +16,16 @@ function Element (element) {
           ))}
         </ul>
       )
+    case 'ol':
+      return (
+        <ol key={Math.random().toString()}>
+          {element.content.map(element => (
+            <li key={element.text.toString()} className='ml-10'>
+              {element.text}
+            </li>
+          ))}
+        </ol>
+      )
     default:
       return null
   }
