@@ -61,10 +61,24 @@
         {"tag": "ul", "content": [
           {"tag": "li", "text": "De cualquier forma, sean contrarios, menosprecien o atenten contra los derechos fundamentales y las libertades públicas reconocidas constitucionalmente, en los tratados internacionales y en el resto de la legislación vigente."},
           {"tag": "li", "text": "Induzcan, inciten o promuevan actuaciones delictivas, denigratorias, difamatorias, infamantes, violentas o, en general, contrarias a la ley, a la moral y las buenas costumbres generalmente aceptadas o al orden público."},
-          {"tag": "li", "text": "Implican una violación del orden o de la seguridad de la Plataforma. "}
-        ]}
-        {"tag": "p", "text": ""},
-        {"tag": "p", "text": ""},
+          {"tag": "li", "text": "Induzcan, inciten o promuevan actuaciones, actitudes o pensamientos discriminatorios por razón de sexo, raza, religión, creencias, edad o condición."},
+          {"tag": "li", "text": "No tengan en cuenta los bienes o servicios desarrollados por el Profesional o comentarios que no tengan ningún valor cualitativo (por ejemplo, “el trabajo no se ha terminado todavía”)."},
+          {"tag": "li", "text": "Incorporen, pongan a disposición o permitan acceder a productos, elementos, mensajes o servicios delictivos, violentos, ofensivos, nocivos, degradantes o, en general, contrarios a la ley, a la moral y a las buenas costumbres generalmente aceptadas o al orden público."},
+          {"tag": "li", "text": "Induzcan o puedan inducir a terceros a un estado inaceptable de ansiedad o temor."},
+          {"tag": "li", "text": "Sean injuriosos, ofensivos o degradantes."},
+          {"tag": "li", "text": "No se correspondan con el trabajo desarrollado por el Profesional."},
+          {"tag": "li", "text": "Sean contrarios al derecho al honor, a la intimidad personal y familiar o a la propia imagen de las personas."},
+          {"tag": "li", "text": "Infrinjan la normativa dispuesta relativa al secreto de las comunicaciones."},
+          {"tag": "li", "text": "Sean relativos a la publicidad de sitios que sean competencia de la Plataforma o sus anunciantes."},
+          {"tag": "li", "text": "Sean falsos o no se correspondan a la realidad."},
+          {"tag": "li", "text": "Se trate de publicidad ilícita, engañosa o desleal."},
+          {"tag": "li", "text": "Se trate de publicidad ilícita, engañosa o desleal."}
+        ]},
+        {"tag": "p", "text": "Los Usuarios renuncian a utilizar cualquiera de los materiales e informaciones contenidos en la Plataforma con fines ilícitos o expresamente prohibidos en los presentes Términos de Uso así como a las condiciones particulares que, en su caso, se habiliten, o en contra de los derechos e intereses de Changas, sus miembros o terceros y deberán responder frente a éstos en caso de contravenir o incumplir dichas obligaciones o, de cualquier modo (incluida la introducción o difusión de “virus informáticos”) dañar, inutilizar, sobrecargar, deteriorar o impedir la normal utilización de los materiales e información contenidos en la Plataforma, los sistemas de información o los documentos, archivos y toda clase de contenidos almacenados en cualquier equipo informático (hacking) de Changas, de sus miembros o de cualquier Usuario de la Plataforma."},
+        {"tag": "p", "text": "En concreto, está prohibido que los Usuarios recaben datos de la Plataforma con finalidad publicitaria, esto es, para remitir publicidad de cualquier clase y comunicaciones con fines de venta u otras de naturaleza comercial propios a los contactos obtenidos del uso de los servicios de la Plataforma. Asimismo, queda prohibido que los Usuarios pongan a disposición de terceros, con cualquier finalidad, datos recabados en la Plataforma."},
+        {"tag": "p", "text": "Los Usuarios o terceros perjudicados por la recepción de mensajes no solicitados podrán informar a Changas de tal circunstancia, para la adopción de posibles medidas, remitiendo un mensaje a la siguiente dirección de correo electrónico: team@changas.site."},
+        {"tag": "p", "text": "Si Changas considera que un Usuario incumple con los presentes Términos de Uso, se reserva el derecho a suspender o revocar su registro y derecho a acceder o usar la Plataforma en cualquier momento y sin necesidad de informar con carácter previo al Usuario. Changas podrá, no obstante, notificar al Usuario acerca del bloqueo o cancelación de su acceso, si así lo desea."},
+        {"tag": "p", "text": "A estos efectos, Changas podrá utilizar cualquier método operativo, tecnológico, legal u otro disponible para que se respeten estos Términos de Uso (incluyendo, sin limitación, el bloqueo de direcciones IP)."}
       ]
     }
   ]
