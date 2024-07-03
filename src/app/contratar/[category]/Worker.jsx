@@ -43,7 +43,7 @@ function Worker ({ worker, IdUser }) {
         </header>
         <main className='my-auto'>
           <p><span className='font-bold'>{worker.employees}</span> empleado/s</p>
-          <p>Horas de búsqueda:</p>
+          <p>Horas de contacto: </p>
           <p className='font-bold'>{worker.attention_hours}</p>
         </main>
         <footer className='flex flex-col gap-2 justify-center mt-2 md:mt-0 md:justify-end'>

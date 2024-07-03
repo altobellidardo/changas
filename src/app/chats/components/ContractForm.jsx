@@ -4,6 +4,7 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import UpIcon from '@/components/icons/UpIcon'
+import Tooltip from '@/components/ui/Tooltip'
 import Link from 'next/link'
 import messages from '@/utils/messages'
 
@@ -40,7 +41,7 @@ function ContractForm () {
     const date = formData.get('date')
     const budget = formData.get('budget')
     const description = formData.get('description')
-    const payformat = formData.get('payformat')
+    const payformat = false // formData.get('payformat') THERE IS NO CHANGAS PAY!!
 
     setLoading(true)
     setError(null)
@@ -158,7 +159,7 @@ function ContractForm () {
         <input id='date' className='border-2 p-2 rounded w-full' type='date' name='date' min={today} />
       </div>
 
-      <div>
+      {/* <div>
         <p>Medio de pago</p>
         <div className='flex items-center'>
           <input type='radio' id='changas' name='payformat' value='changas' className='form-radio h-5 w-5 text-blue-600' />
@@ -168,9 +169,19 @@ function ContractForm () {
           <input type='radio' id='other' name='payformat' value='other' className='form-radio h-5 w-5 text-blue-600' />
           <label className='ml-2' htmlFor='other'>Otros medios</label>
         </div>
+      </div> */}
+
+      <div className='relative group'>
+        <button
+          disabled={loading}
+          className='rounded-xl border-2 border-brand6 bg-brand6 px-4 py-2 font-semibold text-brand8 hover:text-brand1 disabled:opacity-50 relative z-10'
+          type='submit'
+        >
+          Subir contrato
+        </button>
+        <Tooltip text='Los contratos son confidenciales y habilitan a las reseñas' />
       </div>
 
-      <button disabled={loading} className='rounded-xl border-2 border-brand6 bg-brand6 px-4 py-2 font-semibold text-brand8 hover:text-brand1 disabled:opacity-50' type='submit'>Subir contrato</button>
       <span className={`${error ? 'block' : 'hidden'} text-red-600 bg-red-200 border-2 rounded-lg p-2 border-red-600`}>{error}</span>
     </form>
   )

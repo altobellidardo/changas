@@ -26,7 +26,7 @@ function JobInfo ({ job }) {
         <p>{job.employees}</p>
       </div>
       <div>
-        <span className='opacity-60 text-sm'>Horas de atención</span>
+        <span className='opacity-60 text-sm'>Horas de contacto</span>
         <p>{job.attention_hours}</p>
       </div>
       <div>
@@ -62,7 +62,7 @@ function JobEdit ({ job, handleSubmit, loading, error }) {
       <input type='text' name='city' id='city' defaultValue={job.location.split(',')[0]} className='text-black p-1 rounded-md' />
       <label htmlFor='employees'>Cantidad de empleados</label>
       <input type='number' min='1' max='1000' step='1' name='employees' id='employees' defaultValue={job.employees} className='text-black p-1 rounded-md' />
-      <label htmlFor='attentionHours'>Horas de atención</label>
+      <label htmlFor='attentionHours'>Horas de contacto</label>
       <input type='text' name='attentionHours' id='attentionHours' defaultValue={job.attention_hours} className='text-black p-1 rounded-md' />
       <label htmlFor='description'>Descripción</label>
       <input type='text' name='description' id='description' defaultValue={job.description} className='text-black p-1 rounded-md' />

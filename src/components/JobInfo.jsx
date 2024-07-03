@@ -21,7 +21,7 @@ function JobInfo ({ job, IdUser }) {
         <p>{job.employees}</p>
       </div>
       <div>
-        <span className='opacity-60 text-sm'>Horas de atención</span>
+        <span className='opacity-60 text-sm'>Horas de contacto</span>
         <p>{job.attention_hours}</p>
       </div>
       <div>

@@ -84,7 +84,7 @@ function UploadWorker ({ IdUser, categories, username }) {
       </select>
       <label htmlFor='hourlyPrice'>Precio por hora</label>
       <input id='hourlyPrice' className='border-2 p-2 rounded' type='hourlyPrice' name='hourlyPrice' />
-      <label htmlFor='attentionHours'>Horas de atención</label>
+      <label htmlFor='attentionHours'>Horas de contacto</label>
       <input id='attentionHours' className='border-2 p-2 rounded' type='attentionHours' name='attentionHours' />
       <label htmlFor='country'>País</label>
       <input id='country' className='border-2 p-2 rounded' type='country' name='country' />

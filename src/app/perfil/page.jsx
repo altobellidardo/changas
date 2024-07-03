@@ -15,15 +15,19 @@ import JobCard from '@/components/JobCard'
 import ProposalCard from '@/components/ProposalCard'
 import PlusIcon from '@/components/icons/PlusIcon'
 import NoData from '@/components/ui/NoData'
+import Tooltip from '@/components/ui/Tooltip'
 
 export const dynamic = 'force-dynamic'
 
-function UploadNew ({ children, href }) {
+function UploadNew ({ children, href, description }) {
   return (
-    <Link className='rounded-xl px-4 py-2 font-semibold bg-brand4 text-brand8 text-center max-w-[600px] flex gap-2 items-center justify-center' href={href}>
-      <PlusIcon className='inline size-10' />
-      {children}
-    </Link>
+    <div className='relative group inline-block'>
+      <Link className='rounded-xl px-4 py-2 font-semibold bg-brand4 text-brand8 text-center max-w-[600px] flex gap-2 items-center justify-center' href={href}>
+        <PlusIcon className='inline size-10' />
+        {children}
+      </Link>
+      <Tooltip text={description} />
+    </div>
   )
 }
 
@@ -65,7 +69,7 @@ export default async function UserPage () {
               </ul>
               )}
 
-          <UploadNew href='/subirtrabajo'>Subir nuevo oficio</UploadNew>
+          <UploadNew href='/subirtrabajo' description='Cargue su oficio para que los clientes lo contacten'>Subir nuevo oficio</UploadNew>
         </section>
 
         <section className='mt-10 flex flex-col gap-2'>
@@ -80,7 +84,7 @@ export default async function UserPage () {
               </ul>
               )}
 
-          <UploadNew href='/subiroferta'>Subir nueva oferta laboral</UploadNew>
+          <UploadNew href='/subiroferta' description='Suba una propuesta de trabajo para que proveedores la vean'>Subir nueva oferta laboral</UploadNew>
         </section>
       </div>
       <Footer />
