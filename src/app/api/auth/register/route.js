@@ -29,7 +29,7 @@ export async function POST (request) {
   const credentialsValidation = checkCredentials(data.email, data.password)
   if (credentialsValidation.error) {
     const { error: message, status } = credentialsValidation
-    console.log('error 1')
+    // console.log('error 1')
 
     return NextResponse.json({ error: message }, { status })
   }
@@ -37,7 +37,7 @@ export async function POST (request) {
   const locationResponse = await getLocation(data.city, data.province, data.country, true)
 
   if (locationResponse.status !== 200) {
-    console.log('error 2')
+    // console.log('error 2')
     return NextResponse.json({ error: locationResponse.message }, { status: locationResponse.status })
   }
 
@@ -48,7 +48,7 @@ export async function POST (request) {
   const { data: user } = await supabase.from('users').select('*').eq('email', data.email).single()
 
   if (user) {
-    console.log('error 3')
+    // console.log('error 3')
     return NextResponse.json(
       { error: messages.error.user_already_exists }, { status: 400 }
     )
@@ -60,7 +60,7 @@ export async function POST (request) {
   // create user
   const { data: newUserCreated, error } = await supabase.from('users').insert(newUser).select().single()
   if (error) {
-    console.log('error 4')
+    // console.log('error 4')
     return NextResponse.json({ error: messages.error.error })
   }
   newUserCreated.password = undefined
@@ -74,20 +74,20 @@ export async function POST (request) {
     phone: data.phone.toString(),
     birth: data.birth,
     dni: data.dni,
-    picture: !!data.image
+    picture: data.image.size !== 0 // If the file size is 0 there is no such file
   }
   const { error: dataFail } = await supabase.from('users_data').insert(userData)
 
   if (dataFail) {
-    console.log('error 5', dataFail)
+    // console.log('error 5', dataFail)
     return NextResponse.json({ error: messages.error.error })
   }
 
   // upload profile picture
-  if (data.image) {
+  if (userData.picture) {
     const { error: profileFail } = await supabase.storage.from('profiles').upload(userData.id_user, data.image)
     if (profileFail) {
-      console.log('error 6')
+      // console.log('error 6')
       return NextResponse.json({ error: messages.error.error })
     }
   }
