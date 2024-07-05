@@ -32,7 +32,7 @@ async function Home ({ IdUser }) {
       </section>
 
       <section className='grid grid-cols-1 gap-4 md:grid-cols-2 w-[80vw] max-w-[1200px] mx-auto my-10'>
-        <Card name='Encontrar servicios' description='Encuentra al proveedor de servicios que estas buscando' link='/contratar' />
+        <Card name='Contratar servicios' description='Encuentra al proveedor de servicios que estas buscando' link='/contratar' />
         <Card name='Encontrar trabajos' description='Explora las ofertas de trabajo que los usuarios publicaron' link='/postularse' />
         <Card name='Ir a tu perfil' description='Carga tus oficios para que otros usuarios los vean o anuncia servicios que busques' link='/perfil' />
         <Card name='Ir a los chats' link='/chats' />
