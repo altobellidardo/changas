@@ -52,8 +52,8 @@ function Home () {
         <div className='text-brand2 p-6 w-full'>
           <h3 className='text-2xl text-pretty mb-6'>Nuestros usuarios</h3>
           <div>
-            <p>Aprovecha los beneficios de la plataforma según tus necesidades.</p>
-            <p>Aquí no distinguimos entre quien busca servicios o los ofrece, por lo que hay una cuenta única para cada persona.</p>
+            <p>Aprovechá los beneficios de la plataforma según tus necesidades.</p>
+            <p>Aquí no distinguimos entre quién busca servicios o los ofrece, por lo que hay una cuenta única para cada persona.</p>
           </div>
         </div>
 
