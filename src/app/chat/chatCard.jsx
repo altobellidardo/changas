@@ -26,6 +26,7 @@ function ChatCard ({ info, IdUser }) {
           <span>
             Último mensaje {lastMessageStr}
           </span>
+          <span>id chat : {info.id_chat}</span>
         </div>
         <div>{info.open_contract ? 'Contrato pendiente' : 'No hay contratos'}</div>
         <div>{visto ? 'Visto' : 'No visto'}</div>

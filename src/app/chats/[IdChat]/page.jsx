@@ -17,6 +17,10 @@ export default async function Chathomepage ({ params }) {
 
   const data = await getFullChat(IdChat)
 
+  if (!data) {
+    return redirect('/')
+  }
+
   if ((data.id_user1 !== IdUser) & (data.id_user2 !== IdUser)) {
     return redirect('/')
   }
