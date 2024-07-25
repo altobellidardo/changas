@@ -60,7 +60,7 @@ export async function GET (req) {
       .lte('budget', maxBudget)
       .gt('open_date', openDate)
       .ilike('username', `%${name}%`)
-      .order(order, { ascending: (order !== 'open_date') })
+      .order(order, { ascending: false })
       .range(lowerBound, upperBound)
     proposals = fetch.data
     error = fetch.error
@@ -72,7 +72,7 @@ export async function GET (req) {
       .lte('budget', maxBudget)
       .gt('open_date', openDate)
       .ilike('username', `%${name}%`)
-      .order(order, { ascending: (order !== 'open_date') })
+      .order(order, { ascending: false })
       .range(lowerBound, upperBound)
     proposals = fetch.data
     error = fetch.error
