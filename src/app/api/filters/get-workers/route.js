@@ -20,11 +20,12 @@ export async function GET (req) {
   let employees = query.get('employees')
   let maxScore = query.get('max_score')
   let minScore = query.get('min_score')
+  let order = query.get('order')
 
   // We set an upper and lower bound of the results to be shown
   const lowerBound = RESULTS_PER_PAGE * page
   const upperBound = lowerBound + RESULTS_PER_PAGE - 1
-  // -> console.log(minhourlyPrice)
+
   // If a var is undefined we just assign an acceptable value
   if (minScore === 'undefined' || minScore === '') {
     minScore = 0
@@ -47,6 +48,9 @@ export async function GET (req) {
   if (isNaN(distance)) {
     distance = 40000
   }
+  if (order === 'undefined' || order === '') {
+    order = 'score'
+  }
 
   // Get the location with the corresponding server function
   const data = (await (await getLocation(city, province, country, false)).json())
@@ -66,7 +70,7 @@ export async function GET (req) {
       .lte('score', maxScore)
       .gt('employees', employees)
       .ilike('username', `%${name}%`)
-      .order('score', { ascending: false })
+      .order(order, { ascending: false })
       .range(lowerBound, upperBound)
     workers = fetch.data
     error = fetch.error
@@ -80,7 +84,7 @@ export async function GET (req) {
       .lte('score', maxScore)
       .gt('employees', employees)
       .ilike('username', `%${name}%`)
-      .order('score', { ascending: false })
+      .order(order, { ascending: false })
       .range(lowerBound, upperBound)
     workers = fetch.data
     error = fetch.error
