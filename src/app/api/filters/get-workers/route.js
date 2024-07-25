@@ -70,7 +70,7 @@ export async function GET (req) {
       .lte('score', maxScore)
       .gt('employees', employees)
       .ilike('username', `%${name}%`)
-      .order(order, { ascending: false })
+      .order(order, { ascending: (order !== 'score') })
       .range(lowerBound, upperBound)
     workers = fetch.data
     error = fetch.error
@@ -84,7 +84,7 @@ export async function GET (req) {
       .lte('score', maxScore)
       .gt('employees', employees)
       .ilike('username', `%${name}%`)
-      .order(order, { ascending: false })
+      .order(order, { ascending: (order !== 'score') })
       .range(lowerBound, upperBound)
     workers = fetch.data
     error = fetch.error
