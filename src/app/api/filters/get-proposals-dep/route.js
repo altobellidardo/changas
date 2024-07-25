@@ -14,34 +14,22 @@ export async function GET (req) {
   const province = query.get('province')
   const city = query.get('city')
   let distance = query.get('distance') * 1000
-  let minBudget = query.get('min_budget')
-  let maxBudget = query.get('max_budget')
+  let budget = query.get('budget')
   let openDate = query.get('openDate')
-  let name = query.get('name')
-  let order = query.get('order')
 
   // We set an upper and lower bound of the results to be shown
   const lowerBound = RESULTS_PER_PAGE * page
   const upperBound = lowerBound + RESULTS_PER_PAGE - 1
 
   // If a var is undefined we just assign an acceptable value
-  if (minBudget === 'undefined' || minBudget === '') {
-    minBudget = 0
-  }
-  if (maxBudget === 'undefined' || maxBudget === '') {
-    maxBudget = 200000000
+  if (budget === 'undefined') {
+    budget = 0
   }
   if (openDate === 'undefined') {
     openDate = '01-01-2000'
   }
   if (isNaN(distance)) {
     distance = 40000
-  }
-  if (name === 'undefined') {
-    name = ''
-  }
-  if (order === 'undefined' || order === '') {
-    order = 'open_date'
   }
 
   // Get the location with the corresponding server function
@@ -56,11 +44,9 @@ export async function GET (req) {
         radius: distance,
         cat: category
       })
-      .gte('budget', minBudget)
-      .lte('budget', maxBudget)
+      .gt('budget', budget)
       .gt('open_date', openDate)
-      .ilike('username', `%${name}%`)
-      .order(order, { ascending: (order !== 'open_date') })
+      .order('open_date', { ascending: false })
       .range(lowerBound, upperBound)
     proposals = fetch.data
     error = fetch.error
@@ -68,11 +54,9 @@ export async function GET (req) {
     const columns = 'id_user, budget, location, open_date, description, username'
     const fetch = await supabase.from('proposals').select(columns)
       .eq('category', category)
-      .gte('budget', minBudget)
-      .lte('budget', maxBudget)
+      .gt('budget', budget)
       .gt('open_date', openDate)
-      .ilike('username', `%${name}%`)
-      .order(order, { ascending: (order !== 'open_date') })
+      .order('open_date', { ascending: false })
       .range(lowerBound, upperBound)
     proposals = fetch.data
     error = fetch.error

@@ -44,7 +44,7 @@ function Filters ({ category, IdUser }) {
     const query = `category=${category}&country=${filter.country}&province=${filter.province}&city=${filter.city}&budget=${filter.budget}&openDate=${filter.openDate}&distance=${filter.distance}&page=${page}`
 
     const fetchData = async () => {
-      const response = await fetch(`/api/filters/get-proposals?${query}`, {
+      const response = await fetch(`/api/filters/get-proposals-dep?${query}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
