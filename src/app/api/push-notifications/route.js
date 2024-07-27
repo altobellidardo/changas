@@ -1,34 +1,31 @@
 import { Expo } from 'expo-server-sdk'
 
 export async function POST (req) {
-  const pushTokens = req.json()
+  const { pushToken, username, content } = await req.json()
+  console.log(pushToken, username)
 
   // Create a new Expo SDK client
   // optionally providing an access token if you have enabled push security
   const expo = new Expo({
-    accessToken: process.env.EXPO_ACCESS_TOKEN,
-    useFcmV1: true // this can be set to true in order to use the FCM v1 API
+    // accessToken: process.env.EXPO_ACCESS_TOKEN,
+    useFcmV1: true
   })
 
   // Create the messages that you want to send to clients
   const messages = []
-  for (const pushToken of pushTokens) {
-  // Each push token looks like ExponentPushToken[xxxxxxxxxxxxxxxxxxxxxx]
-
-    // Check that all your push tokens appear to be valid Expo push tokens
-    if (!Expo.isExpoPushToken(pushToken)) {
-      console.error(`Push token ${pushToken} is not a valid Expo push token`)
-      continue
-    }
-
-    // Construct a message (see https://docs.expo.io/push-notifications/sending-notifications/)
-    messages.push({
-      to: pushToken,
-      sound: 'default',
-      title: 'Nuevos mensajes',
-      body: 'Tienes nuevos mensajes, revisa tus chats'
-    })
+  // Check that all your push tokens appear to be valid Expo push tokens
+  if (!Expo.isExpoPushToken(pushToken)) {
+    console.error(`Push token ${pushToken} is not a valid Expo push token`)
+    return
   }
+
+  // Construct a message (see https://docs.expo.io/push-notifications/sending-notifications/)
+  messages.push({
+    to: pushToken,
+    sound: 'default',
+    title: username,
+    body: content
+  })
 
   // The Expo push notification service accepts batches of notifications so
   // that you don't need to send 1000 requests to send 1000 notifications. We
