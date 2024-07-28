@@ -33,7 +33,8 @@ const messages = {
     failed_worker_delete: 'Ocurrió un error al eliminar el trabajo',
     failed_proposal_delete: 'Ocurrió un error al eliminar el trabajo',
     failed_proposal_update: 'Ocurrió un error al actualizar la información de la oferta',
-    form_field_required: 'Hay campos sin rellenar, por favor complete la información faltante'
+    form_field_required: 'Hay campos sin rellenar, por favor complete la información faltante',
+    no_push_token: 'No se encontró ningún push token válido'
   },
   success: {
     user_created: 'El usuario ha sido creado',
@@ -46,7 +47,8 @@ const messages = {
     location_found: 'La ubicación ingresada fue hallada',
     chat_created: 'El chat fue creado con éxito',
     message_sent: 'El mensaje fue enviado con éxito',
-    review_uploaded: 'La reseña fue subida satisfactoriamente'
+    review_uploaded: 'La reseña fue subida satisfactoriamente',
+    send_notification: 'La notificación fue enviada exitosamente'
   }
 }
 
