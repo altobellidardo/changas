@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import messages from '@/utils/messages'
 import supabase from '@/libs/supabase/server'
-import { Resend } from 'resend'
+import { sendEmail } from '@/libs/resend/email'
 import jwt from 'jsonwebtoken'
 
 export async function POST (req) {
@@ -28,13 +28,12 @@ export async function POST (req) {
   const token = jwt.sign(user, process.env.JWT_SECRET, { expiresIn: '180d' })
 
   const forgetUrl = `${BASE_URL}/auth/change-password?token=${token}`
-  const resend = new Resend(process.env.RESEND_KEY)
 
-  await resend.emails.send({
-    from: 'support@changas.site',
+  await sendEmail({
+    from: 'equipo@changasred.com',
     to: email,
     subject: 'Password reset',
-    html: `<p>Click <a href="${forgetUrl}">here</a> to reset your password</p>`
+    html: `<p>Haz clic <a href="${forgetUrl}">aqui</a> para restablecer tu contraseña</p>`
   })
 
   return NextResponse.json({ message: messages.success.mail_sent }, { status: 200 })
