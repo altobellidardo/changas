@@ -238,7 +238,6 @@ function Filters ({ category, IdUser }) {
         </form>
       )}
 
-      {/* <div className='grid grid-cols-1 gap-4 md:grid-cols-2 max-w-[1200px]'> */}
       <div className='max-w-[1200px]'>
         {
           loading

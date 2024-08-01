@@ -32,6 +32,10 @@ async function OtherProfilePage ({ params }) {
   // Gets published job offers by the user
   const offers = await getOffers(IdUser)
 
+  if (!user) {
+    redirect('/')
+  }
+
   user.picture = user.picture ? user.picture : 'https://avatar.iran.liara.run/public/boy?username=' + user.name
 
   // Create username (name + surname)
