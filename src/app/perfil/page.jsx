@@ -86,6 +86,12 @@ export default async function UserPage () {
 
           <UploadNew href='/subiroferta' description='Suba una propuesta de trabajo para que proveedores la vean'>Subir nueva oferta laboral</UploadNew>
         </section>
+
+        <section className='mt-32 flex flex-col gap-2'>
+          <Link href='/perfil/eliminar' className='text-red-600 bg-red-200 border-2 rounded-lg p-2 border-red-600 max-w-[600px] text-center font-bold'>
+            Eliminar cuenta
+          </Link>
+        </section>
       </div>
       <Footer />
     </main>
