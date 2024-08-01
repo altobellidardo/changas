@@ -27,28 +27,28 @@ export async function GET (req) {
   const upperBound = lowerBound + RESULTS_PER_PAGE - 1
 
   // If a var is undefined we just assign an acceptable value
-  if (minScore === 'undefined' || minScore === '') {
+  if (minScore === 'undefined' || minScore === '' || minScore === null) {
     minScore = 0
   }
-  if (maxScore === 'undefined' || maxScore === '') {
+  if (maxScore === 'undefined' || maxScore === '' || maxScore === null) {
     maxScore = 5
   }
-  if (name === 'undefined') {
+  if (name === 'undefined' || name === null) {
     name = ''
   }
-  if (minhourlyPrice === 'undefined' || minhourlyPrice === '') {
+  if (minhourlyPrice === 'undefined' || minhourlyPrice === '' || minhourlyPrice === null) {
     minhourlyPrice = 0
   }
-  if (maxhourlyPrice === 'undefined' || maxhourlyPrice === '') {
+  if (maxhourlyPrice === 'undefined' || maxhourlyPrice === '' || maxhourlyPrice === null) {
     maxhourlyPrice = 200000000
   }
-  if (employees === 'undefined' || employees === '') {
+  if (employees === 'undefined' || employees === '' || employees === null) {
     employees = 0
   }
   if (isNaN(distance)) {
     distance = 40000
   }
-  if (order === 'undefined' || order === '') {
+  if (order === 'undefined' || order === '' || order === null) {
     order = 'score'
   }
 
@@ -91,6 +91,7 @@ export async function GET (req) {
   }
 
   if (error) {
+    console.log(error)
     return NextResponse.json(
       { error: messages.error.failed_worker_fetch },
       { status: 400 }
