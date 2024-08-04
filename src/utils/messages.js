@@ -34,7 +34,8 @@ const messages = {
     failed_proposal_delete: 'Ocurrió un error al eliminar el trabajo',
     failed_proposal_update: 'Ocurrió un error al actualizar la información de la oferta',
     form_field_required: 'Hay campos sin rellenar, por favor complete la información faltante',
-    no_push_token: 'No se encontró ningún push token válido'
+    no_push_token: 'No se encontró ningún push token válido',
+    report_failed: 'El envío de la denuncia falló, contactese con soporte.'
   },
   success: {
     user_created: 'El usuario ha sido creado',
