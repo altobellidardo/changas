@@ -48,7 +48,8 @@ const messages = {
     chat_created: 'El chat fue creado con éxito',
     message_sent: 'El mensaje fue enviado con éxito',
     review_uploaded: 'La reseña fue subida satisfactoriamente',
-    send_notification: 'La notificación fue enviada exitosamente'
+    send_notification: 'La notificación fue enviada exitosamente',
+    report_sent: 'La denuncia fue enviada exitosamente'
   }
 }
 

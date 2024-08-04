@@ -14,8 +14,8 @@ function EliminarCuenta () {
       await sendEmail({
         from: 'equipo@changasred.com',
         to: 'equipo@changasred.com',
-        subject: 'cuenta por eliminar',
-        html: `<p>Se requiere eliminar la cuenta, email:${isAuthenticated.email} ${isAuthenticated.id_user}</p>`
+        subject: 'Petición de eliminación de cuenta',
+        html: `<p>Se requiere eliminar la cuenta, email: ${isAuthenticated.email}   ID: ${isAuthenticated.id_user}</p>`
       })
 
       console.log('Email enviado')
