@@ -18,17 +18,17 @@ export function loadCities (inputProvince) {
   return cities
 }
 
-export function formatLocation (inputLocation) {
-  // Split the input date string into year, month, and day parts
-  const [inputCity, inputProvince, inputCountry] = inputLocation.split(', ')
-  const provinceMap = shortNames.find(country => country.country === inputCountry).states
+// export function formatLocation (inputLocation) {
+//   // Split the input date string into year, month, and day parts
+//   const [inputCity, inputProvince, inputCountry] = inputLocation.split(', ')
+//   const provinceMap = shortNames.find(country => country.country === inputCountry).states
 
-  let shortProvince
-  if (inputProvince !== 'Cdad. Autónoma de Buenos Aires') {
-    shortProvince = provinceMap.find(province => province.name === inputProvince).code
-  } else {
-    shortProvince = provinceMap.find(province => province.name === 'Ciudad Autónoma de Buenos Aires').code
-  }
+//   let shortProvince
+//   if (inputProvince !== 'Cdad. Autónoma de Buenos Aires') {
+//     shortProvince = provinceMap.find(province => province.name === inputProvince).code
+//   } else {
+//     shortProvince = provinceMap.find(province => province.name === 'Ciudad Autónoma de Buenos Aires').code
+//   }
 
-  return `${inputCity}, ${shortProvince}`
-}
+//   return `${inputCity}, ${shortProvince}`
+// }
