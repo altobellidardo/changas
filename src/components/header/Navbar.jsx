@@ -36,7 +36,7 @@ function Navbar ({ auth }) {
               <span
                 className='hidden self-center whitespace-nowrap text-2xl font-semibold sm:block'
               >
-                Changas
+                Changas Red
               </span>
             </Link>
 
