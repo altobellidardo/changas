@@ -35,7 +35,7 @@ async function ChatCard ({ info, IdUser }) {
           </span>
         </div>
         <div>{info.open_contract ? 'Contrato pendiente' : 'No hay contratos'}</div>
-        <div>{visto ? 'Visto' : 'No visto'}</div>
+        <div>{visto ? 'Visto' : 'Nuevo mensaje'}</div>
       </div>
     </Link>
   )
