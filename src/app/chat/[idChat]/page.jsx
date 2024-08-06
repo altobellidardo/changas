@@ -5,6 +5,8 @@ import Link from 'next/link'
 
 import { getChat, seeChat } from '@/actions/chat'
 
+import BackArrowIcon from '@/components/icons/BackArrow'
+
 import ChatViewNew from './chatViewNew'
 
 export const dynamic = 'force-dynamic'
@@ -28,12 +30,24 @@ async function ChatUsers ({ params }) {
 
   await seeChat(idChat, userTag)
 
+  const data = { idUser, otherUser, otherUsername }
+
   return (
-    <div>
-      <p>hablando con: {otherUsername}</p>
-      <Link href={`/perfil/${otherUser}`}>ir al perfil del otro</Link>
-      <ChatViewNew idChat={idChat} user1={userTag === 1} />
-    </div>
+    <main>
+      <section className='bg-brand5 text-brand8 px-4 md:px-20 py-4 fixed top-0 w-full text-sm'>
+        <div className='max-w-[1200px] mx-auto flex justify-between items-center'>
+          <Link href='/chat' className='hover:outline p-1 rounded'>
+            <BackArrowIcon className='inline-block mr-2' />
+          </Link>
+
+          <Link href={`/perfil/${otherUser}`} className='hover:underline'>
+            {otherUsername}
+          </Link>
+        </div>
+      </section>
+
+      <ChatViewNew idChat={idChat} user1={userTag === 1} data={data} />
+    </main>
   )
 }
 
