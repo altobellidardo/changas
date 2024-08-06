@@ -6,6 +6,7 @@ import { get18YearsAgo } from '@/utils/getDate'
 import Link from 'next/link'
 import { useState } from 'react'
 import { errorMatch, getFields } from './dataHelp'
+import { loadCities, loadProvinces } from '@/utils/geo'
 
 function Input ({ type, name, label, noRequired, ...rest }) {
   return (
@@ -16,11 +17,30 @@ function Input ({ type, name, label, noRequired, ...rest }) {
   )
 }
 
+function Select ({ name, label, options, ...rest }) {
+  return (
+    <label className='flex flex-col'>
+      {label}
+      <select name={name} className='border-2 p-2 rounded' {...rest}>
+        {options.map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
+    </label>
+  )
+}
+
 function RegisterForm () {
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
 
   const [imageFile, setImageFile] = useState(null)
+
+  const provinces = loadProvinces()
+  const [province, setProvince] = useState(provinces[0])
+  const [city, setCity] = useState(loadCities(province)[0])
 
   const minBirthdate = get18YearsAgo()
 
@@ -84,9 +104,20 @@ function RegisterForm () {
         <Input type='email' name='email' label='Email' />
         <Input type='password' name='password' label='Contraseña' />
 
-        <Input type='text' name='country' label='País' />
-        <Input type='text' name='province' label='Provincia' />
-        <Input type='text' name='city' label='Ciudad' />
+        <Select
+          label='Provincia'
+          name='province'
+          options={provinces}
+          onChange={(event) => setProvince(event.target.value)}
+        />
+        <Select
+          label='Ciudad'
+          name='city'
+          options={loadCities(province)}
+          onChange={(event) => setCity(event.target.value)}
+        />
+        <input type='hidden' name='province' value={province} />
+        <input type='hidden' name='city' value={city} />
 
         <Input type='number' name='dni' label='DNI (sin puntos ni comas)' min='1' step='1' />
         <Input type='date' name='birth' label='Fecha de nacimiento' max={minBirthdate} />

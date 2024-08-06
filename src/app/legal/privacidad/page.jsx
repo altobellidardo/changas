@@ -48,7 +48,7 @@ function Legal () {
       <Header />
       <main className='mx-auto max-w-[80vw] my-10'>
         <h1 className='text-3xl font-bold'>
-          Política de privacidad de la plataforma Changas
+          Política de privacidad de la plataforma Changas Red
         </h1>
         {sections.map(section => Section(section))}
       </main>

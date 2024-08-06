@@ -3,8 +3,8 @@
     {
       "title": "",
       "content": [
-        {"tag": "p", "text": "Changas (“Changas”), pone a su disposición la presente Política de Privacidad, con el fin de informarle acerca del tratamiento de datos personales que lleva a cabo."},
-        {"tag": "p", "text": "Con carácter complementario a los Términos y condiciones de uso la presente Política de Privacidad aplica a partir de la fecha de entrada en vigor que aparece al final del presente documento al sitio www.changas.site (“el Sitio Web”), y de la aplicación “Changas” (“la App”), ambos conjuntamente denominados como “la Plataforma” y rige el tratamiento de datos personales entre los Responsables que se explican más adelante y toda persona que haga uso de la Plataforma (“Usuario”)."}
+        {"tag": "p", "text": "Changas Red (“Changas”), pone a su disposición la presente Política de Privacidad, con el fin de informarle acerca del tratamiento de datos personales que lleva a cabo."},
+        {"tag": "p", "text": "Con carácter complementario a los Términos y condiciones de uso la presente Política de Privacidad aplica a partir de la fecha de entrada en vigor que aparece al final del presente documento al sitio www.changasred.com (“el Sitio Web”), y de la aplicación “Changas Red” (“la App”), ambos conjuntamente denominados como “la Plataforma” y rige el tratamiento de datos personales entre los Responsables que se explican más adelante y toda persona que haga uso de la Plataforma (“Usuario”)."}
       ]
     },
     {
@@ -73,31 +73,38 @@
       ]
     },
     {
-      "title": "6. DERECHOS DEL USUARIO",
+      "title": "6. ELIMINACIÓN DE CUENTA Y CONSERVACIÓN DE LOS DATOS ",
+      "content": [
+        {"tag": "p", "text": "Si el usuario lo desea podrá eliminar su cuenta de la plataforma en el momento que quiera. Changas dejara de contener sus datos en la base de datos transcurrido 7 días hábiles de la solicitud. El sistema automáticamente desvinculara al usuario completamente de la plataforma. El usuario tendrá la oportunidad de recuperar sus datos en esos 7 días hábiles. Si desea abrir una nueva cuenta deberá esperar 90 días hábiles."},
+        {"tag": "p", "text": "La eliminación de cuenta conlleva la eliminación de la conservación de los datos del usuario, es decir que si el usuario desea eliminar la conservación de sus datos en la plataforma deberá eliminar su cuenta. "}
+      ]
+    },
+    {
+      "title": "7. DERECHOS DEL USUARIO",
       "content": [
         {"tag": "p", "text": "El Usuario puede obtener confirmación sobre si Changas está tratando sus Datos Personales y acceder a los mismos."},
-        {"tag": "p", "text": "El Usuario podrá solicitar de Changas el ejercicio de los derechos de acceso a los datos personales, su rectificación, supresión, la limitación de su tratamiento, oposición y portabilidad, mediante la remisión de un correo electrónico a la dirección team@changas.site, expresando claramente el derecho que desea ejercitar. En caso de ser necesario, se le podrá solicitar que adjunte copia del documento oficial identificativo u otra información adicional con el fin de confirmar la identidad del Usuario y/o atender la solicitud."},
+        {"tag": "p", "text": "El Usuario podrá solicitar de Changas el ejercicio de los derechos de acceso a los datos personales, su rectificación, supresión, la limitación de su tratamiento, oposición y portabilidad, mediante la remisión de un correo electrónico a la dirección equipo@changasred.com, expresando claramente el derecho que desea ejercitar. En caso de ser necesario, se le podrá solicitar que adjunte copia del documento oficial identificativo u otra información adicional con el fin de confirmar la identidad del Usuario y/o atender la solicitud."},
         {"tag": "p", "text": "En el caso de que el Usuario lo desee, puede solicitar los formularios para el ejercicio de los referidos derechos a dicha dirección de correo."},
         {"tag": "p", "text": "Asimismo, el Usuario debe saber que tiene derecho a presentar una reclamación ante la Autoridad competente."}
       ]
     },
     {
-      "title": "7. MENORES DE EDAD",
+      "title": "8. MENORES DE EDAD",
       "content": [
         {"tag": "p", "text": "El acceso a la Plataforma de Changas está prohibida a menores de edad, esta se dirige a Usuarios mayores de edad."}
       ]
     },
     {
-      "title": "8. MEDIDAS DE SEGURIDAD QUE ADOPTA CHANGAS PARA GARANTIZAR LA CONFIDENCIALIDAD DE LOS DATOS",
+      "title": "9. MEDIDAS DE SEGURIDAD QUE ADOPTA CHANGAS PARA GARANTIZAR LA CONFIDENCIALIDAD DE LOS DATOS",
       "content": [
         {"tag": "p", "text": "Changas adopta las medidas técnicas y organizativas necesarias para evitar la pérdida, mal uso, alteración, acceso no autorizado, robo de los datos personales facilitados, así como para garantizar un nivel de seguridad adecuado al riesgo, habida cuenta del estado de la tecnología, los costes de aplicación, la naturaleza, el alcance, el contexto y los fines del tratamiento, así como los riesgos de probabilidad y gravedad variables para los derechos y libertades de las personas físicas."},
         {"tag": "p", "text": "En la utilización de los datos personales de los Usuarios, Changas se compromete a respetar la confidencialidad y a utilizarlos de acuerdo con la finalidad de su tratamiento, así como a dar cumplimiento a su obligación de guardarlos y adaptar todas las medidas técnicas y organizativas de seguridad para garantizar un nivel de seguridad adecuado al riesgo."}
       ]
     },
     {
-      "title": "9. FECHA EFECTIVA Y MODIFICACIONES DE LA POLÍTICA DE PRIVACIDAD",
+      "title": "10. FECHA EFECTIVA Y MODIFICACIONES DE LA POLÍTICA DE PRIVACIDAD",
       "content": [
-        {"tag": "p", "text": "Esta Política de Privacidad fue actualizada por última vez el 27 de junio de 2024."},
+        {"tag": "p", "text": "Esta Política de Privacidad fue actualizada por última vez el 3 de agosto de 2024."},
         {"tag": "p", "text": "Changas se reserva el derecho a modificar, corregir o cambiar de forma unilateral esta Política de Privacidad en cualquier momento por motivos internos o relacionados con actualizaciones legislativas o jurisprudenciales. Por ello, recomendamos que visite regularmente este Sitio Web para conocer las modificaciones que se puedan producir."}
       ]
     }
