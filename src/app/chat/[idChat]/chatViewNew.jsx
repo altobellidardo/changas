@@ -1,33 +1,16 @@
-import { getFullChat, sendMessage } from '@/actions/chat'
+import { getFullChat } from '@/actions/chat'
+import Messages from './messages'
+import ChatForm from './form'
 
-const yourStyle = 'bg-brand6 text-brand8'
-const otherStyle = 'bg-brand3 text-brand8'
-
-async function ChatViewNew ({ idChat, user1 }) {
-  const data = await getFullChat(idChat)
+async function ChatViewNew ({ idChat, user1, data }) {
+  const chat = await getFullChat(idChat)
+  const { idUser, otherUser, otherUsername } = data
 
   return (
     <section>
-      <ul>
-        {data.map((msg) => {
-          const fromYou = msg.user_1 === user1
+      <Messages data={chat} user1={user1} idChat={idChat} />
 
-          return (
-            <li
-              key={msg.time}
-              className={fromYou ? yourStyle : otherStyle}
-            >
-              {msg.content} from {msg.user_1 ? 'you' : 'other'}
-            </li>
-          )
-        })}
-      </ul>
-
-      <form action={sendMessage}>
-        <input type='text' name='msg' />
-        <input type='hidden' name='data' value={JSON.stringify({ idChat, user1 })} />
-        <button type='submit'>Send</button>
-      </form>
+      <ChatForm idChat={idChat} user1={user1} idUser={idUser} otherUser={otherUser} otherUsername={otherUsername} />
     </section>
   )
 }
