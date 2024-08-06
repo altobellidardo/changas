@@ -21,14 +21,14 @@ function Chat () {
     <main className='flex flex-col min-h-screen'>
       <Header />
 
-      <section className='bg-brand5 px-4 md:px-20 pt-4 md:pt-8 pb-8'>
+      <section className='bg-brand5 px-4 md:px-20 py-4'>
         <div className='max-w-[1200px] mx-auto md:flex md:gap-4 items-center'>
-          <h1 className='text-3xl text-white'>Chats</h1>
-          <input
+          <h1 className='text-2xl text-white'>Chats</h1>
+          {/* <input
             type='text'
             className='bg-brand3 text-brand8 my-2 rounded-md px-4 py-2 text-sm w-full opacity-50 focus:opacity-100 focus:outline-none'
             placeholder='Buscar'
-          />
+            /> */}
         </div>
       </section>
 
