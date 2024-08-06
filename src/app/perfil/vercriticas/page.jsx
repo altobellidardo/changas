@@ -5,6 +5,7 @@ import Header from '@/components/header/header'
 import { getWorkerRatings } from '@/actions/getWorkerRatings'
 import Footer from '@/components/footer'
 import StarIcon from '@/components/icons/Star'
+import Link from 'next/link'
 
 export const dynamic = 'force-dynamic'
 
@@ -29,6 +30,7 @@ export default async function ReviewsPage ({ searchParams }) {
       <Header />
       <div className='w-[80w] mx-auto pb-10'>
         <section className='mt-10 flex flex-col gap-2'>
+          <Link href='/perfil' className='text-brand5 hover:underline w-fit'>Volver</Link>
           <h2>Tus reseñas</h2>
           {
               reviews.length === 0
