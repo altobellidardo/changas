@@ -40,6 +40,6 @@ export async function getFullChat (IdChat) {
     .from('messages')
     .select('content, user_1, time')
     .eq('id_chat', IdChat)
-    .order('time', { ascending: false })
+    .order('time', { ascending: true })
   return chat
 }
