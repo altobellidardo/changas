@@ -2,7 +2,7 @@ import { poppins } from '@/utils/font'
 import './globals.css'
 
 export const metadata = {
-  title: 'Changas - conecta con empleados y servicios',
+  title: 'Changas Red - conecta con empleados y servicios',
   description: 'La plataforma para conectar empleados y servicios con vos.',
   icons: {
     icon: '/logo.svg'

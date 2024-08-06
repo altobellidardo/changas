@@ -35,7 +35,7 @@ async function Home ({ IdUser }) {
         <Card name='Contratar servicios' description='Encuentra al proveedor de servicios que estas buscando' link='/contratar' />
         <Card name='Encontrar trabajos' description='Explora las ofertas de trabajo que los usuarios publicaron' link='/postularse' />
         <Card name='Ir a tu perfil' description='Carga tus oficios para que otros usuarios los vean o anuncia servicios que busques' link='/perfil' />
-        <Card name='Ir a los chats' link='/chats' />
+        <Card name='Ir a los chats' link='/chat' />
       </section>
     </>
   )

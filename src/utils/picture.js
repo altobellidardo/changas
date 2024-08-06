@@ -1,17 +1,25 @@
+import supabase from '@/libs/supabase/server'
+
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL
 const API_IMG = 'https://avatar.iran.liara.run/public/boy?username='
 
-export function getPicURL (user, IdUser) {
+export function getPicURL (user, idUser) {
   if (!user.username) {
     user.username = user.name + ' ' + user.surname
   }
 
   let picURL
   if (user.picture) {
-    picURL = SUPABASE_URL + '/storage/v1/object/public/profiles/' + IdUser
+    picURL = SUPABASE_URL + '/storage/v1/object/public/profiles/' + idUser
   } else {
     picURL = API_IMG + user.username
   }
 
   return picURL
+}
+
+export async function getPicFromId (idUser) {
+  const { data: user } = await supabase.from('users_data').select().eq('id_user', idUser).single()
+
+  return getPicURL(user, idUser)
 }
