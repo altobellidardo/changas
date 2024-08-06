@@ -25,7 +25,7 @@ export default async function ReviewsPage ({ searchParams }) {
   const reviews = await getWorkerRatings(IdUser, category)
   // console.log(reviews)
   return (
-    <main className='flex min-h-screen flex-col bg-brand8'>
+    <main className='flex min-h-screen flex-col bg-brand8 justify-between'>
       <Header />
       <div className='w-[80w] mx-auto pb-10'>
         <section className='mt-10 flex flex-col gap-2'>
