@@ -20,7 +20,7 @@ function Card ({ name, link, description }) {
 
 async function Home ({ IdUser }) {
   const user = await getUser(IdUser)
-  const picURL = getPicURL(user)
+  const picURL = getPicURL(user, IdUser)
 
   return (
     <>
