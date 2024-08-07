@@ -16,6 +16,8 @@ export async function sendMessage (formData) {
   const data = formData.get('data')
   const { idChat, user1 } = JSON.parse(data)
 
+  if (msg === '') return
+
   await supabase
     .from('messages')
     .insert({ id_chat: idChat, content: msg, user_1: user1 })
