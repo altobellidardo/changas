@@ -16,11 +16,14 @@ export async function sendMessage (formData) {
   const data = formData.get('data')
   const { idChat, user1 } = JSON.parse(data)
 
-  if (msg === '') return
+  if (msg === '') return false
 
-  await supabase
+  const { error } = await supabase
     .from('messages')
     .insert({ id_chat: idChat, content: msg, user_1: user1 })
+
+  if (error) return false
+  return true
 }
 
 export async function getChat (idChat) {
