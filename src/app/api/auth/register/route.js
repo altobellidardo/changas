@@ -61,7 +61,7 @@ export async function POST (request) {
   const { data: newUserCreated, error } = await supabase.from('users').insert(newUser).select().single()
   if (error) {
     // console.log('error 4')
-    return NextResponse.json({ error: messages.error.error })
+    return NextResponse.json({ error })
   }
   newUserCreated.password = undefined
 
@@ -80,7 +80,7 @@ export async function POST (request) {
 
   if (dataFail) {
     // console.log('error 5', dataFail)
-    return NextResponse.json({ error: messages.error.error })
+    return NextResponse.json({ error: dataFail })
   }
 
   // upload profile picture
@@ -88,7 +88,7 @@ export async function POST (request) {
     const { error: profileFail } = await supabase.storage.from('profiles').upload(userData.id_user, data.image)
     if (profileFail) {
       // console.log('error 6')
-      return NextResponse.json({ error: messages.error.error })
+      return NextResponse.json({ error: profileFail })
     }
   }
 
