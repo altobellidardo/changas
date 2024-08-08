@@ -6,24 +6,15 @@ import UpArrowIcon from '@/components/icons/UpArrow'
 import { sendMessage } from '@/actions/chat'
 
 function ChatForm ({ idChat, user1, idUser, otherUser, otherUsername }) {
-  // const [enviando, setEnviando] = useState(false)
   const [open, setOpen] = useState(false)
   const formRef = useRef()
 
-  // function handlemessage (event) {
-  //   event.preventDefault()
-  //   const formData = new FormData(event.target)
-  //   const message = formData.get('msg')
-  //   setEnviando(true)
-  //   if (message === '') {
-  //     setEnviando(false)
-  //     return
-  //   }
-  //   sendMessage(formData)
-  //   const input = event.target.elements.message
-  //   input.value = ''
-  //   setEnviando(false)
-  // }
+  async function sendMsgAction (formData) {
+    const response = await sendMessage(formData)
+    if (response) {
+      formRef.current.reset()
+    }
+  }
 
   return (
     <section className='p-2 bg-brand5 flex flex-col gap-1 fixed bottom-0 left-0 w-screen justify-center'>
@@ -45,13 +36,8 @@ function ChatForm ({ idChat, user1, idUser, otherUser, otherUsername }) {
       </div>
       <div className=''>
         <form
-          // onSubmit={handlemessage}
-          // action={sendMessage}
           ref={formRef}
-          action={async (formData) => {
-            await sendMessage(formData)
-            formRef.current.reset()
-          }}
+          action={sendMsgAction}
           className='p-2 bg-brand5 flex gap-1 max-w-[1200px] justify-center mx-auto'
         >
           <button
@@ -72,7 +58,6 @@ function ChatForm ({ idChat, user1, idUser, otherUser, otherUsername }) {
           <input type='hidden' name='data' value={JSON.stringify({ idChat, user1 })} />
           <button
             type='submit'
-            // disabled={enviando}
             className='bg-brand3 hover:outline text-brand8 text-sm py-1 px-2 rounded-xl disabled:opacity-50'
           >
             Enviar
