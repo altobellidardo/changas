@@ -46,8 +46,8 @@ export async function POST (request) {
   // create user
   const { data: newUserCreated, error } = await supabase.from('users').insert(newUser).select().single()
   if (error) {
-    // console.log('error 4')
-    return NextResponse.json({ error })
+    console.log(error)
+    return NextResponse.json({ error: 'Error al crear usuario' })
   }
   newUserCreated.password = undefined
 
@@ -65,8 +65,8 @@ export async function POST (request) {
   const { error: dataFail } = await supabase.from('users_data').insert(userData)
 
   if (dataFail) {
-    // console.log('error 5', dataFail)
-    return NextResponse.json({ error: dataFail })
+    console.log(dataFail)
+    return NextResponse.json({ error: 'Error al cargar datos personales' })
   }
 
   // upload profile picture
@@ -75,8 +75,8 @@ export async function POST (request) {
       contentType: 'image/jpeg' // The Expo app sends all images as JPEG
     })
     if (profileFail) {
-      // console.log('error 6')
-      return NextResponse.json({ error: profileFail })
+      console.log(profileFail)
+      return NextResponse.json({ error: 'Error al cargar foto' })
     }
   }
 
