@@ -60,8 +60,8 @@ export async function POST (request) {
   // create user
   const { data: newUserCreated, error } = await supabase.from('users').insert(newUser).select().single()
   if (error) {
-    // console.log('error 4')
-    return NextResponse.json({ error })
+    console.log(error)
+    return NextResponse.json({ error: 'Error al generar usuario' })
   }
   newUserCreated.password = undefined
 
@@ -79,16 +79,16 @@ export async function POST (request) {
   const { error: dataFail } = await supabase.from('users_data').insert(userData)
 
   if (dataFail) {
-    // console.log('error 5', dataFail)
-    return NextResponse.json({ error: dataFail })
+    console.log('error 5', dataFail)
+    return NextResponse.json({ error: 'Error al crear usuario' })
   }
 
   // upload profile picture
   if (userData.picture) {
     const { error: profileFail } = await supabase.storage.from('profiles').upload(userData.id_user, data.image)
     if (profileFail) {
-      // console.log('error 6')
-      return NextResponse.json({ error: profileFail })
+      console.log('error 6', profileFail)
+      return NextResponse.json({ error: 'Error al subir perfil' })
     }
   }
 
