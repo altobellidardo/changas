@@ -40,6 +40,16 @@ export async function POST (request) {
     )
   }
 
+  // check if user's DNI already exists
+  const { data: dniExists } = await supabase.from('users_data').select('*').eq('dni', data.dni).single()
+
+  if (dniExists) {
+    // console.log('error DNI')
+    return NextResponse.json(
+      { error: messages.error.dni_already_registered }, { status: 400 }
+    )
+  }
+
   const hashedPassword = await bcrypt.hash(data.password, 10)
   const newUser = { email: data.email, password: hashedPassword }
 

@@ -6,6 +6,7 @@ const messages = {
     password_required: 'La contraseña es requerida',
     password_invalid: 'La contraseña debe tener al menos 3 carácteres',
     user_already_exists: 'El usuario ya existe',
+    dni_already_registered: 'El DNI ya fue registrado, contactese con soporte',
     error: 'Ocurrió un error',
     user_not_found: 'El usuario no existe',
     incorrect_password: 'La contraseña es incorrecta',
