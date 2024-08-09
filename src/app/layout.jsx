@@ -1,5 +1,6 @@
 import { poppins } from '@/utils/font'
 import './globals.css'
+import { BASE_URL } from '@/constants'
 
 export const metadata = {
   title: 'Changas Red - conecta con empleados y servicios',
@@ -8,7 +9,7 @@ export const metadata = {
     icon: '/logo.svg'
   },
   keywords: ['changas', 'contratar', 'servicio', 'proyectos', 'electricistas'],
-  metadataBase: new URL('https://changas.site'),
+  metadataBase: new URL('https://' + BASE_URL),
   openGraph: {
     images: 'opengraph-image.png'
   }
