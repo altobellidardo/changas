@@ -29,7 +29,7 @@ export async function sendMessage (formData) {
 export async function getChat (idChat) {
   const { data: chat } = await supabase
     .from('chats')
-    .select('content, id_user1, id_user2, username_1, username_2')
+    .select('id_user1, id_user2, username_1, username_2')
     .eq('id_chat', idChat)
     .single()
   return chat
