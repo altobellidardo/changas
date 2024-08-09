@@ -9,7 +9,7 @@ export const metadata = {
     icon: '/logo.svg'
   },
   keywords: ['changas', 'contratar', 'servicio', 'proyectos', 'electricistas'],
-  metadataBase: new URL('https://' + BASE_URL),
+  metadataBase: new URL(BASE_URL),
   openGraph: {
     images: 'opengraph-image.png'
   }
