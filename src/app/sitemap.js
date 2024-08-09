@@ -33,6 +33,12 @@ export default function sitemap () {
       priority: 0.8
     },
     {
+      url: BASE_URL + '/contacto',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8
+    },
+    {
       url: BASE_URL + '/trabajos',
       lastModified: new Date(),
       changeFrequency: 'monthly',
@@ -40,6 +46,18 @@ export default function sitemap () {
     },
     {
       url: BASE_URL + '/auth/forget-password',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.64
+    },
+    {
+      url: BASE_URL + '/legal/terminos-condiciones',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.64
+    },
+    {
+      url: BASE_URL + '/legal/privacidad',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.64
