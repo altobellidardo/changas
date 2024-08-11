@@ -10,7 +10,7 @@ export async function POST (request) {
     id_user: data.IdUser,
     picture: data.image !== null // If the file size is 0 there is no such file
   }
-  
+
   // upload profile picture
   if (userData.picture) {
     const { error: profileFail } = await supabase.storage.from('profiles').upload(userData.id_user, decode(data.image.base64), {
