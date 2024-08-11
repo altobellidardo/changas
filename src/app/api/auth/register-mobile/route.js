@@ -86,7 +86,7 @@ export async function POST (request) {
     })
     if (profileFail) {
       console.log(profileFail)
-      return NextResponse.json({ error: 'Error al cargar foto' })
+      return NextResponse.json({ error: messages.error.image_upload_failed })
     }
   }
 

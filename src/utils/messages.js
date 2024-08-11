@@ -36,7 +36,8 @@ const messages = {
     failed_proposal_update: 'Ocurrió un error al actualizar la información de la oferta',
     form_field_required: 'Hay campos sin rellenar, por favor complete la información faltante',
     no_push_token: 'No se encontró ningún push token válido',
-    report_failed: 'El envío de la denuncia falló, contactese con soporte.'
+    report_failed: 'El envío de la denuncia falló, contactese con soporte.',
+    image_upload_failed: 'Hubo un error al cargar la imagen'
   },
   success: {
     user_created: 'El usuario ha sido creado',
