@@ -16,20 +16,6 @@ export async function POST (request) {
     return NextResponse.json({ error: messages.error.error })
   }
 
-  // Update worker reviews
-  const { data: userRating } = await supabase.from('workers').select('n_reviews, score').eq('id_user', ReviewedId).single()
-
-  // Define variables that will update the workers table
-  let { n_reviews: nReviews, score: userScore } = userRating
-  nReviews += 1
-  userScore = (((userScore * (nReviews - 1)) + parseInt(score)) / nReviews).toFixed(1)
-
-  const { error: ratingError } = await supabase.from('workers').update({ n_reviews: nReviews, score: userScore }).eq('id_user', ReviewedId)
-
-  if (ratingError) {
-    return NextResponse.json({ error: messages.error.error })
-  }
-
   const response = NextResponse.json({ message: messages.success.review_uploaded }, { status: 200 })
 
   return response
