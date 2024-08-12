@@ -10,20 +10,20 @@
     {
       "title": "1. IDENTIDAD Y DATOS DE CONTACTO DE LOS RESPONSABLES",
       "content": [
-        {"tag": "p", "text": "Changas ostenta la condición de responsables independientes en el tratamiento de los datos personales del Usuario para las finalidades que se establecen en sus respectivas políticas de privacidad. En adelante, Changas podrá ser denominado individualmente, y cuando proceda, como “el Responsable”."}
+        {"tag": "p", "text": "Changas ostenta la condición de responsables independientes en el tratamiento de los datos personales del Usuario para las finalidades que se establecen en sus respectivas políticas de privacidad. En adelante, Changas Red podrá ser denominado individualmente, y cuando proceda, como “el Responsable”."}
       ]
     },
     {
       "title": "2. DATOS PERSONALES DEL USUARIO OBJETO DE TRATAMIENTO",
       "content": [
-        {"tag": "p", "text": "Changas trata los Datos Personales del Usuario recabados en los formularios y vías de contacto habilitadas u obtenidos del Usuario durante el transcurso de su navegación por la Plataforma o a través de las comunicaciones telefónicas con Changas o en las que Changas interviene como prestador del servicio de comunicación entre los Usuarios."},
-        {"tag": "p", "text": "Algunos de estos datos son necesarios para poder prestar los servicios solicitados por el Usuario, por lo que, en caso de no facilitarnos dicha información, es posible que Changas no pueda ofrecerle el servicio solicitado."},
-        {"tag": "p", "text": "Los Datos Personales, facilitados por el Usuario, se considerarán correctos y veraces, por lo que Changas se reserva el derecho de excluir a aquellas personas que hayan facilitado datos falsos o inexactos."},
+        {"tag": "p", "text": "Changas trata los Datos Personales del Usuario recabados en los formularios y vías de contacto habilitadas u obtenidos del Usuario durante el transcurso de su navegación por la Plataforma o a través de las comunicaciones telefónicas con Changas Red o en las que Changas Red interviene como prestador del servicio de comunicación entre los Usuarios."},
+        {"tag": "p", "text": "Algunos de estos datos son necesarios para poder prestar los servicios solicitados por el Usuario, por lo que, en caso de no facilitarnos dicha información, es posible que Changas Red no pueda ofrecerle el servicio solicitado."},
+        {"tag": "p", "text": "Los Datos Personales, facilitados por el Usuario, se considerarán correctos y veraces, por lo que Changas Red se reserva el derecho de excluir a aquellas personas que hayan facilitado datos falsos o inexactos."},
         {"tag": "p", "text": "En el caso de que el Usuario incluya datos personales de terceras personas, éste será responsable de haberle informado previamente de los extremos de la presente Política de Privacidad y haber obtenido su consentimiento cuando sea necesario."},
-        {"tag": "p", "text": "Las categorías de datos que Changas puede recabar de los Usuarios son las siguientes:"},
+        {"tag": "p", "text": "Las categorías de datos que Changas Red puede recabar de los Usuarios son las siguientes:"},
         {"tag": "ul", "content": [
           {"tag": "li", "text": "Datos identificativos: nombre, apellidos, ubicación, dirección de correo electrónico, número de DNI, teléfono y, en su caso, una foto temporal del rostro del usuario y su DNI."},
-          {"tag": "li", "text": "Otra información: Changas puede enviar al Usuario encuestas o formularios que permitan conocer el grado de satisfacción de este último con la Plataforma."}
+          {"tag": "li", "text": "Otra información: Changas Red puede enviar al Usuario encuestas o formularios que permitan conocer el grado de satisfacción de este último con la Plataforma."}
         ]}
       ]
     },
@@ -32,19 +32,19 @@
       "content": [
         {"tag": "p", "text": "Changas trata los Datos Personales del Usuario en relación con los Servicios descritos en los Términos y condiciones de Uso, para las finalidades y con la base jurídica siguiente:"},
         {"tag": "ol", "content": [
-          {"tag": "li", "text": "1. Registro de Usuarios: Changas, en base al consentimiento del Usuario, tratará sus datos personales tras la cumplimentación del correspondiente formulario de registro de Usuario (tanto Profesionales como Clientes) con el fin de darle de alta como Usuario registrado en la Plataforma."},
+          {"tag": "li", "text": "1. Registro de Usuarios: Changas Red, en base al consentimiento del Usuario, tratará sus datos personales tras la cumplimentación del correspondiente formulario de registro de Usuario (tanto Profesionales como Clientes) con el fin de darle de alta como Usuario registrado en la Plataforma."},
           {"tag": "li", "text": "   El registro en la Plataforma conlleva la creación de un perfil donde el Usuario podrá gestionar y actualizar sus datos de contacto, así como llevar a cabo otras funciones vinculadas a los servicios definidos en los Términos y condiciones de Uso de acuerdo con lo establecido en su apartado 4."},
-          {"tag": "li", "text": "   Asimismo, registrarse o darse de alta en la Plataforma significará que el Usuario, formará parte de la comunidad a la que Changas dirige comunicaciones comerciales, incluida por la vía electrónica, por ser dichas comunicaciones comerciales el objeto mismo de la prestación de servicios que se lleva a cabo en la Plataforma (ver apartado 9)."},
-          {"tag": "li", "text": "2. Gestión de Opiniones: Changas, con el fin de cumplir los Términos y condiciones de Uso de la Plataforma, llevará a cabo la supervisión, edición y moderación de las opiniones, comentarios, imágenes y cualquier otro contenido publicado por los Usuarios (sean o no profesionales) bajo su interés legítimo."},
-          {"tag": "li", "text": "3. Mensajería Privada: En especial, Changas, con el fin de cumplir los Términos y condiciones de Uso de la Plataforma, llevará a cabo la supervisión, monitoreo, y conservación de las comunicaciones entre Usuarios, y cualquier otro contenido publicado por los Usuarios (sean o no profesionales), a efectos de control de calidad, probatorios, contractuales y de prevención del fraude, bajo la relación contractual que mantiene con sus usuarios y su interés legítimo."},
-          {"tag": "li", "text": "4. Notas Privadas: Changas, con el fin de cumplir los Términos y condiciones de Uso de la Plataforma, llevará a cabo la lectura, control y registro de la actividad del Profesional, así como, el monitoreo de las comunicaciones y de cualquier otro contenido publicado por los Usuarios (sean o no profesionales) bajo su interés legítimo."},
-          {"tag": "li", "text": "5. Soporte al Usuario: Este tratamiento se basa en la correcta ejecución y gestión de la relación contractual entre el Usuario y Changas y tiene como fin llevar a cabo notificaciones acerca de cuestiones relacionadas con la Plataforma o sobre su registro."},
-          {"tag": "li", "text": "   En el caso de que el Usuario se ponga en contacto telefónicamente con Changas, este podrá grabar y conservar las conversaciones telefónicas mantenidas con los Usuarios, en base al interés legítimo o contractual, a efectos de control de calidad, probatorios, contractuales y de prevención del fraude."},
-          {"tag": "li", "text": "   Asimismo, Changas puede, bajo el interés legítimo enviarle encuestas o formularios que permitan conocer el grado de satisfacción de este último con la Plataforma, los hábitos y preferencias del Usuario para la mejora de los servicios que Changas presta, así como, la participación en eventos y promociones organizados por Changas."},
+          {"tag": "li", "text": "   Asimismo, registrarse o darse de alta en la Plataforma significará que el Usuario, formará parte de la comunidad a la que Changas Red dirige comunicaciones comerciales, incluida por la vía electrónica, por ser dichas comunicaciones comerciales el objeto mismo de la prestación de servicios que se lleva a cabo en la Plataforma (ver apartado 9)."},
+          {"tag": "li", "text": "2. Gestión de Opiniones: Changas Red, con el fin de cumplir los Términos y condiciones de Uso de la Plataforma, llevará a cabo la supervisión, edición y moderación de las opiniones, comentarios, imágenes y cualquier otro contenido publicado por los Usuarios (sean o no profesionales) bajo su interés legítimo."},
+          {"tag": "li", "text": "3. Mensajería Privada: En especial, Changas Red, con el fin de cumplir los Términos y condiciones de Uso de la Plataforma, llevará a cabo la supervisión, monitoreo, y conservación de las comunicaciones entre Usuarios, y cualquier otro contenido publicado por los Usuarios (sean o no profesionales), a efectos de control de calidad, probatorios, contractuales y de prevención del fraude, bajo la relación contractual que mantiene con sus usuarios y su interés legítimo."},
+          {"tag": "li", "text": "4. Notas Privadas: Changas Red, con el fin de cumplir los Términos y condiciones de Uso de la Plataforma, llevará a cabo la lectura, control y registro de la actividad del Profesional, así como, el monitoreo de las comunicaciones y de cualquier otro contenido publicado por los Usuarios (sean o no profesionales) bajo su interés legítimo."},
+          {"tag": "li", "text": "5. Soporte al Usuario: Este tratamiento se basa en la correcta ejecución y gestión de la relación contractual entre el Usuario y Changas Red y tiene como fin llevar a cabo notificaciones acerca de cuestiones relacionadas con la Plataforma o sobre su registro."},
+          {"tag": "li", "text": "   En el caso de que el Usuario se ponga en contacto telefónicamente con Changas Red, este podrá grabar y conservar las conversaciones telefónicas mantenidas con los Usuarios, en base al interés legítimo o contractual, a efectos de control de calidad, probatorios, contractuales y de prevención del fraude."},
+          {"tag": "li", "text": "   Asimismo, Changas Red puede, bajo el interés legítimo enviarle encuestas o formularios que permitan conocer el grado de satisfacción de este último con la Plataforma, los hábitos y preferencias del Usuario para la mejora de los servicios que Changas Red presta, así como, la participación en eventos y promociones organizados por Changas Red."},
           {"tag": "li", "text": "6. Comunicaciones Comerciales:"},
-          {"tag": "li", "text": "   a.  Envío de comunicaciones comerciales propias de Changas con sus socios colaboradores o Partners: Changas, sobre la base de su interés legítimo, remitirá al Usuario comunicaciones comerciales por la Plataforma relativos a los servicios que presta y a las ofertas conjuntas con sus Partners."},
-          {"tag": "li", "text": "   b.  Envío de comunicaciones comerciales sobre sus Partners: Changas, bajo la autorización expresa del Usuario, remitirá comunicaciones comerciales por la Plataforma sobre productos o servicios de Partners con el fin de ofrecerle promociones, descuentos y ofertas exclusivas relativas a los sectores de construcción, reformas, reparaciones, gran consumo, financiación, seguros, energía, o telecomunicaciones, entre otros."},
-          {"tag": "li", "text": "7. Encuestas de Satisfacción: Changas puede realizar encuestas y enviarlas via mail a los Usuarios con el fin de valorar la satisfacción de estos respecto de los productos y servicios ofrecidos. La base de legitimación para el envío de estas encuestas reside en el interés legítimo de Changas con el objetivo de mejorar la calidad de los productos y servicios que ofrece."}
+          {"tag": "li", "text": "   a.  Envío de comunicaciones comerciales propias de Changas Red con sus socios colaboradores o Partners: Changas Red, sobre la base de su interés legítimo, remitirá al Usuario comunicaciones comerciales por la Plataforma relativos a los servicios que presta y a las ofertas conjuntas con sus Partners."},
+          {"tag": "li", "text": "   b.  Envío de comunicaciones comerciales sobre sus Partners: Changas Red, bajo la autorización expresa del Usuario, remitirá comunicaciones comerciales por la Plataforma sobre productos o servicios de Partners con el fin de ofrecerle promociones, descuentos y ofertas exclusivas relativas a los sectores de construcción, reformas, reparaciones, gran consumo, financiación, seguros, energía, o telecomunicaciones, entre otros."},
+          {"tag": "li", "text": "7. Encuestas de Satisfacción: Changas Red puede realizar encuestas y enviarlas via mail a los Usuarios con el fin de valorar la satisfacción de estos respecto de los productos y servicios ofrecidos. La base de legitimación para el envío de estas encuestas reside en el interés legítimo de Changas Red con el objetivo de mejorar la calidad de los productos y servicios que ofrece."}
         ]}
       ]
     },
@@ -57,7 +57,7 @@
           {"tag": "li", "text": "Fecha de nacimiento"},
           {"tag": "li", "text": "Ubicación"}
         ]},
-        {"tag": "p", "text": "Los datos que Changas considere como privados no podrán ser vistos por ningún Usuario que no sea el Usuario al que correspondan esos datos. De manera que:"},
+        {"tag": "p", "text": "Los datos que Changas Red considere como privados no podrán ser vistos por ningún Usuario que no sea el Usuario al que correspondan esos datos. De manera que:"},
         {"tag": "ul", "content": [
           {"tag": "li", "text": "El número de teléfono"},
           {"tag": "li", "text": "Número de DNI"},
@@ -75,15 +75,15 @@
     {
       "title": "6. ELIMINACIÓN DE CUENTA Y CONSERVACIÓN DE LOS DATOS ",
       "content": [
-        {"tag": "p", "text": "Si el usuario lo desea podrá eliminar su cuenta de la plataforma en el momento que quiera. Changas dejara de contener sus datos en la base de datos transcurrido 7 días hábiles de la solicitud. El sistema automáticamente desvinculara al usuario completamente de la plataforma. El usuario tendrá la oportunidad de recuperar sus datos en esos 7 días hábiles. Si desea abrir una nueva cuenta deberá esperar 90 días hábiles."},
+        {"tag": "p", "text": "Si el usuario lo desea podrá eliminar su cuenta de la plataforma en el momento que quiera. Changas Red dejara de contener sus datos en la base de datos transcurrido 7 días hábiles de la solicitud. El sistema automáticamente desvinculara al usuario completamente de la plataforma. El usuario tendrá la oportunidad de recuperar sus datos en esos 7 días hábiles. Si desea abrir una nueva cuenta deberá esperar 90 días hábiles."},
         {"tag": "p", "text": "La eliminación de cuenta conlleva la eliminación de la conservación de los datos del usuario, es decir que si el usuario desea eliminar la conservación de sus datos en la plataforma deberá eliminar su cuenta. "}
       ]
     },
     {
       "title": "7. DERECHOS DEL USUARIO",
       "content": [
-        {"tag": "p", "text": "El Usuario puede obtener confirmación sobre si Changas está tratando sus Datos Personales y acceder a los mismos."},
-        {"tag": "p", "text": "El Usuario podrá solicitar de Changas el ejercicio de los derechos de acceso a los datos personales, su rectificación, supresión, la limitación de su tratamiento, oposición y portabilidad, mediante la remisión de un correo electrónico a la dirección equipo@changasred.com, expresando claramente el derecho que desea ejercitar. En caso de ser necesario, se le podrá solicitar que adjunte copia del documento oficial identificativo u otra información adicional con el fin de confirmar la identidad del Usuario y/o atender la solicitud."},
+        {"tag": "p", "text": "El Usuario puede obtener confirmación sobre si Changas Red está tratando sus Datos Personales y acceder a los mismos."},
+        {"tag": "p", "text": "El Usuario podrá solicitar de Changas Red el ejercicio de los derechos de acceso a los datos personales, su rectificación, supresión, la limitación de su tratamiento, oposición y portabilidad, mediante la remisión de un correo electrónico a la dirección equipo@changasred.com, expresando claramente el derecho que desea ejercitar. En caso de ser necesario, se le podrá solicitar que adjunte copia del documento oficial identificativo u otra información adicional con el fin de confirmar la identidad del Usuario y/o atender la solicitud."},
         {"tag": "p", "text": "En el caso de que el Usuario lo desee, puede solicitar los formularios para el ejercicio de los referidos derechos a dicha dirección de correo."},
         {"tag": "p", "text": "Asimismo, el Usuario debe saber que tiene derecho a presentar una reclamación ante la Autoridad competente."}
       ]
@@ -91,14 +91,14 @@
     {
       "title": "8. MENORES DE EDAD",
       "content": [
-        {"tag": "p", "text": "El acceso a la Plataforma de Changas está prohibida a menores de edad, esta se dirige a Usuarios mayores de edad."}
+        {"tag": "p", "text": "El acceso a la Plataforma de Changas Red está prohibida a menores de edad, esta se dirige a Usuarios mayores de edad."}
       ]
     },
     {
-      "title": "9. MEDIDAS DE SEGURIDAD QUE ADOPTA CHANGAS PARA GARANTIZAR LA CONFIDENCIALIDAD DE LOS DATOS",
+      "title": "9. MEDIDAS DE SEGURIDAD QUE ADOPTA Changas Red PARA GARANTIZAR LA CONFIDENCIALIDAD DE LOS DATOS",
       "content": [
         {"tag": "p", "text": "Changas adopta las medidas técnicas y organizativas necesarias para evitar la pérdida, mal uso, alteración, acceso no autorizado, robo de los datos personales facilitados, así como para garantizar un nivel de seguridad adecuado al riesgo, habida cuenta del estado de la tecnología, los costes de aplicación, la naturaleza, el alcance, el contexto y los fines del tratamiento, así como los riesgos de probabilidad y gravedad variables para los derechos y libertades de las personas físicas."},
-        {"tag": "p", "text": "En la utilización de los datos personales de los Usuarios, Changas se compromete a respetar la confidencialidad y a utilizarlos de acuerdo con la finalidad de su tratamiento, así como a dar cumplimiento a su obligación de guardarlos y adaptar todas las medidas técnicas y organizativas de seguridad para garantizar un nivel de seguridad adecuado al riesgo."}
+        {"tag": "p", "text": "En la utilización de los datos personales de los Usuarios, Changas Red se compromete a respetar la confidencialidad y a utilizarlos de acuerdo con la finalidad de su tratamiento, así como a dar cumplimiento a su obligación de guardarlos y adaptar todas las medidas técnicas y organizativas de seguridad para garantizar un nivel de seguridad adecuado al riesgo."}
       ]
     },
     {
