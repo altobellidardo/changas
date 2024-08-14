@@ -2,13 +2,23 @@
 
 import supabase from '@/libs/supabase/server'
 
-export async function getMessages () {
-  const { data: messages } = await supabase
-    .from('chat-test')
-    .select('*')
-    .order('id', { ascending: false })
+export async function getExistingChat (idUser1, idUser2) {
+  const { data } = await supabase
+    .from('chats')
+    .select('id_chat')
+    .or(`and(id_user1.eq.${idUser1}, id_user2.eq.${idUser2}), and(id_user2.eq.${idUser1}, id_user1.eq.${idUser2})`)
+  const idChat = [data.id_chat]
 
-  return messages
+  return { IdChat: idChat, count: data.length }
+}
+
+export async function getChat (idChat) {
+  const { data: chat } = await supabase
+    .from('chats')
+    .select('id_user1, id_user2, username_1, username_2')
+    .eq('id_chat', idChat)
+    .single()
+  return chat
 }
 
 export async function sendMessage (formData) {
@@ -26,13 +36,35 @@ export async function sendMessage (formData) {
   return true
 }
 
-export async function getChat (idChat) {
-  const { data: chat } = await supabase
+export async function createChat (formData) {
+  const infoData = formData.get('data')
+  const message = formData.get('message')
+  const info = JSON.parse(infoData)
+
+  const newChat = {
+    id_user1: info.user1.id,
+    id_user2: info.user2.id,
+    username_1: info.user1.username,
+    username_2: info.user2.username,
+    read_user_1: true,
+    read_user_2: false,
+    last_message: new Date().toISOString().split('.')[0]
+  }
+
+  const { data, error } = await supabase
     .from('chats')
-    .select('id_user1, id_user2, username_1, username_2')
-    .eq('id_chat', idChat)
+    .insert(newChat)
+    .select()
     .single()
-  return chat
+  if (error) return { error: error.message }
+
+  const sendData = new FormData()
+  sendData.append('msg', message)
+  sendData.append('data', JSON.stringify({ idChat: data.id_chat, user1: true }))
+
+  await sendMessage(sendData)
+
+  return { idChat: data.id_chat }
 }
 
 export async function seeChat (IdChat, UserNumber) {
@@ -41,6 +73,7 @@ export async function seeChat (IdChat, UserNumber) {
 }
 
 export async function getFullChat (IdChat) {
+  // deprecated
   const { data: chat } = await supabase
     .from('messages')
     .select('content, user_1, time')
