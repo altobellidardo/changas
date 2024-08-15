@@ -1,5 +1,5 @@
 import Form from '../components/Form'
-import { getExistingChat } from '@/actions/getExistingChat'
+import { getExistingChat } from '@/actions/chat'
 import { redirect } from 'next/navigation'
 import { cookies } from 'next/headers'
 import checkUser from '@/utils/checkUser'
