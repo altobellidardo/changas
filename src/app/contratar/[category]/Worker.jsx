@@ -2,7 +2,7 @@
 'use client'
 
 import StarIcon from '@/components/icons/Star'
-import { getPicURL } from '@/utils/picture'
+import { getPicURL } from '@/utils/pictureClient'
 import Link from 'next/link'
 import { useState } from 'react'
 
@@ -21,7 +21,7 @@ function Worker ({ worker, IdUser }) {
   const handleShow = () => setShow(!show)
 
   worker.name = worker.username
-  const picURL = getPicURL(worker)
+  const picURL = getPicURL(worker, IdUser)
 
   return (
     <section className='p-4 py-8 border-b-0 rounded-xl border-brand6 bg-brand6/10 mb-2'>

@@ -14,6 +14,7 @@ import ShareProfile from '../ShareProfile'
 import ProposalInfo from '@/components/ProposalInfo'
 import JobInfo from '@/components/JobInfo'
 import NoData from '@/components/ui/NoData'
+import { getPicURL } from '@/utils/picture'
 
 async function OtherProfilePage ({ params }) {
   const { id: IdUser } = params
@@ -36,10 +37,10 @@ async function OtherProfilePage ({ params }) {
     redirect('/')
   }
 
-  user.picture = user.picture ? user.picture : 'https://avatar.iran.liara.run/public/boy?username=' + user.name
-
   // Create username (name + surname)
   const username = user.name + ' ' + user.surname
+
+  const picURL = getPicURL(user, IdUser)
 
   return (
     <main className='flex min-h-screen flex-col bg-brand8'>
@@ -51,7 +52,7 @@ async function OtherProfilePage ({ params }) {
 
         <section className='flex flex-col md:flex-row items-center bg-brand4 text-brand8 justify-center gap-8 py-10 w-[80vw] mx-auto rounded-md'>
           <picture className='relative'>
-            <img className='rounded-full size-40' src={user.picture} alt={`${user.name} ${user.surname} picture`} />
+            <img className='rounded-full size-40' src={picURL} alt={`${user.name} ${user.surname} picture`} />
           </picture>
           <div>
             <div className='font-bold text-xl'>{username}</div>

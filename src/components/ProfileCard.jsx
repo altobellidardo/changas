@@ -4,7 +4,7 @@ import { useState } from 'react'
 import PenIcon from './icons/PenIcon'
 import formatDate from '@/utils/formateDate'
 import LocationIcon from './icons/LocationIcon'
-import { getPicURL } from '@/utils/picture'
+import { getPicURL } from '@/utils/pictureClient'
 
 function ProfileCard ({ user }) {
   // Get useful variables
@@ -42,7 +42,7 @@ function ProfileCard ({ user }) {
     setLoading(false)
   }
 
-  const picURL = getPicURL(user)
+  const picURL = getPicURL(user, IdUser)
 
   return (
     <section className='flex flex-col md:flex-row items-center bg-brand4 text-brand8 justify-center gap-8 py-10 md:w-[80vw] mx-auto rounded-md'>
