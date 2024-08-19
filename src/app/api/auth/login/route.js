@@ -15,7 +15,7 @@ export async function POST (request) {
     return NextResponse.json({ error: message }, { status })
   }
 
-  const { data: user } = await supabase.from('users').select('*').ilike('email', `%${email}%`).single()
+  const { data: user } = await supabase.from('users').select('*').ilike('email', email).single()
 
   if (!user) {
     return NextResponse.json(
