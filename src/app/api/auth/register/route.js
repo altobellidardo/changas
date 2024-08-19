@@ -45,7 +45,7 @@ export async function POST (request) {
   const location = locStruct.city + ', ' + locStruct.province + ', ' + locStruct.country
 
   // check if user already exists
-  const { data: user } = await supabase.from('users').select('*').eq('email', data.email).single()
+  const { data: user } = await supabase.from('users').select('*').ilike('email', data.email).single()
 
   if (user) {
     // console.log('error 3')
