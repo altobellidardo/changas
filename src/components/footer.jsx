@@ -7,7 +7,7 @@ function Footer () {
         <span className='font-semibold text-2xl'>Changas</span>
       </div>
       <span className='text-xs text-center text-pretty'>
-        © {new Date().getFullYear()} Changas™. Todos los derechos reservados.
+        © {new Date().getFullYear()} Changas Red™. Todos los derechos reservados.
       </span>
     </footer>
   )
