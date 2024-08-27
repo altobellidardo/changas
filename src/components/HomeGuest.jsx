@@ -30,7 +30,21 @@ function Home () {
         </div>
       </section>
 
-      <section className='my-20 lg:mt-32 mx-auto w-[90vw] max-w-[900px] text-balance'>
+      <section className='mt-10 mx-auto w-[90vw] max-w-[900px] text-balance'>
+        <p className='text-xl md:text-3xl md:w-[80vw] font-bold text-balance max-w-[900px]'>
+          ¡Descargá nuestra App!
+        </p>
+        <div className='flex flex-row gap-4 pt-8 align-top md:flex-row'>
+          <Link href='https://play.google.com/store/apps/details?id=com.changasred.changasred'>
+            <Image src='/icons/Google-Play.svg' alt='Descargar en Google Play Store' width='160' height='100' className='mx-auto' />
+          </Link>
+          <Link href='https://apps.apple.com/us/app/changas-red/id6624295156'>
+            <Image src='/icons/App-Store.svg' alt='Descargar en App Store' width='150' height='100' className='mx-auto' />
+          </Link>
+        </div>
+      </section>
+
+      <section className='my-16 lg:mt-32 mx-auto w-[90vw] max-w-[900px] text-balance'>
         <h2 className='text-2xl md:text-3xl lg:text-5xl font-bold'>Contrata a los mejores.</h2>
         <h2 className='mb-4 text-2xl md:text-3xl lg:text-5xl font-bold'>Haz el trabajo</h2>
         <p className='text-md lg:text-xl'>Conectamos profesionales calificados con clientes. Encuentra a la persona adecuada para tu proyecto o sé contratado por tu experiencia.</p>
