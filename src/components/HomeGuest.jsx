@@ -30,10 +30,10 @@ function Home () {
         </div>
       </section>
 
-      <section className='mt-10 mx-auto w-[90vw] max-w-[900px] text-balance'>
-        <p className='text-xl md:text-3xl md:w-[80vw] font-bold text-balance max-w-[900px]'>
-          ¡Descargá nuestra App!
-        </p>
+      <section className='mt-20 mx-auto w-[90vw] max-w-[900px] text-balance'>
+        <h6 className='text-brand3 font-bold'>¡Nuevo!</h6>
+        <h3 className='text-2xl md:text-3xl lg:text-5xl font-bold text-brand3'>Descarga nuestra App</h3>
+
         <div className='flex flex-row gap-4 pt-8 align-top md:flex-row'>
           <Link href='https://play.google.com/store/apps/details?id=com.changasred.changasred'>
             <Image src='/icons/Google-Play.svg' alt='Descargar en Google Play Store' width='160' height='100' className='mx-auto' />
