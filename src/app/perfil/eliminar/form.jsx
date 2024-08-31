@@ -16,7 +16,7 @@ function DeleteForm ({ user }) {
   return (
     <form action={deleteAccount} className='flex flex-col w-full max-w-[600px] mx-auto gap-2'>
       <input type='hidden' name='email' value={user.email} />
-      <input type='hidden' name='id' value={user.id} />
+      <input type='hidden' name='id' value={user.id_user} />
 
       <label htmlFor='reason'>Describa la razón de la eliminación de la cuenta</label>
       <input type='text' name='reason' id='reason' className='text-black px-1 py-2 rounded-md border-2' required />
