@@ -61,17 +61,34 @@ export async function POST (request) {
   }
   newUserCreated.password = undefined
 
-  const userData = {
-    id_user: newUserCreated.id_user,
-    email: data.email,
-    name: data.name,
-    surname: data.surname,
-    location,
-    phone: data.phone.toString(),
-    birth: data.birth,
-    dni: data.dni,
-    picture: data.image !== null // If the file size is 0 there is no such file
+  let userData
+
+  if (data.username) {
+    userData = {
+      id_user: newUserCreated.id_user,
+      email: data.email,
+      username: data.username,
+      location,
+      phone: data.phone.toString(),
+      birth: data.birth,
+      dni: data.dni,
+      status: 'pending',
+      picture: data.image !== null // If the file size is 0 there is no such file
+    }
+  } else {
+    userData = {
+      id_user: newUserCreated.id_user,
+      email: data.email,
+      name: data.name,
+      surname: data.surname,
+      location,
+      phone: data.phone.toString(),
+      birth: data.birth,
+      dni: data.dni,
+      picture: data.image !== null // If the file size is 0 there is no such file
+    }
   }
+
   const { error: dataFail } = await supabase.from('users_data').insert(userData)
 
   if (dataFail) {
@@ -90,7 +107,23 @@ export async function POST (request) {
     }
   }
 
-  newUserCreated.username = data.name + ' ' + data.surname
+  // Upload DNI and face to be validated by operator
+  if (userData.username) {
+    const { error: dniFail } = await supabase.storage.from('identities').upload(`${userData.id_user}-dni`, decode(data.dniFile.base64), {
+      contentType: 'image/jpeg' // The Expo app sends all images as JPEG
+    })
+    if (dniFail) {
+      console.log(dniFail)
+      return NextResponse.json({ error: messages.error.validation_upload_failed })
+    }
+    const { error: faceFail } = await supabase.storage.from('identities').upload(`${userData.id_user}-face`, decode(data.faceFile.base64), {
+      contentType: 'image/jpeg' // The Expo app sends all images as JPEG
+    })
+    if (faceFail) {
+      console.log(faceFail)
+      return NextResponse.json({ error: messages.error.validation_upload_failed })
+    }
+  }
 
   const response = NextResponse.json({ message: messages.success.user_created, id_user: userData.id_user }, { status: 200 })
 
