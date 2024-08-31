@@ -1,7 +1,3 @@
-// register route
-
-// TODO: add DNI validation
-
 import { getLocation } from '@/actions/getLocation'
 import { getFields, errorMatch } from '@/app/auth/signup/dataHelp'
 import supabase from '@/libs/supabase/server'
