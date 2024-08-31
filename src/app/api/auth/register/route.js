@@ -25,7 +25,6 @@ export async function POST (request) {
   const credentialsValidation = checkCredentials(data.email, data.password)
   if (credentialsValidation.error) {
     const { error: message, status } = credentialsValidation
-    // console.log('error 1')
 
     return NextResponse.json({ error: message }, { status })
   }
@@ -33,7 +32,6 @@ export async function POST (request) {
   const locationResponse = await getLocation(data.city, data.province, data.country, true)
 
   if (locationResponse.status !== 200) {
-    // console.log('error 2')
     return NextResponse.json({ error: locationResponse.message }, { status: locationResponse.status })
   }
 
@@ -44,7 +42,6 @@ export async function POST (request) {
   const { data: user } = await supabase.from('users').select('*').ilike('email', data.email).single()
 
   if (user) {
-    // console.log('error 3')
     return NextResponse.json(
       { error: messages.error.user_already_exists }, { status: 400 }
     )
@@ -54,7 +51,6 @@ export async function POST (request) {
   const { data: dniExists } = await supabase.from('users_data').select('*').eq('dni', data.dni).single()
 
   if (dniExists) {
-    // console.log('error DNI')
     return NextResponse.json(
       { error: messages.error.dni_already_registered }, { status: 400 }
     )
@@ -66,7 +62,6 @@ export async function POST (request) {
   // create user
   const { data: newUserCreated, error } = await supabase.from('users').insert(newUser).select().single()
   if (error) {
-    // console.log('error 4')
     return NextResponse.json({ error: messages.error.error })
   }
   newUserCreated.password = undefined
@@ -93,7 +88,6 @@ export async function POST (request) {
   if (userData.picture) {
     const { error: profileFail } = await supabase.storage.from('profiles').upload(userData.id_user, data.image)
     if (profileFail) {
-      // console.log('error 6')
       return NextResponse.json({ error: messages.error.image_upload_failed })
     }
   }
