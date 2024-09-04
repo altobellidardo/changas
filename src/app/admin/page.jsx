@@ -3,7 +3,7 @@ import checkUser from '@/utils/checkUser'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
-const ADMIN_USERS = ['altobellidardo@gmail.com']
+const ADMIN_USERS = ['altobellidardo@gmail.com', 'rullimaximoeduardo@gmail.com']
 
 // obtener imagenes y token
 
