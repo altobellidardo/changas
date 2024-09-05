@@ -2,18 +2,17 @@
 
 export function Actions ({ userId }) {
   async function action (status) {
-    const response = await fetch('api/admin/change-status', {
+    const response = await fetch('api/admin/change-state', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ userId, status })
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ idUser: userId, status })
     })
     const data = await response.json()
 
-    if (data.error) {
-      alert(data.error)
-    } else window.location.reload()
+    console.log(data)
+    if (data.error) alert(data.error)
+    alert(data.message)
+    window.location.reload()
   }
 
   return (
