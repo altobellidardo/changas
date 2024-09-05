@@ -4,29 +4,36 @@ import checkUser from '@/utils/checkUser'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { Actions } from './form'
-
-const ADMIN_USERS = ['altobellidardo@gmail.com', 'rullimaximoeduardo@gmail.com']
+import { ADMINS } from '@/constants'
 
 // disable cache
 export const dynamic = 'force-dynamic'
 
-// obtener imagenes y token
-const pendingUsers = await getPendingUsers()
-const count = 0
-
-const userSelected = pendingUsers[count]
-const userDniImage = await getUserDniImage(userSelected.id_user, 'dni')
-const userImage = await getUserDniImage(userSelected.id_user, 'face')
-
-function Admin () {
+async function Admin () {
   const token = cookies().get('token')
   const isAuthenticated = checkUser(token?.value)
   // Retrieve data from JWT
   const { email: userEmail } = isAuthenticated
 
-  if (!isAuthenticated || !ADMIN_USERS.includes(userEmail)) {
+  if (!isAuthenticated || !ADMINS.includes(userEmail)) {
     redirect('/')
   }
+
+  // obtener imagenes y token
+  const pendingUsers = await getPendingUsers()
+  const count = 0
+
+  if (pendingUsers.length === 0) {
+    return (
+      <main className='flex min-h-screen flex-col bg-brand8'>
+        <h1>No hay usuarios pendientes</h1>
+      </main>
+    )
+  }
+
+  const userSelected = pendingUsers[count]
+  const userDniImage = await getUserDniImage(userSelected.id_user, 'dni')
+  const userImage = await getUserDniImage(userSelected.id_user, 'face')
 
   return (
     <main className='flex min-h-screen flex-col bg-brand8'>
