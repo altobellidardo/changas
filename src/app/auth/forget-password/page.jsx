@@ -45,7 +45,7 @@ function ForgetPassword () {
         </button>
 
       </form>
-      <Link href='/auth/signup' className='underline'>¿No tienes una cuenta?, crea una</Link>
+      {/* <Link href='/auth/signup' className='underline'>¿No tienes una cuenta?, crea una</Link> */}
       <Link href='/auth/signin' className='underline'>¿Ya tienes una cuenta?, inicia sesión</Link>
     </section>
   )
