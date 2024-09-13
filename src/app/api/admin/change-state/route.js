@@ -1,4 +1,5 @@
 import { ADMINS } from '@/constants'
+import { sendEmail } from '@/libs/resend/email'
 import supabase from '@/libs/supabase/server'
 import checkUser from '@/utils/checkUser'
 import messages from '@/utils/messages'
@@ -24,8 +25,12 @@ export async function POST (request) {
 
   try {
     const body = await req.json()
-    const { idUser, status } = body
+    const { idUser, status, reason } = body
     if (!idUser || !status) {
+      return NextResponse.json({ error: 'Invalid request' }, { status: 404 })
+    }
+
+    if (status === 'rejected' && !reason) {
       return NextResponse.json({ error: 'Invalid request' }, { status: 404 })
     }
 
@@ -50,6 +55,15 @@ export async function POST (request) {
 
     if (error) {
       return NextResponse.json({ error: messages.error.failed_user_update }, { status: 404 })
+    }
+
+    if (status === 'rejected' && reason) {
+      await sendEmail({
+        from: 'equipo@changasred.com',
+        to: userEmail,
+        subject: 'Rechazo de usuario',
+        html: `El usuario ${userEmail} ha rechazado su solicitud. Razón de rechazo: ${reason}`
+      })
     }
 
     return NextResponse.json({ message: 'Success' }, { status: 200 })

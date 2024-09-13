@@ -40,20 +40,19 @@ async function Admin () {
       <h1>Welcome, {userEmail}</h1>
       <p>Usuarios sin aprobar {pendingUsers.length}</p>
 
-      <section>
-        <p>Datos</p>
-        {Object.entries(userSelected).map(([key, value]) => (
-          <p key={key}>
-            <small>{key}: {value}</small>
-          </p>
-        ))}
-      </section>
-
       <section className='flex gap-8 mx-auto mt-20'>
-        <div className='w-[40vw]'>
+        <section className='text-sm'>
+          <p>Datos</p>
+          {Object.entries(userSelected).map(([key, value]) => (
+            <p key={key}>
+              <small>{key}: {value}</small>
+            </p>
+          ))}
+        </section>
+        <div className='w-[30vw]'>
           <img src={userDniImage} alt='user-dni' />
         </div>
-        <div className='w-[40vw]'>
+        <div className='w-[30vw]'>
           <img src={userImage} alt='user-face' />
         </div>
       </section>
