@@ -29,7 +29,7 @@ export async function POST (request) {
     return NextResponse.json({ error: message }, { status })
   }
 
-  const locationResponse = await getLocation(data.city, data.province, data.country, true)
+  const locationResponse = await getLocation(data.city, data.province, 'Argentina', true)
 
   if (locationResponse.status !== 200) {
     return NextResponse.json({ error: locationResponse.message }, { status: locationResponse.status })
@@ -70,7 +70,6 @@ export async function POST (request) {
     id_user: newUserCreated.id_user,
     email: data.email,
     name: data.name,
-    surname: data.surname,
     location,
     phone: data.phone.toString(),
     birth: data.birth,
@@ -80,7 +79,6 @@ export async function POST (request) {
   const { error: dataFail } = await supabase.from('users_data').insert(userData)
 
   if (dataFail) {
-    // console.log('error 5', dataFail)
     return NextResponse.json({ error: messages.error.error })
   }
 
@@ -92,7 +90,7 @@ export async function POST (request) {
     }
   }
 
-  newUserCreated.username = data.name + ' ' + data.surname
+  newUserCreated.username = data.name
 
   const token = jwt.sign(newUserCreated, process.env.JWT_SECRET, { expiresIn: '180d' })
   const response = NextResponse.json({ message: messages.success.user_created }, { status: 200 })

@@ -37,6 +37,7 @@ function RegisterForm () {
   const [loading, setLoading] = useState(false)
 
   const [imageFile, setImageFile] = useState(null)
+  const [DniImage, setDniImage] = useState(null)
 
   const provinces = loadProvinces()
   const [province, setProvince] = useState(provinces[0])
@@ -84,23 +85,28 @@ function RegisterForm () {
     }
   }
 
-  const handleImageChange = (event) => {
+  const handleImageChange = (event, id) => {
     const file = event.target.files[0]
-    setImageFile(file)
+
+    if (!file) return
+    if (id === 'image') {
+      setImageFile(file)
+    } else setDniImage(file)
   }
 
-  const deleteImage = () => {
-    setImageFile(null)
-    // delete file from form
-    document.getElementById('image').value = ''
+  const deleteImage = (id) => {
+    if (id === 'image') {
+      setImageFile(null)
+    } else setDniImage(null)
+    document.getElementById(id).value = ''
   }
 
   return (
     <section className='flex flex-col mt-20 justify-center items-center'>
       <h1 className='text-3xl font-bold'>Registrarse</h1>
       <form className='flex flex-col gap-4 w-80 md:w-96 p-6' onSubmit={handleSubmit}>
-        <Input type='text' name='name' label='Nombre' />
-        <Input type='text' name='surname' label='Apellido' />
+        <Input type='text' name='name' label='Nombre completo' />
+        {/* <Input type='text' name='surname' label='Apellido' /> */}
         <Input type='email' name='email' label='Email' />
         <Input type='password' name='password' label='Contraseña' />
 
@@ -120,14 +126,37 @@ function RegisterForm () {
         <input type='hidden' name='city' value={city} />
 
         <Input type='number' name='dni' label='DNI (sin puntos ni comas)' min='1' step='1' />
+        <Input
+          type='file'
+          name='dni-image'
+          label='Imagen frente DNI'
+          accept='image/*'
+          onChange={(event) => handleImageChange(event, 'dni-image')}
+          id='dni-image'
+        />
+        {DniImage &&
+          <div>
+            <img src={URL.createObjectURL(DniImage)} alt='Imagen de perfil' className='w-40 h-40 object-cover' />
+            <button className='rounded px-2 py-1 text-black bg-red-500/40' type='button' onClick={() => deleteImage('dni-image')}>
+              Descartar imagen
+            </button>
+          </div>}
+
         <Input type='date' name='birth' label='Fecha de nacimiento' max={minBirthdate} />
         <Input type='number' name='phone' label='Telefóno celular (opcional)' min='1' step='1' noRequired />
 
-        <Input type='file' name='image' label='Imagen de perfil (opcional)' accept='image/*' onChange={handleImageChange} id='image' noRequired />
+        <Input
+          type='file'
+          name='image'
+          label='Imagen de perfil'
+          accept='image/*'
+          onChange={(event) => handleImageChange(event, 'image')}
+          id='image'
+        />
         {imageFile &&
           <div>
             <img src={URL.createObjectURL(imageFile)} alt='Imagen de perfil' className='w-40 h-40 object-cover' />
-            <button className='rounded px-2 py-1 text-black bg-red-500/40' type='button' onClick={deleteImage}>
+            <button className='rounded px-2 py-1 text-black bg-red-500/40' type='button' onClick={() => deleteImage('image')}>
               Descartar imagen
             </button>
           </div>}
