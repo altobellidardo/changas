@@ -13,7 +13,7 @@ export function Actions ({ userId }) {
     })
     const data = await response.json()
 
-    console.log(data)
+    // console.log(data)
     if (data.error) alert(data.error)
     alert(data.message)
     window.location.reload()
