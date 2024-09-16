@@ -75,7 +75,7 @@ export async function GET (req) {
     workers = fetch.data
     error = fetch.error
   } else {
-    const columns = 'id_user, username, hourly_price, location, score, employees, description, attention_hours, new'
+    const columns = 'id_user, username, hourly_price, location, score, employees, description, attention_hours, new, certified'
     const fetch = await supabase.from('workers').select(columns)
       .eq('category', category)
       .gte('hourly_price', minhourlyPrice)
