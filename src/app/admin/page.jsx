@@ -1,45 +1,63 @@
 /* eslint-disable @next/next/no-img-element */
+import { getPendingUsers, getUserDniImage } from '@/actions/admin'
 import checkUser from '@/utils/checkUser'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
+import { Actions } from './form'
+import { ADMINS } from '@/constants'
 
-const ADMIN_USERS = ['altobellidardo@gmail.com']
+// disable cache
+export const dynamic = 'force-dynamic'
 
-// obtener imagenes y token
-
-function Admin () {
+async function Admin () {
   const token = cookies().get('token')
   const isAuthenticated = checkUser(token?.value)
   // Retrieve data from JWT
   const { email: userEmail } = isAuthenticated
 
-  if (!isAuthenticated || !ADMIN_USERS.includes(userEmail)) {
+  if (!isAuthenticated || !ADMINS.includes(userEmail)) {
     redirect('/')
   }
+
+  // obtener imagenes y token
+  const pendingUsers = await getPendingUsers()
+  const count = 0
+
+  if (pendingUsers.length === 0) {
+    return (
+      <main className='flex min-h-screen flex-col bg-brand8'>
+        <h1>No hay usuarios pendientes</h1>
+      </main>
+    )
+  }
+
+  const userSelected = pendingUsers[count]
+  const userDniImage = await getUserDniImage(userSelected.id_user, 'dni')
+  const userImage = await getUserDniImage(userSelected.id_user, 'face')
 
   return (
     <main className='flex min-h-screen flex-col bg-brand8'>
       <h1>Welcome, {userEmail}</h1>
+      <p>Usuarios sin aprobar {pendingUsers.length}</p>
 
       <section className='flex gap-8 mx-auto mt-20'>
-        <div className='w-[40vw]'>
-          <img src='https://via.placeholder.com/1920x1080' alt='' />
+        <section className='text-sm'>
+          <p>Datos</p>
+          {Object.entries(userSelected).map(([key, value]) => (
+            <p key={key}>
+              <small>{key}: {value}</small>
+            </p>
+          ))}
+        </section>
+        <div className='w-[30vw]'>
+          <img src={userDniImage} alt='user-dni' />
         </div>
-        <div className='w-[40vw]'>
-          <img src='https://via.placeholder.com/1920x1080' alt='' />
+        <div className='w-[30vw]'>
+          <img src={userImage} alt='user-face' />
         </div>
       </section>
 
-      <section className='flex gap-8 mx-auto mt-10'>
-        <button
-          className='border border-brand3 bg-brand4/30 text-brand3 px-4 py-2 font-bold rounded-md hover:bg-brand4/50'
-        >Aceptar
-        </button>
-        <button
-          className='border border-red-500 bg-red-200/30 text-red-500 px-4 py-2 font-bold rounded-md hover:bg-red-500/50'
-        >Rechazar
-        </button>
-      </section>
+      <Actions userId={userSelected.id_user} />
     </main>
   )
 }
