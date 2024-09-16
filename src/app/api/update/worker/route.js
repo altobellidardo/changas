@@ -7,15 +7,15 @@ import { getLocation } from '@/actions/getLocation'
 export async function PATCH (req) {
   const {
     IdWorker,
-    hourly_price: hourlyPrice,
+    hourlyPrice,
     employees,
-    attention_hours: attentionHours,
+    attentionHours,
     description,
     country,
     province,
     city,
     certification,
-    delete_certification: deleteCertification
+    deleteCertification
   } = await req.json()
 
   const response = await getLocation(city, province, country, true)

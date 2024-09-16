@@ -112,12 +112,12 @@ function JobCard ({ job, IdUser }) {
     } else {
       const sendData = {
         IdWorker: job.id_worker,
-        hourly_price: jobdata.target.hourlyPrice.value,
+        hourlyPrice: jobdata.target.hourlyPrice.value,
         country: jobdata.target.country.value,
         province: jobdata.target.province.value,
         city: jobdata.target.city.value,
         employees: jobdata.target.employees.value,
-        attention_hours: jobdata.target.attentionHours.value,
+        attentionHours: jobdata.target.attentionHours.value,
         description: jobdata.target.description.value
       }
 
