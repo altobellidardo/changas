@@ -38,7 +38,9 @@ const messages = {
     no_push_token: 'No se encontró ningún push token válido',
     report_failed: 'El envío de la denuncia falló, contactese con soporte.',
     image_upload_failed: 'Hubo un error al cargar la imagen',
-    validation_upload_failed: 'Hubo un error al cargar su DNI y rostro. Contactese con soporte.'
+    validation_upload_failed: 'Hubo un error al cargar su DNI y rostro. Contactese con soporte.',
+    certification_upload_failed: 'Hubo un error al intentar cargar su certificación.',
+    certification_delete_failed: 'Hubo un error al intentar borrar su certificación.'
   },
   success: {
     user_created: 'El usuario ha sido creado',

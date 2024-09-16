@@ -24,7 +24,7 @@ function Home () {
             Encuentra profesionales calificados para tus proyectos o haz crecer tu negocio
           </p>
           <div className='flex flex-col text-center gap-4 md:flex-row'>
-            <Link href='/auth/signup' className='rounded-xl border-2 border-brand6 bg-brand6 px-4 py-2 font-semibold text-black hover:text-brand8'>Unirse ahora</Link>
+            <Link href='/auth/signin' className='rounded-xl border-2 border-brand6 bg-brand6 px-4 py-2 font-semibold text-black hover:text-brand8'>Iniciar sesión</Link>
             <Link href='/trabajos' className='rounded-xl border-2 border-brand6 bg-brand6/20 px-4 py-2 font-semibold text-brand8 hover:bg-brand6'>Explorar Trabajos</Link>
           </div>
         </div>
@@ -32,7 +32,7 @@ function Home () {
 
       <section className='mt-20 mx-auto w-[90vw] max-w-[900px] text-balance'>
         <h6 className='text-brand3 font-bold'>¡Nuevo!</h6>
-        <h3 className='text-2xl md:text-3xl lg:text-5xl font-bold text-brand3'>Descarga nuestra App</h3>
+        <h3 className='text-2xl md:text-3xl lg:text-5xl font-bold text-brand3'>¡Descarga nuestra App y regístrate!</h3>
 
         <div className='flex flex-row gap-4 pt-8 align-top md:flex-row'>
           <Link href='https://play.google.com/store/apps/details?id=com.changasred.changasred'>

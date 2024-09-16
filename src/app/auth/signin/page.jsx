@@ -56,9 +56,9 @@ function SignIn () {
         <input id='password' className='border-2 p-2 rounded' type='password' name='password' />
         <button disabled={loading} className='rounded-xl border-2 border-brand6 bg-brand6 px-4 py-2 font-semibold text-brand8 hover:text-brand1 disabled:opacity-50' type='submit'>Iniciar sesión</button>
         <span className={`${error ? 'block' : 'hidden'} text-red-600 bg-red-200 border-2 rounded-lg p-2 border-red-600`}>{error}</span>
-        <Link href='/auth/signup' className='underline'>
+        {/* <Link href='/auth/signup' className='underline'>
           ¿No tienes una cuenta? Crea una
-        </Link>
+        </Link> */}
         <Link href='/auth/forget-password' className='underline'>
           ¿Olvidaste tu contraseña? Recuperala
         </Link>
