@@ -21,6 +21,7 @@ export async function GET (req) {
   let maxScore = query.get('max_score')
   let minScore = query.get('min_score')
   let order = query.get('order')
+  const onlyCertified = query.get('only_certified')
 
   // We set an upper and lower bound of the results to be shown
   const lowerBound = RESULTS_PER_PAGE * page
@@ -55,40 +56,45 @@ export async function GET (req) {
   // Get the location with the corresponding server function
   const data = (await (await getLocation(city, province, country, false)).json())
 
-  let workers, error
-  if (data.lat & data.lng) {
-    const fetch = await supabase
-      .rpc('get_workers_in_radius', {
-        lat: data.lat,
-        lng: data.lng,
-        radius: distance,
-        cat: category
-      })
-      .gte('hourly_price', minhourlyPrice)
-      .lte('hourly_price', maxhourlyPrice)
-      .gte('score', minScore)
-      .lte('score', maxScore)
-      .gt('employees', employees)
-      .ilike('username', `%${name}%`)
-      .order(order, { ascending: (order !== 'score') })
-      .range(lowerBound, upperBound)
-    workers = fetch.data
-    error = fetch.error
-  } else {
-    const columns = 'id_user, id_worker, username, hourly_price, location, score, employees, description, attention_hours, new, certified'
-    const fetch = await supabase.from('workers').select(columns)
-      .eq('category', category)
-      .gte('hourly_price', minhourlyPrice)
-      .lte('hourly_price', maxhourlyPrice)
-      .gte('score', minScore)
-      .lte('score', maxScore)
-      .gt('employees', employees)
-      .ilike('username', `%${name}%`)
-      .order(order, { ascending: (order !== 'score') })
-      .range(lowerBound, upperBound)
-    workers = fetch.data
-    error = fetch.error
+  const columns = 'id_user, id_worker, username, hourly_price, location, score, employees, description, attention_hours, new, certified'
+  const baseQuery = (lat, lng) => {
+    return lat && lng
+      ? supabase.rpc('get_workers_in_radius', { lat, lng, radius: distance, cat: category })
+      : supabase.from('workers').select(columns).eq('category', category)
   }
+  const applyFilters = (query, onlyCertified) => {
+    if (onlyCertified) {
+      return query
+        .gte('hourly_price', minhourlyPrice)
+        .lte('hourly_price', maxhourlyPrice)
+        .gte('score', minScore)
+        .lte('score', maxScore)
+        .gt('employees', employees)
+        .ilike('username', `%${name}%`)
+        .eq('certified', true) // Apply certified filter
+        .order(order, { ascending: (order !== 'score') })
+        .range(lowerBound, upperBound)
+    } else {
+      return query
+        .gte('hourly_price', minhourlyPrice)
+        .lte('hourly_price', maxhourlyPrice)
+        .gte('score', minScore)
+        .lte('score', maxScore)
+        .gt('employees', employees)
+        .ilike('username', `%${name}%`)
+        .order(order, { ascending: (order !== 'score') })
+        .range(lowerBound, upperBound)
+    }
+  }
+
+  const initialQuery = baseQuery(data.lat, data.lng)
+  const certifiedQuery = applyFilters(initialQuery, onlyCertified) // Apply common filters
+  const fetch = await certifiedQuery
+
+  const workers = fetch.data
+  const error = fetch.error
+
+  console.log(workers)
 
   if (error) {
     console.log(error)
