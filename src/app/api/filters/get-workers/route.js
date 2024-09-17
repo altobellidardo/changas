@@ -63,7 +63,7 @@ export async function GET (req) {
       : supabase.from('workers').select(columns).eq('category', category)
   }
   const applyFilters = (query, onlyCertified) => {
-    if (onlyCertified) {
+    if (onlyCertified && onlyCertified === 'Yes') {
       return query
         .gte('hourly_price', minhourlyPrice)
         .lte('hourly_price', maxhourlyPrice)
