@@ -63,7 +63,7 @@ export async function POST (request) {
 
   let userData
 
-  if (data.username) {
+  if (data.dniFile && data.faceFile) {
     userData = {
       id_user: newUserCreated.id_user,
       email: data.email,
@@ -72,19 +72,19 @@ export async function POST (request) {
       phone: data.phone.toString(),
       birth: data.birth,
       dni: data.dni,
-      status: 'pending',
+      status: 'pending', // Status is pending as the user uploaded validation documents
       picture: data.image !== null // If the file size is 0 there is no such file
     }
   } else {
     userData = {
       id_user: newUserCreated.id_user,
       email: data.email,
-      name: data.name,
-      surname: data.surname,
+      username: data.username,
       location,
       phone: data.phone.toString(),
       birth: data.birth,
       dni: data.dni,
+      status: 'basic', // Status is basic as the user did not upload validation documents
       picture: data.image !== null // If the file size is 0 there is no such file
     }
   }
@@ -108,19 +108,19 @@ export async function POST (request) {
   }
 
   // Upload DNI and face to be validated by operator
-  if (userData.username) {
+  if (data.dniFile && data.faceFile) {
     const { error: dniFail } = await supabase.storage.from('identities').upload(`${userData.id_user}-dni`, decode(data.dniFile.base64), {
       contentType: 'image/jpeg' // The Expo app sends all images as JPEG
     })
     if (dniFail) {
-      console.log(dniFail)
+      // console.log(dniFail)
       return NextResponse.json({ error: messages.error.validation_upload_failed })
     }
     const { error: faceFail } = await supabase.storage.from('identities').upload(`${userData.id_user}-face`, decode(data.faceFile.base64), {
       contentType: 'image/jpeg' // The Expo app sends all images as JPEG
     })
     if (faceFail) {
-      console.log(faceFail)
+      // console.log(faceFail)
       return NextResponse.json({ error: messages.error.validation_upload_failed })
     }
   }

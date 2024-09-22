@@ -7,6 +7,7 @@ const messages = {
     password_invalid: 'La contraseña debe tener al menos 3 carácteres',
     user_already_exists: 'El usuario ya existe',
     dni_already_registered: 'El DNI ya fue registrado, contactese con soporte',
+    validation_required: 'Ambas fotos de validación son requeridas para verificar su identidad',
     error: 'Ocurrió un error',
     user_not_found: 'El usuario no existe',
     incorrect_password: 'La contraseña es incorrecta',
@@ -55,7 +56,8 @@ const messages = {
     message_sent: 'El mensaje fue enviado con éxito',
     review_uploaded: 'La reseña fue subida satisfactoriamente',
     send_notification: 'La notificación fue enviada exitosamente',
-    report_sent: 'La denuncia fue enviada exitosamente'
+    report_sent: 'La denuncia fue enviada exitosamente',
+    validation_uploaded: 'Las credenciales de validación se subieron correctamente'
   }
 }
 
