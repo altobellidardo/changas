@@ -61,19 +61,7 @@ export async function GET (req) {
     minScore,
     maxScore,
     employees,
-    name, await supabase.rpc('get_workers_in_radius',
-      {
-        lat: data.lat,
-        lng: data.lng,
-        radius: distance,
-        cat: category,
-        minhourlyprice: minhourlyPrice,
-        maxhourlyprice: maxhourlyPrice,
-        minscore: minScore,
-        maxscore: maxScore,
-        employees,
-        name
-      }))
+    name)
   const columns = 'id_user, id_worker, username, hourly_price, location, score, employees, description, attention_hours, new, certified, users_data!inner(status, username)'
   const baseQuery = (lat, lng) => {
     return lat && lng
