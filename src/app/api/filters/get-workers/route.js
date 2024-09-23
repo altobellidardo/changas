@@ -101,7 +101,7 @@ export async function GET (req) {
   const workers = fetch.data
   const error = fetch.error
 
-  console.log(workers)
+  // console.log(workers)
 
   if (error) {
     console.log(error)
