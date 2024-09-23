@@ -55,33 +55,58 @@ export async function GET (req) {
 
   // Get the location with the corresponding server function
   const data = (await (await getLocation(city, province, country, false)).json())
-
-  const columns = 'id_user, id_worker, username, hourly_price, location, score, employees, description, attention_hours, new, certified'
+  console.log(
+    minhourlyPrice,
+    maxhourlyPrice,
+    minScore,
+    maxScore,
+    employees,
+    name, await supabase.rpc('get_workers_in_radius',
+      {
+        lat: data.lat,
+        lng: data.lng,
+        radius: distance,
+        cat: category,
+        minhourlyprice: minhourlyPrice,
+        maxhourlyprice: maxhourlyPrice,
+        minscore: minScore,
+        maxscore: maxScore,
+        employees,
+        name
+      }))
+  const columns = 'id_user, id_worker, username, hourly_price, location, score, employees, description, attention_hours, new, certified, users_data!inner(status, username)'
   const baseQuery = (lat, lng) => {
     return lat && lng
-      ? supabase.rpc('get_workers_in_radius', { lat, lng, radius: distance, cat: category })
-      : supabase.from('workers').select(columns).eq('category', category)
+      ? supabase.rpc('get_workers_in_radius',
+        {
+          lat,
+          lng,
+          radius: distance,
+          cat: category,
+          minhourlyprice: minhourlyPrice,
+          maxhourlyprice: maxhourlyPrice,
+          minscore: minScore,
+          maxscore: maxScore,
+          employees,
+          name
+        })
+      : supabase.from('workers').select(columns)
+        .eq('category', category)
+        .gte('hourly_price', minhourlyPrice)
+        .lte('hourly_price', maxhourlyPrice)
+        .gte('score', minScore).lte('score', maxScore)
+        .gt('employees', employees)
+        .ilike('users_data.username', `%${name}%`)
   }
+
   const applyFilters = (query, onlyCertified) => {
     if (onlyCertified && onlyCertified === 'Yes') {
       return query
-        .gte('hourly_price', minhourlyPrice)
-        .lte('hourly_price', maxhourlyPrice)
-        .gte('score', minScore)
-        .lte('score', maxScore)
-        .gt('employees', employees)
-        .ilike('username', `%${name}%`)
         .eq('certified', true) // Apply certified filter
         .order(order, { ascending: (order !== 'score') })
         .range(lowerBound, upperBound)
     } else {
       return query
-        .gte('hourly_price', minhourlyPrice)
-        .lte('hourly_price', maxhourlyPrice)
-        .gte('score', minScore)
-        .lte('score', maxScore)
-        .gt('employees', employees)
-        .ilike('username', `%${name}%`)
         .order(order, { ascending: (order !== 'score') })
         .range(lowerBound, upperBound)
     }
