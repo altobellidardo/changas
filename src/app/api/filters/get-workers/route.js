@@ -55,13 +55,7 @@ export async function GET (req) {
 
   // Get the location with the corresponding server function
   const data = (await (await getLocation(city, province, country, false)).json())
-  console.log(
-    minhourlyPrice,
-    maxhourlyPrice,
-    minScore,
-    maxScore,
-    employees,
-    name)
+
   const columns = 'id_user, id_worker, username, hourly_price, location, score, employees, description, attention_hours, new, certified, users_data!inner(status, username)'
   const baseQuery = (lat, lng) => {
     return lat && lng
@@ -75,7 +69,7 @@ export async function GET (req) {
           maxhourlyprice: maxhourlyPrice,
           minscore: minScore,
           maxscore: maxScore,
-          employees,
+          minemployees: employees,
           name
         })
       : supabase.from('workers').select(columns)
