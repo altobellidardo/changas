@@ -25,7 +25,7 @@ export async function POST (request) {
 
   try {
     const body = await req.json()
-    const { idUser, status, reason } = body
+    const { idUser, username, email, status, reason } = body
     if (!idUser || !status) {
       return NextResponse.json({ error: 'Invalid request' }, { status: 404 })
     }
@@ -57,12 +57,26 @@ export async function POST (request) {
       return NextResponse.json({ error: messages.error.failed_user_update }, { status: 404 })
     }
 
+    if (status === 'verified') {
+      console.log('Eliminando')
+      const { error: dniFail } = await supabase.storage.from('identities').remove([`${idUser}-dni.jpeg`])
+      if (dniFail) return NextResponse.json({ error: messages.error.failed_user_update })
+      const { error: faceFail } = await supabase.storage.from('identities').remove([`${idUser}-face.jpeg`])
+      if (faceFail) return NextResponse.json({ error: messages.error.failed_user_update })
+    }
+
     if (status === 'rejected' && reason) {
       await sendEmail({
         from: 'equipo@changasred.com',
-        to: userEmail,
-        subject: 'Rechazo de usuario',
-        html: `El usuario ${userEmail} ha rechazado su solicitud. Razón de rechazo: ${reason}`
+        to: email,
+        subject: 'Identidad no validada - Changas Red',
+        html: `
+        Estimado ${username},
+        Su identidad no ha podido ser validad por nuestros operadores. 
+        Motivo: ${reason}.
+        Si considera que esto fue un error, por favor contactese con este mail para que lo asistamos.
+        Saludos cordiales,
+        Equipo de Changas Red.`
       })
     }
 

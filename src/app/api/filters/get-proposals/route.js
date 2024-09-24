@@ -34,7 +34,7 @@ export async function GET (req) {
   if (openDate === 'undefined') {
     openDate = '01-01-2000'
   }
-  if (isNaN(distance)) {
+  if (isNaN(distance) || distance === 0) {
     distance = 40000
   }
   if (name === 'undefined') {
@@ -47,36 +47,42 @@ export async function GET (req) {
   // Get the location with the corresponding server function
   const data = (await (await getLocation(city, province, country, false)).json())
 
-  let proposals, error
-  if (data.lat & data.lng) {
-    const fetch = await supabase
-      .rpc('get_proposals_in_radius', {
-        lat: data.lat,
-        lng: data.lng,
-        radius: distance,
-        cat: category
-      })
-      .gte('budget', minBudget)
-      .lte('budget', maxBudget)
-      .gt('open_date', openDate)
-      .ilike('username', `%${name}%`)
-      .order(order, { ascending: false })
-      .range(lowerBound, upperBound)
-    proposals = fetch.data
-    error = fetch.error
-  } else {
-    const columns = 'id_user, budget, location, open_date, description, username'
-    const fetch = await supabase.from('proposals').select(columns)
-      .eq('category', category)
-      .gte('budget', minBudget)
-      .lte('budget', maxBudget)
-      .gt('open_date', openDate)
-      .ilike('username', `%${name}%`)
-      .order(order, { ascending: false })
-      .range(lowerBound, upperBound)
-    proposals = fetch.data
-    error = fetch.error
+  const columns = 'id_user, budget, location, open_date, description, username, users_data!inner(status, username)'
+
+  const baseQuery = (lat, lng) => {
+    return lat && lng
+      ? supabase.rpc('get_proposals_in_radius',
+        {
+          lat,
+          lng,
+          radius: distance,
+          cat: category,
+          minbudget: minBudget,
+          maxbudget: maxBudget,
+          opendate: openDate,
+          proposalname: name
+        })
+      : supabase.from('proposals').select(columns)
+        .eq('category', category)
+        .gte('budget', minBudget)
+        .lte('budget', maxBudget)
+        .gt('open_date', openDate)
+        .ilike('username', `%${name}%`)
   }
+
+  const applyFilters = (query) => {
+    return query
+      .order(order, { ascending: false })
+      .range(lowerBound, upperBound)
+  }
+
+  const initialQuery = baseQuery(data.lat, data.lng)
+  const finalQuery = applyFilters(initialQuery) // Apply common filters
+  const fetch = await finalQuery
+
+  const proposals = fetch.data
+  const error = fetch.error
+
   if (error) {
     return NextResponse.json(
       { error: messages.error.failed_proposal_fetch },

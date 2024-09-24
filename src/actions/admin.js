@@ -5,7 +5,7 @@ import supabase from '@/libs/supabase/server'
 export async function getPendingUsers () {
   const { data, error } = await supabase
     .from('users_data')
-    .select('username, birth, dni, created_at, id_user')
+    .select('username, birth, dni, created_at, id_user, email')
     .eq('status', 'pending')
     .order('created_at', { ascending: false })
 

@@ -46,7 +46,7 @@ export async function GET (req) {
   if (employees === 'undefined' || employees === '' || employees === null) {
     employees = 0
   }
-  if (isNaN(distance)) {
+  if (isNaN(distance) || distance === 0) {
     distance = 40000
   }
   if (order === 'undefined' || order === '' || order === null) {
@@ -70,7 +70,7 @@ export async function GET (req) {
           minscore: minScore,
           maxscore: maxScore,
           minemployees: employees,
-          name
+          workername: name
         })
       : supabase.from('workers').select(columns)
         .eq('category', category)

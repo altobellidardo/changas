@@ -2,14 +2,14 @@
 
 import { useRef } from 'react'
 
-export function Actions ({ userId }) {
+export function Actions ({ userId, username, email }) {
   const reasonRef = useRef()
   async function action (status) {
     const reason = reasonRef.current.value
     const response = await fetch('api/admin/change-state', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ idUser: userId, status, reason })
+      body: JSON.stringify({ idUser: userId, username, email, status, reason })
     })
     const data = await response.json()
 

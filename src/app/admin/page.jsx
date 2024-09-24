@@ -57,7 +57,7 @@ async function Admin () {
         </div>
       </section>
 
-      <Actions userId={userSelected.id_user} />
+      <Actions userId={userSelected.id_user} username={userSelected.username} email={userSelected.email} />
     </main>
   )
 }
