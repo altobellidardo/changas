@@ -34,8 +34,8 @@ export async function POST (request) {
 
   user.password = undefined
 
-  const { data: userData } = await supabase.from('users_data').select('name, surname').eq('id_user', user.id_user).single()
-  user.username = userData.name + ' ' + userData.surname
+  const { data: userData } = await supabase.from('users_data').select('username').eq('id_user', user.id_user).single()
+  user.username = userData.username
 
   const token = jwt.sign(user, process.env.JWT_SECRET, { expiresIn: '180d' })
   const response = NextResponse.json({ message: messages.success.user_logged }, { status: 201 })

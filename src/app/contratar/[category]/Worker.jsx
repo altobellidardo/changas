@@ -27,7 +27,7 @@ function Worker ({ worker, IdUser }) {
     <section className='p-4 py-8 border-b-0 rounded-xl border-brand6 bg-brand6/10 mb-2'>
       <div className='flex flex-col md:grid grid-cols-4'>
         <div>
-          <img src={picURL} alt={worker.username} className='size-24 mx-auto mb-4 md:m-0' />
+          <img src={picURL} alt={worker.users_data.username} className='size-24 mx-auto mb-4 md:m-0' />
         </div>
         <header>
           <span className='font-bold'>{worker.username}</span>
@@ -52,7 +52,7 @@ function Worker ({ worker, IdUser }) {
           </button>
           {worker.id_user !== IdUser &&
             <Link
-              href={`/chats/nuevochat?idUser2=${worker.id_user}&Username2=${worker.username}`}
+              href={`/chats/nuevochat?idUser2=${worker.id_user}&Username2=${worker.users_data.username}`}
               className='hover:underline bg-brand6/20 px-2 py-1 rounded h-fit my-auto text-center'
             >
               Contactar
