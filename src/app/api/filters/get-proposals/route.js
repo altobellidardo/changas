@@ -67,7 +67,7 @@ export async function GET (req) {
         .gte('budget', minBudget)
         .lte('budget', maxBudget)
         .gt('open_date', openDate)
-        .ilike('username', `%${name}%`)
+        .ilike('users_data.username', `%${name}%`)
   }
 
   const applyFilters = (query) => {
