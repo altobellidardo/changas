@@ -26,6 +26,7 @@ export async function POST (request) {
   try {
     const body = await req.json()
     const { idUser, username, email, status, reason } = body
+    console.log(body)
     if (!idUser || !status) {
       return NextResponse.json({ error: 'Invalid request' }, { status: 404 })
     }
@@ -58,11 +59,8 @@ export async function POST (request) {
     }
 
     if (status === 'verified') {
-      console.log('Eliminando')
-      const { error: dniFail } = await supabase.storage.from('identities').remove([`${idUser}-dni.jpeg`])
-      if (dniFail) return NextResponse.json({ error: messages.error.failed_user_update })
-      const { error: faceFail } = await supabase.storage.from('identities').remove([`${idUser}-face.jpeg`])
-      if (faceFail) return NextResponse.json({ error: messages.error.failed_user_update })
+      const { error: fail } = await supabase.storage.from('identities').remove([`${idUser}-dni`, `${idUser}-face`])
+      if (fail) return NextResponse.json({ error: messages.error.failed_user_update })
     }
 
     if (status === 'rejected' && reason) {
