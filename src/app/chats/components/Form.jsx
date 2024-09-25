@@ -24,7 +24,7 @@ function ChatForm ({ IdChat, IdUser, OtherUser, Username, Username2, history, Us
       const res = await fetch('/api/chats/create-chat', {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },
-        body: JSON.stringify({ message, IdUser, idUser2: OtherUser, Username, Username2 })
+        body: JSON.stringify({ message, IdUser, idUser2: OtherUser })
       })
       const { newIdChat } = await res.json()
       // Redirect to the user's channel
