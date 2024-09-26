@@ -11,9 +11,13 @@ export async function DELETE (req) {
 
   if (count === 1) {
     // Delete the user's data
-    const { error } = await supabase.from('workers')
+    const { error, data } = await supabase.from('workers')
       .delete()
       .eq('id_worker', IdWorker)
+      .select('certified')
+
+    // Remove the certifications in case the worker uploaded any
+    if (data[0].certified) await supabase.storage.from('certifications').remove([`${IdWorker}.pdf`])
 
     if (error) { return NextResponse.json({ error: messages.error.failed_worker_delete }, { status: 404 }) }
   } else if (count !== 1 || checkError) {

@@ -40,6 +40,9 @@ export async function POST (request) {
         upsert: true, contentType: 'application/pdf' // The Expo app sends only PDFs as certifications
       })
     if (certificationFail) {
+      // Try to delete the worker to avoid unexpected behaviour on the frontend
+      await supabase.from('workers').delete().eq('id_worker', data.id_worker)
+
       return NextResponse.json({ error: messages.error.certification_upload_failed })
     }
   }
