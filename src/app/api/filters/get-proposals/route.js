@@ -47,7 +47,7 @@ export async function GET (req) {
   // Get the location with the corresponding server function
   const data = (await (await getLocation(city, province, country, false)).json())
 
-  const columns = 'id_user, budget, location, open_date, description, username, users_data!inner(status, username)'
+  const columns = 'id_user, budget, location, open_date, description, users_data!inner(status, username)'
 
   const baseQuery = (lat, lng) => {
     return lat && lng

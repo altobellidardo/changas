@@ -56,7 +56,7 @@ export async function GET (req) {
   // Get the location with the corresponding server function
   const data = (await (await getLocation(city, province, country, false)).json())
 
-  const columns = 'id_user, id_worker, username, hourly_price, location, score, employees, description, attention_hours, new, certified, users_data!inner(status, username)'
+  const columns = 'id_user, id_worker, hourly_price, location, score, employees, description, attention_hours, new, certified, users_data!inner(status, username)'
   const baseQuery = (lat, lng) => {
     return lat && lng
       ? supabase.rpc('get_workers_in_radius',
