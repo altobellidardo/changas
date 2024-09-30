@@ -44,12 +44,12 @@ function Navbar ({ auth }) {
               {!auth
                 ? (
                   <>
-                    <Link
+                    {/* <Link
                       href='/auth/signin'
                       className='rounded-lg px-1 py-2 text-xs sm:px-2 sm:text-sm text-white hover:bg-brand1 focus:outline-none focus:ring-4 bg-brand3 focus:ring-brand1 lg:px-5 lg:py-2.5'
                     >
                       Iniciar sesión
-                    </Link>
+                    </Link> */}
                     {/* <Link
                       href='/auth/signup'
                       className='rounded-lg px-1 py-2 text-xs sm:px-2 sm:text-sm text-white hover:bg-brand1 focus:outline-none focus:ring-4 focus:ring-gray-800 lg:px-5 lg:py-2.5'
