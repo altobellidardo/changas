@@ -3,7 +3,7 @@ import Tag from './ui/tag'
 import Image from 'next/image'
 import supabase from '@/libs/supabase/server'
 
-const { data: categories } = await supabase.from('categories').select()
+const { data: categories } = await supabase.from('categories').select().order('id', { ascending: true })
 
 function Home () {
   return (

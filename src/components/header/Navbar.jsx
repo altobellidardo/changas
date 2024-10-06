@@ -21,8 +21,8 @@ function Navbar ({ auth }) {
 
   return (
     <>
-      <header className='h-[60px]'>
-        <nav className='bg-brand5 z-50 w-full absolute px-4 py-2.5 lg:px-6 '>
+      <header className='h-[60px] mb-0'>
+        <nav className='bg-brand5 z-50 w-full absolute px-4 py-3 lg:px-6 '>
           <div className='max-w-[1200px] mx-auto flex justify-between items-center'>
             <Link
               href='/'
